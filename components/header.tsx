@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Icon } from "@/components/icon";
 import { LanguageSwitch } from "@/components/language-switch";
+import { Logo } from "@/components/logo";
 import { isNavActive, type Dictionary, type Locale } from "@/lib/i18n";
 
 export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
@@ -54,31 +54,32 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-outline-variant/30 bg-surface/95 backdrop-blur-md print:hidden">
-      <nav className="mx-auto flex w-full max-w-container-max items-center justify-between gap-3 px-4 py-3.5 sm:px-margin-mobile md:px-margin-desktop">
-        <Link href={home} className="shrink-0 font-headline-md text-2xl font-bold tracking-tight text-primary">
-          OPEN
-        </Link>
-        <div className="hidden items-center gap-7 lg:flex">
-          {links.map((link) => {
-            const active = isNavActive(link.href, hash, pathname);
-            return (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(event) => follow(event, link.href)}
-                aria-current={active ? "page" : undefined}
-                className={
-                  active
-                    ? "font-label-md text-[13px] font-bold text-primary"
-                    : "font-label-md text-[13px] text-on-surface-variant transition-colors hover:text-primary"
-                }
-              >
-                {link.label}
-              </a>
-            );
-          })}
+      <nav className="mx-auto flex w-full max-w-container-max items-center justify-between gap-4 px-4 py-3 sm:px-margin-mobile md:px-margin-desktop">
+        <div className="flex min-w-0 flex-1 items-center gap-8 lg:gap-10">
+          <Logo href={home} height={38} priority className="sm:hidden" variant="mark" />
+          <Logo href={home} height={42} priority className="hidden sm:block" />
+          <div className="hidden items-center gap-7 lg:flex">
+            {links.map((link) => {
+              const active = isNavActive(link.href, hash, pathname);
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(event) => follow(event, link.href)}
+                  aria-current={active ? "page" : undefined}
+                  className={
+                    active
+                      ? "font-label-md text-[13px] font-bold text-primary"
+                      : "font-label-md text-[13px] text-on-surface-variant transition-colors hover:text-primary"
+                  }
+                >
+                  {link.label}
+                </a>
+              );
+            })}
+          </div>
         </div>
-        <div className="flex items-center gap-4 sm:gap-6">
+        <div className="flex shrink-0 items-center gap-3 sm:gap-6">
           <LanguageSwitch locale={locale} pathname={pathname} hash={hash} label={dict.ui.languageLabel} />
           <a
             href={`${home}#contact`}

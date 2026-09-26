@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Logo } from "@/components/logo";
 import { NewsletterForm } from "@/components/newsletter-form";
 import { contactEmail, mailHref, offices, type Dictionary, type Locale } from "@/lib/i18n";
 
@@ -16,7 +17,9 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       <div className="mx-auto w-full max-w-container-max px-4 sm:px-margin-mobile md:px-margin-desktop">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
           <div className="md:col-span-4 lg:col-span-5">
-            <div className="mb-6 font-headline-md text-2xl font-bold tracking-tight">OPEN</div>
+            <div className="mb-6">
+              <Logo height={44} tone="light" />
+            </div>
             <p className="mb-8 max-w-sm text-white/60">{dict.footer.about}</p>
             <a
               href="https://www.linkedin.com"
