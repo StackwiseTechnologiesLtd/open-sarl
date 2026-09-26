@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Icon } from "@/components/icon";
-import { isNavActive, localePath, type Dictionary, type Locale } from "@/lib/i18n";
+import { LanguageSwitch } from "@/components/language-switch";
+import { isNavActive, type Dictionary, type Locale } from "@/lib/i18n";
 
 export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const pathname = usePathname();
@@ -17,7 +18,8 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
     const target = document.getElementById(hash.slice(1));
     if (!target) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    target.scrollIntoView({ behavior: behavior ?? (reduce ? "auto" : "smooth") });
+    const top = target.getBoundingClientRect().top + window.scrollY - 96;
+    window.scrollTo({ top, behavior: behavior ?? (reduce ? "auto" : "smooth") });
   }
 
   useEffect(() => {
@@ -51,12 +53,12 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const links = dict.nav.map((item) => ({ ...item, href: `${home}${item.href}` }));
 
   return (
-    <header className="sticky top-0 z-50 border-b border-outline-variant/30 bg-surface/90 shadow-sm backdrop-blur-md print:hidden">
-      <nav className="mx-auto flex w-full max-w-container-max items-center justify-between gap-3 px-4 py-3 sm:px-margin-mobile md:px-margin-desktop">
+    <header className="sticky top-0 z-50 border-b border-outline-variant/30 bg-surface/95 backdrop-blur-md print:hidden">
+      <nav className="mx-auto flex w-full max-w-container-max items-center justify-between gap-3 px-4 py-3.5 sm:px-margin-mobile md:px-margin-desktop">
         <Link href={home} className="shrink-0 font-headline-md text-2xl font-bold tracking-tight text-primary">
           OPEN
         </Link>
-        <div className="hidden items-center gap-6 xl:gap-stack-lg lg:flex">
+        <div className="hidden items-center gap-7 lg:flex">
           {links.map((link) => {
             const active = isNavActive(link.href, hash, pathname);
             return (
@@ -67,8 +69,8 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 aria-current={active ? "page" : undefined}
                 className={
                   active
-                    ? "border-b-2 border-primary font-label-md text-label-md font-bold text-primary"
-                    : "font-label-md text-label-md text-on-surface-variant transition-colors duration-200 hover:text-primary"
+                    ? "font-label-md text-[13px] font-bold text-primary"
+                    : "font-label-md text-[13px] text-on-surface-variant transition-colors hover:text-primary"
                 }
               >
                 {link.label}
@@ -76,26 +78,19 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             );
           })}
         </div>
-        <div className="flex items-center gap-2 sm:gap-3">
-          <div className="flex rounded border border-outline-variant/50 p-0.5" role="group" aria-label={dict.ui.languageLabel}>
-            {(["fr", "en"] as const).map((code) => (
-              <Link
-                key={code}
-                href={localePath(pathname + hash, code)}
-                hrefLang={code}
-                aria-current={code === locale ? "true" : undefined}
-                className={`min-h-10 min-w-10 px-2.5 py-2 text-center font-label-md text-xs tracking-wide uppercase ${
-                  code === locale ? "bg-primary text-on-primary" : "text-on-surface-variant hover:text-primary"
-                }`}
-              >
-                {code}
-              </Link>
-            ))}
-          </div>
+        <div className="flex items-center gap-4 sm:gap-6">
+          <LanguageSwitch locale={locale} pathname={pathname} hash={hash} label={dict.ui.languageLabel} />
           <a
             href={`${home}#contact`}
             onClick={(event) => follow(event, `${home}#contact`)}
-            className="rounded bg-primary px-3 py-2 font-label-md text-xs text-on-primary transition-all hover:opacity-90 active:scale-95 sm:px-5 sm:text-label-md"
+            className="hidden font-label-md text-[13px] font-bold text-primary transition-colors hover:text-on-tertiary-fixed lg:inline"
+          >
+            {dict.ui.contact}
+          </a>
+          <a
+            href={`${home}#contact`}
+            onClick={(event) => follow(event, `${home}#contact`)}
+            className="rounded bg-primary px-3 py-2 font-label-md text-xs text-on-primary transition-colors hover:bg-primary-container lg:hidden"
           >
             {dict.ui.contact}
           </a>

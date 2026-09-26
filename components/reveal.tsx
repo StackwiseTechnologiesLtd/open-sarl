@@ -1,28 +1,23 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import { useSyncExternalStore, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
-const subscribe = () => () => {};
-
-export function useClientReady() {
-  return useSyncExternalStore(subscribe, () => true, () => false);
-}
+const ease = [0.16, 1, 0.3, 1] as const;
 
 export function FadeIn({ children, className = "" }: { children: ReactNode; className?: string }) {
-  const ready = useClientReady();
   const reduce = useReducedMotion();
 
-  if (!ready || reduce) {
+  if (reduce === true) {
     return <div className={className}>{children}</div>;
   }
 
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.8, ease }}
     >
       {children}
     </motion.div>
@@ -38,20 +33,19 @@ export function Reveal({
   className?: string;
   delay?: number;
 }) {
-  const ready = useClientReady();
   const reduce = useReducedMotion();
 
-  if (!ready || reduce) {
+  if (reduce === true) {
     return <div className={className}>{children}</div>;
   }
 
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 18 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, amount: 0.08 }}
+      transition={{ duration: 0.7, delay, ease }}
     >
       {children}
     </motion.div>
