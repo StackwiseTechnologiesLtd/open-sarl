@@ -1,13 +1,13 @@
 "use client";
 
-export function PrintButton() {
+export function PrintButton({ label }: { label: string }) {
   return (
     <button
       type="button"
       onClick={() => window.print()}
-      className="rounded border border-primary px-6 py-3 font-label-md text-label-md text-primary print:hidden"
+      className="inline-flex min-h-12 items-center justify-center rounded border border-primary px-5 py-3 font-label-md text-sm text-primary print:hidden"
     >
-      Enregistrer en PDF
+      {label}
     </button>
   );
 }
