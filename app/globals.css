@@ -96,6 +96,18 @@ section[id] {
   scroll-margin-top: 96px;
 }
 
+.py-section-gap {
+  padding-top: var(--spacing-section-gap);
+  padding-bottom: var(--spacing-section-gap);
+}
+
+@media (max-width: 768px) {
+  .py-section-gap {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
 .glass-card {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(16px);

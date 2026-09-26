@@ -84,8 +84,8 @@ const dictionaries = {
       imageAlt: "Pont à haubans, infrastructure de transport",
     },
     audiences: {
-      eyebrow: "Clients",
-      title: "Gouvernements, bailleurs, investisseurs et partenaires techniques.",
+      eyebrow: "Qui nous servons",
+      title: "Des interlocuteurs qui doivent faire passer une priorité à une décision.",
       items: [
         { title: "Gouvernements", text: "Ministères, maîtrises d'ouvrage et unités de gestion de projets." },
         { title: "Bailleurs et DFI", text: "Cadres Banque mondiale, UE, BAD et autres financeurs du développement." },
@@ -95,12 +95,14 @@ const dictionaries = {
       ],
     },
     problem: {
+      eyebrow: "Le blocage",
       title: "Les projets s'arrêtent entre la priorité et la mise en œuvre.",
-      text: "Une priorité nationale n'est pas encore un projet finançable et exécutable. Préparation, bancabilité et mise en œuvre restent trop souvent dans des mandats séparés. OPEN relie ces étapes.",
+      text: "Une priorité nationale n'est pas encore un projet finançable et exécutable. Préparation, bancabilité et delivery sont trop souvent confiés à des mandats séparés. OPEN maintient la continuité entre ces étapes.",
     },
     capabilities: {
-      eyebrow: "Capacités",
-      title: "De la priorité à l'exécution.",
+      eyebrow: "Ce que fait OPEN",
+      title: "Trois capacités — de la priorité à l'exécution.",
+      flow: ["Préparation", "Bancabilité", "Exécution"],
       items: [
         {
           name: "Préparation de projets & conseil",
@@ -121,7 +123,7 @@ const dictionaries = {
     },
     sectors: {
       eyebrow: "Secteurs",
-      title: "Eau, énergie, transport et infrastructures urbaines.",
+      title: "Là où les projets doivent devenir exécutables.",
       items: [
         {
           title: "Eau",
@@ -158,42 +160,51 @@ const dictionaries = {
       ],
     },
     experience: {
-      eyebrow: "Références",
-      title: "Mandats et résultats.",
+      eyebrow: "Références choisies",
+      title: "Ce que le travail couvre, et ce qu'il produit.",
+      intro: "Mandats et domaines d'intervention en RDC et en Afrique centrale.",
       items: [
         {
+          sector: "Eau",
           place: "Alimentation en eau urbaine | Est de la RDC",
           role: "Préparation de projet et appui à la mise en œuvre",
           outcome: "Plus de 200 000 bénéficiaires",
+          metric: true,
           image: "/images/sector-water.png",
           alt: "Infrastructure d'eau",
         },
         {
+          sector: "Énergie",
           place: "Infrastructures énergétiques | RDC",
           role: "Bancabilité, préparation technique et institutionnelle",
           outcome: "Hydroélectricité, réseau et planification des investissements",
+          metric: false,
           image: "/images/sector-energy.png",
           alt: "Infrastructure énergétique",
         },
         {
+          sector: "Transport",
           place: "Corridors stratégiques | RDC et Afrique centrale",
-          role: "Conseil aux parties prenantes, à l'institutionnel et à la maturité d'investissement",
+          role: "Conseil aux parties prenantes, institutionnel et maturité d'investissement",
           outcome: "Préparation orientée décision",
+          metric: false,
           image: "/images/sector-transport.png",
           alt: "Infrastructure de transport",
         },
         {
+          sector: "Programmes",
           place: "Programmes financés par les bailleurs",
           role: "Appui à la mise en œuvre aligné sur les cadres Banque mondiale, UE, BAD et autres DFI",
           outcome: "Continuité entre exigences des bailleurs et réalité de delivery",
+          metric: false,
           image: "",
           alt: "",
         },
       ],
     },
     adds: {
-      eyebrow: "Différenciation",
-      title: "Ce qu'OPEN ajoute à un mandat habituel.",
+      eyebrow: "Ce qu'OPEN ajoute",
+      title: "Le même mandat, prolongé jusqu'à la décision et à l'exécution.",
       conventional: "Mission habituelle",
       added: "Apport OPEN",
       rows: [
@@ -205,9 +216,10 @@ const dictionaries = {
       ],
     },
     method: {
-      eyebrow: "Méthode",
-      title: "Quatre variables pour décider.",
-      intro: "Clarté, bancabilité, exécutabilité et contrôle — les critères qui transforment une intention en décision d'exécution.",
+      eyebrow: "Méthode OPEN",
+      title: "Quatre variables pour une décision.",
+      subtitle: "Valeur ajoutée pour les décideurs",
+      intro: "Clarté, bancabilité, exécutabilité et contrôle transforment une intention en décisions d'exécution.",
       items: [
         { icon: "visibility" as IconName, title: "Clarté", text: "Une vision alignée sur les priorités publiques, assez précise pour être arbitrée." },
         { icon: "account_balance" as IconName, title: "Bancabilité", text: "Une structuration financière lisible pour les bailleurs et les investisseurs." },
@@ -216,8 +228,9 @@ const dictionaries = {
       ],
     },
     mobilisation: {
-      title: "Cadre de mobilisation — 60 premiers jours",
-      intro: "Exemple de séquence. Les étapes s'adaptent au mandat.",
+      eyebrow: "Mobilisation",
+      title: "Cadre de mobilisation des 60 premiers jours",
+      intro: "Un exemple de passage à l'action. Les étapes s'adaptent au mandat — ce n'est pas une séquence unique pour chaque portefeuille.",
       steps: [
         { range: "Jour 1 – 15", title: "Photo du portefeuille", text: "Diagnostic de l'état réel des projets prioritaires et repérage des quick wins." },
         { range: "Jour 15 – 45", title: "Ordre de priorité", text: "Sélection selon la bancabilité, l'effet attendu et la rapidité d'exécution." },
@@ -225,9 +238,9 @@ const dictionaries = {
       ],
     },
     modes: {
-      eyebrow: "Engagement",
-      title: "Comment nous intervenir.",
-      intro: "La forme contractuelle suit l'urgence et la complexité du mandat.",
+      eyebrow: "Modes d'intervention",
+      title: "Des formes d'engagement adaptées au mandat.",
+      intro: "La forme contractuelle suit l'urgence et la complexité, sans présumer un rôle d'entreprise de construction.",
       items: [
         { title: "Mission courte", text: "Diagnostic, structuration de dossier ou lecture de portefeuille — en général deux à quatre mois." },
         { title: "Appui intégré", text: "Experts auprès des unités de gestion de projets, pour renforcer la capacité dans la durée." },
@@ -252,10 +265,11 @@ const dictionaries = {
       ],
     },
     cta: {
-      title: "Parlons de votre projet.",
-      text: "Gouvernement, bailleur, investisseur ou partenaire d'ingénierie — un échange ciblé pour commencer.",
+      title: "Dites-nous où en est votre projet.",
+      text: "Un gouvernement, un bailleur, un investisseur ou un partenaire d'ingénierie peut commencer par un échange ciblé.",
       discuss: "Discuter d'un projet",
       partner: "Devenir partenaire",
+      explore: "Explorer les capacités",
       credentials: "Télécharger les références",
     },
     footer: {
@@ -337,8 +351,8 @@ const dictionaries = {
       imageAlt: "Cable-stayed bridge, transport infrastructure",
     },
     audiences: {
-      eyebrow: "Clients",
-      title: "Governments, DFIs, investors and technical partners.",
+      eyebrow: "Who we serve",
+      title: "The people who have to move a priority to a decision.",
       items: [
         { title: "Governments", text: "Ministries, contracting authorities and project management units." },
         { title: "DFIs", text: "World Bank, EU, AfDB and other development-finance frameworks." },
@@ -348,12 +362,14 @@ const dictionaries = {
       ],
     },
     problem: {
+      eyebrow: "The gap",
       title: "Projects stall between priority and implementation.",
-      text: "A national priority is not yet a financeable, implementable project. Preparation, bankability and delivery too often sit in separate mandates. OPEN connects those steps.",
+      text: "A national priority is not yet a financeable, implementable project. Preparation, bankability and delivery too often sit in separate mandates. OPEN keeps those steps connected.",
     },
     capabilities: {
-      eyebrow: "Capabilities",
-      title: "From priority to delivery.",
+      eyebrow: "What OPEN does",
+      title: "Three capabilities — from priority to delivery.",
+      flow: ["Preparation", "Bankability", "Delivery"],
       items: [
         {
           name: "Project Preparation & Advisory",
@@ -374,7 +390,7 @@ const dictionaries = {
     },
     sectors: {
       eyebrow: "Sectors",
-      title: "Water, energy, transport and urban infrastructure.",
+      title: "Where projects must become implementable.",
       items: [
         {
           title: "Water",
@@ -411,42 +427,51 @@ const dictionaries = {
       ],
     },
     experience: {
-      eyebrow: "Experience",
-      title: "Selected mandates and outcomes.",
+      eyebrow: "Selected experience",
+      title: "What the work covers, and what it produces.",
+      intro: "Selected mandates and areas of work across the DRC and Central Africa.",
       items: [
         {
+          sector: "Water",
           place: "Urban Water Supply | Eastern DRC",
           role: "Project preparation & implementation support",
           outcome: "200,000+ beneficiaries",
+          metric: true,
           image: "/images/sector-water.png",
           alt: "Water infrastructure",
         },
         {
+          sector: "Energy",
           place: "Energy Infrastructure | DRC",
           role: "Bankability, technical and institutional readiness",
           outcome: "Hydropower / grid / investment planning",
+          metric: false,
           image: "/images/sector-energy.png",
           alt: "Energy infrastructure",
         },
         {
+          sector: "Transport",
           place: "Strategic Corridors | DRC & Central Africa",
           role: "Stakeholder, institutional and investment-readiness advisory",
           outcome: "Decision-oriented preparation",
+          metric: false,
           image: "/images/sector-transport.png",
           alt: "Transport infrastructure",
         },
         {
+          sector: "Programmes",
           place: "Donor-funded infrastructure programmes",
           role: "Implementation support aligned with World Bank, EU, AfDB and other development-finance frameworks",
           outcome: "Continuity between donor requirements and delivery reality",
+          metric: false,
           image: "",
           alt: "",
         },
       ],
     },
     adds: {
-      eyebrow: "Differentiation",
-      title: "What OPEN adds to a conventional assignment.",
+      eyebrow: "What OPEN adds",
+      title: "The same assignment, carried through to a decision and to delivery.",
       conventional: "Conventional assignment",
       added: "OPEN added value",
       rows: [
@@ -458,9 +483,10 @@ const dictionaries = {
       ],
     },
     method: {
-      eyebrow: "Method",
+      eyebrow: "OPEN method",
       title: "Four variables for a decision.",
-      intro: "Clarity, bankability, executability and control — the criteria that turn intent into an execution decision.",
+      subtitle: "Added value for decision-makers",
+      intro: "Clarity, bankability, executability and control turn an intention into execution decisions.",
       items: [
         { icon: "visibility" as IconName, title: "Clarity", text: "A view aligned with public priorities, precise enough to decide." },
         { icon: "account_balance" as IconName, title: "Bankability", text: "A financial structure that DFIs and investors can read." },
@@ -469,8 +495,9 @@ const dictionaries = {
       ],
     },
     mobilisation: {
+      eyebrow: "Mobilisation",
       title: "First 60-day mobilisation framework",
-      intro: "An example sequence. Steps adapt to the mandate.",
+      intro: "An example of how a portfolio moves toward action. The steps adapt to the mandate — they are not a single sequence for every assignment.",
       steps: [
         { range: "Day 1 – 15", title: "Portfolio picture", text: "A flash reading of priority projects and the quick wins that are actually available." },
         { range: "Day 15 – 45", title: "Priority ranking", text: "A selection based on bankability, expected effect and speed of execution." },
@@ -478,9 +505,9 @@ const dictionaries = {
       ],
     },
     modes: {
-      eyebrow: "Engagement",
-      title: "How to work with OPEN.",
-      intro: "The contract shape follows the urgency and complexity of the mandate.",
+      eyebrow: "Engagement models",
+      title: "Ways to work with OPEN.",
+      intro: "The contract shape follows urgency and complexity. It does not assume a construction-contractor role.",
       items: [
         { title: "Short assignment", text: "A diagnostic, structured package or portfolio reading — typically two to four months." },
         { title: "Embedded support", text: "Experts with the project management unit, building capacity over time." },
@@ -505,10 +532,11 @@ const dictionaries = {
       ],
     },
     cta: {
-      title: "Let's discuss your project.",
-      text: "Government, DFI, investor or engineering partner — start with a focused conversation.",
+      title: "Tell us where the project stands.",
+      text: "A government, a DFI, an investor or an engineering partner can start with a focused conversation.",
       discuss: "Discuss a project",
       partner: "Partner with OPEN",
+      explore: "Explore capabilities",
       credentials: "Download credentials",
     },
     footer: {
