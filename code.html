@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OPEN | Conseil stratégique en infrastructures publiques</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500&amp;family=IBM+Plex+Sans:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .text-shadow-sm {
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#d8dadc",
+                        "surface-container-high": "#e6e8ea",
+                        "surface": "#f7f9fb",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#ccd8ff",
+                        "tertiary-container": "#506076",
+                        "on-tertiary-container": "#cadaf5",
+                        "background": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "tertiary-fixed": "#d3e4fe",
+                        "inverse-surface": "#2d3133",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#dae2ff",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "outline": "#737785",
+                        "on-primary-fixed": "#001847",
+                        "surface-bright": "#f7f9fb",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary": "#565e74",
+                        "primary-container": "#0056d2",
+                        "surface-container-low": "#f2f4f6",
+                        "on-surface-variant": "#424654",
+                        "secondary-fixed": "#dae2fd",
+                        "primary": "#0056d2",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "secondary-container": "#dae2fd",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary-fixed": "#131b2e",
+                        "surface-container": "#eceef0",
+                        "inverse-primary": "#b2c5ff",
+                        "on-surface": "#191c1e",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#38485d",
+                        "on-primary-fixed-variant": "#0040a1",
+                        "surface-tint": "#0056d2",
+                        "on-background": "#191c1e",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "on-secondary-container": "#5c647a",
+                        "outline-variant": "#c3c6d6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "stack-lg": "32px",
+                        "section-gap": "120px",
+                        "gutter": "24px",
+                        "stack-md": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["IBM Plex Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface">
+<!-- TopNavBar -->
+<header class="bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm sticky top-0 z-50">
+<nav class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary tracking-tight">OPEN</div>
+<div class="hidden md:flex gap-stack-lg items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Missions</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Pôles</a>
+<a class="text-primary border-b-2 border-primary font-bold font-label-md text-label-md" href="#">Expertise</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Secteurs</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Portfolio</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded font-label-md text-label-md hover:opacity-90 scale-95 active:opacity-80 transition-all">Contact</button>
+</nav>
+</header>
+<main>
+<!-- Section 1: Hero -->
+<section class="relative min-h-[800px] flex items-center overflow-hidden">
+<!-- Split Screen Background -->
+<div class="absolute inset-0 z-0">
+<img alt="Advisory and Executive infrastructure split screen" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-8MtGJrpiLxteFPV0BFuq7CtIl5pgKGnUu6fTpuMG_iRMnf50BLeD61_9TUqMMItcOdtyblClG2Gn5ThlcLqGEswx0tGBxu6Yf6zUpkwi5caL1k0uRLRNWXrXVFqtqyaABuTwr5CLwnRzOXwzS84KoR4pyAumcWvhIa2UsaZ7k7X72g0EBxR5J12zl8s41SBIPbiXT1JBU92NcWvtZDCDwmX_LNvBeh-OsLVLzMPYsejwfRZXGb8zj6SuW88_ifzBGJHyUKVUPH-K"/>
+<!-- Overlays for legibility -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40"></div>
+</div>
+<div class="relative z-10 w-full">
+<div class="max-w-container-max mx-auto px-margin-desktop py-stack-lg">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<!-- Advisory Column -->
+<div class="glass-card p-10 rounded-2xl text-white transform hover:-translate-y-1 transition-all duration-300">
+<div class="flex items-center gap-3 mb-6">
+<span class="w-8 h-[2px] bg-white/60"></span>
+<span class="font-label-md text-label-md uppercase tracking-[0.2em] text-white/80">Department 01</span>
+</div>
+<h2 class="font-display-lg text-headline-xl mb-6 leading-tight">Advisory<br/><span class="font-normal opacity-90">Conseil</span></h2>
+<p class="font-body-lg text-body-lg mb-2 leading-relaxed">
+                        Transformer les priorités en programmes bancables.
+                    </p>
+<p class="font-body-md italic text-white/70 mb-8">
+                        Transforming priorities into bankable programs.
+                    </p>
+<div class="flex">
+<button class="group flex items-center gap-2 text-white font-bold font-label-md uppercase tracking-wider text-sm hover:gap-4 transition-all">
+                            Voir le pôle conseil <span class="material-symbols-outlined text-lg">arrow_right_alt</span>
+</button>
+</div>
+</div>
+<!-- Executive Column -->
+<div class="glass-card p-10 rounded-2xl text-white transform hover:-translate-y-1 transition-all duration-300">
+<div class="flex items-center gap-3 mb-6">
+<span class="w-8 h-[2px] bg-white/60"></span>
+<span class="font-label-md text-label-md uppercase tracking-[0.2em] text-white/80">Department 02</span>
+</div>
+<h2 class="font-display-lg text-headline-xl mb-6 leading-tight">Executive Branch<br/><span class="font-normal opacity-90">Pôle Exécution</span></h2>
+<p class="font-body-lg text-body-lg mb-2 leading-relaxed">
+                        Sécuriser le delivery et l'ancrage local.
+                    </p>
+<p class="font-body-md italic text-white/70 mb-8">
+                        Securing delivery and local roots.
+                    </p>
+<div class="flex">
+<button class="group flex items-center gap-2 text-white font-bold font-label-md uppercase tracking-wider text-sm hover:gap-4 transition-all">
+                            Voir le pôle exécution <span class="material-symbols-outlined text-lg">arrow_right_alt</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Central CTA -->
+<div class="mt-20 text-center">
+<button class="bg-white text-primary px-12 py-5 rounded-full font-headline-md text-headline-md flex items-center gap-4 mx-auto hover:bg-surface-bright hover:shadow-2xl hover:scale-105 transition-all">
+                    Découvrir nos missions
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Value Proposition (The 4 Pillars) -->
+<section class="py-section-gap bg-surface">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="text-center mb-stack-lg">
+<h2 class="font-headline-xl text-headline-xl text-primary mb-stack-sm">Valeur ajoutée pour les décideurs</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Une approche holistique pour sécuriser les investissements et maximiser l'impact sociétal.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<!-- Pillar 1 -->
+<div class="bg-white p-8 border border-outline-variant/30 hover:shadow-xl transition-all group">
+<div class="w-12 h-12 bg-primary/5 text-primary flex items-center justify-center rounded-lg mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">visibility</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3">Clarté</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Vision stratégique alignée sur les plans nationaux de développement.</p>
+</div>
+<!-- Pillar 2 -->
+<div class="bg-white p-8 border border-outline-variant/30 hover:shadow-xl transition-all group">
+<div class="w-12 h-12 bg-primary/5 text-primary flex items-center justify-center rounded-lg mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3">Bancabilité</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Structuration financière rigoureuse répondant aux exigences des IFI.</p>
+</div>
+<!-- Pillar 3 -->
+<div class="bg-white p-8 border border-outline-variant/30 hover:shadow-xl transition-all group">
+<div class="w-12 h-12 bg-primary/5 text-primary flex items-center justify-center rounded-lg mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">construction</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3">Exécutabilité</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Anticipation des verrous techniques et administratifs avant le lancement.</p>
+</div>
+<!-- Pillar 4 -->
+<div class="bg-white p-8 border border-outline-variant/30 hover:shadow-xl transition-all group">
+<div class="w-12 h-12 bg-primary/5 text-primary flex items-center justify-center rounded-lg mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rule</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3">Contrôle</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Pilotage haute performance pour garantir délais et budgets.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Positioning (World Bank/BAD/UE) -->
+<section class="py-section-gap bg-primary text-on-primary">
+<div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-section-gap items-center">
+<div>
+<h2 class="font-headline-xl text-headline-xl mb-stack-md">Partenaire d'exécution indépendant</h2>
+<p class="font-body-lg text-body-lg mb-stack-lg text-primary-fixed">
+                        Nous comblons le fossé entre la réalité de terrain locale et les standards internationaux les plus exigeants (Banque Mondiale, UE, BAD).
+                    </p>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed">check_circle</span>
+<span class="font-body-md text-body-md">Alignement total avec les Directives de Passation de Marchés.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed">check_circle</span>
+<span class="font-body-md text-body-md">Maitrise des cadres de conformité environnementale et sociale (E&amp;S).</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed">check_circle</span>
+<span class="font-body-md text-body-md">Expertise reconnue en Partenariats Public-Privé (PPP).</span>
+</li>
+</ul>
+</div>
+<div class="relative">
+<div class="bg-surface-container-highest/10 p-1 rounded-xl">
+<img class="rounded-lg shadow-2xl grayscale brightness-90" data-alt="A clean, professional workspace displaying complex infrastructure blueprints and financial spreadsheets on multiple high-resolution monitors. Soft daylight floods a modern office space, highlighting organized stacks of documents and technical diagrams. The image should reflect meticulous planning, international financial standards, and high-level consulting expertise using a sophisticated corporate blue and white aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_iiA1m6xX9LBNEvkSe5X5-LrQmJaHFyWAvUrt7T4oXEphyB1044AcGcirKwUuv7fkg2rfggyDOLfJPKorpzz7WPmvOR6B-dwFkNY9537AKbw_jVupKRpZgAJFh1R_4akoGeVp6mKwSF1l1TTNQCw01YnaQHksrwl9onVYaoLfZx6X3sN61ZlMJkWvM-BmC_rid7QadY4V05uysICuS1hy3J_KIeRGD4c0gW1_pUOHpHnwVXZgT5wIIInGphAFA0eN-5l6ih9m1-a5"/>
+</div>
+<div class="absolute -bottom-8 -left-8 bg-white p-6 rounded-lg text-primary shadow-2xl hidden md:block">
+<div class="text-4xl font-bold mb-1">100%</div>
+<div class="text-sm font-label-md text-on-surface-variant uppercase">Taux de succès de maturité</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Differentiation -->
+<section class="py-section-gap bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<h2 class="font-headline-xl text-headline-xl text-primary text-center mb-section-gap">L'approche OPEN vs Traditionnelle</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-stretch">
+<div class="p-stack-lg border-2 border-outline-variant/20 rounded-xl bg-white/50">
+<h3 class="font-headline-md text-headline-md text-on-surface-variant mb-stack-md flex items-center gap-2">
+<span class="material-symbols-outlined text-error">cancel</span>
+                            Approche Standard
+                        </h3>
+<ul class="space-y-6">
+<li class="border-b border-outline-variant pb-4">
+<p class="font-bold mb-1">Rapports purement conceptuels</p>
+<p class="text-on-surface-variant text-sm">Absence de liens directs avec les capacités de mise en œuvre réelle.</p>
+</li>
+<li class="border-b border-outline-variant pb-4">
+<p class="font-bold mb-1">Passivité vis-à-vis des blocages</p>
+<p class="text-on-surface-variant text-sm">Les experts pointent les problèmes sans proposer de solution opérationnelle.</p>
+</li>
+<li>
+<p class="font-bold mb-1">Déconnexion IFI</p>
+<p class="text-on-surface-variant text-sm">Documents souvent non conformes aux critères de financement internationaux.</p>
+</li>
+</ul>
+</div>
+<div class="p-stack-lg border-2 border-primary rounded-xl bg-white shadow-xl relative overflow-hidden">
+<div class="absolute top-0 right-0 bg-primary text-on-primary px-4 py-1 text-xs font-bold uppercase">Standard OPEN</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-stack-md flex items-center gap-2">
+<span class="material-symbols-outlined">check_circle</span>
+                            Approche OPEN
+                        </h3>
+<ul class="space-y-6">
+<li class="border-b border-primary/10 pb-4">
+<p class="font-bold text-primary mb-1">Livrables "Prêts à Financer"</p>
+<p class="text-on-surface-variant text-sm">Des packages techniques et financiers directement exploitables par les prêteurs.</p>
+</li>
+<li class="border-b border-primary/10 pb-4">
+<p class="font-bold text-primary mb-1">Task-Force "Débloquage"</p>
+<p class="text-on-surface-variant text-sm">Intervention directe sur les nœuds institutionnels pour accélérer le pipeline.</p>
+</li>
+<li>
+<p class="font-bold text-primary mb-1">Intégration opérationnelle</p>
+<p class="text-on-surface-variant text-sm">Présence terrain pour coordonner les services de l'État et les bailleurs.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Typical Missions -->
+<section class="py-section-gap bg-white">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="flex flex-col md:flex-row justify-between items-end gap-gutter mb-stack-lg">
+<div class="max-w-2xl">
+<h2 class="font-headline-xl text-headline-xl text-primary mb-stack-sm">Missions Types</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Des interventions ciblées pour chaque stade du cycle de vie des projets.</p>
+</div>
+<button class="hidden md:flex items-center gap-2 text-primary font-bold hover:underline">
+                        Consulter le catalogue des missions <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="group cursor-pointer">
+<div class="overflow-hidden rounded-lg mb-4">
+<img class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A professional handshake between two executives in a bright, modern corporate setting. The background is slightly blurred, showing a high-end office interior with glass walls and professional decor. The lighting is soft and high-key, conveying trust, agreement, and strategic partnership. The color palette is dominated by professional blues and clean whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEUgdaxp1c1JRtpSTlnNrNBVsdG6hfIML1LJfFGHtVN9CiVLLAFOeHtln4km03ov4vlZMgACKASyYdZpBYjtCciZ0yl0xlK2Wx2rXTGX1EsCjYM4yOahqy6fkKFZk6EsMj2bV8eAK0uSO2SKDo34ua-A8RyidLRyAtgtaZeX1RwEdOLU_pKR2c0IyoNIVyWW9_a0sYYXpnCF2bAo9IGqY_1j7r5I6VQ0MEWH3JdDxW1I_HQG8JnJofq2jLqbMkVboOkbi0bQ5dKM_S"/>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Structuring &amp; Packaging</h4>
+<p class="text-on-surface-variant text-sm">Préparation des dossiers d'investissement et dossiers de consultation des entreprises (DCE).</p>
+</div>
+<div class="group cursor-pointer">
+<div class="overflow-hidden rounded-lg mb-4">
+<img class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close-up of hands reviewing complex financial charts and project timelines on a sleek tablet device. The desk is professional and minimalist, with a high-end feel. The scene is illuminated with cool, professional lighting that emphasizes detail and analytical precision. Deep blue and silver tones dominate the aesthetic, suggesting data-driven decision making." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAZlXL8VDInjqqysyxUXWbc2CPe2Jfdc__-K2weNQgFcSXI4yGKrwteaeWpQIbs9hWPq8cEwSSzSgPa_RhnqRUIG4-vmiryZZrrfs-VLrxoaRYmKn3VwQhHwrRlGAWOgvW8cbgX5u_MOXAtqttrLSNALH6e5rq87ssgz4nMAc3yJZFRvMqAA9tl49eQIssq51UK6_H9hyn61Kf4ztSaFUqohtrw1iPzRKtIStq2Vl-ATc8mMlAmhcOBBGHtxEwZ1HDTUGGzjUbEXvV"/>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Portfolio Maturity Evaluation</h4>
+<p class="text-on-surface-variant text-sm">Audit critique du pipeline de projets pour prioriser les investissements à fort impact.</p>
+</div>
+<div class="group cursor-pointer">
+<div class="overflow-hidden rounded-lg mb-4">
+<img class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A wide, airy perspective of a modern office meeting room with a large glass table and ergonomic chairs. Outside the window, a glimpse of a growing urban skyline suggests progress and infrastructure. The mood is aspirational and organized, using light and airy tones to create a sense of clarity and institutional scale." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPCqUzku725nAybcq11DPmL03vYi_15M19eHUWDme0Jb86aGgX-g0cUScjt4wU63bSygbiEDSEpC3LZdE1AUotPKqqkLGUzoOR7yoAyhgFoxCSi7d3l9-ZmV-m5VoWleTQT9bbu4R7tHOh9pK68XZHJGC0zZYBYfNGXXHLBZVL2QvCPc5D30gYKoR8EwYvDWCKLQPqSmWMLONKE3KEmzUO3_ZpPTpP58FiDo2xeJcj7Kwzs5C1lLQkUUvXwTLbo5kEg1KesdISP5kh"/>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Strategic Corridors</h4>
+<p class="text-on-surface-variant text-sm">Définition de schémas directeurs pour les infrastructures de transport et d'énergie.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 6: First 30-60 Days (Specific Deliverables) -->
+<section class="py-section-gap bg-surface-dim/30">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<h2 class="font-headline-xl text-headline-xl text-primary text-center mb-stack-lg">Les 60 premiers jours d'engagement</h2>
+<div class="relative">
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-outline-variant/30 -translate-y-1/2 z-0"></div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter relative z-10">
+<div class="bg-white p-stack-lg rounded-xl shadow-sm border-t-4 border-tertiary">
+<div class="text-tertiary font-bold text-sm mb-4">JOUR 1 - 15</div>
+<h4 class="font-headline-md text-headline-md mb-2">Photo du Portfolio</h4>
+<p class="text-on-surface-variant text-sm">Diagnostic flash de l'état réel des projets prioritaires et identification immédiate des "Quick Wins".</p>
+</div>
+<div class="bg-white p-stack-lg rounded-xl shadow-sm border-t-4 border-primary">
+<div class="text-primary font-bold text-sm mb-4">JOUR 15 - 45</div>
+<h4 class="font-headline-md text-headline-md mb-2">Ranking de Priorité</h4>
+<p class="text-on-surface-variant text-sm">Matrice de sélection basée sur la bancabilité, l'impact politique et la rapidité d'exécution.</p>
+</div>
+<div class="bg-white p-stack-lg rounded-xl shadow-sm border-t-4 border-on-primary-fixed-variant">
+<div class="text-on-primary-fixed-variant font-bold text-sm mb-4">JOUR 45 - 60</div>
+<h4 class="font-headline-md text-headline-md mb-2">Lancement TdR</h4>
+<p class="text-on-surface-variant text-sm">Rédaction et validation des Termes de Référence pour les études de faisabilité manquantes.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 7: Sectors (Bento Grid) -->
+<section class="py-section-gap bg-surface">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<h2 class="font-headline-xl text-headline-xl text-primary mb-stack-lg text-center">Secteurs d'Intervention</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
+<div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-xl">
+<img class="w-full h-full object-cover" data-alt="A massive bridge infrastructure project under construction, showing steel frameworks and engineering precision. The scene is shot during the golden hour, providing warm light that contrasts with the industrial blue and grey tones. The image conveys large-scale development, engineering mastery, and national progress in the transport sector." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARxyUt4V8ZXd89TJhoGWxveUX8YRQkAbpgIOW_k4GE5NhYrjLNT-EzTM3Q5A4uNx4YIgHsiUPfxF8NAOXgBNHfgdAGiZ9MFgbI8sKhgBa07CTbABnovoZ28zqNFBv-xpLW-1j5v9fN4zwoZy6xMqUBimrDDO80qp9echb3k-7Ra0Po3oY1ik2raIlS9v7G7oyLUbHUAJJRyW9Wuh7layyE3-kj4EemtaC0egUdoyjxhbGI0kBEMZdAdnOwrfntUWw-4jOGXwdrUDRb"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary to-transparent opacity-60"></div>
+<div class="absolute bottom-0 left-0 p-8 text-on-primary">
+<h3 class="font-headline-xl text-headline-xl">Transport</h3>
+<p class="text-primary-fixed">Routes stratégiques, ports et logistique multimodale.</p>
+</div>
+</div>
+<div class="md:col-span-2 relative group overflow-hidden rounded-xl">
+<img class="w-full h-full object-cover" data-alt="Modern solar energy farm or high-voltage power lines stretching across a vast landscape. The image is clean and bright, emphasizing renewable energy and sustainable utility development. It uses high-contrast, professional lighting to showcase technological advancement in the energy sector." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm3sJGgAlcAru2T9v4ybStRMPQnSzxbB5BmyV4TDiQLdmfQcl1JNYr5_WMCriVEJgE0Q_li7wX5YsacsSvNYLyli7voStOiKjiGdDOYbBN3i5OyK-IU5gGZSJXBAkwWGSOl0AQMxCClUVUF65ntagczhTX-XGBm0HFJc03zEMsWEMZA57yfX7e-vM7YPCFIqdIFilpIuChcQ0zKHdRaoAJgYb-hPXF7vNwv1LfScCc7-NTuB9qniXv0MC5VtuynSlD0Hzk9H0hRREL"/>
+<div class="absolute inset-0 bg-gradient-to-t from-tertiary to-transparent opacity-60"></div>
+<div class="absolute bottom-0 left-0 p-6 text-on-primary">
+<h3 class="font-headline-lg text-headline-lg">Énergie</h3>
+<p class="text-tertiary-fixed">Production renouvelable et réseaux de distribution.</p>
+</div>
+</div>
+<div class="relative group overflow-hidden rounded-xl">
+<img class="w-full h-full object-cover" data-alt="A clean, modern water treatment facility or advanced irrigation system representing utility infrastructure. The lighting is bright and clear, emphasizing purity and technical reliability. The aesthetic is institutional and high-fidelity, using water-blue and sterile-white tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4RwVn9PzhCaM10WQo46yxrzpHFEuiSek6saH9sheG7_TALFhRjurWGghdMiGnj2A5svsQBKL1y8ScRd2pI7y7tmLpS3hEbAysCxyw4JXUEEaeO_N450xIZwdzVeynEI6fcsADj6lr3JWyeMOQmkBLlUFJ1ZYmFpqF5uEBZCIBINN1_47WJO64ToTCztAo1hdxblsvgydOOfVpecbr5Rnv7gyzg8kChpsS8A9xZhEfT5OVg4IZBX---gFCxa4azboLO5z4yGa9AW0F"/>
+<div class="absolute inset-0 bg-gradient-to-t from-secondary to-transparent opacity-60"></div>
+<div class="absolute bottom-0 left-0 p-4 text-on-primary">
+<h3 class="font-headline-md text-headline-md">Eau &amp; Assainissement</h3>
+</div>
+</div>
+<div class="relative group overflow-hidden rounded-xl">
+<img class="w-full h-full object-cover" data-alt="A modern urban development scene showing well-planned city streets, green spaces, and contemporary buildings. The atmosphere is vibrant yet organized, representing successful urban planning and infrastructure integration. The color palette is fresh, professional, and sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQlL3xLLH1TFXZPIzsg6DrRbMc2_iWUGy68sl9cAMZHbPKy2mM-kCjbAOqAn8QOxuXQHE9Eloqa_8hjkcvOjcz6GUMhj95kvcjeoY85dBvN1EqGwmT4Tl42gtI5nfaZnG1OrjEUxlYqsXF3Hc7KjYtAFnORMXkeXDzbh5sTpxLa2pa95hmlzx3ytE383QZi7BW0IBdmSr2vK4tKlwGq-Pa0xokf6WVv4KvPpWpqaO57zy3Sra_4SrjvHTJO_dV6i2RMV2oXggxr9Pt"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container to-transparent opacity-60"></div>
+<div class="absolute bottom-0 left-0 p-4 text-on-primary">
+<h3 class="font-headline-md text-headline-md">Développement Urbain</h3>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 8: Intervention Modes -->
+<section class="py-section-gap bg-white">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="bg-primary-container/5 rounded-2xl p-12 flex flex-col md:flex-row gap-gutter">
+<div class="md:w-1/3">
+<h2 class="font-headline-xl text-headline-xl text-primary mb-stack-md">Modes d'Intervention</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Une flexibilité contractuelle adaptée à l'urgence et à la complexité de vos enjeux.</p>
+</div>
+<div class="md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+<div class="space-y-4">
+<div class="p-4 bg-white rounded-lg border border-outline-variant/30">
+<h4 class="font-bold text-primary mb-2">Missions Courtes (Task Force)</h4>
+<p class="text-sm text-on-surface-variant">Diagnostic flash, structuration de dossiers ou évaluation de pipeline sur 2 à 4 mois.</p>
+</div>
+<div class="p-4 bg-white rounded-lg border border-outline-variant/30">
+<h4 class="font-bold text-primary mb-2">Support Intégré (UMOP)</h4>
+<p class="text-sm text-on-surface-variant">Détachement d'experts au sein des Unités de Gestion de Projets pour un renforcement capacitaire continu.</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="p-4 bg-white rounded-lg border border-outline-variant/30">
+<h4 class="font-bold text-primary mb-2">Co-implémentation</h4>
+<p class="text-sm text-on-surface-variant">Pilotage conjoint avec les administrations pour garantir l'exécution des projets bailleurs.</p>
+</div>
+<div class="p-4 bg-primary text-on-primary rounded-lg">
+<h4 class="font-bold mb-2">Plateforme Digitale</h4>
+<p class="text-sm opacity-90">Accès à nos outils propriétaires de tracking de maturité et de conformité en temps réel.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 9: Contact CTA -->
+<section class="py-section-gap relative overflow-hidden">
+<div class="absolute inset-0 bg-primary"></div>
+<div class="relative z-10 max-w-container-max mx-auto px-margin-desktop text-center text-on-primary">
+<h2 class="font-display-lg text-display-lg mb-stack-md">Accélérez votre pipeline d'investissements</h2>
+<p class="font-body-lg text-body-lg text-primary-fixed mb-stack-lg max-w-2xl mx-auto">
+                    Discutons de vos projets prioritaires et identifions ensemble les leviers pour passer de l'intention à l'exécution.
+                </p>
+<div class="flex flex-col md:flex-row gap-stack-md justify-center items-center">
+<button class="bg-white text-primary px-10 py-5 rounded-lg font-headline-md text-headline-md hover:scale-105 transition-all">Prendre rendez-vous</button>
+<button class="border border-white text-white px-10 py-5 rounded-lg font-headline-md text-headline-md hover:bg-white/10 transition-all">Télécharger notre brochure institutionnelle</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0b1c30] text-white py-20 border-t border-white/5">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+<!-- Logo & About -->
+<div class="md:col-span-4 lg:col-span-5">
+<div class="font-headline-md text-headline-md font-bold text-white mb-6 tracking-tight">OPEN</div>
+<p class="text-white/60 font-body-md mb-8 max-w-sm">
+                    Conseil stratégique et expertise technique pour les infrastructures et politiques publiques. Un pont vers l'excellence institutionnelle.
+                </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-primary transition-all" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path></svg>
+</a>
+</div>
+</div>
+<!-- Columns -->
+<div class="md:col-span-8 lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-8">
+<div>
+<h4 class="font-bold text-sm uppercase tracking-widest text-white mb-6">Secteurs</h4>
+<ul class="space-y-4 text-white/50 text-label-md">
+<li><a class="hover:text-white transition-colors" href="#">Transport &amp; Logistique</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Énergie &amp; Eau</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Développement Urbain</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Digital &amp; Services</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-sm uppercase tracking-widest text-white mb-6">Entreprise</h4>
+<ul class="space-y-4 text-white/50 text-label-md">
+<li><a class="hover:text-white transition-colors" href="#">Missions</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Expertise</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Portfolio</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Recrutement</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-sm uppercase tracking-widest text-white mb-6">Contact</h4>
+<ul class="space-y-4 text-white/50 text-label-md">
+<li>Tour Horizon, Paris-La Défense</li>
+<li>Dakar, Sénégal</li>
+<li><a class="text-white font-medium hover:underline" href="mailto:contact@open-consulting.fr">contact@open-consulting.fr</a></li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Newsletter & Copyright -->
+<div class="mt-20 pt-10 border-t border-white/10 flex flex-col lg:flex-row justify-between items-center gap-8">
+<div class="w-full lg:w-auto">
+<form class="flex max-w-md bg-white/5 rounded-lg p-1 border border-white/10">
+<input class="bg-transparent border-none focus:ring-0 text-sm flex-grow px-4 placeholder:text-white/30" placeholder="S'abonner à la newsletter" type="email"/>
+<button class="bg-primary text-white px-6 py-2 rounded-md text-sm font-bold">OK</button>
+</form>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-8">
+<p class="text-white/40 text-label-md">© 2024 OPEN Consulting. Tous droits réservés.</p>
+<div class="flex gap-6 text-label-md text-white/40">
+<a class="hover:text-white" href="#">Mentions Légales</a>
+<a class="hover:text-white" href="#">Confidentialité</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
