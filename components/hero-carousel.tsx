@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { PillLink } from "@/components/button";
 import { Container } from "@/components/container";
 import { Icon } from "@/components/icon";
 import { heroSlideImages } from "@/lib/images";
@@ -127,12 +128,7 @@ export function HeroCarousel({ home, dict }: { home: string; dict: Dictionary })
                 <p className="hero-badge">{dept.dept}</p>
                 <h1 className="hero-display-headline mt-5 max-w-3xl text-balance sm:mt-6">{dept.text}</h1>
                 <div className="mt-8 sm:mt-10">
-                  <a href={`${home}#contact`} className="hero-cta-pill">
-                    <span className="hero-cta-pill-icon" aria-hidden="true">
-                      <Icon name="arrow_forward" className="h-5 w-5" />
-                    </span>
-                    <span>{dept.cta}</span>
-                  </a>
+                  <PillLink href={`${home}#contact`}>{dept.cta}</PillLink>
                 </div>
               </motion.div>
             </AnimatePresence>

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Button, ButtonLink } from "@/components/button";
+import { Button, ButtonLink, PillLink } from "@/components/button";
 import { Container } from "@/components/container";
 import { HeroCarousel } from "@/components/hero-carousel";
 import { Icon } from "@/components/icon";
@@ -276,10 +276,8 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
           <Reveal>
             <h2 className="section-display mb-4 sm:mb-stack-md">{dict.cta.title}</h2>
             <p className="section-lead text-primary-fixed mb-8 mx-auto max-w-2xl sm:mb-stack-lg">{dict.cta.text}</p>
-            <div className="flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center sm:justify-center sm:gap-stack-md">
-              <ButtonLink href={mailHref(locale, "project")} variant="secondary" size="lg">
-                {dict.cta.primary}
-              </ButtonLink>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-stack-md">
+              <PillLink href={mailHref(locale, "project")}>{dict.cta.primary}</PillLink>
               <ButtonLink href={`${home}/brochure`} variant="outline-light" size="lg">
                 {dict.cta.secondary}
               </ButtonLink>
