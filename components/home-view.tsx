@@ -241,14 +241,12 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
       {/* Modes */}
       <section id="modes" className="bg-white py-section-gap">
         <Container>
-          <div className="flex flex-col gap-8 rounded-2xl border border-outline-variant/20 bg-primary-container/5 p-6 sm:gap-gutter sm:p-8 md:flex-row md:p-12">
-            <Reveal>
-              <div className="md:w-1/3">
-                <h2 className="section-heading text-primary mb-4 sm:mb-stack-md">{dict.modes.title}</h2>
-                <p className="text-sm leading-relaxed text-on-surface-variant sm:text-body-md">{dict.modes.intro}</p>
-              </div>
+          <div className="flex flex-col gap-8 rounded-2xl border border-outline-variant/20 bg-primary-container/5 p-6 sm:gap-gutter sm:p-8 md:flex-row md:items-start md:p-12">
+            <Reveal className="shrink-0 md:w-1/3">
+              <h2 className="section-heading text-primary mb-4 sm:mb-stack-md">{dict.modes.title}</h2>
+              <p className="text-sm leading-relaxed text-on-surface-variant sm:text-body-md">{dict.modes.intro}</p>
             </Reveal>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-stack-lg md:w-2/3">
+            <div className="grid min-w-0 flex-1 grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-stack-lg md:w-2/3">
               {dict.modes.items.map((mode, index) => (
                 <Reveal key={mode.title} delay={index * 0.05} className="h-full">
                   <div
