@@ -40,10 +40,10 @@ describe("bilingual content", () => {
       expect(copy.modes.items).toHaveLength(4);
     }
     expect(getDictionary("fr").method.items.map((item) => item.title)).toEqual([
-      "Clarté",
-      "Bancabilité",
-      "Exécutabilité",
-      "Contrôle",
+      "Préparation des projets",
+      "Structuration pour financement bailleurs",
+      "Bancabilité et gestion des risques",
+      "Conseil stratégique",
     ]);
   });
 

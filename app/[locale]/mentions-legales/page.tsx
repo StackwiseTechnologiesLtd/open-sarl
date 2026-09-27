@@ -29,8 +29,6 @@ export default async function LegalPage({ params }: Props) {
             <br />
             {offices[0]}
             <br />
-            {offices[1]}
-            <br />
             <a className="text-primary hover:underline" href={`mailto:${contactEmail}`}>
               {contactEmail}
             </a>

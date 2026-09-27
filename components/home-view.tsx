@@ -83,10 +83,6 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
                     className="w-full rounded-lg object-cover brightness-90 grayscale"
                   />
                 </div>
-                <div className="stat-badge mt-4 inline-flex flex-col rounded-xl bg-white px-5 py-4 text-primary sm:absolute sm:-bottom-6 sm:-left-6 sm:mt-0 sm:px-6 sm:py-5 md:block">
-                  <div className="text-3xl font-bold sm:text-4xl">{dict.positioning.statValue}</div>
-                  <div className="font-label-md text-on-surface-variant text-xs uppercase sm:text-sm">{dict.positioning.statLabel}</div>
-                </div>
               </div>
             </Reveal>
           </div>
