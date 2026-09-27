@@ -35,18 +35,18 @@ export default async function BrochurePage({ params }: Props) {
               href={mailHref(locale, "project")}
               className="inline-flex min-h-12 items-center justify-center rounded bg-primary px-5 py-3 font-label-md text-sm text-on-primary"
             >
-              {dict.cta.discuss}
+              {dict.cta.primary}
             </a>
             <PrintButton label={dict.brochure.print} />
           </div>
         </div>
 
         <section className="mt-10">
-          <h2 className="font-headline-md text-2xl font-semibold">{dict.capabilities.title}</h2>
-          <ul className="mt-4 grid gap-4 md:grid-cols-3">
-            {dict.capabilities.items.map((item) => (
-              <li key={item.name} className="border border-outline-variant/30 p-4">
-                <p className="font-bold text-primary">{item.name}</p>
+          <h2 className="font-headline-md text-2xl font-semibold">{dict.method.title}</h2>
+          <ul className="mt-4 grid gap-4 md:grid-cols-2">
+            {dict.method.items.map((item) => (
+              <li key={item.title} className="border border-outline-variant/30 p-4">
+                <p className="font-bold text-primary">{item.title}</p>
                 <p className="mt-1 text-sm text-on-surface-variant">{item.text}</p>
               </li>
             ))}
@@ -54,12 +54,12 @@ export default async function BrochurePage({ params }: Props) {
         </section>
 
         <section className="mt-10">
-          <h2 className="font-headline-md text-2xl font-semibold">{dict.experience.eyebrow}</h2>
+          <h2 className="font-headline-md text-2xl font-semibold">{dict.missions.title}</h2>
           <ul className="mt-4 space-y-3">
-            {dict.experience.items.map((item) => (
-              <li key={item.place}>
-                <span className="font-bold">{item.place}. </span>
-                <span className="text-on-surface-variant">{item.role}. {item.outcome}</span>
+            {dict.missions.items.map((item) => (
+              <li key={item.title}>
+                <span className="font-bold">{item.title}. </span>
+                <span className="text-on-surface-variant">{item.text}</span>
               </li>
             ))}
           </ul>

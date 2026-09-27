@@ -1,26 +1,21 @@
 import Link from "next/link";
-import { Logo } from "@/components/logo";
 import { NewsletterForm } from "@/components/newsletter-form";
 import { contactEmail, mailHref, offices, type Dictionary, type Locale } from "@/lib/i18n";
 
 export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const home = `/${locale}`;
   const company = [
-    { href: `${home}#capabilities`, label: dict.nav[0].label },
-    { href: `${home}#experience`, label: dict.nav[2].label },
-    { href: `${home}#methode`, label: dict.nav[3].label },
+    ...dict.footer.companyLinks.map((item) => ({ href: `${home}${item.href}`, label: item.label })),
     { href: mailHref(locale, "recruitment"), label: dict.footer.recruitment },
   ];
 
   return (
-    <footer className="border-t border-white/5 bg-on-tertiary-fixed py-16 text-white print:hidden sm:py-20">
+    <footer className="border-t border-white/5 bg-[#0b1c30] py-20 text-white print:hidden">
       <div className="mx-auto w-full max-w-container-max px-4 sm:px-margin-mobile md:px-margin-desktop">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
           <div className="md:col-span-4 lg:col-span-5">
-            <div className="mb-6">
-              <Logo height={44} tone="light" />
-            </div>
-            <p className="mb-8 max-w-sm text-white/60">{dict.footer.about}</p>
+            <div className="font-headline-md text-headline-md mb-6 font-bold tracking-tight">OPEN</div>
+            <p className="font-body-md mb-8 max-w-sm text-white/60">{dict.footer.about}</p>
             <a
               href="https://www.linkedin.com"
               aria-label={dict.footer.linkedin}
@@ -34,11 +29,11 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 md:col-span-8 lg:col-span-7">
             <div>
               <h2 className="mb-6 text-sm font-bold tracking-widest uppercase">{dict.footer.sectors}</h2>
-              <ul className="space-y-4 text-sm text-white/50">
-                {dict.sectors.items.map((item) => (
-                  <li key={item.title}>
+              <ul className="space-y-4 text-label-md text-white/50">
+                {dict.footer.sectorLinks.map((item) => (
+                  <li key={item}>
                     <a href={`${home}#secteurs`} className="transition-colors hover:text-white">
-                      {item.title}
+                      {item}
                     </a>
                   </li>
                 ))}
@@ -46,7 +41,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </div>
             <div>
               <h2 className="mb-6 text-sm font-bold tracking-widest uppercase">{dict.footer.company}</h2>
-              <ul className="space-y-4 text-sm text-white/50">
+              <ul className="space-y-4 text-label-md text-white/50">
                 {company.map((item) => (
                   <li key={item.label}>
                     <a href={item.href} className="transition-colors hover:text-white">
@@ -58,12 +53,12 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </div>
             <div>
               <h2 className="mb-6 text-sm font-bold tracking-widest uppercase">{dict.footer.contact}</h2>
-              <ul className="space-y-4 text-sm text-white/50">
+              <ul className="space-y-4 text-label-md text-white/50">
                 {offices.map((office) => (
                   <li key={office}>{office}</li>
                 ))}
                 <li>
-                  <a className="font-medium break-all text-white hover:underline" href={`mailto:${contactEmail}`}>
+                  <a className="font-medium text-white hover:underline" href={`mailto:${contactEmail}`}>
                     {contactEmail}
                   </a>
                 </li>
@@ -71,13 +66,13 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </div>
           </div>
         </div>
-        <div className="mt-16 flex flex-col items-start justify-between gap-8 border-t border-white/10 pt-8 lg:flex-row lg:items-center">
+        <div className="mt-20 flex flex-col items-start justify-between gap-8 border-t border-white/10 pt-10 lg:flex-row lg:items-center">
           <NewsletterForm locale={locale} label={dict.footer.newsletter} errorLabel={dict.footer.newsletterError} />
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
-            <p className="text-sm text-white/40" suppressHydrationWarning>
+            <p className="text-label-md text-white/40" suppressHydrationWarning>
               © {new Date().getFullYear()} OPEN SARL. {dict.footer.rights}
             </p>
-            <div className="flex gap-6 text-sm text-white/40">
+            <div className="flex gap-6 text-label-md text-white/40">
               <Link href={`/${locale}/mentions-legales`} className="hover:text-white">
                 {dict.footer.legal}
               </Link>

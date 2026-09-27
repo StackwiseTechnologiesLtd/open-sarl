@@ -5,7 +5,15 @@ import type { ReactNode } from "react";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-export function FadeIn({ children, className = "" }: { children: ReactNode; className?: string }) {
+export function FadeIn({
+  children,
+  className = "",
+  delay = 0,
+}: {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+}) {
   const reduce = useReducedMotion();
 
   if (reduce === true) {
@@ -17,7 +25,7 @@ export function FadeIn({ children, className = "" }: { children: ReactNode; clas
       className={className}
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease }}
+      transition={{ duration: 0.8, delay, ease }}
     >
       {children}
     </motion.div>

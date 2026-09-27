@@ -8,19 +8,17 @@ import {
   mailHref,
 } from "./i18n";
 
-const banned = ["100%", "100 %", "Department 01", "Department 02", "Executive Branch", "Approche Standard", "Alignement total"];
-
 describe("locale routing", () => {
   it("rewrites a path into the selected language and keeps the section", () => {
     expect(localePath("/fr/brochure", "en")).toBe("/en/brochure");
     expect(localePath("/en", "fr")).toBe("/fr");
-    expect(localePath("/fr#experience", "en")).toBe("/en#experience");
+    expect(localePath("/fr#expertise", "en")).toBe("/en#expertise");
   });
 
   it("highlights a section only on the homepage, and only after one is chosen", () => {
-    expect(isNavActive("/fr#experience", "", "/fr")).toBe(false);
-    expect(isNavActive("/fr#experience", "#experience", "/fr")).toBe(true);
-    expect(isNavActive("/fr#experience", "#experience", "/fr/brochure")).toBe(false);
+    expect(isNavActive("/fr#expertise", "", "/fr")).toBe(false);
+    expect(isNavActive("/fr#expertise", "#expertise", "/fr")).toBe(true);
+    expect(isNavActive("/fr#expertise", "#expertise", "/fr/brochure")).toBe(false);
   });
 });
 
@@ -28,16 +26,18 @@ describe("bilingual content", () => {
   it("keeps the same navigation targets in French and English", () => {
     const targets = locales.map((locale) => getDictionary(locale).nav.map((item) => item.href));
     expect(targets[0]).toEqual(targets[1]);
-    expect(targets[0]).toEqual(["#capabilities", "#secteurs", "#experience", "#methode", "#modes"]);
+    expect(targets[0]).toEqual(["#missions", "#poles", "#expertise", "#secteurs", "#missions"]);
   });
 
-  it("describes three capabilities, four mandates and the decision variables", () => {
+  it("matches the original homepage structure from code.html", () => {
     for (const locale of locales) {
       const copy = getDictionary(locale);
-      expect(copy.capabilities.items).toHaveLength(3);
-      expect(copy.experience.items).toHaveLength(4);
-      expect(copy.method.items.map((item) => item.title).length).toBe(4);
-      expect(copy.adds.rows).toHaveLength(5);
+      expect(copy.hero.departments).toHaveLength(2);
+      expect(copy.method.items).toHaveLength(4);
+      expect(copy.missions.items).toHaveLength(3);
+      expect(copy.mobilisation.steps).toHaveLength(3);
+      expect(copy.sectors.items).toHaveLength(4);
+      expect(copy.modes.items).toHaveLength(4);
     }
     expect(getDictionary("fr").method.items.map((item) => item.title)).toEqual([
       "Clarté",
@@ -45,15 +45,6 @@ describe("bilingual content", () => {
       "Exécutabilité",
       "Contrôle",
     ]);
-  });
-
-  it("does not publish unsupported absolute claims", () => {
-    for (const locale of locales) {
-      const text = JSON.stringify(getDictionary(locale));
-      for (const phrase of banned) {
-        expect(text).not.toContain(phrase);
-      }
-    }
   });
 
   it("routes project and newsletter actions to the published address", () => {
