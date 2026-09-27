@@ -121,9 +121,8 @@ export function HeroCarousel({ home, dict }: { home: string; dict: Dictionary })
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.55, ease }}
-                role="tabpanel"
                 id={`hero-panel-${index}`}
-                aria-labelledby={`hero-slide-${index}`}
+                aria-live="polite"
               >
                 <p className="hero-badge">{dept.dept}</p>
                 <h1 className="hero-display-headline mt-5 max-w-3xl text-balance sm:mt-6">{dept.text}</h1>
@@ -147,7 +146,7 @@ export function HeroCarousel({ home, dict }: { home: string; dict: Dictionary })
                 transition={{ duration: 0.55, ease, delay: 0.05 }}
                 className="hero-float-card w-full max-w-md lg:max-w-sm"
               >
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10">
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-md border border-white/20 bg-white/10">
                   <Icon name="verified" className="h-5 w-5 text-white" />
                 </div>
                 <p className="font-headline-md text-lg font-semibold text-white">
@@ -158,45 +157,6 @@ export function HeroCarousel({ home, dict }: { home: string; dict: Dictionary })
               </motion.aside>
             </AnimatePresence>
           </div>
-        </div>
-
-        {/* Bottom carousel rail */}
-        <div className="hero-rail mt-10 sm:mt-12" role="tablist" aria-label={dict.ui.carouselLabel}>
-          <button type="button" className="hero-rail-arrow" onClick={prev} aria-label={dict.ui.carouselPrev}>
-            <Icon name="chevron_left" className="h-4 w-4" />
-          </button>
-
-          {slides.map((slide, slideIndex) => (
-            <div key={slide.dept} className="flex items-center gap-3 sm:gap-4">
-              <button
-                type="button"
-                role="tab"
-                id={`hero-slide-${slideIndex}`}
-                aria-selected={slideIndex === index}
-                aria-controls={`hero-panel-${slideIndex}`}
-                onClick={() => navigateTo(slideIndex)}
-                className={`hero-rail-number ${slideIndex === index ? "is-active" : ""}`}
-              >
-                {slideIndex + 1}
-              </button>
-              {slideIndex < count - 1 ? (
-                <div className="hero-rail-track" aria-hidden="true">
-                  {index === slideIndex ? (
-                    <div
-                      key={`${index}-${paused}`}
-                      className={`hero-rail-progress ${paused ? "is-paused" : ""}`}
-                    />
-                  ) : index > slideIndex ? (
-                    <div className="hero-rail-progress is-complete" />
-                  ) : null}
-                </div>
-              ) : null}
-            </div>
-          ))}
-
-          <button type="button" className="hero-rail-arrow" onClick={next} aria-label={dict.ui.carouselNext}>
-            <Icon name="chevron_right" className="h-4 w-4" />
-          </button>
         </div>
       </Container>
     </section>
