@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Button, ButtonLink } from "@/components/button";
 import { Container } from "@/components/container";
 import { Icon } from "@/components/icon";
 import { FadeIn, Reveal } from "@/components/reveal";
@@ -16,54 +16,65 @@ function stepBorderClass(border: "tertiary" | "primary" | "variant") {
   return "border-primary";
 }
 
+function stepTextClass(border: "tertiary" | "primary" | "variant") {
+  if (border === "tertiary") return "text-tertiary";
+  if (border === "variant") return "text-on-primary-fixed-variant";
+  return "text-primary";
+}
+
 export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const home = `/${locale}`;
 
   return (
     <main>
       {/* Hero — glass cards on split background */}
-      <section id="poles" className="relative flex min-h-[560px] items-center overflow-hidden sm:min-h-[680px] lg:min-h-[800px]">
+      <section
+        id="poles"
+        className="relative flex min-h-[min(100svh,720px)] items-center overflow-hidden sm:min-h-[640px] lg:min-h-[800px]"
+      >
         <div className="absolute inset-0 z-0">
-          <Image src={heroImage} alt={dict.hero.imageAlt} fill priority className="object-cover" sizes="100vw" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
+          <Image
+            src={heroImage}
+            alt={dict.hero.imageAlt}
+            fill
+            priority
+            quality={90}
+            className="object-cover object-[30%_center] sm:object-center"
+            sizes="100vw"
+          />
+          <div className="hero-overlay absolute inset-0" />
         </div>
         <div className="relative z-10 w-full">
-          <Container className="py-stack-lg">
-            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
+          <Container className="py-10 sm:py-stack-lg lg:py-16">
+            <div className="grid w-full grid-cols-1 items-stretch gap-5 sm:gap-8 lg:grid-cols-2 lg:gap-12">
               {dict.hero.departments.map((dept, index) => (
-                <FadeIn key={dept.dept} delay={index * 0.08}>
-                  <article className="glass-card transform rounded-2xl p-8 text-white transition-all duration-300 hover:-translate-y-1 sm:p-10">
-                    <div className="mb-6 flex items-center gap-3">
-                      <span className="h-[2px] w-8 bg-white/60" />
-                      <span className="font-label-md text-label-md tracking-[0.2em] text-white/80 uppercase">{dept.dept}</span>
+                <FadeIn key={dept.dept} delay={index * 0.08} className="w-full">
+                  <article className="glass-card flex h-full w-full flex-col rounded-2xl p-6 text-white hover:-translate-y-1 sm:p-8 lg:p-10">
+                    <div className="mb-5 flex items-center gap-3 sm:mb-6">
+                      <span className="h-px w-8 bg-white/60" />
+                      <span className="font-label-md text-xs tracking-[0.2em] text-white/75 uppercase sm:text-label-md">{dept.dept}</span>
                     </div>
-                    <h2 className="font-display-lg text-headline-xl mb-6 leading-tight">
+                    <h2 className="hero-title mb-4 sm:mb-6">
                       {dept.title}
                       <br />
                       <span className="font-normal opacity-90">{dept.subtitle}</span>
                     </h2>
-                    <p className="font-body-lg text-body-lg mb-2 leading-relaxed">{dept.text}</p>
-                    <p className="font-body-md mb-8 text-white/70 italic">{dept.quote}</p>
-                    <button
-                      type="button"
-                      className="group flex items-center gap-2 font-label-md text-sm font-bold tracking-wider uppercase transition-all hover:gap-4"
-                    >
+                    <p className="section-lead mb-2 text-white/95">{dept.text}</p>
+                    <p className="mb-6 text-sm text-white/65 italic sm:mb-8 sm:text-base">{dept.quote}</p>
+                    <Button variant="ghost-light" className="group mt-auto sm:text-sm">
                       {dept.cta}
-                      <Icon name="arrow_right_alt" className="h-5 w-5" />
-                    </button>
+                      <Icon name="arrow_right_alt" className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </Button>
                   </article>
                 </FadeIn>
               ))}
             </div>
             <FadeIn delay={0.2}>
-              <div className="mt-12 text-center lg:mt-20">
-                <a
-                  href={`${home}#missions`}
-                  className="mx-auto inline-flex items-center gap-4 rounded-full bg-white px-8 py-4 font-headline-md text-headline-md text-primary transition-all hover:scale-105 hover:bg-surface-bright hover:shadow-2xl sm:px-12 sm:py-5"
-                >
+              <div className="mt-10 text-center sm:mt-12 lg:mt-20">
+                <ButtonLink href={`${home}#missions`} variant="secondary" size="lg" className="mx-auto">
                   {dict.hero.centerCta}
-                  <Icon name="arrow_forward" />
-                </a>
+                  <Icon name="arrow_forward" className="h-5 w-5" />
+                </ButtonLink>
               </div>
             </FadeIn>
           </Container>
@@ -74,20 +85,20 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
       <section id="expertise" className="bg-surface py-section-gap">
         <Container>
           <Reveal>
-            <div className="mb-stack-lg text-center">
-              <h2 className="font-headline-xl text-headline-xl text-primary mb-stack-sm">{dict.method.title}</h2>
-              <p className="font-body-lg text-body-lg text-on-surface-variant mx-auto max-w-2xl">{dict.method.intro}</p>
+            <div className="mb-10 text-center sm:mb-stack-lg">
+              <h2 className="section-heading text-primary mb-3 sm:mb-stack-sm">{dict.method.title}</h2>
+              <p className="section-lead text-on-surface-variant mx-auto max-w-2xl">{dict.method.intro}</p>
             </div>
           </Reveal>
-          <div className="grid grid-cols-1 gap-gutter md:grid-cols-4">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-gutter lg:grid-cols-4">
             {dict.method.items.map((item, index) => (
-              <Reveal key={item.title} delay={index * 0.06}>
-                <article className="group border border-outline-variant/30 bg-white p-8 transition-all hover:shadow-xl">
-                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/5 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+              <Reveal key={item.title} delay={index * 0.06} className="h-full">
+                <article className="premium-card group flex h-full flex-col p-6 sm:p-8">
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/5 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-white sm:mb-6">
                     <Icon name={item.icon} />
                   </div>
-                  <h3 className="font-headline-md text-headline-md mb-3">{item.title}</h3>
-                  <p className="font-body-md text-body-md text-on-surface-variant">{item.text}</p>
+                  <h3 className="font-headline-md text-lg font-semibold sm:text-headline-md mb-2 sm:mb-3">{item.title}</h3>
+                  <p className="text-sm leading-relaxed text-on-surface-variant sm:text-body-md">{item.text}</p>
                 </article>
               </Reveal>
             ))}
@@ -98,33 +109,34 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
       {/* Positioning */}
       <section className="bg-primary py-section-gap text-on-primary">
         <Container>
-          <div className="grid grid-cols-1 items-center gap-section-gap md:grid-cols-2">
+          <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-section-gap">
             <Reveal>
-              <h2 className="font-headline-xl text-headline-xl mb-stack-md">{dict.positioning.title}</h2>
-              <p className="font-body-lg text-body-lg mb-stack-lg text-primary-fixed">{dict.positioning.text}</p>
-              <ul className="space-y-4">
+              <h2 className="section-heading mb-5 sm:mb-stack-md">{dict.positioning.title}</h2>
+              <p className="section-lead mb-6 text-primary-fixed sm:mb-stack-lg">{dict.positioning.text}</p>
+              <ul className="space-y-3 sm:space-y-4">
                 {dict.positioning.standards.map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <Icon name="check_circle" className="mt-0.5 h-5 w-5 shrink-0 text-tertiary-fixed" />
-                    <span className="font-body-md text-body-md">{item}</span>
+                    <span className="text-sm leading-relaxed sm:text-body-md">{item}</span>
                   </li>
                 ))}
               </ul>
             </Reveal>
             <Reveal delay={0.08}>
-              <div className="relative">
-                <div className="rounded-xl bg-surface-container-highest/10 p-1">
+              <div className="relative mx-auto max-w-lg md:max-w-none">
+                <div className="image-frame">
                   <Image
                     src={positioningImage}
                     alt={dict.positioning.imageAlt}
                     width={640}
                     height={480}
-                    className="rounded-lg shadow-2xl brightness-90 grayscale"
+                    quality={85}
+                    className="w-full rounded-lg object-cover brightness-90 grayscale"
                   />
                 </div>
-                <div className="absolute -bottom-8 -left-8 hidden rounded-lg bg-white p-6 text-primary shadow-2xl md:block">
-                  <div className="mb-1 text-4xl font-bold">{dict.positioning.statValue}</div>
-                  <div className="font-label-md text-on-surface-variant text-sm uppercase">{dict.positioning.statLabel}</div>
+                <div className="stat-badge mt-4 inline-flex flex-col rounded-xl bg-white px-5 py-4 text-primary sm:absolute sm:-bottom-6 sm:-left-6 sm:mt-0 sm:px-6 sm:py-5 md:block">
+                  <div className="text-3xl font-bold sm:text-4xl">{dict.positioning.statValue}</div>
+                  <div className="font-label-md text-on-surface-variant text-xs uppercase sm:text-sm">{dict.positioning.statLabel}</div>
                 </div>
               </div>
             </Reveal>
@@ -136,37 +148,45 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
       <section className="bg-surface-container-low py-section-gap">
         <Container>
           <Reveal>
-            <h2 className="font-headline-xl text-headline-xl text-primary mb-section-gap text-center">{dict.compare.title}</h2>
+            <h2 className="section-heading text-primary mb-10 text-center sm:mb-section-gap">{dict.compare.title}</h2>
           </Reveal>
-          <div className="grid grid-cols-1 items-stretch gap-gutter md:grid-cols-2">
-            <Reveal>
-              <div className="rounded-xl border-2 border-outline-variant/20 bg-white/50 p-stack-lg">
-                <h3 className="font-headline-md text-headline-md text-on-surface-variant mb-stack-md flex items-center gap-2">
-                  <Icon name="cancel" className="text-error" />
+          <div className="grid grid-cols-1 items-stretch gap-5 sm:gap-gutter md:grid-cols-2">
+            <Reveal className="h-full">
+              <div className="flex h-full flex-col rounded-xl border border-outline-variant/30 bg-white/60 p-6 sm:p-stack-lg">
+                <h3 className="font-headline-md text-lg font-semibold text-on-surface-variant mb-5 flex items-center gap-2 sm:mb-stack-md sm:text-headline-md">
+                  <Icon name="cancel" className="text-error h-5 w-5 shrink-0" />
                   {dict.compare.standardTitle}
                 </h3>
-                <ul className="space-y-6">
+                <ul className="space-y-5 sm:space-y-6">
                   {dict.compare.standardItems.map((item, index) => (
-                    <li key={item.title} className={index < dict.compare.standardItems.length - 1 ? "border-outline-variant border-b pb-4" : ""}>
-                      <p className="mb-1 font-bold">{item.title}</p>
-                      <p className="text-on-surface-variant text-sm">{item.text}</p>
+                    <li
+                      key={item.title}
+                      className={index < dict.compare.standardItems.length - 1 ? "border-outline-variant/60 border-b pb-4 sm:pb-5" : ""}
+                    >
+                      <p className="mb-1 text-sm font-bold sm:text-base">{item.title}</p>
+                      <p className="text-on-surface-variant text-sm leading-relaxed">{item.text}</p>
                     </li>
                   ))}
                 </ul>
               </div>
             </Reveal>
-            <Reveal delay={0.08}>
-              <div className="relative overflow-hidden rounded-xl border-2 border-primary bg-white p-stack-lg shadow-xl">
-                <div className="absolute top-0 right-0 bg-primary px-4 py-1 text-xs font-bold text-on-primary uppercase">{dict.compare.openBadge}</div>
-                <h3 className="font-headline-md text-headline-md text-primary mb-stack-md flex items-center gap-2">
-                  <Icon name="check_circle" />
+            <Reveal delay={0.08} className="h-full">
+              <div className="relative flex h-full flex-col overflow-hidden rounded-xl border-2 border-primary bg-white p-6 pt-10 shadow-xl sm:p-stack-lg sm:pt-stack-lg">
+                <div className="absolute top-0 right-0 rounded-bl-lg bg-primary px-3 py-1.5 text-[10px] font-bold tracking-wider text-on-primary uppercase sm:px-4 sm:text-xs">
+                  {dict.compare.openBadge}
+                </div>
+                <h3 className="font-headline-md text-primary mb-5 flex items-center gap-2 text-lg font-semibold sm:mb-stack-md sm:text-headline-md">
+                  <Icon name="check_circle" className="h-5 w-5 shrink-0" />
                   {dict.compare.openTitle}
                 </h3>
-                <ul className="space-y-6">
+                <ul className="space-y-5 sm:space-y-6">
                   {dict.compare.openItems.map((item, index) => (
-                    <li key={item.title} className={index < dict.compare.openItems.length - 1 ? "border-primary/10 border-b pb-4" : ""}>
-                      <p className="text-primary mb-1 font-bold">{item.title}</p>
-                      <p className="text-on-surface-variant text-sm">{item.text}</p>
+                    <li
+                      key={item.title}
+                      className={index < dict.compare.openItems.length - 1 ? "border-primary/10 border-b pb-4 sm:pb-5" : ""}
+                    >
+                      <p className="text-primary mb-1 text-sm font-bold sm:text-base">{item.title}</p>
+                      <p className="text-on-surface-variant text-sm leading-relaxed">{item.text}</p>
                     </li>
                   ))}
                 </ul>
@@ -179,33 +199,34 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
       {/* Missions */}
       <section id="missions" className="bg-white py-section-gap">
         <Container>
-          <div className="mb-stack-lg flex flex-col items-end justify-between gap-gutter md:flex-row">
+          <div className="mb-10 flex flex-col items-start justify-between gap-5 sm:mb-stack-lg sm:items-end md:flex-row md:gap-gutter">
             <Reveal>
               <div className="max-w-2xl">
-                <h2 className="font-headline-xl text-headline-xl text-primary mb-stack-sm">{dict.missions.title}</h2>
-                <p className="font-body-lg text-body-lg text-on-surface-variant">{dict.missions.intro}</p>
+                <h2 className="section-heading text-primary mb-3 sm:mb-stack-sm">{dict.missions.title}</h2>
+                <p className="section-lead text-on-surface-variant">{dict.missions.intro}</p>
               </div>
             </Reveal>
-            <button type="button" className="hidden items-center gap-2 font-bold text-primary hover:underline md:flex">
+            <Button variant="ghost" className="hidden md:inline-flex">
               {dict.missions.catalog}
-              <Icon name="chevron_right" />
-            </button>
+              <Icon name="chevron_right" className="h-5 w-5" />
+            </Button>
           </div>
-          <div className="grid grid-cols-1 gap-gutter md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-gutter lg:grid-cols-3">
             {dict.missions.items.map((item, index) => (
-              <Reveal key={item.title} delay={index * 0.06}>
-                <article className="group cursor-pointer">
-                  <div className="mb-4 overflow-hidden rounded-lg">
+              <Reveal key={item.title} delay={index * 0.06} className="h-full">
+                <article className="group flex h-full cursor-pointer flex-col">
+                  <div className="relative mb-4 aspect-[16/10] overflow-hidden rounded-xl bg-surface-container-low">
                     <Image
                       src={missionImages[index]}
                       alt={item.title}
-                      width={640}
-                      height={192}
-                      className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      fill
+                      quality={85}
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     />
                   </div>
-                  <h4 className="font-headline-md text-headline-md text-primary mb-2">{item.title}</h4>
-                  <p className="text-on-surface-variant text-sm">{item.text}</p>
+                  <h4 className="font-headline-md text-primary mb-2 text-lg font-semibold sm:text-headline-md">{item.title}</h4>
+                  <p className="text-on-surface-variant text-sm leading-relaxed">{item.text}</p>
                 </article>
               </Reveal>
             ))}
@@ -217,19 +238,19 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
       <section id="mobilisation" className="bg-surface-dim/30 py-section-gap">
         <Container>
           <Reveal>
-            <h2 className="font-headline-xl text-headline-xl text-primary mb-stack-lg text-center">{dict.mobilisation.title}</h2>
+            <h2 className="section-heading text-primary mb-8 text-center sm:mb-stack-lg">{dict.mobilisation.title}</h2>
           </Reveal>
           <div className="relative">
-            <div className="absolute top-1/2 right-0 left-0 z-0 hidden h-0.5 -translate-y-1/2 bg-outline-variant/30 md:block" aria-hidden="true" />
-            <div className="relative z-10 grid grid-cols-1 gap-gutter md:grid-cols-3">
+            <div className="absolute top-1/2 right-0 left-0 z-0 hidden h-px -translate-y-1/2 bg-outline-variant/40 md:block" aria-hidden="true" />
+            <div className="relative z-10 grid grid-cols-1 gap-5 sm:gap-gutter md:grid-cols-3">
               {dict.mobilisation.steps.map((step, index) => (
-                <Reveal key={step.title} delay={index * 0.08}>
-                  <article className={`rounded-xl border-t-4 bg-white p-stack-lg shadow-sm ${stepBorderClass(step.border)}`}>
-                    <div className={`font-bold text-sm mb-4 ${step.border === "tertiary" ? "text-tertiary" : step.border === "variant" ? "text-on-primary-fixed-variant" : "text-primary"}`}>
+                <Reveal key={step.title} delay={index * 0.08} className="h-full">
+                  <article className={`flex h-full flex-col rounded-xl border-t-4 bg-white p-6 shadow-sm sm:p-stack-lg ${stepBorderClass(step.border)}`}>
+                    <div className={`mb-3 text-xs font-bold tracking-wide uppercase sm:mb-4 sm:text-sm ${stepTextClass(step.border)}`}>
                       {step.range}
                     </div>
-                    <h4 className="font-headline-md text-headline-md mb-2">{step.title}</h4>
-                    <p className="text-on-surface-variant text-sm">{step.text}</p>
+                    <h4 className="font-headline-md mb-2 text-lg font-semibold sm:text-headline-md">{step.title}</h4>
+                    <p className="text-on-surface-variant text-sm leading-relaxed">{step.text}</p>
                   </article>
                 </Reveal>
               ))}
@@ -242,17 +263,24 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
       <section id="secteurs" className="bg-surface py-section-gap">
         <Container>
           <Reveal>
-            <h2 className="font-headline-xl text-headline-xl text-primary mb-stack-lg text-center">{dict.sectors.title}</h2>
+            <h2 className="section-heading text-primary mb-8 text-center sm:mb-stack-lg">{dict.sectors.title}</h2>
           </Reveal>
-          <div className="grid h-auto grid-cols-1 gap-4 md:h-[600px] md:grid-cols-4 md:grid-rows-2">
+          <div className="grid auto-rows-[minmax(200px,auto)] grid-cols-1 gap-3 sm:gap-4 md:h-[560px] md:grid-cols-4 md:grid-rows-2 lg:h-[600px]">
             {dict.sectors.items.map((sector, index) => (
-              <Reveal key={sector.title} delay={index * 0.05}>
-                <article className={`group relative min-h-52 overflow-hidden rounded-xl md:min-h-0 ${sector.layout}`}>
-                  <Image src={sectorImageList[index]} alt={sector.title} fill className="object-cover" sizes="(min-width: 768px) 30vw, 100vw" />
-                  <div className={`absolute inset-0 bg-gradient-to-t ${sector.gradient} to-transparent opacity-60`} />
+              <Reveal key={sector.title} delay={index * 0.05} className={`h-full min-h-[200px] ${sector.layout}`}>
+                <article className="group relative h-full min-h-[inherit] overflow-hidden rounded-xl">
+                  <Image
+                    src={sectorImageList[index]}
+                    alt={sector.title}
+                    fill
+                    quality={85}
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(min-width: 768px) 30vw, 100vw"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t ${sector.gradient} via-black/20 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-80`} />
                   <div className={`absolute bottom-0 left-0 text-on-primary ${sector.padding}`}>
-                    <h3 className={sector.titleClass}>{sector.title}</h3>
-                    {sector.text ? <p className="text-primary-fixed">{sector.text}</p> : null}
+                    <h3 className={`${sector.titleClass} leading-tight`}>{sector.title}</h3>
+                    {sector.text ? <p className="mt-1 max-w-md text-sm text-primary-fixed/90 sm:text-base">{sector.text}</p> : null}
                   </div>
                 </article>
               </Reveal>
@@ -264,25 +292,25 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
       {/* Modes */}
       <section id="modes" className="bg-white py-section-gap">
         <Container>
-          <div className="flex flex-col gap-gutter rounded-2xl bg-primary-container/5 p-8 md:flex-row md:p-12">
+          <div className="flex flex-col gap-8 rounded-2xl border border-outline-variant/20 bg-primary-container/5 p-6 sm:gap-gutter sm:p-8 md:flex-row md:p-12">
             <Reveal>
               <div className="md:w-1/3">
-                <h2 className="font-headline-xl text-headline-xl text-primary mb-stack-md">{dict.modes.title}</h2>
-                <p className="font-body-md text-body-md text-on-surface-variant">{dict.modes.intro}</p>
+                <h2 className="section-heading text-primary mb-4 sm:mb-stack-md">{dict.modes.title}</h2>
+                <p className="text-sm leading-relaxed text-on-surface-variant sm:text-body-md">{dict.modes.intro}</p>
               </div>
             </Reveal>
-            <div className="grid grid-cols-1 gap-stack-lg md:w-2/3 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-stack-lg md:w-2/3">
               {dict.modes.items.map((mode, index) => (
-                <Reveal key={mode.title} delay={index * 0.05}>
+                <Reveal key={mode.title} delay={index * 0.05} className="h-full">
                   <div
                     className={
                       mode.featured
-                        ? "rounded-lg bg-primary p-4 text-on-primary"
-                        : "rounded-lg border border-outline-variant/30 bg-white p-4"
+                        ? "flex h-full flex-col rounded-xl bg-primary p-5 text-on-primary shadow-lg sm:p-6"
+                        : "premium-card flex h-full flex-col p-5 sm:p-6"
                     }
                   >
-                    <h4 className={`mb-2 font-bold ${mode.featured ? "" : "text-primary"}`}>{mode.title}</h4>
-                    <p className={`text-sm ${mode.featured ? "opacity-90" : "text-on-surface-variant"}`}>{mode.text}</p>
+                    <h4 className={`mb-2 text-sm font-bold sm:text-base ${mode.featured ? "" : "text-primary"}`}>{mode.title}</h4>
+                    <p className={`text-sm leading-relaxed ${mode.featured ? "opacity-90" : "text-on-surface-variant"}`}>{mode.text}</p>
                   </div>
                 </Reveal>
               ))}
@@ -294,23 +322,18 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
       {/* CTA */}
       <section id="contact" className="relative overflow-hidden py-section-gap">
         <div className="absolute inset-0 bg-primary" />
+        <div className="cta-pattern absolute inset-0" />
         <Container className="relative z-10 text-center text-on-primary">
           <Reveal>
-            <h2 className="font-display-lg text-display-lg mb-stack-md">{dict.cta.title}</h2>
-            <p className="font-body-lg text-body-lg text-primary-fixed mb-stack-lg mx-auto max-w-2xl">{dict.cta.text}</p>
-            <div className="flex flex-col items-center justify-center gap-stack-md md:flex-row">
-              <a
-                href={mailHref(locale, "project")}
-                className="rounded-lg bg-white px-10 py-5 font-headline-md text-headline-md text-primary transition-all hover:scale-105"
-              >
+            <h2 className="section-display mb-4 sm:mb-stack-md">{dict.cta.title}</h2>
+            <p className="section-lead text-primary-fixed mb-8 mx-auto max-w-2xl sm:mb-stack-lg">{dict.cta.text}</p>
+            <div className="flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center sm:justify-center sm:gap-stack-md">
+              <ButtonLink href={mailHref(locale, "project")} variant="secondary" size="lg">
                 {dict.cta.primary}
-              </a>
-              <Link
-                href={`${home}/brochure`}
-                className="rounded-lg border border-white px-10 py-5 font-headline-md text-headline-md text-white transition-all hover:bg-white/10"
-              >
+              </ButtonLink>
+              <ButtonLink href={`${home}/brochure`} variant="outline-light" size="lg">
                 {dict.cta.secondary}
-              </Link>
+              </ButtonLink>
             </div>
           </Reveal>
         </Container>

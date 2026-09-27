@@ -10,12 +10,12 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   ];
 
   return (
-    <footer className="border-t border-white/5 bg-[#0b1c30] py-20 text-white print:hidden">
+    <footer className="border-t border-white/5 bg-[#0b1c30] py-14 text-white sm:py-20 print:hidden">
       <div className="mx-auto w-full max-w-container-max px-4 sm:px-margin-mobile md:px-margin-desktop">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
+        <div className="grid grid-cols-1 gap-10 sm:gap-12 md:grid-cols-12">
           <div className="md:col-span-4 lg:col-span-5">
-            <div className="font-headline-md text-headline-md mb-6 font-bold tracking-tight">OPEN</div>
-            <p className="font-body-md mb-8 max-w-sm text-white/60">{dict.footer.about}</p>
+            <div className="font-headline-md mb-5 text-xl font-bold tracking-tight sm:mb-6 sm:text-headline-md">OPEN</div>
+            <p className="mb-6 max-w-sm text-sm leading-relaxed text-white/60 sm:mb-8 sm:text-body-md">{dict.footer.about}</p>
             <a
               href="https://www.linkedin.com"
               aria-label={dict.footer.linkedin}

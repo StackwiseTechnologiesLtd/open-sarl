@@ -40,7 +40,7 @@ export function NewsletterForm({
           placeholder={label}
           className="min-w-0 flex-grow border-none bg-transparent px-4 text-sm text-white outline-none placeholder:text-white/30"
         />
-        <button type="submit" className="rounded-md bg-primary px-5 py-2 text-sm font-bold text-white">
+        <button type="submit" className="btn btn-primary btn-sm shrink-0">
           OK
         </button>
       </div>

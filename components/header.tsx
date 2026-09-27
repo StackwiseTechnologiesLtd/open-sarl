@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { ButtonLink } from "@/components/button";
 import { Icon } from "@/components/icon";
 import { LanguageSwitch } from "@/components/language-switch";
 import { isNavActive, type Dictionary, type Locale } from "@/lib/i18n";
@@ -38,6 +39,13 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
     };
   }, [pathname]);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   function follow(event: { preventDefault: () => void }, href: string) {
     const hash = href.includes("#") ? href.slice(href.indexOf("#")) : "";
     if (!hash) return;
@@ -53,12 +61,15 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const links = dict.nav.map((item) => ({ ...item, href: `${home}${item.href}` }));
 
   return (
-    <header className="sticky top-0 z-50 border-b border-outline-variant/30 bg-surface/90 shadow-sm backdrop-blur-md print:hidden">
-      <nav className="mx-auto flex w-full max-w-container-max items-center justify-between gap-4 px-4 py-4 sm:px-margin-mobile md:px-margin-desktop">
-        <Link href={home} className="font-headline-md text-headline-md shrink-0 font-bold tracking-tight text-primary">
+    <header className="sticky top-0 z-50 border-b border-outline-variant/25 bg-surface/95 shadow-sm backdrop-blur-lg print:hidden">
+      <nav className="mx-auto flex w-full max-w-container-max items-center justify-between gap-3 px-4 py-3.5 sm:px-margin-mobile sm:py-4 md:px-margin-desktop">
+        <Link
+          href={home}
+          className="font-headline-md shrink-0 text-lg font-bold tracking-tight text-primary sm:text-headline-md"
+        >
           OPEN
         </Link>
-        <div className="hidden items-center gap-stack-lg md:flex">
+        <div className="hidden items-center gap-6 lg:gap-stack-lg md:flex">
           {links.map((link) => {
             const active = isNavActive(link.href, hash, pathname);
             return (
@@ -69,7 +80,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 aria-current={active ? "page" : undefined}
                 className={
                   active
-                    ? "border-b-2 border-primary font-label-md text-label-md font-bold text-primary"
+                    ? "border-b-2 border-primary pb-0.5 font-label-md text-label-md font-bold text-primary"
                     : "font-label-md text-label-md text-on-surface-variant transition-colors duration-200 hover:text-primary"
                 }
               >
@@ -78,18 +89,18 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             );
           })}
         </div>
-        <div className="flex shrink-0 items-center gap-3 sm:gap-4">
+        <div className="flex shrink-0 items-center gap-2.5 sm:gap-4">
           <LanguageSwitch locale={locale} pathname={pathname} hash={hash} label={dict.ui.languageLabel} />
-          <a
+          <ButtonLink
             href={`${home}#contact`}
             onClick={(event) => follow(event, `${home}#contact`)}
-            className="hidden rounded bg-primary px-6 py-2 font-label-md text-label-md text-on-primary transition-all hover:opacity-90 active:scale-95 active:opacity-80 md:inline-block"
+            className="hidden md:inline-flex"
           >
             {dict.ui.contact}
-          </a>
+          </ButtonLink>
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded text-primary md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-primary transition-colors hover:bg-primary/5 md:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((value) => !value)}
@@ -100,25 +111,34 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         </div>
       </nav>
       {open ? (
-        <div id="mobile-nav" className="border-t border-outline-variant/30 px-4 py-4 md:hidden">
+        <div id="mobile-nav" className="border-t border-outline-variant/25 bg-surface px-4 py-5 md:hidden">
           <div className="flex flex-col">
-            {links.map((link) => (
-              <a
-                key={`${link.href}-${link.label}-mobile`}
-                href={link.href}
-                onClick={(event) => follow(event, link.href)}
-                className="border-b border-outline-variant/20 py-3 font-label-md text-label-md text-on-surface"
-              >
-                {link.label}
-              </a>
-            ))}
-            <a
+            {links.map((link) => {
+              const active = isNavActive(link.href, hash, pathname);
+              return (
+                <a
+                  key={`${link.href}-${link.label}-mobile`}
+                  href={link.href}
+                  onClick={(event) => follow(event, link.href)}
+                  aria-current={active ? "page" : undefined}
+                  className={
+                    active
+                      ? "border-b border-outline-variant/20 py-3.5 font-label-md text-label-md font-bold text-primary"
+                      : "border-b border-outline-variant/20 py-3.5 font-label-md text-label-md text-on-surface transition-colors hover:text-primary"
+                  }
+                >
+                  {link.label}
+                </a>
+              );
+            })}
+            <ButtonLink
               href={`${home}#contact`}
               onClick={(event) => follow(event, `${home}#contact`)}
-              className="mt-3 inline-flex items-center justify-center rounded bg-primary px-6 py-2 font-label-md text-label-md text-on-primary"
+              full
+              className="mt-4"
             >
               {dict.ui.contact}
-            </a>
+            </ButtonLink>
           </div>
         </div>
       ) : null}

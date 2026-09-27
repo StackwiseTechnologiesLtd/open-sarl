@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ButtonLink } from "@/components/button";
 import { Container } from "@/components/container";
 import { PrintButton } from "@/components/print-button";
 import { contactEmail, getDictionary, isLocale, mailHref } from "@/lib/i18n";
@@ -31,12 +32,7 @@ export default async function BrochurePage({ params }: Props) {
             <p className="mt-4 max-w-2xl text-on-surface-variant">{dict.brochure.lead}</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row print:hidden">
-            <a
-              href={mailHref(locale, "project")}
-              className="inline-flex min-h-12 items-center justify-center rounded bg-primary px-5 py-3 font-label-md text-sm text-on-primary"
-            >
-              {dict.cta.primary}
-            </a>
+            <ButtonLink href={mailHref(locale, "project")}>{dict.cta.primary}</ButtonLink>
             <PrintButton label={dict.brochure.print} />
           </div>
         </div>
