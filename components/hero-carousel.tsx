@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Button, ButtonLink } from "@/components/button";
 import { Container } from "@/components/container";
 import { Icon } from "@/components/icon";
 import { heroSlideImages } from "@/lib/images";
@@ -56,37 +55,17 @@ export function HeroCarousel({ home, dict }: { home: string; dict: Dictionary })
   }, [prev, next]);
 
   const dept = slides[index];
-  const slideNumber = String(index + 1).padStart(2, "0");
-  const slideTotal = String(count).padStart(2, "0");
 
-  const contentVariants = {
-    enter: (d: number) => ({
-      opacity: 0,
-      x: d >= 0 ? 48 : -48,
-      filter: "blur(4px)",
-    }),
-    center: {
-      opacity: 1,
-      x: 0,
-      filter: "blur(0px)",
-    },
-    exit: (d: number) => ({
-      opacity: 0,
-      x: d >= 0 ? -48 : 48,
-      filter: "blur(4px)",
-    }),
-  };
-
-  const watermarkVariants = {
-    enter: (d: number) => ({ opacity: 0, x: d >= 0 ? 80 : -80, scale: 0.96 }),
-    center: { opacity: 1, x: 0, scale: 1 },
-    exit: (d: number) => ({ opacity: 0, x: d >= 0 ? -60 : 60, scale: 1.02 }),
+  const fadeVariants = {
+    enter: (d: number) => ({ opacity: 0, y: d >= 0 ? 28 : -28 }),
+    center: { opacity: 1, y: 0 },
+    exit: (d: number) => ({ opacity: 0, y: d >= 0 ? -20 : 20 }),
   };
 
   return (
     <section
       id="poles"
-      className="relative flex min-h-[min(100svh,700px)] items-center overflow-hidden sm:min-h-[640px] lg:min-h-[780px]"
+      className="relative flex min-h-[min(100svh,920px)] flex-col overflow-hidden"
       aria-roledescription="carousel"
       aria-label={dict.ui.carouselLabel}
       style={{ ["--hero-autoplay" as string]: `${AUTOPLAY_MS}ms` }}
@@ -99,7 +78,7 @@ export function HeroCarousel({ home, dict }: { home: string; dict: Dictionary })
         }
       }}
     >
-      {/* Background slides with Ken Burns */}
+      {/* Background */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
         {heroSlideImages.map((src, slideIndex) => (
           <motion.div
@@ -108,9 +87,9 @@ export function HeroCarousel({ home, dict }: { home: string; dict: Dictionary })
             initial={false}
             animate={{
               opacity: slideIndex === index ? 1 : 0,
-              scale: slideIndex === index ? 1 : 1.06,
+              scale: slideIndex === index ? 1.04 : 1.1,
             }}
-            transition={{ duration: reduce ? 0 : 1.1, ease }}
+            transition={{ duration: reduce ? 0 : 1.2, ease }}
           >
             <Image
               src={src}
@@ -124,177 +103,106 @@ export function HeroCarousel({ home, dict }: { home: string; dict: Dictionary })
           </motion.div>
         ))}
         <div className="hero-overlay absolute inset-0" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0b1c30]/55 via-transparent to-[#0b1c30]/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/88 via-[#0a1628]/45 to-[#0a1628]/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/70 via-transparent to-[#0a1628]/30" />
       </div>
 
-      <div className="relative z-10 w-full">
-        <Container className="py-10 sm:py-12 lg:py-16">
-          {/* Header: tabs + counter */}
-          <div className="mb-6 flex flex-col items-stretch justify-between gap-4 sm:mb-8 sm:flex-row sm:items-center">
-            <div role="tablist" aria-label={dict.ui.carouselLabel} className="flex justify-center sm:justify-start">
-              <div className="hero-tabs">
-                {slides.map((slide, slideIndex) => (
-                  <button
-                    key={slide.dept}
-                    type="button"
-                    role="tab"
-                    id={`hero-tab-${slideIndex}`}
-                    aria-selected={slideIndex === index}
-                    aria-controls={`hero-panel-${slideIndex}`}
-                    tabIndex={slideIndex === index ? 0 : -1}
-                    onClick={() => navigateTo(slideIndex)}
-                    className="hero-tab"
-                  >
-                    {slideIndex === index ? (
-                      <motion.span
-                        layoutId="hero-tab-pill"
-                        className="hero-tab-indicator"
-                        transition={{ type: "spring", stiffness: 420, damping: 36 }}
-                      />
-                    ) : null}
-                    <span className="relative z-[1]">{slide.subtitle}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-            <p className="hero-slide-counter text-center sm:text-right" aria-live="polite">
-              <strong>{slideNumber}</strong>
-              <span className="mx-2 opacity-40">/</span>
-              {slideTotal}
-            </p>
-          </div>
-
-          {/* Autoplay progress */}
-          <div className="hero-progress-track mb-6 sm:mb-8" aria-hidden="true">
-            <div
-              key={`${index}-${paused}`}
-              className={`hero-progress-bar ${paused ? "is-paused" : ""}`}
-            />
-          </div>
-
-          {/* Main stage */}
-          <div className="relative grid items-center gap-6 lg:grid-cols-12 lg:gap-10">
-            {/* Watermark — desktop right */}
-            <div className="pointer-events-none absolute inset-0 hidden overflow-hidden lg:block" aria-hidden="true">
-              <AnimatePresence mode="wait" custom={direction}>
-                <motion.div
-                  key={dept.watermark}
-                  custom={direction}
-                  variants={watermarkVariants}
-                  initial={reduce ? false : "enter"}
-                  animate="center"
-                  exit="exit"
-                  transition={{ duration: 0.65, ease }}
-                  className="hero-watermark absolute top-1/2 right-0 max-w-[min(52vw,36rem)] -translate-y-1/2 text-right text-[clamp(4rem,11vw,9rem)] leading-none"
-                >
-                  {dept.watermark}
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Card + controls */}
-            <div className="relative lg:col-span-7 xl:col-span-6">
-              <div className="pointer-events-none absolute top-1/2 -left-3 z-20 hidden -translate-y-1/2 lg:block xl:-left-16">
-                <button
-                  type="button"
-                  className="hero-nav-btn pointer-events-auto"
-                  onClick={prev}
-                  aria-label={dict.ui.carouselPrev}
-                >
-                  <Icon name="chevron_left" className="h-6 w-6" />
-                </button>
-              </div>
-              <div className="pointer-events-none absolute top-1/2 -right-3 z-20 hidden -translate-y-1/2 lg:block xl:-right-16">
-                <button
-                  type="button"
-                  className="hero-nav-btn pointer-events-auto"
-                  onClick={next}
-                  aria-label={dict.ui.carouselNext}
-                >
-                  <Icon name="chevron_right" className="h-6 w-6" />
-                </button>
-              </div>
-
-              <AnimatePresence mode="wait" custom={direction} initial={false}>
-                <motion.article
-                  key={index}
-                  id={`hero-panel-${index}`}
-                  role="tabpanel"
-                  aria-labelledby={`hero-tab-${index}`}
-                  custom={direction}
-                  variants={contentVariants}
-                  initial={reduce ? false : "enter"}
-                  animate="center"
-                  exit="exit"
-                  transition={{ duration: 0.55, ease }}
-                  className="glass-card hero-carousel-card relative flex w-full flex-col rounded-2xl p-6 text-white sm:p-8 lg:p-10"
-                  drag={reduce ? false : "x"}
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.14}
-                  onDragEnd={(_, info) => {
-                    if (info.offset.x < -72) next();
-                    else if (info.offset.x > 72) prev();
-                  }}
-                >
-                  {/* Mobile watermark strip */}
-                  <div className="mb-4 overflow-hidden lg:hidden" aria-hidden="true">
-                    <AnimatePresence mode="wait" custom={direction}>
-                      <motion.p
-                        key={dept.watermark}
-                        custom={direction}
-                        variants={watermarkVariants}
-                        initial={reduce ? false : "enter"}
-                        animate="center"
-                        exit="exit"
-                        transition={{ duration: 0.5, ease }}
-                        className="hero-watermark text-[clamp(2.5rem,14vw,4rem)]"
-                      >
-                        {dept.watermark}
-                      </motion.p>
-                    </AnimatePresence>
-                  </div>
-
-                  <div className="mb-5 flex items-center gap-3 sm:mb-6">
-                    <span className="h-px w-8 bg-white/60" />
-                    <span className="font-label-md text-xs tracking-[0.2em] text-white/75 uppercase sm:text-label-md">
-                      {dept.dept}
+      <Container className="relative z-10 flex flex-1 flex-col justify-end pb-8 pt-28 sm:pb-10 sm:pt-32 lg:pb-14">
+        <div className="grid flex-1 grid-cols-1 items-end gap-10 lg:grid-cols-12 lg:gap-12">
+          {/* Left — headline stack */}
+          <div className="lg:col-span-7">
+            <AnimatePresence mode="wait" custom={direction} initial={false}>
+              <motion.div
+                key={index}
+                custom={direction}
+                variants={fadeVariants}
+                initial={reduce ? false : "enter"}
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.55, ease }}
+                role="tabpanel"
+                id={`hero-panel-${index}`}
+                aria-labelledby={`hero-slide-${index}`}
+              >
+                <p className="hero-badge">{dept.dept}</p>
+                <h1 className="hero-display-headline mt-5 max-w-3xl text-balance sm:mt-6">{dept.text}</h1>
+                <div className="mt-8 sm:mt-10">
+                  <a href={`${home}#contact`} className="hero-cta-pill">
+                    <span className="hero-cta-pill-icon" aria-hidden="true">
+                      <Icon name="arrow_forward" className="h-5 w-5" />
                     </span>
-                  </div>
-                  <h2 className="hero-title mb-4 sm:mb-6">
-                    {dept.title}
-                    <br />
-                    <span className="font-normal opacity-90">{dept.subtitle}</span>
-                  </h2>
-                  <p className="section-lead mb-2 text-white/95">{dept.text}</p>
-                  <p className="mb-6 text-sm text-white/65 italic sm:mb-8 sm:text-base">{dept.quote}</p>
-                  <Button variant="ghost-light" className="group mt-auto sm:text-sm">
-                    {dept.cta}
-                    <Icon name="arrow_right_alt" className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </motion.article>
-              </AnimatePresence>
+                    <span>{dept.cta}</span>
+                  </a>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Right — floating glass card */}
+          <div className="lg:col-span-5 lg:flex lg:justify-end">
+            <AnimatePresence mode="wait" custom={direction} initial={false}>
+              <motion.aside
+                key={`card-${index}`}
+                custom={direction}
+                variants={fadeVariants}
+                initial={reduce ? false : "enter"}
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.55, ease, delay: 0.05 }}
+                className="hero-float-card w-full max-w-md lg:max-w-sm"
+              >
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10">
+                  <Icon name="verified" className="h-5 w-5 text-white" />
+                </div>
+                <p className="font-headline-md text-lg font-semibold text-white">
+                  {dept.title}
+                  <span className="font-normal text-white/70"> · {dept.subtitle}</span>
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-white/75 sm:text-base">{dept.quote}</p>
+              </motion.aside>
+            </AnimatePresence>
+          </div>
+        </div>
+
+        {/* Bottom carousel rail */}
+        <div className="hero-rail mt-10 sm:mt-12" role="tablist" aria-label={dict.ui.carouselLabel}>
+          <button type="button" className="hero-rail-arrow" onClick={prev} aria-label={dict.ui.carouselPrev}>
+            <Icon name="chevron_left" className="h-4 w-4" />
+          </button>
+
+          {slides.map((slide, slideIndex) => (
+            <div key={slide.dept} className="flex items-center gap-3 sm:gap-4">
+              <button
+                type="button"
+                role="tab"
+                id={`hero-slide-${slideIndex}`}
+                aria-selected={slideIndex === index}
+                aria-controls={`hero-panel-${slideIndex}`}
+                onClick={() => navigateTo(slideIndex)}
+                className={`hero-rail-number ${slideIndex === index ? "is-active" : ""}`}
+              >
+                {slideIndex + 1}
+              </button>
+              {slideIndex < count - 1 ? (
+                <div className="hero-rail-track" aria-hidden="true">
+                  {index === slideIndex ? (
+                    <div
+                      key={`${index}-${paused}`}
+                      className={`hero-rail-progress ${paused ? "is-paused" : ""}`}
+                    />
+                  ) : index > slideIndex ? (
+                    <div className="hero-rail-progress is-complete" />
+                  ) : null}
+                </div>
+              ) : null}
             </div>
-          </div>
+          ))}
 
-          {/* Mobile nav */}
-          <div className="mt-6 flex items-center justify-center gap-3 sm:mt-8 lg:hidden">
-            <button type="button" className="hero-nav-btn" onClick={prev} aria-label={dict.ui.carouselPrev}>
-              <Icon name="chevron_left" className="h-5 w-5" />
-            </button>
-            <button type="button" className="hero-nav-btn" onClick={next} aria-label={dict.ui.carouselNext}>
-              <Icon name="chevron_right" className="h-5 w-5" />
-            </button>
-          </div>
-
-          {/* Center CTA */}
-          <div className="mt-8 text-center sm:mt-10 lg:mt-12">
-            <ButtonLink href={`${home}#missions`} variant="secondary" size="lg" className="mx-auto">
-              {dict.hero.centerCta}
-              <Icon name="arrow_forward" className="h-5 w-5" />
-            </ButtonLink>
-          </div>
-        </Container>
-      </div>
+          <button type="button" className="hero-rail-arrow" onClick={next} aria-label={dict.ui.carouselNext}>
+            <Icon name="chevron_right" className="h-4 w-4" />
+          </button>
+        </div>
+      </Container>
     </section>
   );
 }
