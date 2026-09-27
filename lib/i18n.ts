@@ -65,6 +65,9 @@ const dictionaries = {
       menuClose: "Fermer le menu",
       contact: "Contact",
       languageLabel: "Langue",
+      carouselPrev: "Pôle précédent",
+      carouselNext: "Pôle suivant",
+      carouselLabel: "Pôles OPEN",
     },
     nav: [
       { href: "#missions", label: "Missions" },
@@ -270,6 +273,9 @@ const dictionaries = {
       menuClose: "Close menu",
       contact: "Contact",
       languageLabel: "Language",
+      carouselPrev: "Previous practice",
+      carouselNext: "Next practice",
+      carouselLabel: "OPEN practices",
     },
     nav: [
       { href: "#missions", label: "Missions" },

@@ -20,3 +20,6 @@ export const sectorImages = {
   urban:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuCQlL3xLLH1TFXZPIzsg6DrRbMc2_iWUGy68sl9cAMZHbPKy2mM-kCjbAOqAn8QOxuXQHE9Eloqa_8hjkcvOjcz6GUMhj95kvcjeoY85dBvN1EqGwmT4Tl42gtI5nfaZnG1OrjEUxlYqsXF3Hc7KjYtAFnORMXkeXDzbh5sTpxLa2pa95hmlzx3ytE383QZi7BW0IBdmSr2vK4tKlwGq-Pa0xokf6WVv4KvPpWpqaO57zy3Sra_4SrjvHTJO_dV6i2RMV2oXggxr9Pt",
 } as const;
+
+/** Advisory (office) then Executive (infrastructure) — one image per carousel slide */
+export const heroSlideImages = [missionImages[0], sectorImages.transport] as const;

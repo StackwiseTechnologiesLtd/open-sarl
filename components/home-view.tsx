@@ -3,9 +3,10 @@
 import Image from "next/image";
 import { Button, ButtonLink } from "@/components/button";
 import { Container } from "@/components/container";
+import { HeroCarousel } from "@/components/hero-carousel";
 import { Icon } from "@/components/icon";
-import { FadeIn, Reveal } from "@/components/reveal";
-import { heroImage, missionImages, positioningImage, sectorImages } from "@/lib/images";
+import { Reveal } from "@/components/reveal";
+import { missionImages, positioningImage, sectorImages } from "@/lib/images";
 import { mailHref, type Dictionary, type Locale } from "@/lib/i18n";
 
 const sectorImageList = [sectorImages.transport, sectorImages.energy, sectorImages.water, sectorImages.urban] as const;
@@ -27,59 +28,7 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
 
   return (
     <main>
-      {/* Hero — glass cards on split background */}
-      <section
-        id="poles"
-        className="relative flex min-h-[min(100svh,720px)] items-center overflow-hidden sm:min-h-[640px] lg:min-h-[800px]"
-      >
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={heroImage}
-            alt={dict.hero.imageAlt}
-            fill
-            priority
-            quality={90}
-            className="object-cover object-[30%_center] sm:object-center"
-            sizes="100vw"
-          />
-          <div className="hero-overlay absolute inset-0" />
-        </div>
-        <div className="relative z-10 w-full">
-          <Container className="py-10 sm:py-stack-lg lg:py-16">
-            <div className="grid w-full grid-cols-1 items-stretch gap-5 sm:gap-8 lg:grid-cols-2 lg:gap-12">
-              {dict.hero.departments.map((dept, index) => (
-                <FadeIn key={dept.dept} delay={index * 0.08} className="w-full">
-                  <article className="glass-card flex h-full w-full flex-col rounded-2xl p-6 text-white hover:-translate-y-1 sm:p-8 lg:p-10">
-                    <div className="mb-5 flex items-center gap-3 sm:mb-6">
-                      <span className="h-px w-8 bg-white/60" />
-                      <span className="font-label-md text-xs tracking-[0.2em] text-white/75 uppercase sm:text-label-md">{dept.dept}</span>
-                    </div>
-                    <h2 className="hero-title mb-4 sm:mb-6">
-                      {dept.title}
-                      <br />
-                      <span className="font-normal opacity-90">{dept.subtitle}</span>
-                    </h2>
-                    <p className="section-lead mb-2 text-white/95">{dept.text}</p>
-                    <p className="mb-6 text-sm text-white/65 italic sm:mb-8 sm:text-base">{dept.quote}</p>
-                    <Button variant="ghost-light" className="group mt-auto sm:text-sm">
-                      {dept.cta}
-                      <Icon name="arrow_right_alt" className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  </article>
-                </FadeIn>
-              ))}
-            </div>
-            <FadeIn delay={0.2}>
-              <div className="mt-10 text-center sm:mt-12 lg:mt-20">
-                <ButtonLink href={`${home}#missions`} variant="secondary" size="lg" className="mx-auto">
-                  {dict.hero.centerCta}
-                  <Icon name="arrow_forward" className="h-5 w-5" />
-                </ButtonLink>
-              </div>
-            </FadeIn>
-          </Container>
-        </div>
-      </section>
+      <HeroCarousel home={home} dict={dict} />
 
       {/* Four pillars */}
       <section id="expertise" className="bg-surface py-section-gap">
