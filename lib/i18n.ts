@@ -82,6 +82,7 @@ const dictionaries = {
       departments: [
         {
           dept: "Department 01",
+          watermark: "ADVISORY",
           title: "Advisory",
           subtitle: "Conseil",
           text: "Transformer les priorités en programmes bancables.",
@@ -90,6 +91,7 @@ const dictionaries = {
         },
         {
           dept: "Department 02",
+          watermark: "EXECUTIVE",
           title: "Executive Branch",
           subtitle: "Pôle Exécution",
           text: "Sécuriser le delivery et l'ancrage local.",
@@ -290,6 +292,7 @@ const dictionaries = {
       departments: [
         {
           dept: "Department 01",
+          watermark: "ADVISORY",
           title: "Advisory",
           subtitle: "Consulting",
           text: "Turning priorities into bankable programmes.",
@@ -298,6 +301,7 @@ const dictionaries = {
         },
         {
           dept: "Department 02",
+          watermark: "EXECUTIVE",
           title: "Executive Branch",
           subtitle: "Delivery practice",
           text: "Securing delivery and local roots.",
