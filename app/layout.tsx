@@ -25,6 +25,12 @@ export const metadata: Metadata = {
   title: "OPEN",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover" as const,
+};
+
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const locale = (await headers()).get("x-locale") === "en" ? "en" : "fr";
 

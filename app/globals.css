@@ -88,17 +88,26 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  min-width: 320px;
   background-color: var(--color-surface);
   background-image:
     radial-gradient(ellipse 120% 80% at 50% -20%, rgba(0, 86, 210, 0.04), transparent 55%),
     linear-gradient(180deg, #f7f9fb 0%, #f2f4f6 100%);
   background-attachment: fixed;
+}
+
+@media (max-width: 640px) {
+  body {
+    background-attachment: scroll;
+  }
 }
 
 ::selection {
@@ -107,7 +116,7 @@ body {
 }
 
 section[id] {
-  scroll-margin-top: 108px;
+  scroll-margin-top: 116px;
 }
 
 .py-section-gap {
@@ -257,8 +266,8 @@ section[id] {
   font-family: var(--font-display-lg);
   font-weight: 700;
   letter-spacing: -0.025em;
-  line-height: 1.06;
-  font-size: clamp(1.875rem, 3.2vw + 0.75rem, 3.25rem);
+  line-height: 1.08;
+  font-size: clamp(1.625rem, 2.8vw + 0.875rem, 3.25rem);
 }
 
 .hero-scope {
@@ -366,6 +375,9 @@ section[id] {
 /* Site header — floating bar with scroll crossfade */
 .site-header {
   pointer-events: none;
+  padding-top: max(0.75rem, env(safe-area-inset-top, 0px));
+  padding-left: max(1rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1rem, env(safe-area-inset-right, 0px));
 }
 
 .site-header-bar {
@@ -789,6 +801,39 @@ section[id] {
   background: #ffffff;
   transform: translateY(-1px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+}
+
+@media (max-width: 639px) {
+  .btn-pill {
+    width: 100%;
+    max-width: 100%;
+    justify-content: flex-start;
+    white-space: normal;
+    text-align: left;
+    line-height: 1.35;
+    padding-right: 1rem;
+  }
+
+  .btn-lg {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.35;
+  }
+
+  .btn-full-mobile {
+    width: 100%;
+  }
+}
+
+.page-main {
+  padding-top: 6.5rem;
+}
+
+@media (min-width: 640px) {
+  .page-main {
+    padding-top: 7rem;
+  }
 }
 
 .btn-pill-icon {

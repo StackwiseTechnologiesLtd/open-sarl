@@ -167,7 +167,7 @@ const dictionaries = {
           gradient: "from-primary",
           titleClass: "font-headline-xl text-headline-xl",
           padding: "p-8",
-          layout: "md:col-span-2 md:row-span-2",
+          layout: "sm:col-span-2 sm:row-span-2 lg:col-span-2 lg:row-span-2",
         },
         {
           title: "Énergie",
@@ -175,7 +175,7 @@ const dictionaries = {
           gradient: "from-tertiary",
           titleClass: "font-headline-lg text-headline-lg",
           padding: "p-6",
-          layout: "md:col-span-2",
+          layout: "sm:col-span-2 lg:col-span-2",
         },
         {
           title: "Eau & assainissement",
@@ -379,7 +379,7 @@ const dictionaries = {
           gradient: "from-primary",
           titleClass: "font-headline-xl text-headline-xl",
           padding: "p-8",
-          layout: "md:col-span-2 md:row-span-2",
+          layout: "sm:col-span-2 sm:row-span-2 lg:col-span-2 lg:row-span-2",
         },
         {
           title: "Energy",
@@ -387,7 +387,7 @@ const dictionaries = {
           gradient: "from-tertiary",
           titleClass: "font-headline-lg text-headline-lg",
           padding: "p-6",
-          layout: "md:col-span-2",
+          layout: "sm:col-span-2 lg:col-span-2",
         },
         {
           title: "Water & sanitation",

@@ -18,7 +18,7 @@ export default async function LegalPage({ params }: Props) {
   const dict = getDictionary(locale);
 
   return (
-    <main className="bg-surface py-16 md:py-24">
+    <main className="page-main bg-surface pb-16 md:pb-24">
       <Container>
         <div className="max-w-3xl space-y-6">
           <h1 className="font-headline-xl text-3xl font-bold text-primary sm:text-4xl">{dict.legal.title}</h1>

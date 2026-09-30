@@ -67,7 +67,7 @@ export function HeroCarousel({ home, dict }: { home: string; dict: Dictionary })
     <>
       <section
         id="poles"
-        className="relative flex min-h-[100dvh] max-h-[920px] flex-col overflow-hidden"
+        className="relative flex min-h-[100dvh] flex-col overflow-hidden lg:max-h-[920px]"
         aria-roledescription="carousel"
         aria-label={dict.ui.carouselLabel}
         style={{ ["--hero-autoplay" as string]: `${AUTOPLAY_MS}ms` }}
@@ -110,7 +110,7 @@ export function HeroCarousel({ home, dict }: { home: string; dict: Dictionary })
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/75 via-transparent to-[#0a1628]/35" />
         </div>
 
-        <Container className="relative z-10 flex flex-1 flex-col justify-end pb-6 pt-24 sm:pb-8 sm:pt-28 lg:pb-10">
+        <Container className="relative z-10 flex flex-1 flex-col justify-end pb-6 pt-[calc(5.75rem+env(safe-area-inset-top,0px))] sm:pb-8 sm:pt-[calc(6.5rem+env(safe-area-inset-top,0px))] lg:pb-10">
           <div className="max-w-3xl">
             <h1 className="hero-platform-headline text-balance text-white">{dict.hero.platform}</h1>
             <p className="hero-scope mt-4 max-w-xl text-balance text-white/72 sm:mt-5">{dict.hero.scope}</p>
@@ -136,7 +136,7 @@ export function HeroCarousel({ home, dict }: { home: string; dict: Dictionary })
             </AnimatePresence>
           </div>
 
-          <div className="mt-10 flex items-center gap-4 lg:mt-12">
+          <div className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-3 lg:mt-12">
             <div className="hero-dots" role="tablist" aria-label={dict.ui.carouselLabel}>
               {slides.map((item, slideIndex) => (
                 <button

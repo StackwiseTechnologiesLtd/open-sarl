@@ -58,7 +58,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                   <li key={office}>{office}</li>
                 ))}
                 <li>
-                  <a className="font-medium text-white hover:underline" href={`mailto:${contactEmail}`}>
+                  <a className="break-all font-medium text-white hover:underline" href={`mailto:${contactEmail}`}>
                     {contactEmail}
                   </a>
                 </li>
@@ -66,7 +66,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </div>
           </div>
         </div>
-        <div className="mt-20 flex flex-col items-start justify-between gap-8 border-t border-white/10 pt-10 lg:flex-row lg:items-center">
+        <div className="mt-12 flex w-full min-w-0 flex-col items-start justify-between gap-8 border-t border-white/10 pt-8 sm:mt-16 sm:pt-10 lg:mt-20 lg:flex-row lg:items-center">
           <NewsletterForm locale={locale} label={dict.footer.newsletter} errorLabel={dict.footer.newsletterError} />
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
             <p className="text-label-md text-white/40" suppressHydrationWarning>

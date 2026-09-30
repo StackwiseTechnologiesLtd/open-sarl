@@ -21,7 +21,7 @@ export default async function BrochurePage({ params }: Props) {
   const dict = getDictionary(locale);
 
   return (
-    <main className="bg-white py-12 sm:py-16 md:py-20">
+    <main className="page-main bg-white pb-12 sm:pb-16 md:pb-20">
       <Container>
         <div className="flex flex-col justify-between gap-6 border-b border-outline-variant/40 pb-8 md:flex-row md:items-end">
           <div>

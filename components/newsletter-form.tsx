@@ -27,7 +27,7 @@ export function NewsletterForm({
 
   return (
     <form onSubmit={onSubmit} className="w-full max-w-md" noValidate>
-      <div className="flex rounded-lg border border-white/10 bg-white/5 p-1">
+      <div className="flex flex-col gap-2 rounded-lg border border-white/10 bg-white/5 p-2 sm:flex-row sm:gap-0 sm:p-1">
         <label htmlFor="newsletter-email" className="sr-only">
           {label}
         </label>
@@ -38,9 +38,9 @@ export function NewsletterForm({
           onChange={(event) => setEmail(event.target.value)}
           required
           placeholder={label}
-          className="min-w-0 flex-grow border-none bg-transparent px-4 text-sm text-white outline-none placeholder:text-white/30"
+          className="min-w-0 flex-grow border-none bg-transparent px-3 text-sm text-white outline-none placeholder:text-white/30 sm:px-4"
         />
-        <button type="submit" className="btn btn-primary btn-sm shrink-0">
+        <button type="submit" className="btn btn-primary btn-sm w-full shrink-0 sm:w-auto">
           OK
         </button>
       </div>

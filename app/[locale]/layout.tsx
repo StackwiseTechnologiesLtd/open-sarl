@@ -37,7 +37,9 @@ export default async function LocaleLayout({ children, params }: Props) {
         {dict.ui.skip}
       </a>
       <Header locale={locale} dict={dict} />
-      <div id="contenu">{children}</div>
+      <div id="contenu" className="min-w-0">
+        {children}
+      </div>
       <Footer locale={locale} dict={dict} />
     </>
   );

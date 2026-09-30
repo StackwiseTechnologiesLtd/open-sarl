@@ -39,7 +39,7 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
           <div className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-outline-variant/40 bg-outline-variant/40 md:grid-cols-2">
             {dict.method.items.map((item, index) => (
               <Reveal key={item.title} delay={index * 0.04} className="h-full">
-                <article className="editorial-card group flex h-full gap-5 bg-white p-6 sm:p-8">
+                <article className="editorial-card group flex h-full flex-col gap-4 bg-white p-6 sm:flex-row sm:gap-5 sm:p-8">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary/8 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
                     <Icon name={item.icon} className="h-5 w-5" />
                   </div>
@@ -97,11 +97,11 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
             <div className="grid md:grid-cols-2 md:items-start">
               <Reveal>
                 <div className="border-b border-outline-variant/40 bg-white/70 p-6 sm:p-8 md:border-r md:border-b-0">
-                  <h3 className="font-headline-md mb-5 flex items-center gap-2.5 text-lg font-semibold sm:mb-6 sm:text-xl">
+                  <h3 className="font-headline-md mb-5 flex min-w-0 items-start gap-2.5 text-lg font-semibold sm:mb-6 sm:items-center sm:text-xl">
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-surface-container text-secondary">
                       <Icon name="rule" className="h-4 w-4" />
                     </span>
-                    {dict.compare.standardTitle}
+                    <span className="min-w-0">{dict.compare.standardTitle}</span>
                   </h3>
                   <ul className="divide-y divide-outline-variant/50">
                     {dict.compare.standardItems.map((item) => (
@@ -115,11 +115,11 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
               </Reveal>
               <Reveal delay={0.05}>
                 <div className="bg-primary/[0.03] p-6 sm:p-8">
-                  <h3 className="font-headline-md text-primary mb-5 flex items-center gap-2.5 text-lg font-semibold sm:mb-6 sm:text-xl">
+                  <h3 className="font-headline-md text-primary mb-5 flex min-w-0 items-start gap-2.5 text-lg font-semibold sm:mb-6 sm:items-center sm:text-xl">
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
                       <Icon name="verified" className="h-4 w-4" />
                     </span>
-                    <span>
+                    <span className="min-w-0">
                       {dict.compare.openTitle}
                       <span className="mt-0.5 block text-xs font-medium text-primary/70">{dict.compare.openBadge}</span>
                     </span>
@@ -170,6 +170,12 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
               </Reveal>
             ))}
           </div>
+          <div className="mt-8 md:hidden">
+            <ButtonLink href={`${home}/brochure`} variant="ghost" full className="w-full sm:w-auto">
+              {dict.missions.catalog}
+              <Icon name="chevron_right" className="h-5 w-5" />
+            </ButtonLink>
+          </div>
         </Container>
       </section>
 
@@ -197,7 +203,7 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
           <Reveal>
             <SectionIntro title={dict.sectors.title} align="center" className="mb-8 sm:mb-10" />
           </Reveal>
-          <div className="grid auto-rows-[minmax(200px,auto)] grid-cols-1 gap-3 sm:gap-4 md:h-[560px] md:grid-cols-4 md:grid-rows-2 lg:h-[600px]">
+          <div className="grid auto-rows-[minmax(200px,auto)] grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:grid-rows-2 lg:auto-rows-[minmax(220px,1fr)]">
             {dict.sectors.items.map((sector, index) => (
               <Reveal key={sector.title} delay={index * 0.04} className={`h-full min-h-[200px] ${sector.layout}`}>
                 <article className="sector-tile group relative h-full min-h-[inherit] overflow-hidden rounded-xl">
@@ -249,7 +255,7 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
           <Reveal>
             <h2 className="section-display mb-4 sm:mb-5">{dict.cta.title}</h2>
             <p className="section-lead text-primary-fixed mb-8 max-w-[65ch] sm:mb-10 md:mx-auto">{dict.cta.text}</p>
-            <div className="flex flex-col gap-4 sm:flex-row md:justify-center">
+            <div className="flex w-full flex-col gap-4 sm:flex-row sm:w-auto md:justify-center">
               <PillLink href={mailHref(locale, "project")}>{dict.cta.primary}</PillLink>
               <ButtonLink href={`${home}/brochure`} variant="outline-light" size="lg">
                 {dict.cta.secondary}

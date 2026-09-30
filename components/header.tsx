@@ -9,7 +9,7 @@ import { Logo } from "@/components/logo";
 import { isNavActive, type Dictionary, type Locale } from "@/lib/i18n";
 
 const SCROLL_RANGE = 120;
-const HEADER_OFFSET = 108;
+const HEADER_OFFSET = 116;
 
 export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const pathname = usePathname();
@@ -101,31 +101,33 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
   return (
     <header
-      className={`site-header top-0 z-50 print:hidden ${isHome ? "fixed right-0 left-0" : "sticky"} px-4 pt-3 sm:px-margin-mobile sm:pt-4 md:px-margin-desktop`}
+      className={`site-header top-0 z-50 print:hidden ${isHome ? "fixed right-0 left-0" : "sticky"}`}
     >
       <div
         className={`site-header-bar mx-auto w-full max-w-container-max ${solid > 0.05 ? "is-scrolled" : ""}`}
         style={barStyle}
       >
-        <nav className="relative flex items-center justify-between gap-3 px-4 py-3 sm:px-5 sm:py-3.5 md:px-6">
-          <div className="relative h-10 w-[7.5rem] shrink-0 sm:w-[8.5rem]">
+        <nav className="relative flex min-w-0 items-center justify-between gap-2 px-3 py-2.5 sm:gap-3 sm:px-5 sm:py-3.5 lg:px-6">
+          <div className="relative h-9 w-[6.75rem] shrink-0 sm:h-10 sm:w-[8.5rem]">
             <div
               className="header-fade-layer absolute inset-0 flex items-center"
               style={{ opacity: light, pointerEvents: light > 0.4 ? "auto" : "none" }}
             >
-              <Logo href={home} tone="light" height={40} priority />
+              <Logo href={home} tone="light" height={36} priority className="sm:hidden" />
+              <Logo href={home} tone="light" height={40} priority className="hidden sm:block" />
             </div>
             <div
               className="header-fade-layer absolute inset-0 flex items-center"
               style={{ opacity: solid, pointerEvents: solid > 0.4 ? "auto" : "none" }}
             >
-              <Logo href={home} tone="brand" height={40} />
+              <Logo href={home} tone="brand" height={36} className="sm:hidden" />
+              <Logo href={home} tone="brand" height={40} className="hidden sm:block" />
             </div>
           </div>
 
-          <div className="relative hidden md:flex md:flex-1 md:justify-center">
+          <div className="relative hidden min-w-0 lg:flex lg:flex-1 lg:justify-center">
             <div
-              className="header-fade-layer flex items-center gap-6 lg:gap-stack-lg"
+              className="header-fade-layer flex items-center gap-4 xl:gap-stack-lg"
               style={{ opacity: light, pointerEvents: light > 0.4 ? "auto" : "none" }}
               aria-hidden={light < 0.5}
             >
@@ -141,7 +143,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               ))}
             </div>
             <div
-              className="header-fade-layer absolute inset-0 flex items-center justify-center gap-6 lg:gap-stack-lg"
+              className="header-fade-layer absolute inset-0 flex items-center justify-center gap-4 xl:gap-stack-lg"
               style={{ opacity: solid, pointerEvents: solid > 0.4 ? "auto" : "none" }}
               aria-hidden={solid < 0.5}
             >
@@ -172,7 +174,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               </div>
             </div>
 
-            <div className="relative hidden md:block">
+            <div className="relative hidden lg:block">
               <div className="header-fade-layer" style={{ opacity: light, pointerEvents: light > 0.4 ? "auto" : "none" }}>
                 <ButtonLink
                   href={`${home}#contact`}
@@ -196,7 +198,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               </div>
             </div>
 
-            <div className="relative md:hidden">
+            <div className="relative lg:hidden">
               <button
                 type="button"
                 className="header-fade-layer inline-flex h-10 w-10 items-center justify-center rounded-md text-white hover:bg-white/10"
@@ -228,8 +230,8 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             id="mobile-nav"
             className={
               solid < 0.5
-                ? "border-t border-white/10 px-4 py-5 md:hidden"
-                : "border-t border-outline-variant/25 px-4 py-5 md:hidden"
+                ? "border-t border-white/10 px-4 py-5 lg:hidden"
+                : "border-t border-outline-variant/25 px-4 py-5 lg:hidden"
             }
           >
             <div className="flex flex-col">
