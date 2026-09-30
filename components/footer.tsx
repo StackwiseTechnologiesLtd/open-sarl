@@ -28,7 +28,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 md:col-span-8 lg:col-span-7">
             <div>
-              <h2 className="mb-6 text-sm font-bold tracking-widest uppercase">{dict.footer.sectors}</h2>
+              <h2 className="mb-6 text-sm font-semibold text-white/90">{dict.footer.sectors}</h2>
               <ul className="space-y-4 text-label-md text-white/50">
                 {dict.footer.sectorLinks.map((item) => (
                   <li key={item}>
@@ -40,7 +40,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-bold tracking-widest uppercase">{dict.footer.company}</h2>
+              <h2 className="mb-6 text-sm font-semibold text-white/90">{dict.footer.company}</h2>
               <ul className="space-y-4 text-label-md text-white/50">
                 {company.map((item) => (
                   <li key={item.label}>
@@ -52,7 +52,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-bold tracking-widest uppercase">{dict.footer.contact}</h2>
+              <h2 className="mb-6 text-sm font-semibold text-white/90">{dict.footer.contact}</h2>
               <ul className="space-y-4 text-label-md text-white/50">
                 {offices.map((office) => (
                   <li key={office}>{office}</li>

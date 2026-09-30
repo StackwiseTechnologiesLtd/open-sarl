@@ -79,14 +79,17 @@ const dictionaries = {
     hero: {
       imageAlt: "Programmes d'infrastructures stratégiques en RDC",
       centerCta: "Découvrir nos services",
+      platform: "Transformer les priorités d'infrastructure en projets finançables et exécutables.",
+      scope: "Conseil, ingénierie et appui à l'exécution en RDC et en Afrique centrale.",
+      clients: ["Ministères", "Gouvernorats", "Agences publiques", "UGP / PIU", "Bailleurs & IFI"],
       departments: [
         {
-          dept: "Conseil en Infrastructures",
+          dept: "Préparation & structuration",
           watermark: "ADVISORY",
           title: "Préparation & structuration",
           subtitle: "Programmes stratégiques",
-          text: "Accompagner les autorités nationales et provinciales dans la préparation, la structuration et la mise en œuvre de programmes d'infrastructures stratégiques.",
-          quote: "Du concept à des investissements bancables et exécutables — pour ministères, gouvernorats, agences publiques, UGP/PIU, régies et autorités de corridors.",
+          text: "Du concept à des investissements bancables — diagnostics, faisabilité, pipelines et structuration bailleurs.",
+          quote: "",
           cta: "Discuter d'un programme",
         },
         {
@@ -94,8 +97,8 @@ const dictionaries = {
           watermark: "DELIVERY",
           title: "Options, coûts & risques",
           subtitle: "Décision opérationnelle",
-          text: "Production de livrables prêts pour décision : options claires, estimations crédibles, plans de mise en œuvre réalistes et gestion des risques.",
-          quote: "Notes de décision pour Ministre, Gouverneur et Comités de pilotage — posture d'appui indépendant centrée sur la valeur publique, la gouvernance et les résultats.",
+          text: "Notes de décision pour Ministre, Gouverneur et Comités de pilotage — options, coûts, risques et recommandations.",
+          quote: "",
           cta: "Voir les livrables types",
         },
       ],
@@ -288,14 +291,17 @@ const dictionaries = {
     hero: {
       imageAlt: "Strategic infrastructure programs in the DRC",
       centerCta: "Explore our services",
+      platform: "From infrastructure priorities to bankable, implementable projects.",
+      scope: "Advisory, engineering and delivery support across the DRC and Central Africa.",
+      clients: ["Ministries", "Provincial governments", "Public agencies", "PIUs", "DFIs & donors"],
       departments: [
         {
-          dept: "Infrastructure Advisory",
+          dept: "Preparation & structuring",
           watermark: "ADVISORY",
           title: "Preparation & structuring",
           subtitle: "Strategic programs",
-          text: "Supporting national and provincial governments to prepare, structure, and deliver strategic infrastructure programs.",
-          quote: "From concept to bankable, implementable investments — for ministries, provincial governments, public agencies, PIUs, utilities, and corridor authorities.",
+          text: "From concept to bankable investments — diagnostics, feasibility, pipelines, and donor-ready structuring.",
+          quote: "",
           cta: "Discuss a program",
         },
         {
@@ -303,8 +309,8 @@ const dictionaries = {
           watermark: "DELIVERY",
           title: "Options, costs & risks",
           subtitle: "Operational decisions",
-          text: "Decision-ready outputs: clear options, credible costs, implementable delivery plans, and risk-managed structures.",
-          quote: "Decision briefs for Ministers, Governors, and Steering Committees — independent advisory focused on public value, governance, and results.",
+          text: "Decision briefs for Ministers, Governors, and Steering Committees — options, costs, risks, and recommendations.",
+          quote: "",
           cta: "View typical outputs",
         },
       ],

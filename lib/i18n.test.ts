@@ -39,6 +39,8 @@ describe("bilingual content", () => {
       expect(copy.sectors.items).toHaveLength(4);
       expect(copy.modes.items).toHaveLength(4);
     }
+    expect(getDictionary("fr").hero.platform).toContain("priorités");
+    expect(getDictionary("en").hero.platform).toContain("priorities");
     expect(getDictionary("fr").method.items.map((item) => item.title)).toEqual([
       "Préparation des projets",
       "Structuration pour financement bailleurs",
