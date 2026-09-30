@@ -104,6 +104,8 @@ export function HeroCarousel({ home, dict }: { home: string; dict: Dictionary })
           </motion.div>
         ))}
         <div className="hero-overlay absolute inset-0" />
+        <div className="hero-vignette absolute inset-0" />
+        <div className="hero-grain absolute inset-0" aria-hidden="true" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/88 via-[#0a1628]/45 to-[#0a1628]/20" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/70 via-transparent to-[#0a1628]/30" />
       </div>
@@ -157,6 +159,26 @@ export function HeroCarousel({ home, dict }: { home: string; dict: Dictionary })
               </motion.aside>
             </AnimatePresence>
           </div>
+        </div>
+
+        <div className="mt-10 flex items-center justify-between gap-4 lg:mt-12">
+          <div className="hero-dots" role="tablist" aria-label={dict.ui.carouselLabel}>
+            {slides.map((slide, slideIndex) => (
+              <button
+                key={slide.dept}
+                type="button"
+                role="tab"
+                aria-selected={slideIndex === index}
+                aria-controls={`hero-panel-${slideIndex}`}
+                className={`hero-dot ${slideIndex === index ? "is-active" : slideIndex < index ? "is-complete" : ""}`}
+                onClick={() => navigateTo(slideIndex)}
+              >
+                <span className="hero-dot-fill" aria-hidden="true" />
+                <span className="sr-only">{slide.dept}</span>
+              </button>
+            ))}
+          </div>
+          <p className="hidden text-xs text-white/45 sm:block">{dict.ui.carouselLabel}</p>
         </div>
       </Container>
     </section>

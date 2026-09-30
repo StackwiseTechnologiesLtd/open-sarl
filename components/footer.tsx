@@ -10,7 +10,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   ];
 
   return (
-    <footer className="border-t border-white/5 bg-[#0b1c30] py-14 text-white sm:py-20 print:hidden">
+    <footer className="footer-premium py-14 text-white sm:py-20 print:hidden">
       <div className="mx-auto w-full max-w-container-max px-4 sm:px-margin-mobile md:px-margin-desktop">
         <div className="grid grid-cols-1 gap-10 sm:gap-12 md:grid-cols-12">
           <div className="md:col-span-4 lg:col-span-5">
