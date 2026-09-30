@@ -107,7 +107,7 @@ body {
 }
 
 section[id] {
-  scroll-margin-top: 96px;
+  scroll-margin-top: 108px;
 }
 
 .py-section-gap {
@@ -363,30 +363,55 @@ section[id] {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Site header — smooth scroll crossfade */
+/* Site header — floating bar with scroll crossfade */
 .site-header {
+  pointer-events: none;
+}
+
+.site-header-bar {
   --header-progress: 0;
+  pointer-events: auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
   transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.site-header::before {
+.site-header-bar::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1;
-  background: color-mix(in srgb, #f7f9fb calc(var(--header-progress) * 95%), transparent);
-  backdrop-filter: blur(calc(var(--header-progress) * 16px));
-  -webkit-backdrop-filter: blur(calc(var(--header-progress) * 16px));
-  border-bottom: 1px solid
-    color-mix(in srgb, rgba(195, 198, 214, 0.35) calc(var(--header-progress) * 100%), rgba(255, 255, 255, 0.12));
+  z-index: 0;
+  border-radius: inherit;
+  background: color-mix(
+    in srgb,
+    #f7f9fb calc(var(--header-progress) * 96%),
+    rgba(255, 255, 255, calc(0.1 - var(--header-progress) * 0.02))
+  );
+  backdrop-filter: blur(calc(12px + var(--header-progress) * 8px));
+  -webkit-backdrop-filter: blur(calc(12px + var(--header-progress) * 8px));
+  border: 1px solid
+    color-mix(
+      in srgb,
+      rgba(195, 198, 214, 0.45) calc(var(--header-progress) * 100%),
+      rgba(255, 255, 255, 0.18)
+    );
   transition:
     background 0.1s linear,
     backdrop-filter 0.1s linear,
     border-color 0.1s linear;
 }
 
-.site-header.is-scrolled {
-  box-shadow: 0 1px 12px rgba(0, 0, 0, calc(var(--header-progress) * 0.08));
+.site-header-bar.is-scrolled {
+  box-shadow:
+    0 4px 24px rgba(10, 22, 40, calc(var(--header-progress) * 0.12)),
+    0 1px 3px rgba(10, 22, 40, calc(var(--header-progress) * 0.06));
+}
+
+.site-header-bar > nav,
+.site-header-bar > #mobile-nav {
+  position: relative;
+  z-index: 1;
 }
 
 .header-fade-layer {

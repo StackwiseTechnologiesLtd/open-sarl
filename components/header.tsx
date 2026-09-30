@@ -9,6 +9,7 @@ import { Logo } from "@/components/logo";
 import { isNavActive, type Dictionary, type Locale } from "@/lib/i18n";
 
 const SCROLL_RANGE = 120;
+const HEADER_OFFSET = 108;
 
 export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const pathname = usePathname();
@@ -25,7 +26,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
     const target = document.getElementById(hash.slice(1));
     if (!target) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const top = target.getBoundingClientRect().top + window.scrollY - 96;
+    const top = target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
     window.scrollTo({ top, behavior: behavior ?? (reduce ? "auto" : "smooth") });
   }
 
@@ -83,7 +84,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
   const links = dict.nav.map((item) => ({ ...item, href: `${home}${item.href}` }));
 
-  const headerStyle = {
+  const barStyle = {
     "--header-progress": solid,
   } as CSSProperties;
 
@@ -100,175 +101,174 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
   return (
     <header
-      className={`site-header top-0 z-50 print:hidden ${isHome ? "fixed right-0 left-0" : "sticky"} ${solid > 0.05 ? "is-scrolled" : ""}`}
-      style={headerStyle}
+      className={`site-header top-0 z-50 print:hidden ${isHome ? "fixed right-0 left-0" : "sticky"} px-4 pt-3 sm:px-margin-mobile sm:pt-4 md:px-margin-desktop`}
     >
-      <nav className="relative mx-auto flex w-full max-w-container-max items-center justify-between gap-3 px-4 py-3.5 sm:px-margin-mobile sm:py-4 md:px-margin-desktop">
-        {/* Logo crossfade */}
-        <div className="relative h-10 w-[7.5rem] shrink-0 sm:w-[8.5rem]">
-          <div
-            className="header-fade-layer absolute inset-0 flex items-center"
-            style={{ opacity: light, pointerEvents: light > 0.4 ? "auto" : "none" }}
-          >
-            <Logo href={home} tone="light" height={40} priority />
-          </div>
-          <div
-            className="header-fade-layer absolute inset-0 flex items-center"
-            style={{ opacity: solid, pointerEvents: solid > 0.4 ? "auto" : "none" }}
-          >
-            <Logo href={home} tone="brand" height={40} />
-          </div>
-        </div>
-
-        {/* Desktop nav crossfade */}
-        <div className="relative hidden md:flex md:flex-1 md:justify-center">
-          <div
-            className="header-fade-layer flex items-center gap-6 lg:gap-stack-lg"
-            style={{ opacity: light, pointerEvents: light > 0.4 ? "auto" : "none" }}
-            aria-hidden={light < 0.5}
-          >
-            {links.map((link) => (
-              <a
-                key={`light-${link.href}`}
-                href={link.href}
-                onClick={(event) => follow(event, link.href)}
-                className={`transition-colors duration-200 ${navLinkClass(isNavActive(link.href, hash, pathname), "light")}`}
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-          <div
-            className="header-fade-layer absolute inset-0 flex items-center justify-center gap-6 lg:gap-stack-lg"
-            style={{ opacity: solid, pointerEvents: solid > 0.4 ? "auto" : "none" }}
-            aria-hidden={solid < 0.5}
-          >
-            {links.map((link) => (
-              <a
-                key={`solid-${link.href}`}
-                href={link.href}
-                onClick={(event) => follow(event, link.href)}
-                aria-current={isNavActive(link.href, hash, pathname) ? "page" : undefined}
-                className={`transition-colors duration-200 ${navLinkClass(isNavActive(link.href, hash, pathname), "solid")}`}
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </div>
-
-        <div className="relative flex shrink-0 items-center gap-2.5 sm:gap-4">
-          {/* Language switch crossfade */}
-          <div className="relative">
-            <div className="header-fade-layer" style={{ opacity: light, pointerEvents: light > 0.4 ? "auto" : "none" }}>
-              <LanguageSwitch locale={locale} pathname={pathname} hash={hash} label={dict.ui.languageLabel} tone="light" />
-            </div>
+      <div
+        className={`site-header-bar mx-auto w-full max-w-container-max ${solid > 0.05 ? "is-scrolled" : ""}`}
+        style={barStyle}
+      >
+        <nav className="relative flex items-center justify-between gap-3 px-4 py-3 sm:px-5 sm:py-3.5 md:px-6">
+          <div className="relative h-10 w-[7.5rem] shrink-0 sm:w-[8.5rem]">
             <div
-              className="header-fade-layer absolute inset-0"
-              style={{ opacity: solid, pointerEvents: solid > 0.4 ? "auto" : "none" }}
+              className="header-fade-layer absolute inset-0 flex items-center"
+              style={{ opacity: light, pointerEvents: light > 0.4 ? "auto" : "none" }}
             >
-              <LanguageSwitch locale={locale} pathname={pathname} hash={hash} label={dict.ui.languageLabel} tone="default" />
-            </div>
-          </div>
-
-          {/* Contact button crossfade */}
-          <div className="relative hidden md:block">
-            <div className="header-fade-layer" style={{ opacity: light, pointerEvents: light > 0.4 ? "auto" : "none" }}>
-              <ButtonLink
-                href={`${home}#contact`}
-                onClick={(event) => follow(event, `${home}#contact`)}
-                variant="outline-light"
-              >
-                {dict.ui.contact}
-              </ButtonLink>
+              <Logo href={home} tone="light" height={40} priority />
             </div>
             <div
               className="header-fade-layer absolute inset-0 flex items-center"
               style={{ opacity: solid, pointerEvents: solid > 0.4 ? "auto" : "none" }}
             >
+              <Logo href={home} tone="brand" height={40} />
+            </div>
+          </div>
+
+          <div className="relative hidden md:flex md:flex-1 md:justify-center">
+            <div
+              className="header-fade-layer flex items-center gap-6 lg:gap-stack-lg"
+              style={{ opacity: light, pointerEvents: light > 0.4 ? "auto" : "none" }}
+              aria-hidden={light < 0.5}
+            >
+              {links.map((link) => (
+                <a
+                  key={`light-${link.href}`}
+                  href={link.href}
+                  onClick={(event) => follow(event, link.href)}
+                  className={`transition-colors duration-200 ${navLinkClass(isNavActive(link.href, hash, pathname), "light")}`}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+            <div
+              className="header-fade-layer absolute inset-0 flex items-center justify-center gap-6 lg:gap-stack-lg"
+              style={{ opacity: solid, pointerEvents: solid > 0.4 ? "auto" : "none" }}
+              aria-hidden={solid < 0.5}
+            >
+              {links.map((link) => (
+                <a
+                  key={`solid-${link.href}`}
+                  href={link.href}
+                  onClick={(event) => follow(event, link.href)}
+                  aria-current={isNavActive(link.href, hash, pathname) ? "page" : undefined}
+                  className={`transition-colors duration-200 ${navLinkClass(isNavActive(link.href, hash, pathname), "solid")}`}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative flex shrink-0 items-center gap-2.5 sm:gap-4">
+            <div className="relative">
+              <div className="header-fade-layer" style={{ opacity: light, pointerEvents: light > 0.4 ? "auto" : "none" }}>
+                <LanguageSwitch locale={locale} pathname={pathname} hash={hash} label={dict.ui.languageLabel} tone="light" />
+              </div>
+              <div
+                className="header-fade-layer absolute inset-0"
+                style={{ opacity: solid, pointerEvents: solid > 0.4 ? "auto" : "none" }}
+              >
+                <LanguageSwitch locale={locale} pathname={pathname} hash={hash} label={dict.ui.languageLabel} tone="default" />
+              </div>
+            </div>
+
+            <div className="relative hidden md:block">
+              <div className="header-fade-layer" style={{ opacity: light, pointerEvents: light > 0.4 ? "auto" : "none" }}>
+                <ButtonLink
+                  href={`${home}#contact`}
+                  onClick={(event) => follow(event, `${home}#contact`)}
+                  variant="outline-light"
+                >
+                  {dict.ui.contact}
+                </ButtonLink>
+              </div>
+              <div
+                className="header-fade-layer absolute inset-0 flex items-center"
+                style={{ opacity: solid, pointerEvents: solid > 0.4 ? "auto" : "none" }}
+              >
+                <ButtonLink
+                  href={`${home}#contact`}
+                  onClick={(event) => follow(event, `${home}#contact`)}
+                  variant="primary"
+                >
+                  {dict.ui.contact}
+                </ButtonLink>
+              </div>
+            </div>
+
+            <div className="relative md:hidden">
+              <button
+                type="button"
+                className="header-fade-layer inline-flex h-10 w-10 items-center justify-center rounded-md text-white hover:bg-white/10"
+                style={{ opacity: light, pointerEvents: light > 0.4 ? "auto" : "none" }}
+                aria-expanded={open}
+                aria-controls="mobile-nav"
+                onClick={() => setOpen((value) => !value)}
+              >
+                <span className="sr-only">{open ? dict.ui.menuClose : dict.ui.menuOpen}</span>
+                <Icon name={open ? "close" : "menu"} />
+              </button>
+              <button
+                type="button"
+                className="header-fade-layer absolute inset-0 inline-flex h-10 w-10 items-center justify-center rounded-md text-primary hover:bg-primary/5"
+                style={{ opacity: solid, pointerEvents: solid > 0.4 ? "auto" : "none" }}
+                aria-expanded={open}
+                aria-controls="mobile-nav"
+                onClick={() => setOpen((value) => !value)}
+              >
+                <span className="sr-only">{open ? dict.ui.menuClose : dict.ui.menuOpen}</span>
+                <Icon name={open ? "close" : "menu"} />
+              </button>
+            </div>
+          </div>
+        </nav>
+
+        {open ? (
+          <div
+            id="mobile-nav"
+            className={
+              solid < 0.5
+                ? "border-t border-white/10 px-4 py-5 md:hidden"
+                : "border-t border-outline-variant/25 px-4 py-5 md:hidden"
+            }
+          >
+            <div className="flex flex-col">
+              {links.map((link) => {
+                const active = isNavActive(link.href, hash, pathname);
+                const lightMenu = solid < 0.5;
+                return (
+                  <a
+                    key={`${link.href}-${link.label}-mobile`}
+                    href={link.href}
+                    onClick={(event) => follow(event, link.href)}
+                    aria-current={active ? "page" : undefined}
+                    className={
+                      lightMenu
+                        ? active
+                          ? "border-b border-white/10 py-3.5 font-label-md text-label-md font-bold text-white"
+                          : "border-b border-white/10 py-3.5 font-label-md text-label-md text-white/80 transition-colors hover:text-white"
+                        : active
+                          ? "border-b border-outline-variant/20 py-3.5 font-label-md text-label-md font-bold text-primary"
+                          : "border-b border-outline-variant/20 py-3.5 font-label-md text-label-md text-on-surface transition-colors hover:text-primary"
+                    }
+                  >
+                    {link.label}
+                  </a>
+                );
+              })}
               <ButtonLink
                 href={`${home}#contact`}
                 onClick={(event) => follow(event, `${home}#contact`)}
-                variant="primary"
+                full
+                variant={solid < 0.5 ? "secondary" : "primary"}
+                className="mt-4"
               >
                 {dict.ui.contact}
               </ButtonLink>
             </div>
           </div>
-
-          {/* Mobile menu toggle */}
-          <div className="relative md:hidden">
-            <button
-              type="button"
-              className="header-fade-layer inline-flex h-10 w-10 items-center justify-center rounded-full text-white hover:bg-white/10"
-              style={{ opacity: light, pointerEvents: light > 0.4 ? "auto" : "none" }}
-              aria-expanded={open}
-              aria-controls="mobile-nav"
-              onClick={() => setOpen((value) => !value)}
-            >
-              <span className="sr-only">{open ? dict.ui.menuClose : dict.ui.menuOpen}</span>
-              <Icon name={open ? "close" : "menu"} />
-            </button>
-            <button
-              type="button"
-              className="header-fade-layer absolute inset-0 inline-flex h-10 w-10 items-center justify-center rounded-full text-primary hover:bg-primary/5"
-              style={{ opacity: solid, pointerEvents: solid > 0.4 ? "auto" : "none" }}
-              aria-expanded={open}
-              aria-controls="mobile-nav"
-              onClick={() => setOpen((value) => !value)}
-            >
-              <span className="sr-only">{open ? dict.ui.menuClose : dict.ui.menuOpen}</span>
-              <Icon name={open ? "close" : "menu"} />
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {open ? (
-        <div
-          id="mobile-nav"
-          className={
-            solid < 0.5
-              ? "border-t border-white/10 bg-[#0a1628]/95 px-4 py-5 backdrop-blur-lg md:hidden"
-              : "border-t border-outline-variant/25 bg-surface px-4 py-5 md:hidden"
-          }
-        >
-          <div className="flex flex-col">
-            {links.map((link) => {
-              const active = isNavActive(link.href, hash, pathname);
-              const lightMenu = solid < 0.5;
-              return (
-                <a
-                  key={`${link.href}-${link.label}-mobile`}
-                  href={link.href}
-                  onClick={(event) => follow(event, link.href)}
-                  aria-current={active ? "page" : undefined}
-                  className={
-                    lightMenu
-                      ? active
-                        ? "border-b border-white/10 py-3.5 font-label-md text-label-md font-bold text-white"
-                        : "border-b border-white/10 py-3.5 font-label-md text-label-md text-white/80 transition-colors hover:text-white"
-                      : active
-                        ? "border-b border-outline-variant/20 py-3.5 font-label-md text-label-md font-bold text-primary"
-                        : "border-b border-outline-variant/20 py-3.5 font-label-md text-label-md text-on-surface transition-colors hover:text-primary"
-                  }
-                >
-                  {link.label}
-                </a>
-              );
-            })}
-            <ButtonLink
-              href={`${home}#contact`}
-              onClick={(event) => follow(event, `${home}#contact`)}
-              full
-              variant={solid < 0.5 ? "secondary" : "primary"}
-              className="mt-4"
-            >
-              {dict.ui.contact}
-            </ButtonLink>
-          </div>
-        </div>
-      ) : null}
+        ) : null}
+      </div>
     </header>
   );
 }
