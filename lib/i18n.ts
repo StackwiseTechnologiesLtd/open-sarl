@@ -91,6 +91,7 @@ const dictionaries = {
           text: "Du concept à des investissements bancables — diagnostics, faisabilité, pipelines et structuration bailleurs.",
           quote: "",
           cta: "Discuter d'un programme",
+          ctaHref: "#contact",
         },
         {
           dept: "Livrables prêts pour décision",
@@ -100,6 +101,7 @@ const dictionaries = {
           text: "Notes de décision pour Ministre, Gouverneur et Comités de pilotage — options, coûts, risques et recommandations.",
           quote: "",
           cta: "Voir les livrables types",
+          ctaHref: "#missions",
         },
       ],
     },
@@ -303,6 +305,7 @@ const dictionaries = {
           text: "From concept to bankable investments — diagnostics, feasibility, pipelines, and donor-ready structuring.",
           quote: "",
           cta: "Discuss a program",
+          ctaHref: "#contact",
         },
         {
           dept: "Decision-ready outputs",
@@ -312,6 +315,7 @@ const dictionaries = {
           text: "Decision briefs for Ministers, Governors, and Steering Committees — options, costs, risks, and recommendations.",
           quote: "",
           cta: "View typical outputs",
+          ctaHref: "#missions",
         },
       ],
     },

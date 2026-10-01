@@ -130,7 +130,7 @@ export function HeroCarousel({ home, dict }: { home: string; dict: Dictionary })
               >
                 <p className="hero-accent-line text-white/88">{slide.text}</p>
                 <div className="mt-7 sm:mt-8">
-                  <PillLink href={`${home}#contact`}>{slide.cta}</PillLink>
+                  <PillLink href={`${home}${slide.ctaHref}`}>{slide.cta}</PillLink>
                 </div>
               </motion.div>
             </AnimatePresence>
