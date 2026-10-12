@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { getDictionary, isLocale, locales } from "@/lib/i18n";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 type Props = { children: React.ReactNode; params: Promise<{ locale: string }> };
 
@@ -32,7 +32,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     <>
       <a
         href="#contenu"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[60] focus:bg-white focus:px-4 focus:py-2"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-60 focus:bg-white focus:px-4 focus:py-2"
       >
         {dict.ui.skip}
       </a>
