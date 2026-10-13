@@ -50,9 +50,9 @@ export default async function BrochurePage({ params }: Props) {
         </section>
 
         <section className="mt-10">
-          <h2 className="font-headline-md text-2xl font-semibold">{dict.missions.title}</h2>
+          <h2 className="font-headline-md text-2xl font-semibold">{dict.livrables.title}</h2>
           <ul className="mt-4 space-y-3">
-            {dict.missions.items.map((item) => (
+            {dict.livrables.items.map((item) => (
               <li key={item.title}>
                 <span className="font-bold">{item.title}. </span>
                 <span className="text-on-surface-variant">{item.text}</span>
@@ -62,9 +62,9 @@ export default async function BrochurePage({ params }: Props) {
         </section>
 
         <section className="mt-10">
-          <h2 className="font-headline-md text-2xl font-semibold">{dict.mobilisation.title}</h2>
+          <h2 className="font-headline-md text-2xl font-semibold">{dict.missions.title}</h2>
           <ol className="mt-4 space-y-3">
-            {dict.mobilisation.steps.map((step) => (
+            {dict.missions.steps.map((step) => (
               <li key={step.title}>
                 <span className="font-bold text-primary">{step.range} — {step.title}. </span>
                 <span className="text-on-surface-variant">{step.text}</span>

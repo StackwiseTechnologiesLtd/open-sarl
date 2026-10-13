@@ -19,6 +19,7 @@ describe("locale routing", () => {
     expect(isNavActive("/fr#expertise", "", "/fr")).toBe(false);
     expect(isNavActive("/fr#expertise", "#expertise", "/fr")).toBe(true);
     expect(isNavActive("/fr#expertise", "#expertise", "/fr/brochure")).toBe(false);
+    expect(isNavActive("/fr#poles", "#poles-advisory", "/fr")).toBe(true);
   });
 });
 
@@ -26,7 +27,7 @@ describe("bilingual content", () => {
   it("keeps the same navigation targets in French and English", () => {
     const targets = locales.map((locale) => getDictionary(locale).nav.map((item) => item.href));
     expect(targets[0]).toEqual(targets[1]);
-    expect(targets[0]).toEqual(["#missions", "#poles", "#expertise", "#secteurs", "#missions"]);
+    expect(targets[0]).toEqual(["#missions", "#poles", "#expertise", "#secteurs", "#portfolio"]);
   });
 
   it("matches the original homepage structure from code.html", () => {
@@ -34,8 +35,8 @@ describe("bilingual content", () => {
       const copy = getDictionary(locale);
       expect(copy.hero.departments).toHaveLength(2);
       expect(copy.method.items).toHaveLength(4);
-      expect(copy.missions.items).toHaveLength(3);
-      expect(copy.mobilisation.steps).toHaveLength(3);
+      expect(copy.livrables.items).toHaveLength(3);
+      expect(copy.missions.steps).toHaveLength(3);
       expect(copy.sectors.items).toHaveLength(4);
       expect(copy.modes.items).toHaveLength(4);
     }

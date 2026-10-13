@@ -6,6 +6,8 @@ import { Container } from "@/components/container";
 import { HeroCarousel } from "@/components/hero-carousel";
 import { Icon } from "@/components/icon";
 import { Reveal } from "@/components/reveal";
+import { PolesSection } from "@/components/poles-section";
+import { PortfolioSection } from "@/components/portfolio-section";
 import { SectionIntro } from "@/components/section-intro";
 import { missionImages, positioningImage, sectorImages } from "@/lib/images";
 import { mailHref, type Dictionary, type Locale } from "@/lib/i18n";
@@ -30,6 +32,8 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
   return (
     <main>
       <HeroCarousel home={home} dict={dict} />
+
+      <PolesSection dict={dict} />
 
       <section id="expertise" className="section-shell py-section-gap">
         <Container>
@@ -139,19 +143,38 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
         </Container>
       </section>
 
-      <section id="missions" className="section-shell py-section-gap">
+      <section id="missions" className="section-shell-muted py-section-gap">
+        <Container>
+          <Reveal>
+            <SectionIntro title={dict.missions.title} intro={dict.missions.intro} align="center" className="mb-8 sm:mb-10" />
+          </Reveal>
+          <div className="grid grid-cols-1 gap-5 sm:gap-gutter md:grid-cols-3">
+            {dict.missions.steps.map((step, index) => (
+              <Reveal key={step.title} delay={index * 0.05} className="h-full">
+                <article className={`step-card flex h-full flex-col p-6 sm:p-8 ${stepBorderClass(step.border)} border-t-4`}>
+                  <div className={`step-card-index mb-3 sm:mb-4 ${stepTextClass(step.border)}`}>{step.range}</div>
+                  <h4 className="font-headline-md mb-2 text-lg font-semibold">{step.title}</h4>
+                  <p className="text-on-surface-variant text-sm leading-relaxed">{step.text}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section id="livrables" className="section-shell py-section-gap">
         <Container>
           <div className="mb-10 flex flex-col gap-5 sm:mb-12 md:flex-row md:items-end md:justify-between">
             <Reveal>
-              <SectionIntro title={dict.missions.title} intro={dict.missions.intro} />
+              <SectionIntro title={dict.livrables.title} intro={dict.livrables.intro} />
             </Reveal>
             <ButtonLink href={`${home}/brochure`} variant="ghost" className="hidden shrink-0 md:inline-flex">
-              {dict.missions.catalog}
+              {dict.livrables.catalog}
               <Icon name="chevron_right" className="h-5 w-5" />
             </ButtonLink>
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-gutter lg:grid-cols-3">
-            {dict.missions.items.map((item, index) => (
+            {dict.livrables.items.map((item, index) => (
               <Reveal key={item.title} delay={index * 0.05} className="h-full">
                 <article className="mission-card group flex h-full flex-col">
                   <div className="mission-media relative mb-4 aspect-[16/10]">
@@ -172,28 +195,9 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
           </div>
           <div className="mt-8 md:hidden">
             <ButtonLink href={`${home}/brochure`} variant="ghost" full className="w-full sm:w-auto">
-              {dict.missions.catalog}
+              {dict.livrables.catalog}
               <Icon name="chevron_right" className="h-5 w-5" />
             </ButtonLink>
-          </div>
-        </Container>
-      </section>
-
-      <section id="mobilisation" className="section-shell-muted py-section-gap">
-        <Container>
-          <Reveal>
-            <SectionIntro title={dict.mobilisation.title} align="center" className="mb-8 sm:mb-10" />
-          </Reveal>
-          <div className="grid grid-cols-1 gap-5 sm:gap-gutter md:grid-cols-3">
-            {dict.mobilisation.steps.map((step, index) => (
-              <Reveal key={step.title} delay={index * 0.05} className="h-full">
-                <article className={`step-card flex h-full flex-col p-6 sm:p-8 ${stepBorderClass(step.border)} border-t-4`}>
-                  <div className={`step-card-index mb-3 sm:mb-4 ${stepTextClass(step.border)}`}>{step.range}</div>
-                  <h4 className="font-headline-md mb-2 text-lg font-semibold">{step.title}</h4>
-                  <p className="text-on-surface-variant text-sm leading-relaxed">{step.text}</p>
-                </article>
-              </Reveal>
-            ))}
           </div>
         </Container>
       </section>
@@ -248,6 +252,8 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
           </div>
         </Container>
       </section>
+
+      <PortfolioSection dict={dict} />
 
       <section id="contact" className="cta-section relative overflow-hidden py-section-gap">
         <div className="cta-pattern absolute inset-0" />

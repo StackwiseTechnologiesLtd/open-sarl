@@ -23,10 +23,20 @@ export function localePath(pathname: string, locale: Locale) {
   return `/${locale}${normalized}${hash}`;
 }
 
+const polesHashes = ["#poles", "#poles-advisory", "#poles-engineering"] as const;
+
 export function isNavActive(href: string, hash: string, pathname: string) {
   if (!/^\/(fr|en)$/.test(pathname)) return false;
   if (!hash) return false;
+  const anchor = href.includes("#") ? href.slice(href.indexOf("#")) : href;
+  if (anchor === "#poles") {
+    return polesHashes.includes(hash as (typeof polesHashes)[number]);
+  }
   return href.endsWith(hash);
+}
+
+export function isPolesNavHash(hash: string) {
+  return polesHashes.includes(hash as (typeof polesHashes)[number]);
 }
 
 type MailKind = "project" | "partner" | "newsletter" | "recruitment";
@@ -71,10 +81,76 @@ const dictionaries = {
       carouselLabel: "Pôles OPEN",
     },
     nav: [
+      { href: "#missions", label: "Missions" },
       { href: "#poles", label: "Pôles" },
+      { href: "#expertise", label: "Expertise" },
       { href: "#secteurs", label: "Secteurs" },
-      { href: "#missions", label: "Portfolio" },
+      { href: "#portfolio", label: "Portfolio" },
     ],
+    polesMenu: {
+      ariaLabel: "Pôles OPEN — Infrastructure Advisory et Engineering & Delivery",
+      kicker: "Deux métiers complémentaires au sein d'une même société",
+      overviewHref: "#poles",
+      overviewLabel: "Vue d'ensemble des pôles",
+      practices: [
+        {
+          id: "advisory",
+          href: "#poles-advisory",
+          kicker: "Pôle 1",
+          title: "OPEN Infrastructure Advisory",
+          summary:
+            "Préparation de projets, stratégie, diagnostic, bancabilité, structuration, AMO, assistance aux gouvernements et bailleurs, appui aux UGP/PIU, gestion des risques et pilotage de programmes.",
+          highlights: "Préparation • Bancabilité • Stratégie • Appui institutionnel",
+        },
+        {
+          id: "engineering",
+          href: "#poles-engineering",
+          kicker: "Pôle 2",
+          title: "OPEN Engineering & Delivery",
+          summary:
+            "Études techniques, ingénierie, conception, maîtrise d'œuvre, contrôle et supervision, assistance à la réalisation et appui à l'exécution des infrastructures.",
+          highlights: "Ingénierie • Conception • Supervision • Appui à la mise en œuvre",
+        },
+      ],
+    },
+    polesSection: {
+      title: "Nos pôles",
+      intro:
+        "OPEN sarl structure son offre autour de deux branches complémentaires — de la préparation et la bancabilité jusqu'à l'ingénierie et l'appui à l'exécution.",
+      practices: [
+        {
+          id: "advisory",
+          icon: "account_balance" as IconName,
+          kicker: "Infrastructure Advisory",
+          title: "OPEN Infrastructure Advisory",
+          summary:
+            "Préparation de projets, stratégie, diagnostic, bancabilité, structuration, AMO, assistance aux gouvernements et bailleurs, appui aux UGP/PIU, gestion des risques et pilotage de programmes.",
+          highlights: "Préparation • Bancabilité • Stratégie • Appui institutionnel",
+        },
+        {
+          id: "engineering",
+          icon: "construction" as IconName,
+          kicker: "Engineering & Delivery",
+          title: "OPEN Engineering & Delivery",
+          summary:
+            "Études techniques, ingénierie, conception, maîtrise d'œuvre, contrôle et supervision, assistance à la réalisation et appui à l'exécution — sans se présenter comme entreprise de construction générale.",
+          highlights: "Ingénierie • Conception • Supervision • Appui à la mise en œuvre",
+        },
+      ],
+    },
+    portfolio: {
+      title: "Portfolio",
+      intro:
+        "Expériences, projets et références — enrichis progressivement au fur et à mesure de leur validation.",
+      categories: [
+        "Water & Urban Infrastructure",
+        "Energy & Power Systems",
+        "Strategic Corridors & Transport",
+        "Donor-funded Infrastructure Programmes",
+        "Project Preparation & Institutional Support",
+      ],
+      note: "Chaque référence pourra détailler projet, secteur, localisation, client, rôle d'OPEN, livrables et résultats clés.",
+    },
     hero: {
       imageAlt: "Programmes d'infrastructures stratégiques en RDC",
       centerCta: "Découvrir nos services",
@@ -108,7 +184,7 @@ const dictionaries = {
           text: "Notes de décision pour Ministre, Gouverneur et Comités de pilotage — options, coûts, risques et recommandations.",
           quote: "",
           cta: "Voir les livrables types",
-          ctaHref: "#missions",
+          ctaHref: "#livrables",
         },
       ],
     },
@@ -184,7 +260,7 @@ const dictionaries = {
         },
       ],
     },
-    missions: {
+    livrables: {
       title: "Livrables typiques",
       intro:
         "Des outputs concrets pour alimenter les décisions, les études et les dossiers bailleurs.",
@@ -204,8 +280,10 @@ const dictionaries = {
         },
       ],
     },
-    mobilisation: {
+    missions: {
       title: "Modalités de collaboration",
+      intro:
+        "Comment OPEN peut intervenir auprès d'un client — du diagnostic rapide à l'appui intégré au sein des équipes de programme.",
       steps: [
         {
           range: "01",
@@ -308,8 +386,9 @@ const dictionaries = {
       ],
       companyLinks: [
         { href: "#missions", label: "Missions" },
+        { href: "#poles", label: "Pôles" },
         { href: "#expertise", label: "Expertise" },
-        { href: "#missions", label: "Portfolio" },
+        { href: "#portfolio", label: "Portfolio" },
       ],
       sectors: "Secteurs",
       company: "Entreprise",
@@ -380,10 +459,75 @@ const dictionaries = {
       carouselLabel: "OPEN practices",
     },
     nav: [
+      { href: "#missions", label: "Missions" },
       { href: "#poles", label: "Practices" },
+      { href: "#expertise", label: "Expertise" },
       { href: "#secteurs", label: "Sectors" },
-      { href: "#missions", label: "Portfolio" },
+      { href: "#portfolio", label: "Portfolio" },
     ],
+    polesMenu: {
+      ariaLabel: "OPEN practices — Infrastructure Advisory and Engineering & Delivery",
+      kicker: "Two complementary practices within one firm",
+      overviewHref: "#poles",
+      overviewLabel: "Overview of our practices",
+      practices: [
+        {
+          id: "advisory",
+          href: "#poles-advisory",
+          kicker: "Practice 1",
+          title: "OPEN Infrastructure Advisory",
+          summary:
+            "Project preparation, strategy, diagnostics, bankability, structuring, owner's advisory, support to governments and donors, PIU/UGP support, risk management, and programme management.",
+          highlights: "Preparation • Bankability • Strategy • Institutional support",
+        },
+        {
+          id: "engineering",
+          href: "#poles-engineering",
+          kicker: "Practice 2",
+          title: "OPEN Engineering & Delivery",
+          summary:
+            "Technical studies, engineering, design, supervision, construction oversight, implementation assistance, and infrastructure delivery support.",
+          highlights: "Engineering • Design • Supervision • Implementation support",
+        },
+      ],
+    },
+    polesSection: {
+      title: "Our practices",
+      intro:
+        "OPEN sarl is structured around two complementary branches — from preparation and bankability through engineering and delivery support.",
+      practices: [
+        {
+          id: "advisory",
+          icon: "account_balance" as IconName,
+          kicker: "Infrastructure Advisory",
+          title: "OPEN Infrastructure Advisory",
+          summary:
+            "Project preparation, strategy, diagnostics, bankability, structuring, owner's advisory, support to governments and donors, PIU/UGP support, risk management, and programme management.",
+          highlights: "Preparation • Bankability • Strategy • Institutional support",
+        },
+        {
+          id: "engineering",
+          icon: "construction" as IconName,
+          kicker: "Engineering & Delivery",
+          title: "OPEN Engineering & Delivery",
+          summary:
+            "Technical studies, engineering, design, supervision, construction oversight, and implementation support — without positioning OPEN as a general contractor.",
+          highlights: "Engineering • Design • Supervision • Implementation support",
+        },
+      ],
+    },
+    portfolio: {
+      title: "Portfolio",
+      intro: "Experience, projects, and references — expanded progressively as they are validated.",
+      categories: [
+        "Water & Urban Infrastructure",
+        "Energy & Power Systems",
+        "Strategic Corridors & Transport",
+        "Donor-funded Infrastructure Programmes",
+        "Project Preparation & Institutional Support",
+      ],
+      note: "Each reference will cover project, sector, location, client, OPEN's role, deliverables, and key results where available.",
+    },
     hero: {
       imageAlt: "Strategic infrastructure programs in the DRC",
       centerCta: "Explore our services",
@@ -417,7 +561,7 @@ const dictionaries = {
           text: "Decision briefs for Ministers, Governors, and Steering Committees — options, costs, risks, and recommendations.",
           quote: "",
           cta: "View typical outputs",
-          ctaHref: "#missions",
+          ctaHref: "#livrables",
         },
       ],
     },
@@ -493,7 +637,7 @@ const dictionaries = {
         },
       ],
     },
-    missions: {
+    livrables: {
       title: "Typical outputs delivered",
       intro:
         "Concrete deliverables to support decisions, studies, and donor-facing dossiers.",
@@ -513,8 +657,10 @@ const dictionaries = {
         },
       ],
     },
-    mobilisation: {
-      title: "How OPEN works with government counterparts",
+    missions: {
+      title: "How we engage",
+      intro:
+        "How OPEN can support a client — from rapid diagnostics to embedded roles within programme teams.",
       steps: [
         {
           range: "01",
@@ -617,8 +763,9 @@ const dictionaries = {
       ],
       companyLinks: [
         { href: "#missions", label: "Missions" },
+        { href: "#poles", label: "Practices" },
         { href: "#expertise", label: "Expertise" },
-        { href: "#missions", label: "Portfolio" },
+        { href: "#portfolio", label: "Portfolio" },
       ],
       sectors: "Sectors",
       company: "Company",

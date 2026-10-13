@@ -66,7 +66,7 @@ export function HeroCarousel({ home, dict }: { home: string; dict: Dictionary })
   return (
     <>
       <section
-        id="poles"
+        id="hero"
         className="relative flex min-h-[100dvh] flex-col overflow-hidden lg:max-h-[920px]"
         aria-roledescription="carousel"
         aria-label={dict.ui.carouselLabel}

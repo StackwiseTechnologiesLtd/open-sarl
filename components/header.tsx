@@ -1,25 +1,31 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { ButtonLink } from "@/components/button";
 import { Icon } from "@/components/icon";
 import { LanguageSwitch } from "@/components/language-switch";
 import { Logo } from "@/components/logo";
+import { PolesNavPanel } from "@/components/poles-nav-panel";
 import { isNavActive, type Dictionary, type Locale } from "@/lib/i18n";
 
 const SCROLL_RANGE = 120;
 const HEADER_OFFSET = 116;
+const POLES_HREF = "#poles";
 
 export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const pathname = usePathname();
   const [hash, setHash] = useState("");
   const [open, setOpen] = useState(false);
+  const [mobilePolesOpen, setMobilePolesOpen] = useState(false);
+  const [polesMenuOpen, setPolesMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const polesCloseTimer = useRef<number | null>(null);
   const home = `/${locale}`;
   const isHome = pathname === home;
   const solid = isHome ? scrollProgress : 1;
   const light = 1 - solid;
+  const panelTone = solid > 0.5 ? "solid" : "light";
 
   function scrollToHash(hash: string, behavior?: ScrollBehavior) {
     if (!hash) return;
@@ -28,6 +34,23 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const top = target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
     window.scrollTo({ top, behavior: behavior ?? (reduce ? "auto" : "smooth") });
+  }
+
+  function clearPolesCloseTimer() {
+    if (polesCloseTimer.current !== null) {
+      window.clearTimeout(polesCloseTimer.current);
+      polesCloseTimer.current = null;
+    }
+  }
+
+  function schedulePolesClose() {
+    clearPolesCloseTimer();
+    polesCloseTimer.current = window.setTimeout(() => setPolesMenuOpen(false), 120);
+  }
+
+  function openPolesMenu() {
+    clearPolesCloseTimer();
+    setPolesMenuOpen(true);
   }
 
   useEffect(() => {
@@ -54,6 +77,15 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   }, [open]);
 
   useEffect(() => {
+    if (!polesMenuOpen) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setPolesMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [polesMenuOpen]);
+
+  useEffect(() => {
     if (!isHome) return;
     let frame = 0;
     const onScroll = () => {
@@ -71,15 +103,17 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   }, [isHome]);
 
   function follow(event: { preventDefault: () => void }, href: string) {
-    const hash = href.includes("#") ? href.slice(href.indexOf("#")) : "";
-    if (!hash) return;
+    const nextHash = href.includes("#") ? href.slice(href.indexOf("#")) : "";
+    if (!nextHash) return;
     event.preventDefault();
-    if (window.location.hash !== hash) {
-      window.history.pushState(null, "", `${window.location.pathname}${window.location.search}${hash}`);
+    if (window.location.hash !== nextHash) {
+      window.history.pushState(null, "", `${window.location.pathname}${window.location.search}${nextHash}`);
     }
-    setHash(hash);
+    setHash(nextHash);
     setOpen(false);
-    scrollToHash(hash);
+    setMobilePolesOpen(false);
+    setPolesMenuOpen(false);
+    scrollToHash(nextHash);
   }
 
   const links = dict.nav.map((item) => ({ ...item, href: `${home}${item.href}` }));
@@ -99,9 +133,53 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       : "font-label-md text-label-md text-on-surface-variant hover:text-primary";
   }
 
+  function isPolesLink(href: string) {
+    return href.endsWith(POLES_HREF);
+  }
+
+  function renderDesktopNav(tone: "light" | "solid", layerKey: string) {
+    return links.map((link) => {
+      if (isPolesLink(link.href)) {
+        const active = isNavActive(link.href, hash, pathname);
+        return (
+          <button
+            key={`${layerKey}-poles`}
+            type="button"
+            aria-expanded={polesMenuOpen}
+            aria-haspopup="true"
+            aria-controls="poles-nav-panel"
+            onMouseEnter={openPolesMenu}
+            onFocus={openPolesMenu}
+            onClick={() => setPolesMenuOpen((value) => !value)}
+            className={`inline-flex items-center gap-0.5 transition-colors duration-200 ${navLinkClass(active, tone)}`}
+          >
+            {link.label}
+            <Icon
+              name="chevron_right"
+              className={`h-4 w-4 transition-transform ${polesMenuOpen ? "rotate-90" : "rotate-0"} ${tone === "light" ? "text-white/60" : "text-primary/60"}`}
+            />
+          </button>
+        );
+      }
+
+      return (
+        <a
+          key={`${layerKey}-${link.href}`}
+          href={link.href}
+          onClick={(event) => follow(event, link.href)}
+          aria-current={isNavActive(link.href, hash, pathname) ? "page" : undefined}
+          className={`transition-colors duration-200 ${navLinkClass(isNavActive(link.href, hash, pathname), tone)}`}
+        >
+          {link.label}
+        </a>
+      );
+    });
+  }
+
   return (
     <header
       className={`site-header top-0 z-50 print:hidden ${isHome ? "fixed right-0 left-0" : "sticky"}`}
+      onMouseLeave={schedulePolesClose}
     >
       <div
         className={`site-header-bar mx-auto w-full max-w-container-max ${solid > 0.05 ? "is-scrolled" : ""}`}
@@ -131,33 +209,14 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               style={{ opacity: light, pointerEvents: light > 0.4 ? "auto" : "none" }}
               aria-hidden={light < 0.5}
             >
-              {links.map((link) => (
-                <a
-                  key={`light-${link.href}`}
-                  href={link.href}
-                  onClick={(event) => follow(event, link.href)}
-                  className={`transition-colors duration-200 ${navLinkClass(isNavActive(link.href, hash, pathname), "light")}`}
-                >
-                  {link.label}
-                </a>
-              ))}
+              {renderDesktopNav("light", "light")}
             </div>
             <div
               className="header-fade-layer absolute inset-0 flex items-center justify-center gap-4 xl:gap-stack-lg"
               style={{ opacity: solid, pointerEvents: solid > 0.4 ? "auto" : "none" }}
               aria-hidden={solid < 0.5}
             >
-              {links.map((link) => (
-                <a
-                  key={`solid-${link.href}`}
-                  href={link.href}
-                  onClick={(event) => follow(event, link.href)}
-                  aria-current={isNavActive(link.href, hash, pathname) ? "page" : undefined}
-                  className={`transition-colors duration-200 ${navLinkClass(isNavActive(link.href, hash, pathname), "solid")}`}
-                >
-                  {link.label}
-                </a>
-              ))}
+              {renderDesktopNav("solid", "solid")}
             </div>
           </div>
 
@@ -238,6 +297,68 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               {links.map((link) => {
                 const active = isNavActive(link.href, hash, pathname);
                 const lightMenu = solid < 0.5;
+
+                if (isPolesLink(link.href)) {
+                  return (
+                    <div key={`${link.href}-${link.label}-mobile`} className="border-b border-inherit">
+                      <button
+                        type="button"
+                        aria-expanded={mobilePolesOpen}
+                        onClick={() => setMobilePolesOpen((value) => !value)}
+                        className={
+                          lightMenu
+                            ? `flex w-full items-center justify-between py-3.5 font-label-md text-label-md ${active ? "font-bold text-white" : "text-white/80"}`
+                            : `flex w-full items-center justify-between py-3.5 font-label-md text-label-md ${active ? "font-bold text-primary" : "text-on-surface"}`
+                        }
+                      >
+                        {link.label}
+                        <Icon
+                          name="chevron_right"
+                          className={`h-4 w-4 transition-transform ${mobilePolesOpen ? "rotate-90" : ""} ${lightMenu ? "text-white/50" : "text-primary/50"}`}
+                        />
+                      </button>
+                      {mobilePolesOpen ? (
+                        <div
+                          className={
+                            lightMenu
+                              ? "mb-3 space-y-2 border-l border-white/15 pl-4"
+                              : "mb-3 space-y-2 border-l border-outline-variant/40 pl-4"
+                          }
+                        >
+                          {dict.polesMenu.practices.map((practice) => {
+                            const practiceHref = `${home}${practice.href}`;
+                            return (
+                              <a
+                                key={practice.id}
+                                href={practiceHref}
+                                onClick={(event) => follow(event, practiceHref)}
+                                className={
+                                  lightMenu
+                                    ? "block py-2 text-sm text-white/75 hover:text-white"
+                                    : "block py-2 text-sm text-on-surface-variant hover:text-primary"
+                                }
+                              >
+                                {practice.title}
+                              </a>
+                            );
+                          })}
+                          <a
+                            href={`${home}${dict.polesMenu.overviewHref}`}
+                            onClick={(event) => follow(event, `${home}${dict.polesMenu.overviewHref}`)}
+                            className={
+                              lightMenu
+                                ? "block py-2 text-sm font-semibold text-white/90"
+                                : "block py-2 text-sm font-semibold text-primary"
+                            }
+                          >
+                            {dict.polesMenu.overviewLabel}
+                          </a>
+                        </div>
+                      ) : null}
+                    </div>
+                  );
+                }
+
                 return (
                   <a
                     key={`${link.href}-${link.label}-mobile`}
@@ -271,6 +392,23 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           </div>
         ) : null}
       </div>
+
+      {polesMenuOpen ? (
+        <div
+          id="poles-nav-panel"
+          className="hidden lg:block"
+          onMouseEnter={openPolesMenu}
+          onMouseLeave={schedulePolesClose}
+        >
+          <PolesNavPanel
+            home={home}
+            dict={dict}
+            tone={panelTone}
+            onNavigate={follow}
+            onClose={() => setPolesMenuOpen(false)}
+          />
+        </div>
+      ) : null}
     </header>
   );
 }

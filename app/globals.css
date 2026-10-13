@@ -420,6 +420,21 @@ section[id] {
     0 1px 3px rgba(10, 22, 40, calc(var(--header-progress) * 0.06));
 }
 
+.nav-poles-panel {
+  animation: nav-poles-enter 0.22s ease-out;
+}
+
+@keyframes nav-poles-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .site-header-bar > nav,
 .site-header-bar > #mobile-nav {
   position: relative;
