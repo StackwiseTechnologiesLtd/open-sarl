@@ -807,7 +807,7 @@ section[id] {
 
 .project-detail-layout {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
   align-items: start;
 }
@@ -822,6 +822,7 @@ section[id] {
 .project-detail-main {
   display: grid;
   gap: 1.25rem;
+  min-width: 0;
 }
 
 .project-detail-panel {
@@ -829,6 +830,8 @@ section[id] {
   border: 1px solid color-mix(in srgb, var(--color-outline-variant) 45%, transparent);
   background: #fff;
   padding: 1.375rem 1.25rem 1.5rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 @media (min-width: 640px) {
@@ -876,6 +879,25 @@ section[id] {
   margin-top: 0.5rem;
   padding-top: 1.25rem;
   border-top: 1px solid color-mix(in srgb, var(--color-outline-variant) 40%, transparent);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 480px) {
+  .project-facts--in-panel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .project-facts--in-panel {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .project-facts--in-panel {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
 }
 
 .project-more-sidebar {
@@ -979,6 +1001,8 @@ section[id] {
   font-size: 0.9375rem;
   line-height: 1.4;
   color: var(--color-on-surface);
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .project-detail-list {
@@ -1567,6 +1591,11 @@ section[id] {
   .page-main {
     padding-top: 7rem;
   }
+}
+
+/* Pole / project pages: fixed header overlays cinematic hero — no extra main offset */
+.page-main--cinema {
+  padding-top: 0;
 }
 
 .btn-pill-icon {

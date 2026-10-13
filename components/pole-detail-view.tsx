@@ -30,7 +30,7 @@ export function PoleDetailView({
   const polesLabel = dict.nav.find((item) => item.href === "#poles")?.label ?? "Pôles";
 
   return (
-    <main className="page-main pb-section-gap">
+    <main className="page-main page-main--cinema pb-section-gap">
       <PolePageHero
         imageSrc={getPoleHeroImage(pole)}
         imageAlt={content.title}

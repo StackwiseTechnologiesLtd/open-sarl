@@ -23,9 +23,11 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const polesCloseTimer = useRef<number | null>(null);
   const home = `/${locale}`;
   const isHome = pathname === home;
-  const scrollSolid = isHome ? scrollProgress : 1;
+  const isCinemaPage = pathname.includes("/poles/");
+  const useFixedHeader = isHome || isCinemaPage;
+  const scrollSolid = useFixedHeader ? scrollProgress : 1;
   const polesExpanded = polesMenuOpen || (open && mobilePolesOpen);
-  const headerSolid = isHome && polesExpanded ? 1 : scrollSolid;
+  const headerSolid = useFixedHeader && polesExpanded ? 1 : scrollSolid;
   const headerLight = 1 - headerSolid;
 
   function scrollToHash(hash: string, behavior?: ScrollBehavior) {
@@ -87,7 +89,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   }, [polesMenuOpen]);
 
   useEffect(() => {
-    if (!isHome) return;
+    if (!useFixedHeader) return;
     let frame = 0;
     const onScroll = () => {
       cancelAnimationFrame(frame);
@@ -101,7 +103,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", onScroll);
     };
-  }, [isHome]);
+  }, [useFixedHeader]);
 
   function follow(event: { preventDefault: () => void }, href: string) {
     const nextHash = href.includes("#") ? href.slice(href.indexOf("#")) : "";
@@ -196,7 +198,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   }
 
   return (
-    <header className={`site-header top-0 z-50 print:hidden ${isHome ? "fixed right-0 left-0" : "sticky"}`}>
+    <header className={`site-header top-0 z-50 print:hidden ${useFixedHeader ? "fixed right-0 left-0" : "sticky"}`}>
       <div
         className={`site-header-bar mx-auto w-full max-w-container-max ${headerSolid > 0.05 || polesExpanded ? "is-scrolled" : ""} ${polesExpanded ? "is-poles-open" : ""}`}
         style={barStyle}
