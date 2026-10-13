@@ -23,9 +23,10 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const polesCloseTimer = useRef<number | null>(null);
   const home = `/${locale}`;
   const isHome = pathname === home;
-  const solid = isHome ? scrollProgress : 1;
-  const displaySolid = isHome && polesMenuOpen ? 1 : solid;
-  const light = 1 - displaySolid;
+  const scrollSolid = isHome ? scrollProgress : 1;
+  const polesExpanded = polesMenuOpen || (open && mobilePolesOpen);
+  const headerSolid = isHome && polesExpanded ? 1 : scrollSolid;
+  const headerLight = 1 - headerSolid;
 
   function scrollToHash(hash: string, behavior?: ScrollBehavior) {
     if (!hash) return;
@@ -131,8 +132,14 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const links = dict.nav.map((item) => ({ ...item, href: `${home}${item.href}` }));
 
   const barStyle = {
-    "--header-progress": displaySolid,
+    "--header-progress": headerSolid,
   } as CSSProperties;
+
+  function closeMenus() {
+    setPolesMenuOpen(false);
+    setOpen(false);
+    setMobilePolesOpen(false);
+  }
 
   function navLinkClass(active: boolean, tone: "light" | "solid") {
     if (tone === "light") {
@@ -191,7 +198,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
     <header className={`site-header top-0 z-50 print:hidden ${isHome ? "fixed right-0 left-0" : "sticky"}`}>
       <div
-        className={`site-header-bar mx-auto w-full max-w-container-max ${displaySolid > 0.05 || polesMenuOpen ? "is-scrolled" : ""} ${polesMenuOpen ? "is-poles-open" : ""}`}
+        className={`site-header-bar mx-auto w-full max-w-container-max ${headerSolid > 0.05 || polesExpanded ? "is-scrolled" : ""} ${polesExpanded ? "is-poles-open" : ""}`}
         style={barStyle}
         onMouseLeave={schedulePolesClose}
       >
@@ -199,14 +206,14 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <div className="relative h-9 w-[6.75rem] shrink-0 sm:h-10 sm:w-[8.5rem]">
             <div
               className="header-fade-layer absolute inset-0 flex items-center"
-              style={{ opacity: light, pointerEvents: light > 0.4 ? "auto" : "none" }}
+              style={{ opacity: headerLight, pointerEvents: headerLight > 0.4 ? "auto" : "none" }}
             >
               <Logo href={home} tone="light" height={36} priority className="sm:hidden" />
               <Logo href={home} tone="light" height={40} priority className="hidden sm:block" />
             </div>
             <div
               className="header-fade-layer absolute inset-0 flex items-center"
-              style={{ opacity: solid, pointerEvents: solid > 0.4 ? "auto" : "none" }}
+              style={{ opacity: headerSolid, pointerEvents: headerSolid > 0.4 ? "auto" : "none" }}
             >
               <Logo href={home} tone="brand" height={36} className="sm:hidden" />
               <Logo href={home} tone="brand" height={40} className="hidden sm:block" />
@@ -216,15 +223,15 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <div className="relative hidden min-w-0 lg:flex lg:flex-1 lg:justify-center">
             <div
               className="header-fade-layer flex items-center gap-4 xl:gap-stack-lg"
-              style={{ opacity: light, pointerEvents: light > 0.4 ? "auto" : "none" }}
-              aria-hidden={light < 0.5}
+              style={{ opacity: headerLight, pointerEvents: headerLight > 0.4 ? "auto" : "none" }}
+              aria-hidden={headerLight < 0.5}
             >
               {renderDesktopNav("light", "light")}
             </div>
             <div
               className="header-fade-layer absolute inset-0 flex items-center justify-center gap-4 xl:gap-stack-lg"
-              style={{ opacity: solid, pointerEvents: solid > 0.4 ? "auto" : "none" }}
-              aria-hidden={solid < 0.5}
+              style={{ opacity: headerSolid, pointerEvents: headerSolid > 0.4 ? "auto" : "none" }}
+              aria-hidden={headerSolid < 0.5}
             >
               {renderDesktopNav("solid", "solid")}
             </div>
@@ -232,19 +239,19 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
           <div className="relative flex shrink-0 items-center gap-2.5 sm:gap-4">
             <div className="relative">
-              <div className="header-fade-layer" style={{ opacity: light, pointerEvents: light > 0.4 ? "auto" : "none" }}>
+              <div className="header-fade-layer" style={{ opacity: headerLight, pointerEvents: headerLight > 0.4 ? "auto" : "none" }}>
                 <LanguageSwitch locale={locale} pathname={pathname} hash={hash} label={dict.ui.languageLabel} tone="light" />
               </div>
               <div
                 className="header-fade-layer absolute inset-0"
-                style={{ opacity: solid, pointerEvents: solid > 0.4 ? "auto" : "none" }}
+                style={{ opacity: headerSolid, pointerEvents: headerSolid > 0.4 ? "auto" : "none" }}
               >
                 <LanguageSwitch locale={locale} pathname={pathname} hash={hash} label={dict.ui.languageLabel} tone="default" />
               </div>
             </div>
 
             <div className="relative hidden lg:block">
-              <div className="header-fade-layer" style={{ opacity: light, pointerEvents: light > 0.4 ? "auto" : "none" }}>
+              <div className="header-fade-layer" style={{ opacity: headerLight, pointerEvents: headerLight > 0.4 ? "auto" : "none" }}>
                 <ButtonLink
                   href={`${home}#contact`}
                   onClick={(event) => follow(event, `${home}#contact`)}
@@ -255,7 +262,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               </div>
               <div
                 className="header-fade-layer absolute inset-0 flex items-center"
-                style={{ opacity: solid, pointerEvents: solid > 0.4 ? "auto" : "none" }}
+                style={{ opacity: headerSolid, pointerEvents: headerSolid > 0.4 ? "auto" : "none" }}
               >
                 <ButtonLink
                   href={`${home}#contact`}
@@ -271,7 +278,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               <button
                 type="button"
                 className="header-fade-layer inline-flex h-10 w-10 items-center justify-center rounded-md text-white hover:bg-white/10"
-                style={{ opacity: light, pointerEvents: light > 0.4 ? "auto" : "none" }}
+                style={{ opacity: headerLight, pointerEvents: headerLight > 0.4 ? "auto" : "none" }}
                 aria-expanded={open}
                 aria-controls="mobile-nav"
                 onClick={() => setOpen((value) => !value)}
@@ -282,7 +289,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               <button
                 type="button"
                 className="header-fade-layer absolute inset-0 inline-flex h-10 w-10 items-center justify-center rounded-md text-primary hover:bg-primary/5"
-                style={{ opacity: solid, pointerEvents: solid > 0.4 ? "auto" : "none" }}
+                style={{ opacity: headerSolid, pointerEvents: headerSolid > 0.4 ? "auto" : "none" }}
                 aria-expanded={open}
                 aria-controls="mobile-nav"
                 onClick={() => setOpen((value) => !value)}
@@ -298,7 +305,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <div
             id="mobile-nav"
             className={
-              solid < 0.5
+              headerSolid < 0.5
                 ? "border-t border-white/10 px-4 py-5 lg:hidden"
                 : "border-t border-outline-variant/25 px-4 py-5 lg:hidden"
             }
@@ -306,7 +313,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <div className="flex flex-col">
               {links.map((link) => {
                 const active = isNavActive(link.href, hash, pathname);
-                const lightMenu = solid < 0.5;
+                const lightMenu = headerSolid < 0.5;
 
                 if (isPolesLink(link.href)) {
                   return (
@@ -328,44 +335,14 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                         />
                       </button>
                       {mobilePolesOpen ? (
-                        <div
-                          className={
-                            lightMenu
-                              ? "mb-3 space-y-2 border-l border-white/15 pl-4"
-                              : "mb-3 space-y-2 border-l border-outline-variant/40 pl-4"
-                          }
-                        >
-                          {dict.polesMenu.practices.map((practice) => {
-                            const practiceHref = `${home}${practice.href}`;
-                            return (
-                              <a
-                                key={practice.id}
-                                href={practiceHref}
-                                onClick={() => {
-                                  setOpen(false);
-                                  setMobilePolesOpen(false);
-                                }}
-                                className={
-                                  lightMenu
-                                    ? "block py-2 text-sm text-white/75 hover:text-white"
-                                    : "block py-2 text-sm text-on-surface-variant hover:text-primary"
-                                }
-                              >
-                                {practice.title}
-                              </a>
-                            );
-                          })}
-                          <a
-                            href={`${home}${dict.polesMenu.overviewHref}`}
-                            onClick={(event) => onMenuNavigate(event, `${home}${dict.polesMenu.overviewHref}`)}
-                            className={
-                              lightMenu
-                                ? "block py-2 text-sm font-semibold text-white/90"
-                                : "block py-2 text-sm font-semibold text-primary"
-                            }
-                          >
-                            {dict.polesMenu.overviewLabel}
-                          </a>
+                        <div className="nav-poles-panel-wrap -mx-4 mb-3 px-4">
+                          <PolesNavPanel
+                            home={home}
+                            dict={dict}
+                            layout="drawer"
+                            onNavigate={onMenuNavigate}
+                            onFollowLink={closeMenus}
+                          />
                         </div>
                       ) : null}
                     </div>
@@ -396,7 +373,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 href={`${home}#contact`}
                 onClick={(event) => follow(event, `${home}#contact`)}
                 full
-                variant={solid < 0.5 ? "secondary" : "primary"}
+                variant={headerSolid < 0.5 ? "secondary" : "primary"}
                 className="mt-4"
               >
                 {dict.ui.contact}
@@ -406,8 +383,8 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         ) : null}
 
         {polesMenuOpen ? (
-          <div id="poles-nav-panel" className="hidden lg:block" onMouseEnter={openPolesMenu}>
-            <PolesNavPanel home={home} dict={dict} onNavigate={onMenuNavigate} />
+          <div id="poles-nav-panel" className="nav-poles-panel-wrap hidden lg:block" onMouseEnter={openPolesMenu}>
+            <PolesNavPanel home={home} dict={dict} onNavigate={onMenuNavigate} onFollowLink={() => setPolesMenuOpen(false)} />
           </div>
         ) : null}
       </div>
