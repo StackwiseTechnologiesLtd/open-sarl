@@ -44,15 +44,14 @@ describe("bilingual content", () => {
       const copy = getDictionary(locale);
       expect(copy.hero.departments).toHaveLength(2);
       expect(copy.method.items).toHaveLength(4);
-      expect(copy.livrables.items).toHaveLength(3);
-      expect(copy.missions.steps).toHaveLength(3);
+      expect(copy.livrables.items).toHaveLength(4);
+      expect(copy.missions.steps).toHaveLength(4);
       expect(copy.polesSection.valueChain.steps).toHaveLength(4);
       expect(copy.portfolio.featuredSlugs.length).toBeGreaterThan(0);
       expect(copy.sectors.items).toHaveLength(4);
-      expect(copy.modes.items).toHaveLength(4);
     }
-    expect(getDictionary("fr").hero.platform).toContain("priorités");
-    expect(getDictionary("en").hero.platform).toContain("priorities");
+    expect(getDictionary("fr").hero.platform).toContain("plateforme");
+    expect(getDictionary("en").hero.platform).toContain("integrated");
     expect(getDictionary("fr").method.items.map((item) => item.title)).toEqual([
       "Préparation des projets",
       "Structuration pour financement bailleurs",

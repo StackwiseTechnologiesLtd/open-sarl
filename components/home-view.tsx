@@ -148,7 +148,7 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
           <Reveal>
             <SectionIntro title={dict.missions.title} intro={dict.missions.intro} align="center" className="mb-8 sm:mb-10" />
           </Reveal>
-          <div className="grid grid-cols-1 gap-5 sm:gap-gutter md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 sm:gap-gutter md:grid-cols-2 lg:grid-cols-4">
             {dict.missions.steps.map((step, index) => (
               <Reveal key={step.title} delay={index * 0.05} className="h-full">
                 <article className={`step-card flex h-full flex-col p-6 sm:p-8 ${stepBorderClass(step.border)} border-t-4`}>
@@ -229,26 +229,6 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
                 </article>
               </Reveal>
             ))}
-          </div>
-        </Container>
-      </section>
-
-      <section id="modes" className="section-shell py-section-gap">
-        <Container>
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
-            <Reveal className="lg:col-span-4">
-              <SectionIntro title={dict.modes.title} intro={dict.modes.intro} />
-            </Reveal>
-            <Reveal delay={0.05} className="lg:col-span-8">
-              <ul className="modes-list divide-y divide-outline-variant/45 border-y border-outline-variant/45">
-                {dict.modes.items.map((mode) => (
-                  <li key={mode.title} className="py-5 first:pt-0 last:pb-0 sm:py-6">
-                    <h4 className="text-primary mb-1.5 text-sm font-semibold sm:text-base">{mode.title}</h4>
-                    <p className="text-on-surface-variant max-w-prose text-sm leading-relaxed">{mode.text}</p>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
           </div>
         </Container>
       </section>

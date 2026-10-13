@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { NewsletterForm } from "@/components/newsletter-form";
-import { contactEmail, mailHref, offices, type Dictionary, type Locale } from "@/lib/i18n";
+import { contactEmail, mailHref, offices, resolveNavItemHref, type Dictionary, type Locale } from "@/lib/i18n";
 
 export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const home = `/${locale}`;
   const company = [
-    ...dict.footer.companyLinks.map((item) => ({ href: `${home}${item.href}`, label: item.label })),
+    ...dict.footer.companyLinks.map((item) => ({
+      href: resolveNavItemHref(locale, item.href),
+      label: item.label,
+    })),
     { href: mailHref(locale, "recruitment"), label: dict.footer.recruitment },
   ];
 
@@ -66,6 +69,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </div>
           </div>
         </div>
+        <p className="mt-10 max-w-3xl text-xs leading-relaxed text-white/45 sm:text-sm">{dict.footer.mandateDisclaimer}</p>
         <div className="mt-12 flex w-full min-w-0 flex-col items-start justify-between gap-8 border-t border-white/10 pt-8 sm:mt-16 sm:pt-10 lg:mt-20 lg:flex-row lg:items-center">
           <NewsletterForm locale={locale} label={dict.footer.newsletter} errorLabel={dict.footer.newsletterError} />
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">

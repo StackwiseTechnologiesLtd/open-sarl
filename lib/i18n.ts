@@ -79,10 +79,9 @@ export function mailHref(locale: Locale, kind: MailKind, body?: string) {
 const dictionaries = {
   fr: {
     meta: {
-      title:
-        "OPEN | Conseil en infrastructures (format Gouvernement / Bailleurs)",
+      title: "OPEN | Conseil et ingénierie d'infrastructures",
       description:
-        "OPEN SARL — branche conseil en infrastructures à Kinshasa : préparation, structuration et mise en œuvre de programmes stratégiques, du concept à des investissements bancables et exécutables.",
+        "OPEN SARL — plateforme intégrée advisory et delivery à Kinshasa : préparation, ingénierie et supervision de programmes pour autorités publiques, UGP/PIU et bailleurs en RDC et Afrique centrale.",
     },
     ui: {
       skip: "Aller au contenu",
@@ -92,7 +91,7 @@ const dictionaries = {
       languageLabel: "Langue",
       carouselPrev: "Pôle précédent",
       carouselNext: "Pôle suivant",
-      carouselLabel: "Pôles OPEN",
+      carouselLabel: "Offres OPEN",
     },
     nav: [
       { href: "#missions", label: "Missions" },
@@ -538,9 +537,9 @@ const dictionaries = {
       imageAlt: "Programmes d'infrastructures stratégiques en RDC",
       centerCta: "Découvrir nos services",
       platform:
-        "Transformer les priorités d'infrastructure en projets finançables et exécutables.",
+        "Une plateforme intégrée pour transformer les priorités d'infrastructure en projets finançables et exécutables.",
       scope:
-        "Conseil, ingénierie et appui à l'exécution en RDC et en Afrique centrale.",
+        "Ministères, gouvernorats, agences publiques, UGP/PIU, régies et bailleurs — conseil, ingénierie et supervision en RDC et Afrique centrale.",
       clients: [
         "Ministères",
         "Gouvernorats",
@@ -550,24 +549,24 @@ const dictionaries = {
       ],
       departments: [
         {
-          dept: "Préparation & structuration",
+          dept: "Infrastructure Advisory",
           watermark: "ADVISORY",
-          title: "Préparation & structuration",
-          subtitle: "Programmes stratégiques",
-          text: "Du concept à des investissements bancables — diagnostics, faisabilité, pipelines et structuration bailleurs.",
+          title: "Infrastructure Advisory",
+          subtitle: "Préparation & bancabilité",
+          text: "Diagnostics, pipelines, structuration bailleurs et appui institutionnel — du concept à des dossiers finançables.",
           quote: "",
-          cta: "Discuter d'un programme",
-          ctaHref: "#contact",
+          cta: "Explorer le pôle Advisory",
+          ctaHref: "/poles/advisory",
         },
         {
-          dept: "Livrables prêts pour décision",
+          dept: "Engineering & Delivery",
           watermark: "DELIVERY",
-          title: "Options, coûts & risques",
-          subtitle: "Décision opérationnelle",
-          text: "Notes de décision pour Ministre, Gouverneur et Comités de pilotage — options, coûts, risques et recommandations.",
+          title: "Engineering & Delivery",
+          subtitle: "Ingénierie & exécution",
+          text: "Études, conception, supervision et appui au maître d'ouvrage — sans se présenter comme entreprise de construction générale.",
           quote: "",
-          cta: "Voir les livrables types",
-          ctaHref: "#livrables",
+          cta: "Explorer le pôle Delivery",
+          ctaHref: "/poles/engineering",
         },
       ],
     },
@@ -610,7 +609,7 @@ const dictionaries = {
       imageAlt: "Planification et structuration de programmes d'infrastructure",
     },
     compare: {
-      title: "Principes opérationnels et valeur pour les partenaires publics",
+      title: "Principes de travail et valeur pour les partenaires publics",
       standardTitle: "Principes opérationnels",
       openTitle: "Valeur pour les partenaires publics",
       openBadge: "OPEN SARL",
@@ -661,12 +660,16 @@ const dictionaries = {
           title: "TdR et maturité",
           text: "Termes de Référence pour faisabilité, études E&S, conception et supervision ; évaluations de maturité et registres de risques.",
         },
+        {
+          title: "Supervision et reporting",
+          text: "Rapports de supervision, contrôle de livrables entreprise et tableaux de bord pour le maître d'ouvrage.",
+        },
       ],
     },
     missions: {
-      title: "Modalités de collaboration",
+      title: "Missions",
       intro:
-        "Comment OPEN peut intervenir auprès d'un client — du diagnostic rapide à l'appui intégré au sein des équipes de programme.",
+        "Quatre modalités d'intervention — du diagnostic rapide à la co-delivery avec des partenaires techniques internationaux.",
       steps: [
         {
           range: "01",
@@ -685,6 +688,12 @@ const dictionaries = {
           title: "Appui intégré",
           text: "Rôles d'appui au sein des UGP/PIU ou équipes ministérielles.",
           border: "variant" as const,
+        },
+        {
+          range: "04",
+          title: "Mise en œuvre conjointe",
+          text: "Collaboration avec bureaux internationaux et experts multidisciplinaires selon les besoins du mandat.",
+          border: "tertiary" as const,
         },
       ],
     },
@@ -783,6 +792,8 @@ const dictionaries = {
       newsletter: "S'abonner à la newsletter",
       newsletterError: "Indiquez une adresse e-mail valide.",
       linkedin: "LinkedIn",
+      mandateDisclaimer:
+        "OPEN intervient dans le cadre de ses agréments et rôles déclarés ; les travaux soumis à qualification spécifique peuvent mobiliser des partenaires certifiés lorsque requis.",
     },
     brochure: {
       metaTitle: "Note de capacités",
@@ -827,9 +838,9 @@ const dictionaries = {
   },
   en: {
     meta: {
-      title: "OPEN | Infrastructure advisory (Government / Donor format)",
+      title: "OPEN | Infrastructure advisory & engineering",
       description:
-        "OPEN SARL — Kinshasa-based infrastructure advisory branch supporting national and provincial governments to prepare, structure, and deliver strategic infrastructure programs from concept to bankable, implementable investments.",
+        "OPEN SARL — integrated advisory and delivery platform in Kinshasa: preparation, engineering, and supervision for public authorities, PIUs, and development partners across the DRC and Central Africa.",
     },
     ui: {
       skip: "Skip to content",
@@ -1277,9 +1288,9 @@ const dictionaries = {
       imageAlt: "Strategic infrastructure programs in the DRC",
       centerCta: "Explore our services",
       platform:
-        "From infrastructure priorities to bankable, implementable projects.",
+        "An integrated platform to turn infrastructure priorities into bankable, implementable projects.",
       scope:
-        "Advisory, engineering and delivery support across the DRC and Central Africa.",
+        "Ministries, provincial governments, public agencies, PIUs, utilities, and donors — advisory, engineering, and supervision across the DRC and Central Africa.",
       clients: [
         "Ministries",
         "Provincial governments",
@@ -1289,24 +1300,24 @@ const dictionaries = {
       ],
       departments: [
         {
-          dept: "Preparation & structuring",
+          dept: "Infrastructure Advisory",
           watermark: "ADVISORY",
-          title: "Preparation & structuring",
-          subtitle: "Strategic programs",
-          text: "From concept to bankable investments — diagnostics, feasibility, pipelines, and donor-ready structuring.",
+          title: "Infrastructure Advisory",
+          subtitle: "Preparation & bankability",
+          text: "Diagnostics, pipelines, donor structuring, and institutional support — from concept to financeable packages.",
           quote: "",
-          cta: "Discuss a program",
-          ctaHref: "#contact",
+          cta: "Explore Advisory",
+          ctaHref: "/poles/advisory",
         },
         {
-          dept: "Decision-ready outputs",
+          dept: "Engineering & Delivery",
           watermark: "DELIVERY",
-          title: "Options, costs & risks",
-          subtitle: "Operational decisions",
-          text: "Decision briefs for Ministers, Governors, and Steering Committees — options, costs, risks, and recommendations.",
+          title: "Engineering & Delivery",
+          subtitle: "Engineering & execution",
+          text: "Studies, design, supervision, and owner support — without positioning OPEN as a general contractor.",
           quote: "",
-          cta: "View typical outputs",
-          ctaHref: "#livrables",
+          cta: "Explore Delivery",
+          ctaHref: "/poles/engineering",
         },
       ],
     },
@@ -1349,7 +1360,7 @@ const dictionaries = {
       imageAlt: "Planning and structuring infrastructure programs",
     },
     compare: {
-      title: "Operating principles and value for government partners",
+      title: "How we work and value for government partners",
       standardTitle: "Operating principles",
       openTitle: "Value for government partners",
       openBadge: "OPEN SARL",
@@ -1400,12 +1411,16 @@ const dictionaries = {
           title: "ToR and readiness",
           text: "Terms of Reference for feasibility, E&S studies, design, and supervision; readiness assessments and risk registers.",
         },
+        {
+          title: "Supervision and reporting",
+          text: "Supervision reports, contractor deliverable reviews, and owner dashboards.",
+        },
       ],
     },
     missions: {
-      title: "How we engage",
+      title: "Missions",
       intro:
-        "How OPEN can support a client — from rapid diagnostics to embedded roles within programme teams.",
+        "Four ways we work with clients — from rapid diagnostics to joint delivery with international technical partners.",
       steps: [
         {
           range: "01",
@@ -1424,6 +1439,12 @@ const dictionaries = {
           title: "Embedded advisory roles",
           text: "Support inside PIUs or ministerial project teams.",
           border: "variant" as const,
+        },
+        {
+          range: "04",
+          title: "Joint delivery",
+          text: "Collaboration with international firms and multidisciplinary specialists as the mandate requires.",
+          border: "tertiary" as const,
         },
       ],
     },
@@ -1522,6 +1543,8 @@ const dictionaries = {
       newsletter: "Subscribe to the newsletter",
       newsletterError: "Enter a valid email address.",
       linkedin: "LinkedIn",
+      mandateDisclaimer:
+        "OPEN works within its declared licences and roles; scopes requiring specific qualifications may involve certified partners when required.",
     },
     brochure: {
       metaTitle: "Capability statement",
