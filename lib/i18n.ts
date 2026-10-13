@@ -156,6 +156,10 @@ const dictionaries = {
         backToPoles: "Tous les pôles",
         otherPole: "Voir l'autre pôle",
         contactCta: "Discuter d'un mandat",
+        viewProject: "Voir le projet",
+        backToPole: "Retour au pôle",
+        contextTitle: "Contexte du mandat",
+        deliverablesTitle: "Livrables clés",
       },
       advisory: {
         metaTitle: "Infrastructure Advisory",
@@ -261,6 +265,78 @@ const dictionaries = {
             summary: "Ingénierie ciblée et assistance à la mise en service dans le respect des standards.",
             status: "Référence représentative",
           },
+        ],
+      },
+    },
+    projectDetails: {
+      "urban-water-eastern-drc": {
+        metaDescription:
+          "Préparation et appui à la mise en œuvre d'un programme d'approvisionnement en eau urbaine — Est de la RDC.",
+        body: "Mandat orienté vers la structuration d'investissements et la préparation de dossiers décisionnels pour l'extension des services d'eau en milieu urbain. OPEN a apporté un appui à la définition des options, à la priorisation des composantes et à l'alignement avec les exigences de financement.",
+        deliverables: [
+          "Notes de priorisation et matrices d'investissement",
+          "Diagnostics de maturité et registres de risques",
+          "Appui à la préparation de dossiers pour comités de pilotage",
+        ],
+      },
+      "hydropower-energy-systems": {
+        metaDescription:
+          "Conseil technique et investment readiness pour systèmes hydrauliques et énergétiques en RDC.",
+        body: "Accompagnement sur l'analyse d'options, la readiness institutionnelle et la préparation de programmes énergétiques complexes, en lien avec les attentes des financeurs et des autorités sectorielles.",
+        deliverables: [
+          "Analyses d'options et notes de faisabilité",
+          "Évaluations de bancabilité et structuration financière",
+          "Feuilles de route de préparation de projet",
+        ],
+      },
+      "strategic-corridors": {
+        metaDescription:
+          "Planification et investment readiness pour corridors de transport en RDC et Afrique centrale.",
+        body: "Support à la cartographie des enjeux corridor, à la consultation des parties prenantes et à la préparation de pipelines d'investissement pour améliorer connectivité et logistique régionale.",
+        deliverables: [
+          "Cartographies et analyses corridor",
+          "Notes de priorisation d'investissements",
+          "Dossiers de préparation pour bailleurs",
+        ],
+      },
+      "donor-programmes-drc": {
+        metaDescription:
+          "Appui à l'exécution et au reporting pour programmes d'infrastructure financés par les bailleurs en RDC.",
+        body: "Renforcement de la capacité de pilotage et production de livrables alignés sur les standards internationaux de gestion de programme et de reporting aux financeurs.",
+        deliverables: [
+          "Outils de suivi et reporting de programme",
+          "Notes de décision et briefings de comités",
+          "Appui à la conformité aux exigences bailleurs",
+        ],
+      },
+      "urban-networks-supervision": {
+        metaDescription:
+          "Supervision technique de réseaux urbains et contrôle d'exécution en RDC.",
+        body: "Mission de supervision centrée sur le contrôle des livrables d'entreprise, la qualité d'exécution et le reporting régulier au maître d'ouvrage ou à l'UGP.",
+        deliverables: [
+          "Rapports de supervision et contrôle qualité",
+          "Revue des dossiers d'exécution et variants",
+          "Registres de points ouverts et levées de réserves",
+        ],
+      },
+      "water-sanitation-engineering": {
+        metaDescription:
+          "Études de conception et ingénierie pour infrastructures hydrauliques en RDC.",
+        body: "Production d'études de conception, dossiers techniques et appui à la passation, dans le respect des normes applicables et des contraintes de mise en œuvre locale.",
+        deliverables: [
+          "Études de conception et plans",
+          "Dossiers de consultation des entreprises",
+          "Appui technique à la passation des travaux",
+        ],
+      },
+      "energy-substation-design": {
+        metaDescription:
+          "Études d'ingénierie pour postes et réseaux électriques en RDC.",
+        body: "Ingénierie ciblée et assistance à la réalisation pour composantes de réseau, avec coordination des interfaces techniques et appui à la mise en service.",
+        deliverables: [
+          "Études techniques et notes de calcul",
+          "Spécifications et dossiers d'exécution",
+          "Appui à la réception et mise en service",
         ],
       },
     },
@@ -657,6 +733,10 @@ const dictionaries = {
         backToPoles: "All practices",
         otherPole: "View the other practice",
         contactCta: "Discuss a mandate",
+        viewProject: "View project",
+        backToPole: "Back to practice",
+        contextTitle: "Mandate context",
+        deliverablesTitle: "Key deliverables",
       },
       advisory: {
         metaTitle: "Infrastructure Advisory",
@@ -762,6 +842,71 @@ const dictionaries = {
             summary: "Targeted engineering and commissioning support to international standards.",
             status: "Representative reference",
           },
+        ],
+      },
+    },
+    projectDetails: {
+      "urban-water-eastern-drc": {
+        metaDescription: "Project preparation and implementation support for urban water supply — Eastern DRC.",
+        body: "Mandate focused on investment structuring and decision-ready dossiers to extend urban water services. OPEN supported options analysis, component prioritisation, and alignment with financing requirements.",
+        deliverables: [
+          "Prioritisation notes and investment matrices",
+          "Maturity diagnostics and risk registers",
+          "Steering committee briefing materials",
+        ],
+      },
+      "hydropower-energy-systems": {
+        metaDescription: "Technical advisory and investment readiness for hydropower and energy systems in the DRC.",
+        body: "Support on options analysis, institutional readiness, and preparation of complex energy programmes in line with financier and sector authority expectations.",
+        deliverables: [
+          "Options analysis and feasibility notes",
+          "Bankability assessments and financial structuring",
+          "Project preparation roadmaps",
+        ],
+      },
+      "strategic-corridors": {
+        metaDescription: "Planning and investment readiness for strategic transport corridors in the DRC and Central Africa.",
+        body: "Support to corridor issue mapping, stakeholder engagement, and investment pipeline preparation to improve regional connectivity and logistics.",
+        deliverables: [
+          "Corridor maps and analyses",
+          "Investment prioritisation notes",
+          "Donor-facing preparation dossiers",
+        ],
+      },
+      "donor-programmes-drc": {
+        metaDescription: "Implementation and reporting support for donor-funded infrastructure programmes in the DRC.",
+        body: "Strengthening programme management capacity and producing deliverables aligned with international programme management and donor reporting standards.",
+        deliverables: [
+          "Programme tracking and reporting tools",
+          "Decision notes and committee briefings",
+          "Donor compliance support",
+        ],
+      },
+      "urban-networks-supervision": {
+        metaDescription: "Technical supervision of urban networks and delivery control in the DRC.",
+        body: "Supervision focused on contractor deliverable review, execution quality, and regular reporting to the project owner or PIU.",
+        deliverables: [
+          "Supervision and quality control reports",
+          "Review of execution dossiers and variations",
+          "Open issues logs and clearance tracking",
+        ],
+      },
+      "water-sanitation-engineering": {
+        metaDescription: "Design studies and engineering for water infrastructure in the DRC.",
+        body: "Design studies, technical dossiers, and procurement support in line with applicable standards and local delivery constraints.",
+        deliverables: [
+          "Design studies and drawings",
+          "Contract tender dossiers",
+          "Procurement technical support",
+        ],
+      },
+      "energy-substation-design": {
+        metaDescription: "Engineering studies for substations and power networks in the DRC.",
+        body: "Targeted engineering and delivery assistance for network components, including technical interface coordination and commissioning support.",
+        deliverables: [
+          "Technical studies and calculation notes",
+          "Specifications and execution dossiers",
+          "Acceptance and commissioning support",
         ],
       },
     },

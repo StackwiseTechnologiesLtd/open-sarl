@@ -1,10 +1,12 @@
-import Link from "next/link";
 import { ButtonLink, PillLink } from "@/components/button";
 import { Container } from "@/components/container";
 import { Icon } from "@/components/icon";
+import { PolePageHero } from "@/components/pole-page-hero";
+import { ProjectCard } from "@/components/project-card";
 import { Reveal } from "@/components/reveal";
+import { getPoleHeroImage, getProjectImage } from "@/lib/project-images";
 import { mailHref, type Dictionary, type Locale } from "@/lib/i18n";
-import { polePath, type PoleSlug } from "@/lib/poles";
+import { polePath, projectPath, type PoleSlug } from "@/lib/poles";
 
 const otherPole: Record<PoleSlug, PoleSlug> = {
   advisory: "engineering",
@@ -25,49 +27,38 @@ export function PoleDetailView({
   const shared = dict.polePages.shared;
   const other = otherPole[pole];
   const otherContent = dict.polePages[other];
-  const icon = pole === "advisory" ? "account_balance" : "construction";
+  const polesLabel = dict.nav.find((item) => item.href === "#poles")?.label ?? "Pôles";
 
   return (
     <main className="page-main pb-section-gap">
-      <div className="section-shell border-b border-outline-variant/35 bg-gradient-to-b from-primary/[0.06] to-transparent pt-[calc(5.5rem+env(safe-area-inset-top,0px))] pb-12 sm:pb-16">
-        <Container>
-          <Reveal>
-            <nav className="mb-6 flex flex-wrap items-center gap-2 text-sm text-on-surface-variant">
-              <Link href={home} className="hover:text-primary">
-                OPEN
-              </Link>
-              <span aria-hidden="true">/</span>
-              <Link href={`${home}#poles`} className="hover:text-primary">
-                {dict.nav.find((item) => item.href === "#poles")?.label}
-              </Link>
-              <span aria-hidden="true">/</span>
-              <span className="font-medium text-on-surface">{content.title}</span>
-            </nav>
-            <div className="flex max-w-3xl flex-col gap-5">
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                  <Icon name={icon} className="h-6 w-6" />
-                </div>
-                <p className="font-label-md text-label-md text-on-surface-variant">{content.kicker}</p>
-              </div>
-              <h1 className="section-display text-balance text-primary">{content.title}</h1>
-              <p className="section-lead max-w-[65ch] text-on-surface-variant">{content.lead}</p>
-              <p className="max-w-[65ch] text-sm leading-relaxed text-on-surface-variant sm:text-body-md">{content.body}</p>
-              <div className="flex flex-wrap gap-3 pt-2">
-                <PillLink href={mailHref(locale, "project")}>{shared.contactCta}</PillLink>
-                <ButtonLink href={polePath(locale, other)} variant="ghost">
-                  {shared.otherPole}
-                  <Icon name="chevron_right" className="h-5 w-5" />
-                </ButtonLink>
-              </div>
-            </div>
-          </Reveal>
-        </Container>
-      </div>
+      <PolePageHero
+        imageSrc={getPoleHeroImage(pole)}
+        imageAlt={content.title}
+        kicker={content.kicker}
+        title={content.title}
+        lead={content.lead}
+        crumbs={[
+          { href: home, label: "OPEN" },
+          { href: `${home}#poles`, label: polesLabel },
+          { href: polePath(locale, pole), label: content.title.replace(/^OPEN\s+/i, "") },
+        ]}
+        actions={
+          <>
+            <PillLink href={mailHref(locale, "project")}>{shared.contactCta}</PillLink>
+            <ButtonLink href={polePath(locale, other)} variant="outline-light">
+              {shared.otherPole}
+              <Icon name="chevron_right" className="h-5 w-5" />
+            </ButtonLink>
+          </>
+        }
+      />
 
       <section className="section-shell py-section-gap">
         <Container>
           <Reveal>
+            <p className="mx-auto mb-10 max-w-prose text-sm leading-relaxed text-on-surface-variant sm:mb-12 sm:text-body-md">
+              {content.body}
+            </p>
             <h2 className="section-heading mb-6 sm:mb-8">{shared.capabilitiesTitle}</h2>
           </Reveal>
           <ul className="grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -89,36 +80,18 @@ export function PoleDetailView({
             <h2 className="section-heading mb-3">{shared.projectsTitle}</h2>
             <p className="mb-8 max-w-prose text-sm text-on-surface-variant sm:mb-10 sm:text-body-md">{shared.projectsIntro}</p>
           </Reveal>
-          <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-gutter">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-gutter">
             {content.projects.map((project, index) => (
               <Reveal key={project.slug} delay={index * 0.04} className="h-full">
-                <article className="editorial-card flex h-full flex-col gap-5 bg-white p-6 sm:p-8">
-                  <div className="flex flex-wrap items-start justify-between gap-3">
-                    <h3 className="font-headline-md text-lg font-semibold text-primary sm:text-xl">{project.title}</h3>
-                    <span className="rounded-md bg-surface-container px-2.5 py-1 text-xs font-medium text-on-surface-variant">
-                      {project.status}
-                    </span>
-                  </div>
-                  <p className="text-sm leading-relaxed text-on-surface-variant">{project.summary}</p>
-                  <dl className="mt-auto grid grid-cols-1 gap-3 border-t border-outline-variant/40 pt-5 text-sm sm:grid-cols-2">
-                    <div>
-                      <dt className="text-xs font-semibold tracking-wide text-on-surface-variant uppercase">{shared.projectSector}</dt>
-                      <dd className="mt-1 text-on-surface">{project.sector}</dd>
-                    </div>
-                    <div>
-                      <dt className="text-xs font-semibold tracking-wide text-on-surface-variant uppercase">{shared.projectLocation}</dt>
-                      <dd className="mt-1 text-on-surface">{project.location}</dd>
-                    </div>
-                    <div>
-                      <dt className="text-xs font-semibold tracking-wide text-on-surface-variant uppercase">{shared.projectClient}</dt>
-                      <dd className="mt-1 text-on-surface">{project.clientType}</dd>
-                    </div>
-                    <div>
-                      <dt className="text-xs font-semibold tracking-wide text-on-surface-variant uppercase">{shared.projectRole}</dt>
-                      <dd className="mt-1 text-on-surface">{project.role}</dd>
-                    </div>
-                  </dl>
-                </article>
+                <ProjectCard
+                  href={projectPath(locale, pole, project.slug)}
+                  title={project.title}
+                  summary={project.summary}
+                  status={project.status}
+                  imageSrc={getProjectImage(project.slug)}
+                  imageAlt={project.title}
+                  ctaLabel={shared.viewProject}
+                />
               </Reveal>
             ))}
           </div>
@@ -127,10 +100,10 @@ export function PoleDetailView({
 
       <section className="section-shell py-12 sm:py-16">
         <Container className="flex flex-col items-start justify-between gap-6 border-t border-outline-variant/40 pt-10 sm:flex-row sm:items-center">
-          <Link href={`${home}#poles`} className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+          <ButtonLink href={`${home}#poles`} variant="ghost">
             <Icon name="chevron_left" className="h-4 w-4" />
             {shared.backToPoles}
-          </Link>
+          </ButtonLink>
           <ButtonLink href={polePath(locale, other)} variant="ghost">
             {otherContent.title}
             <Icon name="chevron_right" className="h-5 w-5" />
