@@ -45,7 +45,7 @@ export function PoleDetailView({
         actions={
           <>
             <PillLink href={mailHref(locale, "project")}>{shared.contactCta}</PillLink>
-            <ButtonLink href={polePath(locale, other)} variant="outline-light">
+            <ButtonLink href={polePath(locale, other)} variant="ghost">
               {shared.otherPole}
               <Icon name="chevron_right" className="h-5 w-5" />
             </ButtonLink>

@@ -42,41 +42,76 @@ export function ProjectDetailView({
         actions={
           <>
             <PillLink href={mailHref(locale, "project")}>{shared.contactCta}</PillLink>
-            <ButtonLink href={polePath(locale, pole)} variant="outline-light">
+            <ButtonLink href={polePath(locale, pole)} variant="ghost">
               {shared.backToPole}
             </ButtonLink>
           </>
         }
       />
 
+      <section className="section-shell border-b border-outline-variant/30 py-8 sm:py-10">
+        <Container>
+          <dl className="project-facts">
+            <div>
+              <dt>{shared.mandateType}</dt>
+              <dd>{project.mandateType}</dd>
+            </div>
+            <div>
+              <dt>{shared.projectSector}</dt>
+              <dd>{project.sector}</dd>
+            </div>
+            <div>
+              <dt>{shared.projectLocation}</dt>
+              <dd>{project.location}</dd>
+            </div>
+            <div>
+              <dt>{shared.projectClient}</dt>
+              <dd>{project.clientType}</dd>
+            </div>
+            <div>
+              <dt>{shared.projectRole}</dt>
+              <dd>{project.role}</dd>
+            </div>
+          </dl>
+        </Container>
+      </section>
+
       <section className="section-shell py-section-gap">
         <Container>
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
-            <Reveal className="lg:col-span-7">
-              <h2 className="section-heading mb-4">{shared.contextTitle}</h2>
-              <p className="text-sm leading-relaxed text-on-surface-variant sm:text-body-md">{project.body}</p>
+          <Reveal>
+            <h2 className="section-heading mb-4">{shared.contextTitle}</h2>
+            <p className="max-w-prose text-sm leading-relaxed text-on-surface-variant sm:text-body-md">{project.body}</p>
+          </Reveal>
+        </Container>
+      </section>
+
+      <section className="section-shell-muted py-section-gap">
+        <Container>
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-gutter">
+            <Reveal>
+              <h2 className="section-heading mb-4">{shared.challengeTitle}</h2>
+              <p className="text-sm leading-relaxed text-on-surface-variant sm:text-body-md">{project.challenge}</p>
             </Reveal>
-            <Reveal delay={0.05} className="lg:col-span-5">
-              <dl className="project-meta-grid">
-                <div>
-                  <dt>{shared.projectSector}</dt>
-                  <dd>{project.sector}</dd>
-                </div>
-                <div>
-                  <dt>{shared.projectLocation}</dt>
-                  <dd>{project.location}</dd>
-                </div>
-                <div>
-                  <dt>{shared.projectClient}</dt>
-                  <dd>{project.clientType}</dd>
-                </div>
-                <div>
-                  <dt>{shared.projectRole}</dt>
-                  <dd>{project.role}</dd>
-                </div>
-              </dl>
+            <Reveal delay={0.04}>
+              <h2 className="section-heading mb-4">{shared.approachTitle}</h2>
+              <p className="text-sm leading-relaxed text-on-surface-variant sm:text-body-md">{project.approach}</p>
             </Reveal>
           </div>
+        </Container>
+      </section>
+
+      <section className="section-shell py-section-gap">
+        <Container>
+          <Reveal>
+            <h2 className="section-heading mb-6">{shared.scopeTitle}</h2>
+          </Reveal>
+          <ul className="project-detail-list">
+            {project.scope.map((item, index) => (
+              <Reveal key={item} delay={index * 0.03}>
+                <li>{item}</li>
+              </Reveal>
+            ))}
+          </ul>
         </Container>
       </section>
 
@@ -85,18 +120,40 @@ export function ProjectDetailView({
           <Reveal>
             <h2 className="section-heading mb-6">{shared.deliverablesTitle}</h2>
           </Reveal>
-          <ul className="grid grid-cols-1 gap-3 md:grid-cols-3">
+          <ul className="project-detail-list project-detail-list--columns">
             {project.deliverables.map((item, index) => (
-              <Reveal key={item} delay={index * 0.04}>
-                <li className="editorial-card bg-white p-5 text-sm leading-relaxed sm:p-6 sm:text-body-md">{item}</li>
+              <Reveal key={item} delay={index * 0.03}>
+                <li>{item}</li>
               </Reveal>
             ))}
           </ul>
         </Container>
       </section>
 
-      <section className="section-shell py-12 sm:py-16">
+      <section className="section-shell py-section-gap">
         <Container>
+          <Reveal>
+            <h2 className="section-heading mb-6">{shared.outcomesTitle}</h2>
+          </Reveal>
+          <ul className="project-outcomes">
+            {project.outcomes.map((item, index) => (
+              <Reveal key={item} delay={index * 0.04}>
+                <li>
+                  <Icon name="check_circle" className="h-5 w-5 shrink-0 text-primary" />
+                  <span>{item}</span>
+                </li>
+              </Reveal>
+            ))}
+          </ul>
+        </Container>
+      </section>
+
+      <section className="section-shell-muted py-12 sm:py-14">
+        <Container className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+          <div>
+            <p className="mb-3 text-sm text-on-surface-variant">{project.status}</p>
+            <PillLink href={mailHref(locale, "project")}>{shared.contactCta}</PillLink>
+          </div>
           <Link href={polePath(locale, pole)} className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
             <Icon name="chevron_left" className="h-4 w-4" />
             {shared.backToPole}

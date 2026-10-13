@@ -160,6 +160,11 @@ const dictionaries = {
         backToPole: "Retour au pôle",
         contextTitle: "Contexte du mandat",
         deliverablesTitle: "Livrables clés",
+        challengeTitle: "Enjeu",
+        approachTitle: "Approche OPEN",
+        scopeTitle: "Périmètre d'intervention",
+        outcomesTitle: "Résultats et effets recherchés",
+        mandateType: "Type de mandat",
       },
       advisory: {
         metaTitle: "Infrastructure Advisory",
@@ -272,71 +277,190 @@ const dictionaries = {
       "urban-water-eastern-drc": {
         metaDescription:
           "Préparation et appui à la mise en œuvre d'un programme d'approvisionnement en eau urbaine — Est de la RDC.",
-        body: "Mandat orienté vers la structuration d'investissements et la préparation de dossiers décisionnels pour l'extension des services d'eau en milieu urbain. OPEN a apporté un appui à la définition des options, à la priorisation des composantes et à l'alignement avec les exigences de financement.",
+        body: "Programme visant l'extension des services d'eau en milieu urbain dans un contexte de demande croissante et de contraintes institutionnelles. OPEN intervient en amont des décisions d'investissement pour structurer des composantes finançables et exécutables.",
+        mandateType: "Préparation de programme et appui à la mise en œuvre",
+        challenge:
+          "Prioriser des investissements hydrauliques crédibles pour les autorités et les financeurs, avec une visibilité claire sur les options, les coûts, les risques et la séquence de mise en œuvre.",
+        approach:
+          "Diagnostic rapide, analyse d'options, structuration en tranches et production de livrables orientés comités de pilotage — en combinant réalisme local et standards internationaux.",
+        scope: [
+          "Diagnostic sectoriel et analyse des besoins",
+          "Structuration du programme et priorisation des composantes",
+          "Préparation de notes de décision et dossiers bailleurs",
+          "Appui à la gouvernance de programme et au reporting",
+        ],
         deliverables: [
           "Notes de priorisation et matrices d'investissement",
           "Diagnostics de maturité et registres de risques",
-          "Appui à la préparation de dossiers pour comités de pilotage",
+          "Briefings pour comités de pilotage et autorités",
+          "Feuilles de route de préparation et de mise en œuvre",
+        ],
+        outcomes: [
+          "Pipeline d'investissements structuré et défendable",
+          "Décisions éclairées sur le phasage et le modèle de délivrance",
+          "Meilleure readiness vis-à-vis des financeurs",
         ],
       },
       "hydropower-energy-systems": {
         metaDescription:
           "Conseil technique et investment readiness pour systèmes hydrauliques et énergétiques en RDC.",
-        body: "Accompagnement sur l'analyse d'options, la readiness institutionnelle et la préparation de programmes énergétiques complexes, en lien avec les attentes des financeurs et des autorités sectorielles.",
+        body: "Accompagnement d'autorités et de partenaires techniques sur des programmes énergétiques où les choix technologiques, institutionnels et financiers doivent être alignés avant engagement des études majeures.",
+        mandateType: "Conseil technique et investment readiness",
+        challenge:
+          "Arbitrer entre options techniques et modèles institutionnels tout en démontrant la viabilité financière et la capacité de mise en œuvre aux yeux des bailleurs.",
+        approach:
+          "Analyse multi-critères, revue de readiness institutionnelle et structuration progressive des dossiers de financement avec scénarios de risque explicites.",
+        scope: [
+          "Analyse d'options techniques et institutionnelles",
+          "Évaluation de bancabilité et scénarios de financement",
+          "Alignement avec exigences IFI / bailleurs",
+          "Appui à la gouvernance sectorielle",
+        ],
         deliverables: [
           "Analyses d'options et notes de faisabilité",
-          "Évaluations de bancabilité et structuration financière",
-          "Feuilles de route de préparation de projet",
+          "Évaluations de bancabilité et allocation des risques",
+          "Roadmaps de préparation de projet",
+          "Notes de décision pour autorités de tutelle",
+        ],
+        outcomes: [
+          "Options techniques et de gouvernance comparées de façon transparente",
+          "Dossiers mieux préparés pour discussions avec financeurs",
+          "Réduction des zones d'incertitude avant études détaillées",
         ],
       },
       "strategic-corridors": {
         metaDescription:
           "Planification et investment readiness pour corridors de transport en RDC et Afrique centrale.",
-        body: "Support à la cartographie des enjeux corridor, à la consultation des parties prenantes et à la préparation de pipelines d'investissement pour améliorer connectivité et logistique régionale.",
+        body: "Travaux de planification et de préparation pour corridors où enjeux de connectivité, parties prenantes multiples et priorisation d'investissements doivent être traités de manière coordonnée.",
+        mandateType: "Planification corridor et investment readiness",
+        challenge:
+          "Transformer une ambition de corridor en pipeline d'investissements priorisés, acceptable par les États, les collectivités et les partenaires au développement.",
+        approach:
+          "Cartographie des contraintes, consultation structurée des parties prenantes et packaging d'investissements en composantes bankables.",
+        scope: [
+          "Analyse corridor et cartographie des enjeux",
+          "Consultation et alignement des parties prenantes",
+          "Priorisation d'investissements et scénarios de phasage",
+          "Préparation de dossiers pour mobilisation de financements",
+        ],
         deliverables: [
-          "Cartographies et analyses corridor",
-          "Notes de priorisation d'investissements",
-          "Dossiers de préparation pour bailleurs",
+          "Cartographies et notes corridor",
+          "Matrices de priorisation d'investissements",
+          "Dossiers conceptuels et notes bailleurs",
+          "Plans de mobilisation des parties prenantes",
+        ],
+        outcomes: [
+          "Vision corridor traduite en séquence d'investissements",
+          "Meilleure lisibilité pour décideurs nationaux et régionaux",
+          "Base commune pour dialogues avec financeurs",
         ],
       },
       "donor-programmes-drc": {
         metaDescription:
           "Appui à l'exécution et au reporting pour programmes d'infrastructure financés par les bailleurs en RDC.",
-        body: "Renforcement de la capacité de pilotage et production de livrables alignés sur les standards internationaux de gestion de programme et de reporting aux financeurs.",
+        body: "Appui à des UGP/PIU et autorités de tutelle pour piloter des programmes multi-projets conformes aux exigences de gestion et de reporting des financements internationaux.",
+        mandateType: "Appui programme et support décisionnel",
+        challenge:
+          "Maintenir cadence de décision, qualité de reporting et conformité aux standards bailleurs dans un contexte institutionnel sous pression.",
+        approach:
+          "Renforcement des routines de pilotage, production de livrables standardisés et appui indépendant aux comités de direction.",
+        scope: [
+          "Appui au pilotage et à la planification de programme",
+          "Reporting périodique et tableaux de bord",
+          "Préparation de sessions de décision",
+          "Conformité procédures et exigences bailleurs",
+        ],
         deliverables: [
-          "Outils de suivi et reporting de programme",
+          "Tableaux de bord et rapports de programme",
           "Notes de décision et briefings de comités",
-          "Appui à la conformité aux exigences bailleurs",
+          "Checklists de conformité et plans d'action",
+          "Appui à la gestion des risques de programme",
+        ],
+        outcomes: [
+          "Reporting plus prévisible pour les financeurs",
+          "Décisions de programme documentées et traçables",
+          "Capacité de pilotage renforcée au sein de l'UGP/PIU",
         ],
       },
       "urban-networks-supervision": {
         metaDescription:
           "Supervision technique de réseaux urbains et contrôle d'exécution en RDC.",
-        body: "Mission de supervision centrée sur le contrôle des livrables d'entreprise, la qualité d'exécution et le reporting régulier au maître d'ouvrage ou à l'UGP.",
-        deliverables: [
-          "Rapports de supervision et contrôle qualité",
+        body: "Supervision de travaux et de livrables d'entreprise pour des réseaux urbains, avec reporting régulier au maître d'ouvrage et contrôle de la qualité d'exécution.",
+        mandateType: "Supervision technique et contrôle d'exécution",
+        challenge:
+          "Garantir que les ouvrages livrés correspondent aux dossiers approuvés, aux standards techniques et aux attentes du maître d'ouvrage sur le terrain.",
+        approach:
+          "Présence de supervision structurée, revue systématique des livrables entreprise et registre ouvert des non-conformités et réserves.",
+        scope: [
+          "Supervision des travaux et contrôle qualité",
           "Revue des dossiers d'exécution et variants",
-          "Registres de points ouverts et levées de réserves",
+          "Interface maître d'ouvrage / entreprises",
+          "Reporting périodique et levée des réserves",
+        ],
+        deliverables: [
+          "Rapports de supervision et visites de chantier",
+          "Revue technique des soumissions et variants",
+          "Registres de réserves et plans de levée",
+          "Comptes rendus pour comités de pilotage travaux",
+        ],
+        outcomes: [
+          "Meilleure visibilité sur l'avancement réel des travaux",
+          "Réduction des écarts non documentés entre conception et exécution",
+          "Décisions de réception basées sur des faits vérifiés",
         ],
       },
       "water-sanitation-engineering": {
         metaDescription:
           "Études de conception et ingénierie pour infrastructures hydrauliques en RDC.",
-        body: "Production d'études de conception, dossiers techniques et appui à la passation, dans le respect des normes applicables et des contraintes de mise en œuvre locale.",
+        body: "Ingénierie de conception pour infrastructures hydrauliques, incluant dossiers techniques et appui à la passation, dans le respect des normes et des contraintes de réalisation locale.",
+        mandateType: "Études de conception et ingénierie",
+        challenge:
+          "Produire des dossiers exécutables et passation-ready malgré contraintes de données, délais et capacités locales de mise en œuvre.",
+        approach:
+          "Conception par étapes, validation technique progressive et coordination avec les exigences environnementales et sociales lorsque requis.",
+        scope: [
+          "Études de faisabilité et de conception détaillée",
+          "Plans, notes de calcul et spécifications",
+          "Estimation des coûts et phasage des travaux",
+          "Appui technique à la passation",
+        ],
         deliverables: [
-          "Études de conception et plans",
-          "Dossiers de consultation des entreprises",
-          "Appui technique à la passation des travaux",
+          "Dossiers de conception et plans",
+          "Notes de calcul et rapports techniques",
+          "Dossiers d'appel d'offres / consultation entreprises",
+          "Appui à l'analyse des offres",
+        ],
+        outcomes: [
+          "Dossiers techniques exploitables par le maître d'ouvrage",
+          "Passation préparée avec critères clairs",
+          "Risques techniques identifiés en amont des travaux",
         ],
       },
       "energy-substation-design": {
         metaDescription:
           "Études d'ingénierie pour postes et réseaux électriques en RDC.",
-        body: "Ingénierie ciblée et assistance à la réalisation pour composantes de réseau, avec coordination des interfaces techniques et appui à la mise en service.",
+        body: "Études ciblées pour postes et composantes de réseau, avec coordination des interfaces et appui à la mise en service selon standards reconnus.",
+        mandateType: "Ingénierie ciblée et appui à la réalisation",
+        challenge:
+          "Sécuriser la faisabilité technique et la compatibilité des interfaces dans un environnement où les contraintes réseau et opérationnelles évoluent rapidement.",
+        approach:
+          "Ingénierie par composante, revue indépendante des hypothèses et accompagnement des étapes clés jusqu'à la mise en service.",
+        scope: [
+          "Études de dimensionnement et de layout",
+          "Spécifications équipements et interfaces",
+          "Appui aux essais et mise en service",
+          "Coordination avec exploitant et partenaires",
+        ],
         deliverables: [
           "Études techniques et notes de calcul",
           "Spécifications et dossiers d'exécution",
-          "Appui à la réception et mise en service",
+          "Plans de tests et procédures de réception",
+          "Rapports de suivi de mise en service",
+        ],
+        outcomes: [
+          "Composantes réseau dimensionnées sur bases explicites",
+          "Interfaces techniques clarifiées entre acteurs",
+          "Réception et mise en service mieux préparées",
         ],
       },
     },
@@ -737,6 +861,11 @@ const dictionaries = {
         backToPole: "Back to practice",
         contextTitle: "Mandate context",
         deliverablesTitle: "Key deliverables",
+        challengeTitle: "Challenge",
+        approachTitle: "OPEN approach",
+        scopeTitle: "Scope of work",
+        outcomesTitle: "Results and intended effects",
+        mandateType: "Mandate type",
       },
       advisory: {
         metaTitle: "Infrastructure Advisory",
@@ -848,65 +977,184 @@ const dictionaries = {
     projectDetails: {
       "urban-water-eastern-drc": {
         metaDescription: "Project preparation and implementation support for urban water supply — Eastern DRC.",
-        body: "Mandate focused on investment structuring and decision-ready dossiers to extend urban water services. OPEN supported options analysis, component prioritisation, and alignment with financing requirements.",
+        body: "Programme to extend urban water services amid rising demand and institutional constraints. OPEN supports upstream investment decisions with financeable, implementable components.",
+        mandateType: "Programme preparation and implementation support",
+        challenge:
+          "Prioritise credible hydraulic investments for authorities and financiers with clear visibility on options, costs, risks, and implementation sequencing.",
+        approach:
+          "Rapid diagnostic, options analysis, tranche structuring, and steering-committee-ready outputs — combining local delivery realism and international standards.",
+        scope: [
+          "Sector diagnostic and needs analysis",
+          "Programme structuring and component prioritisation",
+          "Decision notes and donor-facing dossiers",
+          "Programme governance and reporting support",
+        ],
         deliverables: [
           "Prioritisation notes and investment matrices",
           "Maturity diagnostics and risk registers",
-          "Steering committee briefing materials",
+          "Briefings for steering committees and authorities",
+          "Preparation and implementation roadmaps",
+        ],
+        outcomes: [
+          "Structured, defensible investment pipeline",
+          "Clear decisions on phasing and delivery model",
+          "Stronger readiness for financier discussions",
         ],
       },
       "hydropower-energy-systems": {
         metaDescription: "Technical advisory and investment readiness for hydropower and energy systems in the DRC.",
-        body: "Support on options analysis, institutional readiness, and preparation of complex energy programmes in line with financier and sector authority expectations.",
+        body: "Support to authorities and technical partners on energy programmes where technology, institutions, and finance must align before major studies are committed.",
+        mandateType: "Technical advisory and investment readiness",
+        challenge:
+          "Balance technical and institutional options while demonstrating financial viability and deliverability to development financiers.",
+        approach:
+          "Multi-criteria analysis, institutional readiness review, and progressive packaging of financing dossiers with explicit risk scenarios.",
+        scope: [
+          "Technical and institutional options analysis",
+          "Bankability assessment and financing scenarios",
+          "Alignment with IFI / donor requirements",
+          "Sector governance support",
+        ],
         deliverables: [
           "Options analysis and feasibility notes",
-          "Bankability assessments and financial structuring",
+          "Bankability assessments and risk allocation",
           "Project preparation roadmaps",
+          "Decision notes for line ministries",
+        ],
+        outcomes: [
+          "Transparent comparison of technical and governance options",
+          "Better prepared dossiers for financier dialogue",
+          "Reduced uncertainty before detailed design",
         ],
       },
       "strategic-corridors": {
         metaDescription: "Planning and investment readiness for strategic transport corridors in the DRC and Central Africa.",
-        body: "Support to corridor issue mapping, stakeholder engagement, and investment pipeline preparation to improve regional connectivity and logistics.",
+        body: "Planning and preparation for corridors where connectivity, multiple stakeholders, and investment prioritisation must be handled in a coordinated way.",
+        mandateType: "Corridor planning and investment readiness",
+        challenge:
+          "Turn corridor ambition into a prioritised investment pipeline acceptable to states, local authorities, and development partners.",
+        approach:
+          "Constraint mapping, structured stakeholder engagement, and packaging of bankable investment components.",
+        scope: [
+          "Corridor analysis and issue mapping",
+          "Stakeholder consultation and alignment",
+          "Investment prioritisation and phasing scenarios",
+          "Financing mobilisation dossiers",
+        ],
         deliverables: [
-          "Corridor maps and analyses",
-          "Investment prioritisation notes",
-          "Donor-facing preparation dossiers",
+          "Corridor maps and briefing notes",
+          "Investment prioritisation matrices",
+          "Concept notes and donor dossiers",
+          "Stakeholder mobilisation plans",
+        ],
+        outcomes: [
+          "Corridor vision translated into investment sequence",
+          "Clearer narrative for national and regional decision-makers",
+          "Shared basis for financier discussions",
         ],
       },
       "donor-programmes-drc": {
         metaDescription: "Implementation and reporting support for donor-funded infrastructure programmes in the DRC.",
-        body: "Strengthening programme management capacity and producing deliverables aligned with international programme management and donor reporting standards.",
+        body: "Support to PIUs and line ministries to manage multi-project programmes in line with international management and reporting requirements.",
+        mandateType: "Programme support and decision backing",
+        challenge:
+          "Maintain decision cadence, reporting quality, and donor compliance under institutional pressure.",
+        approach:
+          "Strengthen management routines, standardise outputs, and provide independent support to steering bodies.",
+        scope: [
+          "Programme planning and management support",
+          "Periodic reporting and dashboards",
+          "Decision session preparation",
+          "Donor procedure and compliance support",
+        ],
         deliverables: [
-          "Programme tracking and reporting tools",
+          "Dashboards and programme reports",
           "Decision notes and committee briefings",
-          "Donor compliance support",
+          "Compliance checklists and action plans",
+          "Programme risk management support",
+        ],
+        outcomes: [
+          "More predictable reporting for financiers",
+          "Documented, traceable programme decisions",
+          "Stronger management capacity within the PIU",
         ],
       },
       "urban-networks-supervision": {
         metaDescription: "Technical supervision of urban networks and delivery control in the DRC.",
-        body: "Supervision focused on contractor deliverable review, execution quality, and regular reporting to the project owner or PIU.",
-        deliverables: [
-          "Supervision and quality control reports",
+        body: "Supervision of works and contractor outputs for urban networks, with regular owner reporting and execution quality control.",
+        mandateType: "Technical supervision and delivery control",
+        challenge:
+          "Ensure built assets match approved designs, technical standards, and owner expectations on the ground.",
+        approach:
+          "Structured site supervision, systematic contractor deliverable review, and open registers for non-conformities and reservations.",
+        scope: [
+          "Works supervision and quality control",
           "Review of execution dossiers and variations",
-          "Open issues logs and clearance tracking",
+          "Owner / contractor interface",
+          "Periodic reporting and clearance of reservations",
+        ],
+        deliverables: [
+          "Supervision reports and site visit records",
+          "Technical review of submissions and variations",
+          "Reservation logs and clearance plans",
+          "Briefings for works steering committees",
+        ],
+        outcomes: [
+          "Better visibility on real progress",
+          "Fewer undocumented gaps between design and build",
+          "Reception decisions based on verified facts",
         ],
       },
       "water-sanitation-engineering": {
         metaDescription: "Design studies and engineering for water infrastructure in the DRC.",
-        body: "Design studies, technical dossiers, and procurement support in line with applicable standards and local delivery constraints.",
-        deliverables: [
-          "Design studies and drawings",
-          "Contract tender dossiers",
+        body: "Design engineering for water assets, including technical dossiers and procurement support, aligned with standards and local delivery constraints.",
+        mandateType: "Design studies and engineering",
+        challenge:
+          "Produce executable, procurement-ready dossiers despite data, timeline, and local capacity constraints.",
+        approach:
+          "Stage-gated design, progressive technical validation, and coordination with environmental and social requirements where applicable.",
+        scope: [
+          "Feasibility and detailed design studies",
+          "Drawings, calculation notes, and specifications",
+          "Cost estimates and works phasing",
           "Procurement technical support",
+        ],
+        deliverables: [
+          "Design dossiers and drawings",
+          "Calculation notes and technical reports",
+          "Tender / contractor consultation packages",
+          "Bid evaluation support",
+        ],
+        outcomes: [
+          "Technical dossiers usable by the project owner",
+          "Procurement prepared with clear criteria",
+          "Technical risks identified before works start",
         ],
       },
       "energy-substation-design": {
         metaDescription: "Engineering studies for substations and power networks in the DRC.",
-        body: "Targeted engineering and delivery assistance for network components, including technical interface coordination and commissioning support.",
+        body: "Targeted studies for substations and network components, with interface coordination and commissioning support to recognised standards.",
+        mandateType: "Targeted engineering and delivery support",
+        challenge:
+          "Secure technical feasibility and interface compatibility in a fast-moving network and operational environment.",
+        approach:
+          "Component-level engineering, independent review of assumptions, and support through key milestones to commissioning.",
+        scope: [
+          "Sizing and layout studies",
+          "Equipment specifications and interfaces",
+          "Testing and commissioning support",
+          "Coordination with operator and partners",
+        ],
         deliverables: [
           "Technical studies and calculation notes",
           "Specifications and execution dossiers",
-          "Acceptance and commissioning support",
+          "Test plans and acceptance procedures",
+          "Commissioning follow-up reports",
+        ],
+        outcomes: [
+          "Network components sized on explicit bases",
+          "Technical interfaces clarified between parties",
+          "Better prepared acceptance and commissioning",
         ],
       },
     },

@@ -25,6 +25,6 @@ export const sectorImages = {
 export const heroSlideImages = [missionImages[0], sectorImages.transport] as const;
 
 export const poleImages = {
-  advisory: missionImages[0],
+  advisory: heroImage,
   engineering: sectorImages.transport,
 } as const;
