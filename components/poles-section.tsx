@@ -27,6 +27,7 @@ export function PolesSection({ locale, dict }: { locale: Locale; dict: Dictionar
                   id={`poles-${practice.id}`}
                   href={polePath(locale, practice.id as PoleSlug)}
                   title={displayTitle(practice.title)}
+                  description={practice.summary}
                   ctaLabel={poles.exploreLabel}
                   imageSrc={poleImages[practice.id as PoleSlug]}
                   imageAlt={practice.title}

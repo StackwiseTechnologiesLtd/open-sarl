@@ -37,9 +37,11 @@ export function PolesNavPanel({ home, dict, onNavigate, onFollowLink, layout = "
               <PolePromoCard
                 href={href}
                 title={displayTitle(practice.title)}
+                description={practice.summary}
                 ctaLabel={dict.polesSection.exploreLabel}
                 imageSrc={poleImages[slug]}
                 imageAlt={practice.title}
+                compact
                 onClick={() => onFollowLink?.()}
               />
             </li>
