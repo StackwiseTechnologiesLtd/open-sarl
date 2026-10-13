@@ -7,7 +7,7 @@ import { Icon } from "@/components/icon";
 import { LanguageSwitch } from "@/components/language-switch";
 import { Logo } from "@/components/logo";
 import { PolesNavPanel } from "@/components/poles-nav-panel";
-import { isNavActive, type Dictionary, type Locale } from "@/lib/i18n";
+import { isNavActive, resolveNavItemHref, type Dictionary, type Locale } from "@/lib/i18n";
 
 const SCROLL_RANGE = 120;
 const HEADER_OFFSET = 116;
@@ -106,8 +106,19 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   }, [useFixedHeader]);
 
   function follow(event: { preventDefault: () => void }, href: string) {
-    const nextHash = href.includes("#") ? href.slice(href.indexOf("#")) : "";
-    if (!nextHash) return;
+    const hashIndex = href.indexOf("#");
+    if (hashIndex === -1) return;
+
+    const pathPart = href.slice(0, hashIndex) || home;
+    const nextHash = href.slice(hashIndex);
+
+    if (pathPart !== home || pathname !== home) {
+      setOpen(false);
+      setMobilePolesOpen(false);
+      setPolesMenuOpen(false);
+      return;
+    }
+
     event.preventDefault();
     if (window.location.hash !== nextHash) {
       window.history.pushState(null, "", `${window.location.pathname}${window.location.search}${nextHash}`);
@@ -131,7 +142,11 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
     }
   }
 
-  const links = dict.nav.map((item) => ({ ...item, href: `${home}${item.href}` }));
+  const links = dict.nav.map((item) => ({
+    label: item.label,
+    itemHref: item.href,
+    href: resolveNavItemHref(locale, item.href),
+  }));
 
   const barStyle = {
     "--header-progress": headerSolid,
@@ -154,14 +169,14 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       : "font-label-md text-label-md text-on-surface-variant hover:text-primary";
   }
 
-  function isPolesLink(href: string) {
-    return href.endsWith(POLES_HREF);
+  function isPolesLink(itemHref: string) {
+    return itemHref === POLES_HREF;
   }
 
   function renderDesktopNav(tone: "light" | "solid", layerKey: string) {
     return links.map((link) => {
-      if (isPolesLink(link.href)) {
-        const active = isNavActive(link.href, hash, pathname);
+      if (isPolesLink(link.itemHref)) {
+        const active = isNavActive(link.itemHref, hash, pathname);
         return (
           <button
             key={`${layerKey}-poles`}
@@ -188,8 +203,8 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           key={`${layerKey}-${link.href}`}
           href={link.href}
           onClick={(event) => follow(event, link.href)}
-          aria-current={isNavActive(link.href, hash, pathname) ? "page" : undefined}
-          className={`transition-colors duration-200 ${navLinkClass(isNavActive(link.href, hash, pathname), tone)}`}
+          aria-current={isNavActive(link.itemHref, hash, pathname) ? "page" : undefined}
+          className={`transition-colors duration-200 ${navLinkClass(isNavActive(link.itemHref, hash, pathname), tone)}`}
         >
           {link.label}
         </a>
@@ -314,12 +329,12 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           >
             <div className="flex flex-col">
               {links.map((link) => {
-                const active = isNavActive(link.href, hash, pathname);
+                const active = isNavActive(link.itemHref, hash, pathname);
                 const lightMenu = headerSolid < 0.5;
 
-                if (isPolesLink(link.href)) {
+                if (isPolesLink(link.itemHref)) {
                   return (
-                    <div key={`${link.href}-${link.label}-mobile`} className="border-b border-inherit">
+                    <div key={`${link.itemHref}-${link.label}-mobile`} className="border-b border-inherit">
                       <button
                         type="button"
                         aria-expanded={mobilePolesOpen}
@@ -353,7 +368,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
                 return (
                   <a
-                    key={`${link.href}-${link.label}-mobile`}
+                    key={`${link.itemHref}-${link.label}-mobile`}
                     href={link.href}
                     onClick={(event) => follow(event, link.href)}
                     aria-current={active ? "page" : undefined}

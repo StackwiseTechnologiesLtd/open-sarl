@@ -4,6 +4,7 @@ import {
   getDictionary,
   isNavActive,
   localePath,
+  resolveNavItemHref,
   locales,
   mailHref,
 } from "./i18n";
@@ -16,11 +17,18 @@ describe("locale routing", () => {
   });
 
   it("highlights a section only on the homepage, and only after one is chosen", () => {
-    expect(isNavActive("/fr#expertise", "", "/fr")).toBe(false);
-    expect(isNavActive("/fr#expertise", "#expertise", "/fr")).toBe(true);
-    expect(isNavActive("/fr#expertise", "#expertise", "/fr/brochure")).toBe(false);
-    expect(isNavActive("/fr#poles", "#poles-advisory", "/fr")).toBe(true);
-    expect(isNavActive("/fr#poles", "", "/fr/poles/advisory")).toBe(true);
+    expect(isNavActive("#expertise", "", "/fr")).toBe(false);
+    expect(isNavActive("#expertise", "#expertise", "/fr")).toBe(true);
+    expect(isNavActive("#expertise", "#expertise", "/fr/brochure")).toBe(false);
+    expect(isNavActive("#poles", "#poles-advisory", "/fr")).toBe(true);
+    expect(isNavActive("#poles", "", "/fr/poles/advisory")).toBe(true);
+    expect(isNavActive("#portfolio", "", "/fr/portfolio")).toBe(true);
+    expect(isNavActive("#portfolio", "#portfolio", "/fr")).toBe(true);
+  });
+
+  it("resolves portfolio nav to the portfolio page", () => {
+    expect(resolveNavItemHref("fr", "#portfolio")).toBe("/fr/portfolio");
+    expect(resolveNavItemHref("en", "#missions")).toBe("/en#missions");
   });
 });
 

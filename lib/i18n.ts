@@ -25,8 +25,19 @@ export function localePath(pathname: string, locale: Locale) {
 
 const polesHashes = ["#poles", "#poles-advisory", "#poles-engineering"] as const;
 
-export function isNavActive(href: string, hash: string, pathname: string) {
-  const anchor = href.includes("#") ? href.slice(href.indexOf("#")) : href;
+/** Nav items in copy use `#section`; resolve to routes where the homepage anchor is not enough. */
+export function resolveNavItemHref(locale: Locale, itemHref: string) {
+  const home = `/${locale}`;
+  if (itemHref === "#portfolio") return `${home}/portfolio`;
+  return `${home}${itemHref}`;
+}
+
+export function isNavActive(itemHref: string, hash: string, pathname: string) {
+  if (itemHref === "#portfolio") {
+    if (/^\/(fr|en)\/portfolio\/?$/.test(pathname)) return true;
+  }
+
+  const anchor = itemHref.includes("#") ? itemHref.slice(itemHref.indexOf("#")) : itemHref;
   if (anchor === "#poles") {
     if (/^\/(fr|en)\/poles\//.test(pathname)) return true;
     if (!/^\/(fr|en)$/.test(pathname)) return false;
@@ -35,7 +46,7 @@ export function isNavActive(href: string, hash: string, pathname: string) {
   }
   if (!/^\/(fr|en)$/.test(pathname)) return false;
   if (!hash) return false;
-  return href.endsWith(hash);
+  return itemHref === hash || itemHref.endsWith(hash);
 }
 
 export function isPolesNavHash(hash: string) {
@@ -561,9 +572,9 @@ const dictionaries = {
       ],
     },
     method: {
-      title: "Services clés",
+      title: "Expertise",
       intro:
-        "Quatre piliers de conseil pour structurer des programmes à fort impact, conformes aux attentes des bailleurs et financiers.",
+        "Quatre domaines d'intervention pour structurer des programmes à fort impact, alignés sur les attentes des bailleurs et des autorités publiques.",
       items: [
         {
           icon: "construction" as IconName,
@@ -1300,9 +1311,9 @@ const dictionaries = {
       ],
     },
     method: {
-      title: "Core advisory services",
+      title: "Expertise",
       intro:
-        "Four pillars to structure high-impact programs aligned with development partners and financiers.",
+        "Four areas of practice to structure high-impact programs for public authorities and development partners.",
       items: [
         {
           icon: "construction" as IconName,
