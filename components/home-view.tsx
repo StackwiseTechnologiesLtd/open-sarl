@@ -33,7 +33,7 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
     <main>
       <HeroCarousel home={home} dict={dict} />
 
-      <PolesSection dict={dict} />
+      <PolesSection locale={locale} dict={dict} />
 
       <section id="expertise" className="section-shell py-section-gap">
         <Container>

@@ -420,14 +420,37 @@ section[id] {
     0 1px 3px rgba(10, 22, 40, calc(var(--header-progress) * 0.06));
 }
 
-.nav-poles-panel {
-  animation: nav-poles-enter 0.22s ease-out;
+.site-header-bar.is-poles-open {
+  box-shadow:
+    0 8px 32px rgba(10, 22, 40, 0.14),
+    0 2px 8px rgba(10, 22, 40, 0.08);
 }
 
-@keyframes nav-poles-enter {
+.nav-poles-panel {
+  animation: nav-poles-panel-enter 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-poles-panel-divider {
+  height: 1px;
+  background: color-mix(in srgb, var(--color-outline-variant) 55%, transparent);
+}
+
+.nav-poles-panel-card {
+  border-radius: 0.625rem;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.nav-poles-panel-card:hover {
+  background: color-mix(in srgb, var(--color-primary) 4%, white);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-primary) 12%, transparent);
+}
+
+@keyframes nav-poles-panel-enter {
   from {
     opacity: 0;
-    transform: translateY(-6px);
+    transform: translateY(-4px);
   }
   to {
     opacity: 1;

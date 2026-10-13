@@ -24,8 +24,8 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const home = `/${locale}`;
   const isHome = pathname === home;
   const solid = isHome ? scrollProgress : 1;
-  const light = 1 - solid;
-  const panelTone = solid > 0.5 ? "solid" : "light";
+  const displaySolid = isHome && polesMenuOpen ? 1 : solid;
+  const light = 1 - displaySolid;
 
   function scrollToHash(hash: string, behavior?: ScrollBehavior) {
     if (!hash) return;
@@ -116,10 +116,22 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
     scrollToHash(nextHash);
   }
 
+  function onMenuNavigate(event: { preventDefault: () => void }, href: string) {
+    setPolesMenuOpen(false);
+    setOpen(false);
+    setMobilePolesOpen(false);
+    const hashIndex = href.indexOf("#");
+    if (hashIndex === -1) return;
+    const pathPart = href.slice(0, hashIndex) || home;
+    if (pathPart === home && pathname === home) {
+      follow(event, href);
+    }
+  }
+
   const links = dict.nav.map((item) => ({ ...item, href: `${home}${item.href}` }));
 
   const barStyle = {
-    "--header-progress": solid,
+    "--header-progress": displaySolid,
   } as CSSProperties;
 
   function navLinkClass(active: boolean, tone: "light" | "solid") {
@@ -177,13 +189,11 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   }
 
   return (
-    <header
-      className={`site-header top-0 z-50 print:hidden ${isHome ? "fixed right-0 left-0" : "sticky"}`}
-      onMouseLeave={schedulePolesClose}
-    >
+    <header className={`site-header top-0 z-50 print:hidden ${isHome ? "fixed right-0 left-0" : "sticky"}`}>
       <div
-        className={`site-header-bar mx-auto w-full max-w-container-max ${solid > 0.05 ? "is-scrolled" : ""}`}
+        className={`site-header-bar mx-auto w-full max-w-container-max ${displaySolid > 0.05 || polesMenuOpen ? "is-scrolled" : ""} ${polesMenuOpen ? "is-poles-open" : ""}`}
         style={barStyle}
+        onMouseLeave={schedulePolesClose}
       >
         <nav className="relative flex min-w-0 items-center justify-between gap-2 px-3 py-2.5 sm:gap-3 sm:px-5 sm:py-3.5 lg:px-6">
           <div className="relative h-9 w-[6.75rem] shrink-0 sm:h-10 sm:w-[8.5rem]">
@@ -331,7 +341,10 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                               <a
                                 key={practice.id}
                                 href={practiceHref}
-                                onClick={(event) => follow(event, practiceHref)}
+                                onClick={() => {
+                                  setOpen(false);
+                                  setMobilePolesOpen(false);
+                                }}
                                 className={
                                   lightMenu
                                     ? "block py-2 text-sm text-white/75 hover:text-white"
@@ -344,7 +357,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                           })}
                           <a
                             href={`${home}${dict.polesMenu.overviewHref}`}
-                            onClick={(event) => follow(event, `${home}${dict.polesMenu.overviewHref}`)}
+                            onClick={(event) => onMenuNavigate(event, `${home}${dict.polesMenu.overviewHref}`)}
                             className={
                               lightMenu
                                 ? "block py-2 text-sm font-semibold text-white/90"
@@ -391,24 +404,13 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </div>
           </div>
         ) : null}
-      </div>
 
-      {polesMenuOpen ? (
-        <div
-          id="poles-nav-panel"
-          className="hidden lg:block"
-          onMouseEnter={openPolesMenu}
-          onMouseLeave={schedulePolesClose}
-        >
-          <PolesNavPanel
-            home={home}
-            dict={dict}
-            tone={panelTone}
-            onNavigate={follow}
-            onClose={() => setPolesMenuOpen(false)}
-          />
-        </div>
-      ) : null}
+        {polesMenuOpen ? (
+          <div id="poles-nav-panel" className="hidden lg:block" onMouseEnter={openPolesMenu}>
+            <PolesNavPanel home={home} dict={dict} onNavigate={onMenuNavigate} />
+          </div>
+        ) : null}
+      </div>
     </header>
   );
 }

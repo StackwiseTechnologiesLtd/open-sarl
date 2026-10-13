@@ -20,6 +20,7 @@ describe("locale routing", () => {
     expect(isNavActive("/fr#expertise", "#expertise", "/fr")).toBe(true);
     expect(isNavActive("/fr#expertise", "#expertise", "/fr/brochure")).toBe(false);
     expect(isNavActive("/fr#poles", "#poles-advisory", "/fr")).toBe(true);
+    expect(isNavActive("/fr#poles", "", "/fr/poles/advisory")).toBe(true);
   });
 });
 

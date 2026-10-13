@@ -26,12 +26,15 @@ export function localePath(pathname: string, locale: Locale) {
 const polesHashes = ["#poles", "#poles-advisory", "#poles-engineering"] as const;
 
 export function isNavActive(href: string, hash: string, pathname: string) {
-  if (!/^\/(fr|en)$/.test(pathname)) return false;
-  if (!hash) return false;
   const anchor = href.includes("#") ? href.slice(href.indexOf("#")) : href;
   if (anchor === "#poles") {
+    if (/^\/(fr|en)\/poles\//.test(pathname)) return true;
+    if (!/^\/(fr|en)$/.test(pathname)) return false;
+    if (!hash) return false;
     return polesHashes.includes(hash as (typeof polesHashes)[number]);
   }
+  if (!/^\/(fr|en)$/.test(pathname)) return false;
+  if (!hash) return false;
   return href.endsWith(hash);
 }
 
@@ -95,7 +98,7 @@ const dictionaries = {
       practices: [
         {
           id: "advisory",
-          href: "#poles-advisory",
+          href: "/poles/advisory",
           kicker: "Pôle 1",
           title: "OPEN Infrastructure Advisory",
           summary:
@@ -104,7 +107,7 @@ const dictionaries = {
         },
         {
           id: "engineering",
-          href: "#poles-engineering",
+          href: "/poles/engineering",
           kicker: "Pôle 2",
           title: "OPEN Engineering & Delivery",
           summary:
@@ -137,6 +140,129 @@ const dictionaries = {
           highlights: "Ingénierie • Conception • Supervision • Appui à la mise en œuvre",
         },
       ],
+      exploreLabel: "Explorer ce pôle",
+    },
+    polePages: {
+      shared: {
+        capabilitiesTitle: "Champs d'intervention",
+        projectsTitle: "Projets et références",
+        projectsIntro:
+          "Sélection représentative de mandats rattachés à ce pôle — détail enrichi au fur et à mesure des validations.",
+        projectRole: "Rôle d'OPEN",
+        projectSector: "Secteur",
+        projectLocation: "Localisation",
+        projectClient: "Client / contrepartie",
+        statusRepresentative: "Typologie de mandat",
+        backToPoles: "Tous les pôles",
+        otherPole: "Voir l'autre pôle",
+        contactCta: "Discuter d'un mandat",
+      },
+      advisory: {
+        metaTitle: "Infrastructure Advisory",
+        metaDescription:
+          "Préparation, bancabilité, stratégie et appui institutionnel — OPEN Infrastructure Advisory en RDC et Afrique centrale.",
+        kicker: "Pôle 1",
+        title: "OPEN Infrastructure Advisory",
+        lead: "Préparer, structurer et piloter des programmes d'infrastructure pour des décisions finançables et exécutables.",
+        body: "De la définition des priorités à la structuration bailleurs, OPEN accompagne ministères, UGP/PIU et partenaires techniques avec des livrables orientés décision.",
+        capabilities: [
+          "Préparation et faisabilité de projets",
+          "Bancabilité, financement et allocation des risques",
+          "Pipelines, priorisation et notes de décision",
+          "Appui institutionnel, gouvernance et passation",
+          "Programmes financés par les bailleurs (UE, BM, BAD, bilatéraux)",
+        ],
+        projects: [
+          {
+            slug: "urban-water-eastern-drc",
+            title: "Approvisionnement en eau urbaine",
+            sector: "Eau & infrastructures urbaines",
+            location: "Est de la RDC",
+            clientType: "Autorité publique / programme",
+            role: "Préparation de projet et appui à la mise en œuvre",
+            summary: "Structuration du programme, préparation des investissements et appui décisionnel pour des services essentiels.",
+            status: "Référence représentative",
+          },
+          {
+            slug: "hydropower-energy-systems",
+            title: "Hydropower & systèmes énergétiques",
+            sector: "Énergie",
+            location: "RDC",
+            clientType: "Ministère / utility / bailleur",
+            role: "Conseil technique, institutionnel et investment readiness",
+            summary: "Options techniques, readiness financier et alignement avec les exigences des financeurs.",
+            status: "Référence représentative",
+          },
+          {
+            slug: "strategic-corridors",
+            title: "Corridors stratégiques",
+            sector: "Transport & logistique",
+            location: "RDC & Afrique centrale",
+            clientType: "Autorités corridor / bailleurs",
+            role: "Planification, cartographie des parties prenantes et investment readiness",
+            summary: "Priorisation des investissements et préparation de dossiers pour connectivité régionale.",
+            status: "Référence représentative",
+          },
+          {
+            slug: "donor-programmes-drc",
+            title: "Programmes d'infrastructure financés par les bailleurs",
+            sector: "Multi-secteurs",
+            location: "RDC",
+            clientType: "UGP / PIU / bailleurs",
+            role: "Appui à l'exécution et support décisionnel",
+            summary: "Alignement sur les exigences de financement international et reporting de programme.",
+            status: "Référence représentative",
+          },
+        ],
+      },
+      engineering: {
+        metaTitle: "Engineering & Delivery",
+        metaDescription:
+          "Ingénierie, conception, supervision et appui à l'exécution — OPEN Engineering & Delivery en RDC et Afrique centrale.",
+        kicker: "Pôle 2",
+        title: "OPEN Engineering & Delivery",
+        lead: "Relier la préparation des projets aux réalités techniques — études, ingénierie, supervision et appui à la mise en œuvre.",
+        body: "OPEN intervient sur la chaîne technique et d'exécution, en respectant les agréments applicables et en s'appuyant sur des partenaires qualifiés lorsque requis.",
+        capabilities: [
+          "Études techniques et ingénierie de conception",
+          "Maîtrise d'œuvre et contrôle de conception",
+          "Supervision de travaux et contrôle qualité",
+          "Assistance à la réalisation et appui chantier",
+          "Livrables d'exécution et reporting de supervision",
+        ],
+        projects: [
+          {
+            slug: "urban-networks-supervision",
+            title: "Réseaux urbains — supervision",
+            sector: "Eau & infrastructures urbaines",
+            location: "RDC",
+            clientType: "Maître d'ouvrage / UGP",
+            role: "Supervision technique et contrôle d'exécution",
+            summary: "Suivi de mise en œuvre, contrôle des livrables entreprise et reporting pour le maître d'ouvrage.",
+            status: "Référence représentative",
+          },
+          {
+            slug: "water-sanitation-engineering",
+            title: "Infrastructures hydrauliques — ingénierie",
+            sector: "Eau & assainissement",
+            location: "RDC",
+            clientType: "Autorité publique",
+            role: "Études de conception et ingénierie",
+            summary: "Conception technique, dossiers d'exécution et appui à la passation des travaux.",
+            status: "Référence représentative",
+          },
+          {
+            slug: "energy-substation-design",
+            title: "Postes et réseaux — études associées",
+            sector: "Énergie",
+            location: "RDC",
+            clientType: "Utility / partenaire technique",
+            role: "Études d'ingénierie et appui à la réalisation",
+            summary: "Ingénierie ciblée et assistance à la mise en service dans le respect des standards.",
+            status: "Référence représentative",
+          },
+        ],
+      },
     },
     portfolio: {
       title: "Portfolio",
@@ -473,7 +599,7 @@ const dictionaries = {
       practices: [
         {
           id: "advisory",
-          href: "#poles-advisory",
+          href: "/poles/advisory",
           kicker: "Practice 1",
           title: "OPEN Infrastructure Advisory",
           summary:
@@ -482,7 +608,7 @@ const dictionaries = {
         },
         {
           id: "engineering",
-          href: "#poles-engineering",
+          href: "/poles/engineering",
           kicker: "Practice 2",
           title: "OPEN Engineering & Delivery",
           summary:
@@ -515,6 +641,129 @@ const dictionaries = {
           highlights: "Engineering • Design • Supervision • Implementation support",
         },
       ],
+      exploreLabel: "Explore this practice",
+    },
+    polePages: {
+      shared: {
+        capabilitiesTitle: "Scope of services",
+        projectsTitle: "Projects and references",
+        projectsIntro:
+          "Representative selection of mandates under this practice — details added as references are validated.",
+        projectRole: "OPEN role",
+        projectSector: "Sector",
+        projectLocation: "Location",
+        projectClient: "Client / counterpart",
+        statusRepresentative: "Representative mandate",
+        backToPoles: "All practices",
+        otherPole: "View the other practice",
+        contactCta: "Discuss a mandate",
+      },
+      advisory: {
+        metaTitle: "Infrastructure Advisory",
+        metaDescription:
+          "Project preparation, bankability, strategy, and institutional support — OPEN Infrastructure Advisory in the DRC and Central Africa.",
+        kicker: "Practice 1",
+        title: "OPEN Infrastructure Advisory",
+        lead: "Prepare, structure, and steer infrastructure programmes toward bankable, implementable decisions.",
+        body: "From investment prioritisation to donor-ready packaging, OPEN supports ministries, PIUs, and technical partners with decision-oriented deliverables.",
+        capabilities: [
+          "Project preparation and feasibility",
+          "Bankability, finance, and risk allocation",
+          "Pipelines, prioritisation, and decision briefs",
+          "Institutional support, governance, and procurement readiness",
+          "Donor-funded programmes (EU, World Bank, AfDB, bilaterals)",
+        ],
+        projects: [
+          {
+            slug: "urban-water-eastern-drc",
+            title: "Urban water supply",
+            sector: "Water & urban infrastructure",
+            location: "Eastern DRC",
+            clientType: "Public authority / programme",
+            role: "Project preparation and implementation support",
+            summary: "Programme structuring, investment preparation, and decision support for essential services.",
+            status: "Representative reference",
+          },
+          {
+            slug: "hydropower-energy-systems",
+            title: "Hydropower & energy systems",
+            sector: "Energy",
+            location: "DRC",
+            clientType: "Ministry / utility / donor",
+            role: "Technical, institutional, and investment-readiness advisory",
+            summary: "Technical options, financial readiness, and alignment with financier requirements.",
+            status: "Representative reference",
+          },
+          {
+            slug: "strategic-corridors",
+            title: "Strategic corridors",
+            sector: "Transport & logistics",
+            location: "DRC & Central Africa",
+            clientType: "Corridor authorities / donors",
+            role: "Planning, stakeholder mapping, and investment readiness",
+            summary: "Investment prioritisation and dossier preparation for regional connectivity.",
+            status: "Representative reference",
+          },
+          {
+            slug: "donor-programmes-drc",
+            title: "Donor-funded infrastructure programmes",
+            sector: "Multi-sector",
+            location: "DRC",
+            clientType: "PIU / UGP / donors",
+            role: "Implementation support and decision backing",
+            summary: "Alignment with international financing requirements and programme reporting.",
+            status: "Representative reference",
+          },
+        ],
+      },
+      engineering: {
+        metaTitle: "Engineering & Delivery",
+        metaDescription:
+          "Engineering, design, supervision, and implementation support — OPEN Engineering & Delivery in the DRC and Central Africa.",
+        kicker: "Practice 2",
+        title: "OPEN Engineering & Delivery",
+        lead: "Connect project preparation to technical reality — studies, engineering, supervision, and delivery support.",
+        body: "OPEN supports the technical and delivery chain in line with applicable licences, working with qualified partners where required.",
+        capabilities: [
+          "Technical studies and design engineering",
+          "Design review and owner's engineering",
+          "Works supervision and quality control",
+          "Implementation assistance and site support",
+          "Delivery reporting and supervision outputs",
+        ],
+        projects: [
+          {
+            slug: "urban-networks-supervision",
+            title: "Urban networks — supervision",
+            sector: "Water & urban infrastructure",
+            location: "DRC",
+            clientType: "Project owner / PIU",
+            role: "Technical supervision and delivery control",
+            summary: "Implementation monitoring, contractor deliverable review, and owner reporting.",
+            status: "Representative reference",
+          },
+          {
+            slug: "water-sanitation-engineering",
+            title: "Water infrastructure — engineering",
+            sector: "Water & sanitation",
+            location: "DRC",
+            clientType: "Public authority",
+            role: "Design studies and engineering",
+            summary: "Technical design, execution dossiers, and procurement support.",
+            status: "Representative reference",
+          },
+          {
+            slug: "energy-substation-design",
+            title: "Substations & networks — associated studies",
+            sector: "Energy",
+            location: "DRC",
+            clientType: "Utility / technical partner",
+            role: "Engineering studies and delivery support",
+            summary: "Targeted engineering and commissioning support to international standards.",
+            status: "Representative reference",
+          },
+        ],
+      },
     },
     portfolio: {
       title: "Portfolio",
