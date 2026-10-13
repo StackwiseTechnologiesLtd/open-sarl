@@ -1,6 +1,9 @@
 "use client";
 
+import { PolePromoCard } from "@/components/pole-promo-card";
+import { poleImages } from "@/lib/images";
 import type { Dictionary } from "@/lib/i18n";
+import type { PoleSlug } from "@/lib/poles";
 
 type PolesNavPanelProps = {
   home: string;
@@ -9,6 +12,10 @@ type PolesNavPanelProps = {
   onFollowLink?: () => void;
   layout?: "default" | "drawer";
 };
+
+function displayTitle(fullTitle: string) {
+  return fullTitle.replace(/^OPEN\s+/i, "");
+}
 
 export function PolesNavPanel({ home, dict, onNavigate, onFollowLink, layout = "default" }: PolesNavPanelProps) {
   const menu = dict.polesMenu;
@@ -20,33 +27,33 @@ export function PolesNavPanel({ home, dict, onNavigate, onFollowLink, layout = "
       role="region"
       aria-label={menu.ariaLabel}
     >
-      <p className="mb-4 text-sm text-on-surface-variant">{menu.kicker}</p>
+      <p className="nav-poles-panel-kicker">{menu.kicker}</p>
       <ul className="nav-poles-panel-list">
         {menu.practices.map((practice) => {
           const href = `${home}${practice.href}`;
+          const slug = practice.id as PoleSlug;
           return (
-            <li key={practice.id} className="nav-poles-panel-item">
-              <a
+            <li key={practice.id}>
+              <PolePromoCard
                 href={href}
+                title={displayTitle(practice.title)}
+                ctaLabel={dict.polesSection.exploreLabel}
+                imageSrc={poleImages[slug]}
+                imageAlt={practice.title}
                 onClick={() => onFollowLink?.()}
-                className="nav-poles-panel-link"
-              >
-                <span className="block text-sm text-on-surface-variant">{practice.kicker}</span>
-                <span className="mt-0.5 block text-base font-semibold leading-snug text-on-surface">{practice.title}</span>
-                <span className="mt-2 block text-sm leading-relaxed text-on-surface-variant">{practice.highlights}</span>
-              </a>
+              />
             </li>
           );
         })}
       </ul>
-      <p className="mt-4 border-t border-outline-variant/50 pt-4">
+      <p className="nav-poles-panel-footer">
         <a
           href={overviewHref}
           onClick={(event) => {
             onNavigate(event, overviewHref);
             onFollowLink?.();
           }}
-          className="text-sm font-medium text-primary underline-offset-4 hover:underline"
+          className="nav-poles-panel-overview"
         >
           {menu.overviewLabel}
         </a>

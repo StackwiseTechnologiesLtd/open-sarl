@@ -23,3 +23,8 @@ export const sectorImages = {
 
 /** Advisory (office) then Executive (infrastructure) — one image per carousel slide */
 export const heroSlideImages = [missionImages[0], sectorImages.transport] as const;
+
+export const poleImages = {
+  advisory: missionImages[0],
+  engineering: sectorImages.transport,
+} as const;
