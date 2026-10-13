@@ -26,7 +26,7 @@ export function ProjectCard({
           src={imageSrc}
           alt={imageAlt}
           fill
-          sizes="(min-width: 1024px) 50vw, 100vw"
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           quality={85}
           className="project-card-image"
         />

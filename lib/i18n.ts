@@ -502,6 +502,10 @@ const dictionaries = {
       title: "Portfolio",
       intro:
         "Expériences, projets et références — enrichis progressivement au fur et à mesure de leur validation.",
+      viewAllCta: "Voir toutes les références",
+      pageTitle: "Portfolio & références",
+      pageIntro:
+        "Sélection de mandats rattachés aux deux pôles OPEN — cliquez sur une fiche pour le détail (contexte, périmètre, livrables).",
       categories: [
         "Water & Urban Infrastructure",
         "Energy & Power Systems",
@@ -510,6 +514,14 @@ const dictionaries = {
         "Project Preparation & Institutional Support",
       ],
       note: "Chaque référence pourra détailler projet, secteur, localisation, client, rôle d'OPEN, livrables et résultats clés.",
+      featuredSlugs: [
+        "urban-water-eastern-drc",
+        "strategic-corridors",
+        "donor-programmes-drc",
+        "urban-networks-supervision",
+        "water-sanitation-engineering",
+        "hydropower-energy-systems",
+      ],
     },
     hero: {
       imageAlt: "Programmes d'infrastructures stratégiques en RDC",
@@ -1229,6 +1241,10 @@ const dictionaries = {
     portfolio: {
       title: "Portfolio",
       intro: "Experience, projects, and references — expanded progressively as they are validated.",
+      viewAllCta: "View all projects",
+      pageTitle: "Portfolio & references",
+      pageIntro:
+        "A selection of mandates across both OPEN practices — open a card for context, scope, and deliverables.",
       categories: [
         "Water & Urban Infrastructure",
         "Energy & Power Systems",
@@ -1237,6 +1253,14 @@ const dictionaries = {
         "Project Preparation & Institutional Support",
       ],
       note: "Each reference will cover project, sector, location, client, OPEN's role, deliverables, and key results where available.",
+      featuredSlugs: [
+        "urban-water-eastern-drc",
+        "strategic-corridors",
+        "donor-programmes-drc",
+        "urban-networks-supervision",
+        "water-sanitation-engineering",
+        "hydropower-energy-systems",
+      ],
     },
     hero: {
       imageAlt: "Strategic infrastructure programs in the DRC",

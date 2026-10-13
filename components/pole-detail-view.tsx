@@ -80,7 +80,7 @@ export function PoleDetailView({
             <h2 className="section-heading mb-3">{shared.projectsTitle}</h2>
             <p className="mb-8 max-w-prose text-sm text-on-surface-variant sm:mb-10 sm:text-body-md">{shared.projectsIntro}</p>
           </Reveal>
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-gutter">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-gutter lg:grid-cols-3">
             {content.projects.map((project, index) => (
               <Reveal key={project.slug} delay={index * 0.04} className="h-full">
                 <ProjectCard

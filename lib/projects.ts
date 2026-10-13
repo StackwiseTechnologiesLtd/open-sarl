@@ -19,6 +19,36 @@ export function projectSlugsForPole(dict: Dictionary, pole: PoleSlug) {
   return dict.polePages[pole].projects.map((item) => item.slug);
 }
 
+export type ProjectListing = {
+  pole: PoleSlug;
+  project: PoleProject;
+};
+
+export function findPoleForProject(dict: Dictionary, slug: string): PoleSlug | null {
+  for (const pole of poleSlugs) {
+    if (dict.polePages[pole].projects.some((item) => item.slug === slug)) return pole;
+  }
+  return null;
+}
+
+export function getAllProjects(dict: Dictionary): ProjectListing[] {
+  return poleSlugs.flatMap((pole) =>
+    dict.polePages[pole].projects.map((project) => ({ pole, project })),
+  );
+}
+
+export function getFeaturedProjects(dict: Dictionary): ProjectListing[] {
+  return dict.portfolio.featuredSlugs
+    .map((slug) => {
+      const pole = findPoleForProject(dict, slug);
+      if (!pole) return null;
+      const project = dict.polePages[pole].projects.find((item) => item.slug === slug);
+      if (!project) return null;
+      return { pole, project };
+    })
+    .filter((item): item is ProjectListing => item !== null);
+}
+
 export function buildProjectStaticParams(getDict: (locale: Locale) => Dictionary) {
   return locales.flatMap((locale) => {
     const dict = getDict(locale);

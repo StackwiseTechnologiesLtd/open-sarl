@@ -98,16 +98,16 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
             <SectionIntro title={dict.compare.title} align="center" className="mb-10 sm:mb-12" />
           </Reveal>
           <div className="compare-split overflow-hidden rounded-xl border border-outline-variant/45">
-            <div className="grid md:grid-cols-2 md:items-start">
-              <Reveal>
-                <div className="border-b border-outline-variant/40 bg-white/70 p-6 sm:p-8 md:border-r md:border-b-0">
-                  <h3 className="font-headline-md mb-5 flex min-w-0 items-start gap-2.5 text-lg font-semibold sm:mb-6 sm:items-center sm:text-xl">
+            <div className="grid md:grid-cols-2 md:items-stretch">
+              <Reveal className="h-full min-h-0">
+                <div className="flex h-full min-h-full flex-col border-b border-outline-variant/40 bg-white/70 p-6 sm:p-8 md:border-r md:border-b-0">
+                  <h3 className="font-headline-md mb-5 flex min-h-[4.5rem] min-w-0 items-start gap-2.5 text-lg font-semibold sm:mb-6 sm:min-h-[3.75rem] sm:items-center sm:text-xl">
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-surface-container text-secondary">
                       <Icon name="rule" className="h-4 w-4" />
                     </span>
                     <span className="min-w-0">{dict.compare.standardTitle}</span>
                   </h3>
-                  <ul className="divide-y divide-outline-variant/50">
+                  <ul className="divide-y divide-outline-variant/50 md:flex-1">
                     {dict.compare.standardItems.map((item) => (
                       <li key={item.title} className="py-3.5 first:pt-0 last:pb-0 sm:py-4">
                         <p className="mb-1 text-sm font-semibold sm:text-base">{item.title}</p>
@@ -117,9 +117,9 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
                   </ul>
                 </div>
               </Reveal>
-              <Reveal delay={0.05}>
-                <div className="bg-primary/[0.03] p-6 sm:p-8">
-                  <h3 className="font-headline-md text-primary mb-5 flex min-w-0 items-start gap-2.5 text-lg font-semibold sm:mb-6 sm:items-center sm:text-xl">
+              <Reveal delay={0.05} className="h-full min-h-0">
+                <div className="flex h-full min-h-full flex-col bg-primary/[0.03] p-6 sm:p-8">
+                  <h3 className="font-headline-md text-primary mb-5 flex min-h-[4.5rem] min-w-0 items-start gap-2.5 text-lg font-semibold sm:mb-6 sm:min-h-[3.75rem] sm:items-center sm:text-xl">
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
                       <Icon name="verified" className="h-4 w-4" />
                     </span>
@@ -128,7 +128,7 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
                       <span className="mt-0.5 block text-xs font-medium text-primary/70">{dict.compare.openBadge}</span>
                     </span>
                   </h3>
-                  <ul className="divide-y divide-primary/10">
+                  <ul className="divide-y divide-primary/10 md:flex-1">
                     {dict.compare.openItems.map((item) => (
                       <li key={item.title} className="py-3.5 first:pt-0 last:pb-0 sm:py-4">
                         <p className="text-primary mb-1 text-sm font-semibold sm:text-base">{item.title}</p>
@@ -253,7 +253,7 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
         </Container>
       </section>
 
-      <PortfolioSection dict={dict} />
+      <PortfolioSection locale={locale} dict={dict} />
 
       <section id="contact" className="cta-section relative overflow-hidden py-section-gap">
         <div className="cta-pattern absolute inset-0" />

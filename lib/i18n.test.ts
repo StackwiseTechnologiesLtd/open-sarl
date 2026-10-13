@@ -39,6 +39,7 @@ describe("bilingual content", () => {
       expect(copy.livrables.items).toHaveLength(3);
       expect(copy.missions.steps).toHaveLength(3);
       expect(copy.polesSection.valueChain.steps).toHaveLength(4);
+      expect(copy.portfolio.featuredSlugs.length).toBeGreaterThan(0);
       expect(copy.sectors.items).toHaveLength(4);
       expect(copy.modes.items).toHaveLength(4);
     }
