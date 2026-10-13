@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ButtonLink, PillLink } from "@/components/button";
 import { Container } from "@/components/container";
 import { Icon } from "@/components/icon";
@@ -141,12 +140,12 @@ export function ProjectDetailView({
         </Container>
       </div>
 
-      <section className="section-shell py-10 sm:py-12">
+      <section className="project-detail-back-section py-10 sm:py-12">
         <Container>
-          <Link href={polePath(locale, pole)} className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
-            <Icon name="chevron_left" className="h-4 w-4" />
+          <ButtonLink href={polePath(locale, pole)} variant="outline">
+            <Icon name="chevron_left" className="h-5 w-5" aria-hidden="true" />
             {shared.backToPole}
-          </Link>
+          </ButtonLink>
         </Container>
       </section>
     </main>

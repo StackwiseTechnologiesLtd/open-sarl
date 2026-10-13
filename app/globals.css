@@ -799,6 +799,10 @@ section[id] {
   background: var(--color-surface-container-low);
 }
 
+.project-detail-back-section {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
 @media (min-width: 640px) {
   .project-detail-body {
     padding-top: 2.5rem;
