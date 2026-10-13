@@ -658,6 +658,139 @@ section[id] {
   transform: scale(1.03);
 }
 
+/* Homepage #poles — lifecycle value chain */
+.poles-value-chain {
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--color-outline-variant) 45%, transparent);
+  background: var(--color-surface-container-low);
+  padding: 1.5rem 1.25rem 1.625rem;
+}
+
+@media (min-width: 640px) {
+  .poles-value-chain {
+    padding: 1.75rem 1.75rem 2rem;
+  }
+}
+
+.poles-value-chain-header {
+  max-width: 42rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .poles-value-chain-header {
+    margin-bottom: 1.75rem;
+  }
+}
+
+.poles-value-chain-title {
+  margin: 0;
+  font-family: var(--font-headline-md);
+  font-size: 1.125rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--color-on-surface);
+}
+
+.poles-value-chain-intro {
+  margin: 0.5rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--color-on-surface-variant);
+}
+
+.poles-value-chain-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .poles-value-chain-steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+    position: relative;
+  }
+
+  .poles-value-chain-steps::before {
+    content: "";
+    position: absolute;
+    top: 1.1rem;
+    left: 8%;
+    right: 8%;
+    height: 2px;
+    background: color-mix(in srgb, var(--color-primary) 22%, transparent);
+    pointer-events: none;
+  }
+}
+
+.poles-value-chain-step-wrap {
+  min-width: 0;
+  height: 100%;
+}
+
+.poles-value-chain-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-height: 100%;
+  padding: 1rem 1rem 1.125rem;
+  border-radius: 0.625rem;
+  background: #fff;
+  border: 1px solid color-mix(in srgb, var(--color-outline-variant) 35%, transparent);
+}
+
+@media (min-width: 768px) {
+  .poles-value-chain-step {
+    margin: 0 0.35rem;
+    padding: 1.125rem 0.875rem 1.25rem;
+    text-align: center;
+    align-items: center;
+  }
+}
+
+.poles-value-chain-tag {
+  display: inline-block;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+.poles-value-chain-tag.is-advisory {
+  background: color-mix(in srgb, var(--color-primary) 10%, white);
+  color: var(--color-primary);
+}
+
+.poles-value-chain-tag.is-engineering {
+  background: color-mix(in srgb, var(--color-on-surface) 8%, white);
+  color: var(--color-on-surface-variant);
+}
+
+.poles-value-chain-label {
+  margin: 0.15rem 0 0;
+  font-size: 0.875rem;
+  font-weight: 650;
+  line-height: 1.35;
+  color: var(--color-on-surface);
+}
+
+.poles-value-chain-description {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--color-on-surface-variant);
+}
+
 /* Pole & project page heroes — full-bleed cinematic (case-study style) */
 .page-hero-cinematic {
   position: relative;

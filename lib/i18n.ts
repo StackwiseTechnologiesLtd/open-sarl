@@ -141,6 +141,39 @@ const dictionaries = {
         },
       ],
       exploreLabel: "Explorer ce pôle",
+      valueChain: {
+        title: "De la décision à l'exécution",
+        intro:
+          "Les deux pôles couvrent la chaîne de valeur du projet public — préparation finançable d'un côté, ingénierie et supervision de l'autre.",
+        advisoryTag: "Pôle 1 · Advisory",
+        engineeringTag: "Pôle 2 · Delivery",
+        steps: [
+          {
+            id: "prioritisation",
+            pole: "advisory" as const,
+            label: "Priorisation & stratégie",
+            description: "Pipelines, choix d'investissement et notes de décision.",
+          },
+          {
+            id: "preparation",
+            pole: "advisory" as const,
+            label: "Préparation & bancabilité",
+            description: "Faisabilité, structuration bailleurs et gestion des risques.",
+          },
+          {
+            id: "engineering",
+            pole: "engineering" as const,
+            label: "Ingénierie & conception",
+            description: "Études, conception et cahiers des charges exécutables.",
+          },
+          {
+            id: "delivery",
+            pole: "engineering" as const,
+            label: "Supervision & mise en œuvre",
+            description: "Contrôle d'exécution, reporting et appui au maître d'ouvrage.",
+          },
+        ],
+      },
     },
     polePages: {
       shared: {
@@ -843,6 +876,39 @@ const dictionaries = {
         },
       ],
       exploreLabel: "Explore this practice",
+      valueChain: {
+        title: "From decision to delivery",
+        intro:
+          "Both practices span the project lifecycle — bankable preparation on one side, engineering and supervision on the other.",
+        advisoryTag: "Practice 1 · Advisory",
+        engineeringTag: "Practice 2 · Delivery",
+        steps: [
+          {
+            id: "prioritisation",
+            pole: "advisory" as const,
+            label: "Prioritisation & strategy",
+            description: "Pipelines, investment choices, and decision briefs.",
+          },
+          {
+            id: "preparation",
+            pole: "advisory" as const,
+            label: "Preparation & bankability",
+            description: "Feasibility, donor structuring, and risk allocation.",
+          },
+          {
+            id: "engineering",
+            pole: "engineering" as const,
+            label: "Engineering & design",
+            description: "Studies, design, and executable tender packages.",
+          },
+          {
+            id: "delivery",
+            pole: "engineering" as const,
+            label: "Supervision & delivery",
+            description: "Construction oversight, reporting, and owner support.",
+          },
+        ],
+      },
     },
     polePages: {
       shared: {
