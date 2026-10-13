@@ -22,17 +22,24 @@ export function PolePageHero({
   lead: string;
   actions: ReactNode;
 }) {
+  const displayTitle = title.replace(/^OPEN\s+/i, "");
+
   return (
-    <section className="page-hero">
-      <Container>
-        <nav className="page-hero-crumbs" aria-label="Breadcrumb">
+    <section className="page-hero-cinematic">
+      <div className="page-hero-cinematic-bg" aria-hidden="true">
+        <Image src={imageSrc} alt={imageAlt} fill priority quality={92} className="page-hero-cinematic-image" sizes="100vw" />
+        <div className="page-hero-cinematic-scrim" />
+      </div>
+
+      <Container className="page-hero-cinematic-inner">
+        <nav className="page-hero-cinematic-crumbs" aria-label="Breadcrumb">
           {crumbs.map((crumb, index) => (
             <span key={`${crumb.href}-${index}`} className="inline-flex items-center gap-2">
-              {index > 0 ? <span className="text-on-surface-variant/50" aria-hidden="true">/</span> : null}
+              {index > 0 ? <span className="text-white/35" aria-hidden="true">/</span> : null}
               {index === crumbs.length - 1 ? (
-                <span className="text-on-surface-variant">{crumb.label}</span>
+                <span className="text-white/85">{crumb.label}</span>
               ) : (
-                <Link href={crumb.href} className="text-on-surface-variant hover:text-primary">
+                <Link href={crumb.href} className="text-white/55 hover:text-white">
                   {crumb.label}
                 </Link>
               )}
@@ -40,25 +47,13 @@ export function PolePageHero({
           ))}
         </nav>
 
-        <div className="page-hero-grid">
-          <div className="page-hero-copy">
-            <p className="page-hero-kicker">{kicker}</p>
-            <h1 className="page-hero-title">{title}</h1>
-            <p className="page-hero-lead">{lead}</p>
-            <div className="page-hero-actions">{actions}</div>
+        <div className="page-hero-cinematic-copy">
+          <div className="page-hero-cinematic-text">
+            <p className="page-hero-kicker page-hero-kicker--inverse">{kicker}</p>
+            <h1 className="page-hero-title page-hero-title--inverse">{displayTitle}</h1>
+            <p className="page-hero-lead page-hero-lead--inverse">{lead}</p>
           </div>
-          <div className="page-hero-visual">
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              width={960}
-              height={720}
-              priority
-              quality={90}
-              className="page-hero-image"
-              sizes="(min-width: 1024px) 42vw, 100vw"
-            />
-          </div>
+          <div className="page-hero-actions page-hero-actions--inverse">{actions}</div>
         </div>
       </Container>
     </section>
