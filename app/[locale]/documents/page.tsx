@@ -67,33 +67,28 @@ export default async function DocumentsHubPage({ params }: Props) {
         <div className="mt-14 max-w-3xl lg:max-w-none">
           <h2 className="font-headline-md text-2xl font-semibold text-primary">{hub.templatesSectionTitle}</h2>
           <p className="mt-2 max-w-2xl text-on-surface-variant">{hub.templatesSectionIntro}</p>
-          <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:max-w-5xl">
-            {documentTemplateCatalog.map((item) => {
-              const kind = dict.documentTemplates.kinds[item.id];
-              return (
-                <li key={item.id}>
-                  <Link
-                    href={`/${locale}/documents/templates/${item.id}`}
-                    className="doc-hub-card premium-card block h-full rounded-xl p-6"
-                  >
-                    <span className="doc-hub-card-icon" aria-hidden="true">
-                      DOC
-                    </span>
-                    <span className="font-label-md text-xs font-semibold tracking-wide text-primary uppercase">
-                      {hub.templateBadge}
-                    </span>
-                    <h3 className="mt-2 font-headline-md text-lg font-semibold text-on-surface">{kind.title}</h3>
-                    <p className="mt-2 text-sm text-on-surface-variant">{kind.desc}</p>
-                  </Link>
-                </li>
-              );
-            })}
+          <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:max-w-4xl">
+            <li className="sm:col-span-2">
+              <Link
+                href={`/${locale}/documents/templates`}
+                className="doc-hub-card premium-card block h-full rounded-xl p-6"
+              >
+                <span className="doc-hub-card-icon" aria-hidden="true">
+                  DOC
+                </span>
+                <span className="font-label-md text-xs font-semibold tracking-wide text-primary uppercase">
+                  {hub.templateBadge}
+                </span>
+                <h3 className="mt-2 font-headline-md text-lg font-semibold text-on-surface">{hub.templateTitle}</h3>
+                <p className="mt-2 text-sm text-on-surface-variant">{dict.documentTemplatesHub.intro}</p>
+                <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium text-primary">
+                  {documentTemplateCatalog.map((item) => (
+                    <li key={item.id}>{dict.documentTemplates.kinds[item.id].title}</li>
+                  ))}
+                </ul>
+              </Link>
+            </li>
           </ul>
-          <p className="mt-6">
-            <Link href={`/${locale}/documents/templates`} className="text-sm font-semibold text-primary hover:underline">
-              {hub.templateTitle}
-            </Link>
-          </p>
         </div>
         <p className="mt-10">
           <Link href={`/${locale}`} className="text-sm font-semibold text-primary hover:underline">
