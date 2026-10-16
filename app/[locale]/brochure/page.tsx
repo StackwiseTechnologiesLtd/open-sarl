@@ -19,7 +19,7 @@ export default async function BrochurePage({ params }: Props) {
   const dict = getDictionary(locale);
 
   return (
-    <main className="page-main brochure-page bg-[#e8eaed] pb-12 pt-8 sm:pb-16 md:pb-20 print:bg-white print:pb-0 print:pt-0">
+    <main className="page-main brochure-page bg-[#dfe2e8] pb-12 pt-6 sm:pb-16 sm:pt-8 md:pb-20 print:bg-white print:pb-0 print:pt-0">
       <Container className="max-w-none px-4 sm:px-6">
         <CapabilityBrochure locale={locale} dict={dict} />
       </Container>

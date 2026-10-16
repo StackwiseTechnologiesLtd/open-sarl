@@ -1,52 +1,67 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { OpenDocumentSheet } from "@/components/open-document-sheet";
-import { PrintButton } from "@/components/print-button";
-import { Container } from "@/components/container";
-import { getDictionary, isLocale } from "@/lib/i18n";
+"use client";
 
-type Props = { params: Promise<{ locale: string }> };
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import { DocumentA4Viewport } from "@/components/document-a4-viewport";
+import { OpenDocumentSheet } from "@/components/open-document-sheet";
+import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 
 const WEBSITE = "www.open-consulting.fr";
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params;
-  if (!isLocale(locale)) return {};
-  const dict = getDictionary(locale);
-  return {
-    title: dict.documentTemplates.metaTitle,
-    description: dict.documentTemplates.metaDescription,
-  };
-}
-
-export default async function DocumentTemplatePage({ params }: Props) {
-  const { locale } = await params;
-  if (!isLocale(locale)) notFound();
-  const dict = getDictionary(locale);
+export default function DocumentTemplatePage() {
+  const params = useParams();
+  const localeParam = params.locale;
+  const locale = typeof localeParam === "string" && isLocale(localeParam) ? localeParam : "fr";
+  const dict = getDictionary(locale as Locale);
   const t = dict.documentTemplates;
+  const v = dict.documentViewer;
 
   return (
-    <main className="page-main brochure-page bg-[#e8eaed] pb-12 pt-8 print:bg-white print:pb-0 print:pt-0">
-      <Container className="max-w-none px-4 sm:px-6">
-        <div className="brochure-toolbar mx-auto mb-8 flex max-w-[210mm] flex-col gap-3 print:hidden">
-          <h1 className="font-headline-md text-2xl font-semibold text-primary">{t.title}</h1>
-          <p className="text-sm text-on-surface-variant">{t.intro}</p>
-          <PrintButton label={t.print} />
-          <Link href={`/${locale}/brochure`} className="text-sm font-semibold text-primary hover:underline">
-            {t.backToBrochure}
-          </Link>
-        </div>
-        <div className="doc-stack">
+    <main className="page-main brochure-page bg-[#dfe2e8] pb-12 pt-6 sm:pt-8 print:bg-white print:pb-0 print:pt-0">
+      <div className="mx-auto max-w-none px-3 sm:px-6">
+        <DocumentA4Viewport
+          title={t.title}
+          downloadLabel={v.downloadWebPdf}
+          downloadFileName={`OPEN_Letterhead_Template_${locale}.pdf`}
+          printLabel={t.print}
+          pageCountHint={v.a4TwoPagesHint}
+          toolbarExtra={
+            <p className="text-sm text-on-surface-variant">
+              {t.intro}{" "}
+              <Link href={`/${locale}/documents`} className="font-semibold text-primary hover:underline">
+                {v.allDocuments}
+              </Link>
+              {" · "}
+              <Link href={`/${locale}/brochure`} className="font-semibold text-primary hover:underline">
+                {t.backToBrochure}
+              </Link>
+            </p>
+          }
+        >
           <OpenDocumentSheet variant="cover" website={WEBSITE}>
             <p className="doc-cover-kicker">{t.coverHint}</p>
             <p className="doc-cover-lead doc-cover-lead--placeholder">{t.bodyHint}</p>
           </OpenDocumentSheet>
           <OpenDocumentSheet variant="letter" website={WEBSITE}>
-            <p className="doc-cover-lead doc-cover-lead--placeholder">{t.bodyHint}</p>
+            <div className="doc-letter-meta">
+              <p className="doc-letter-date">{t.sampleDate}</p>
+              <div className="doc-letter-recipient">
+                <span className="doc-letter-to">{t.toLabel}</span>
+                <p className="doc-letter-recipient-name">{t.toName}</p>
+                <p className="doc-letter-recipient-org">{t.toCompany}</p>
+                <p className="doc-letter-recipient-address">
+                  {t.toAddress.split("\n").map((line) => (
+                    <span key={line} className="block">
+                      {line}
+                    </span>
+                  ))}
+                </p>
+              </div>
+            </div>
+            <p className="doc-letter-prose doc-letter-prose--placeholder">{t.bodyHint}</p>
           </OpenDocumentSheet>
-        </div>
-      </Container>
+        </DocumentA4Viewport>
+      </div>
     </main>
   );
 }
