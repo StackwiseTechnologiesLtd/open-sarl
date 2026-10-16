@@ -801,8 +801,15 @@ const dictionaries = {
         "Note de capacités OPEN SARL — conseil en infrastructures pour autorités publiques et bailleurs, basée à Kinshasa (RDC).",
       kicker: "OPEN SARL",
       title: "Note de capacités — Conseil en infrastructures",
+      coverTitle: "Note de capacités",
+      coverSubtitle: "Infrastructure Advisory & Engineering — RDC & Afrique centrale",
       lead: "Accompagner les autorités nationales et provinciales dans la préparation, la structuration et la mise en œuvre de programmes d'infrastructures stratégiques.",
-      print: "Enregistrer en PDF",
+      downloadOfficial: "Télécharger le PDF officiel (EN–US/RDC)",
+      downloadBilingual: "PDF bilingue EN–FR",
+      officialNote:
+        "Le PDF fourni par OPEN reste la référence pour les appels d'offres et partenaires. La version web ci-dessous reprend la charte documentaire (page de garde + pages intérieures) pour impression ou export navigateur.",
+      print: "Imprimer / PDF (version web)",
+      templatesLink: "Modèles vides (en-têtes)",
       back: "Retour à l'accueil",
     },
     legal: {
@@ -834,6 +841,17 @@ const dictionaries = {
       title: "Page introuvable",
       text: "Cette adresse ne correspond à aucune page du site OPEN.",
       back: "Retour à l'accueil",
+    },
+    documentTemplates: {
+      metaTitle: "Modèles documentaires",
+      metaDescription: "Pages de garde et en-têtes OPEN pour courriers et notes.",
+      title: "Modèles documentaires OPEN",
+      intro:
+        "Deux gabarits inspirés de standards corporate : page de garde (logo + filigrane) et page intérieure (bandeau géométrique). Imprimez une page vierge ou dupliquez la mise en page pour vos propres contenus.",
+      print: "Imprimer les modèles",
+      backToBrochure: "Retour à la note de capacités",
+      coverHint: "Page de garde",
+      bodyHint: "Contenu du document — remplacer ce texte.",
     },
   },
   en: {
@@ -1552,8 +1570,15 @@ const dictionaries = {
         "OPEN SARL infrastructure advisory capability statement for government and donor partners, based in Kinshasa, DRC.",
       kicker: "OPEN SARL",
       title: "Infrastructure advisory capability statement",
+      coverTitle: "Capability Statement",
+      coverSubtitle: "US–DRC & Central Africa — Infrastructure Advisory & Engineering",
       lead: "Supporting national and provincial governments to prepare, structure, and deliver strategic infrastructure programs.",
-      print: "Save as PDF",
+      downloadOfficial: "Download official PDF (US–DRC EN)",
+      downloadBilingual: "Bilingual PDF (EN–FR)",
+      officialNote:
+        "The client-supplied PDF remains the authoritative file for partners and proposals. The web layout below uses OPEN letterhead templates for browser print or export.",
+      print: "Print / save web version",
+      templatesLink: "Blank letterhead templates",
       back: "Back to home",
     },
     legal: {
@@ -1585,6 +1610,17 @@ const dictionaries = {
       title: "Page not found",
       text: "This address does not match a page on the OPEN site.",
       back: "Back to home",
+    },
+    documentTemplates: {
+      metaTitle: "Document templates",
+      metaDescription: "OPEN cover and letterhead layouts for proposals and letters.",
+      title: "OPEN document templates",
+      intro:
+        "Two layouts adapted from corporate letterhead references: a cover sheet (logo + watermark) and an inner page (geometric header band). Print blank sheets or reuse the layout for your own copy.",
+      print: "Print templates",
+      backToBrochure: "Back to capability statement",
+      coverHint: "Cover page",
+      bodyHint: "Document body — replace this placeholder text.",
     },
   },
 } as const;
