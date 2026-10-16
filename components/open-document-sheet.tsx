@@ -10,14 +10,17 @@ function formatWebsiteUrl(website: string) {
   return `https://${host}`;
 }
 
-function DocLetterheadBand({ website }: { website: string }) {
+function DocLetterheadTop({ website }: { website: string }) {
   return (
-    <div className="doc-letterhead-band">
-      <header className="doc-letterhead-logo">
-        <Logo variant="full" unbounded className="doc-brand-logo doc-brand-logo--letterhead" />
-      </header>
+    <>
+      <DocAccentBar position="header" />
       <p className="doc-letterhead-site">{formatWebsiteUrl(website)}</p>
-    </div>
+      <div className="doc-letterhead-band">
+        <header className="doc-letterhead-logo">
+          <Logo variant="full" unbounded className="doc-brand-logo doc-brand-logo--letterhead" />
+        </header>
+      </div>
+    </>
   );
 }
 
@@ -91,8 +94,7 @@ export function OpenDocumentSheet({
   if (variant === "cover") {
     return (
       <article className={`doc-sheet doc-sheet--cover ${className}`.trim()} aria-label="Cover">
-        <DocAccentBar position="header" />
-        <DocLetterheadBand website={website} />
+        <DocLetterheadTop website={website} />
         <div className="doc-sheet-inner doc-sheet-inner--below-letterhead">
           <div className="doc-cover-body">{children}</div>
           <DocSheetFooter website={website} />
@@ -103,8 +105,7 @@ export function OpenDocumentSheet({
 
   return (
     <article className={`doc-sheet doc-sheet--letter ${className}`.trim()}>
-      <DocAccentBar position="header" />
-      <DocLetterheadBand website={website} />
+      <DocLetterheadTop website={website} />
       <div className="doc-sheet-inner doc-sheet-inner--below-letterhead">
         <div className="doc-letter-body">{children}</div>
         <DocSheetFooter website={website} />

@@ -2077,31 +2077,37 @@ button:focus-visible {
   display: block;
 }
 
+.doc-letterhead-site {
+  position: absolute;
+  top: 0;
+  right: 6mm;
+  left: auto;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: max-content;
+  max-width: calc(100% - 12mm);
+  height: 11mm;
+  margin: 0;
+  padding: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: end;
+  white-space: nowrap;
+  color: var(--color-primary);
+}
+
 .doc-letterhead-band {
   position: relative;
   z-index: 3;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 8mm;
-  padding: 13mm 18mm 0;
+  margin-top: 11mm;
+  padding: 3mm 18mm 0;
 }
 
 .doc-letterhead-logo {
-  flex: 0 1 auto;
-  min-width: 0;
-  max-width: 68%;
-}
-
-.doc-letterhead-site {
-  flex: 0 0 auto;
-  margin: 1.5mm 0 0;
-  max-width: 42%;
-  font-size: 0.75rem;
-  font-weight: 700;
-  line-height: 1.25;
-  text-align: right;
-  color: var(--color-primary);
+  max-width: 51mm;
 }
 
 .doc-sheet--letter .doc-sheet-inner--below-letterhead {
@@ -2135,29 +2141,22 @@ button:focus-visible {
 }
 
 .doc-brand-logo--letterhead {
-  width: min(88mm, 100%);
+  width: min(51mm, 100%);
 }
 
 @media (max-width: 639px) {
-  .doc-letterhead-band {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 12mm 14mm 0;
-    gap: 4mm;
-  }
-
-  .doc-letterhead-logo {
-    max-width: none;
-  }
-
   .doc-letterhead-site {
-    max-width: none;
-    text-align: left;
-    font-size: 0.6875rem;
+    right: 5mm;
+    max-width: calc(100% - 10mm);
+    font-size: 0.625rem;
+  }
+
+  .doc-letterhead-band {
+    padding: 3mm 14mm 0;
   }
 
   .doc-brand-logo--letterhead {
-    width: min(72mm, 100%);
+    width: min(42mm, 100%);
   }
 
   .doc-cover-title {
