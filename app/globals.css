@@ -384,7 +384,7 @@ section[id] {
   --header-progress: 0;
   pointer-events: auto;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 0.75rem;
   transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -439,6 +439,30 @@ section[id] {
 .site-header-bar > .nav-poles-panel-wrap {
   position: relative;
   z-index: 1;
+}
+
+.header-logo-slot {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  overflow: visible;
+}
+
+.header-logo-full {
+  display: block;
+  width: auto;
+  height: 2.125rem;
+  max-width: min(9.25rem, 42vw);
+  transition: filter 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 640px) {
+  .header-logo-full {
+    height: 2.375rem;
+    max-width: 10.25rem;
+  }
 }
 
 .nav-poles-panel-wrap {
@@ -1802,6 +1826,65 @@ button:focus-visible {
   padding-top: 0.25rem;
 }
 
+.doc-a4-toolbar-note {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-on-surface-variant);
+}
+
+.doc-a4-toolbar-more {
+  margin-top: 0.5rem;
+}
+
+.doc-a4-toolbar-more summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.doc-a4-toolbar-more summary::-webkit-details-marker {
+  display: none;
+}
+
+.doc-a4-toolbar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.doc-a4-toolbar-links a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.doc-a4-toolbar-links a:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 640px) {
+  .doc-a4-toolbar-links {
+    flex-flow: row wrap;
+    gap: 0.35rem 1rem;
+    margin-top: 0.5rem;
+  }
+}
+
+.doc-a4-toolbar-actions .btn,
+.doc-a4-toolbar-actions button {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@media (min-width: 640px) {
+  .doc-a4-toolbar-actions .btn,
+  .doc-a4-toolbar-actions button {
+    flex: 0 1 auto;
+  }
+}
+
 .doc-a4-back {
   max-width: 920px;
   margin: 0 auto 0.75rem;
@@ -2048,13 +2131,29 @@ button:focus-visible {
 }
 
 .doc-brand-logo--letter {
-  width: min(56mm, 100%);
-  max-height: 20mm;
+  width: min(62mm, 100%);
 }
 
 .doc-brand-logo--cover {
-  width: min(64mm, 100%);
-  max-height: 22mm;
+  width: min(72mm, 100%);
+}
+
+@media (max-width: 639px) {
+  .doc-brand-logo--letter {
+    width: min(54mm, 94%);
+  }
+
+  .doc-brand-logo--cover {
+    width: min(64mm, 94%);
+  }
+
+  .doc-cover-title {
+    font-size: clamp(1.35rem, 6vw, 1.75rem);
+  }
+
+  .doc-sheet-inner {
+    padding: 12mm 14mm 16mm;
+  }
 }
 
 .doc-letter-body {

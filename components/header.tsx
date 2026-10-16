@@ -220,21 +220,15 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         onMouseLeave={schedulePolesClose}
       >
         <nav className="relative flex min-w-0 items-center justify-between gap-2 px-3 py-2.5 sm:gap-3 sm:px-5 sm:py-3.5 lg:px-6">
-          <div className="relative h-9 w-[6.75rem] shrink-0 sm:h-10 sm:w-[8.5rem]">
-            <div
-              className="header-fade-layer absolute inset-0 flex items-center"
-              style={{ opacity: headerLight, pointerEvents: headerLight > 0.4 ? "auto" : "none" }}
-            >
-              <Logo href={home} variant="mark" tone="light" height={36} priority className="sm:hidden" />
-              <Logo href={home} variant="mark" tone="light" height={40} priority className="hidden sm:block" />
-            </div>
-            <div
-              className="header-fade-layer absolute inset-0 flex items-center"
-              style={{ opacity: headerSolid, pointerEvents: headerSolid > 0.4 ? "auto" : "none" }}
-            >
-              <Logo href={home} variant="mark" tone="brand" height={36} className="sm:hidden" />
-              <Logo href={home} variant="mark" tone="brand" height={40} className="hidden sm:block" />
-            </div>
+          <div className="header-logo-slot">
+            <Logo
+              href={home}
+              variant="full"
+              unbounded
+              tone={headerSolid > 0.4 ? "brand" : "light"}
+              priority={headerSolid <= 0.4}
+              className="header-logo-full"
+            />
           </div>
 
           <div className="relative hidden min-w-0 lg:flex lg:flex-1 lg:justify-center">

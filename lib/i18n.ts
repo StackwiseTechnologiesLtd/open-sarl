@@ -812,6 +812,7 @@ const dictionaries = {
         "Le PDF fourni par OPEN reste la référence pour les appels d'offres et partenaires. La version web ci-dessous reprend la charte documentaire (page de garde + pages intérieures) pour impression ou export navigateur.",
       print: "Imprimer / PDF (version web)",
       templatesLink: "Modèles documentaires",
+      toolbarMore: "Autres options et liens",
       back: "Retour à l'accueil",
     },
     legal: {
@@ -1666,6 +1667,7 @@ const dictionaries = {
         "The client-supplied PDF remains the authoritative file for partners and proposals. The web layout below uses OPEN letterhead templates for browser print or export.",
       print: "Print / save web version",
       templatesLink: "Document templates",
+      toolbarMore: "More options and links",
       back: "Back to home",
     },
     legal: {

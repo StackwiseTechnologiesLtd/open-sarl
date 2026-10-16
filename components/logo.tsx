@@ -1,7 +1,8 @@
 import Link from "next/link";
 
 const FULL_RATIO = 4453 / 3030;
-const MARK_RATIO = 1900 / 2700;
+/** Matches open-logo-mark.svg viewBox (crane mark, wordmark clipped out). */
+const MARK_RATIO = 1535 / 2720;
 
 type LogoProps = {
   href?: string;
@@ -24,9 +25,9 @@ export function Logo({
   priority = false,
 }: LogoProps) {
   const ratio = variant === "mark" ? MARK_RATIO : FULL_RATIO;
-  const width = Math.round(height * ratio);
+  const width = Math.ceil(height * ratio);
   const src =
-    variant === "mark" ? "/images/open-logo-mark.svg?v=2" : "/images/open-logo.svg?v=2";
+    variant === "mark" ? "/images/open-logo-mark.svg?v=4" : "/images/open-logo.svg?v=2";
   const toneClass = tone === "light" ? "brightness-0 invert" : "";
 
   const image = (
@@ -36,15 +37,19 @@ export function Logo({
       alt="OPEN"
       width={unbounded ? undefined : width}
       height={unbounded ? undefined : height}
-      className={`block h-auto w-auto ${toneClass} ${className}`.trim()}
+      className={`block h-auto w-auto max-w-none object-contain object-left ${toneClass} ${className}`.trim()}
       style={
         unbounded
           ? undefined
-          : {
-              height,
-              width: "auto",
-              maxWidth: width,
-            }
+          : variant === "mark"
+            ? { height, width: "auto", maxWidth: "none" }
+            : {
+                height,
+                width: "auto",
+                maxWidth: width,
+                objectFit: "contain",
+                objectPosition: "left center",
+              }
       }
       decoding="async"
       fetchPriority={priority ? "high" : undefined}

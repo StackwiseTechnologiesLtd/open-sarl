@@ -6,38 +6,58 @@ import { contactEmail, mailHref } from "@/lib/i18n";
 
 const WEBSITE = "www.open-consulting.fr";
 
-export function CapabilityBrochure({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+function BrochureToolbarLinks({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const b = dict.brochure;
   const v = dict.documentViewer;
   const home = `/${locale}`;
+
+  const links = (
+    <>
+      <Link href={`${home}/documents/capability-us-drc-en`}>{b.viewOfficialEn}</Link>
+      <Link href={`${home}/documents/capability-bilingual`}>{b.viewOfficialBilingual}</Link>
+      <Link href={`${home}/documents`}>{v.allDocuments}</Link>
+      <Link href={`${home}/documents/templates`}>{b.templatesLink}</Link>
+      <Link href={home}>{b.back}</Link>
+    </>
+  );
+
+  return (
+    <div className="doc-a4-toolbar-meta">
+      <p className="doc-a4-toolbar-note hidden sm:block">{b.officialNote}</p>
+      <details className="doc-a4-toolbar-more sm:hidden">
+        <summary className="text-sm font-semibold text-primary">{b.toolbarMore}</summary>
+        <p className="mt-2 text-sm text-on-surface-variant">{b.officialNote}</p>
+        <nav className="doc-a4-toolbar-links" aria-label={b.toolbarMore}>
+          {links}
+        </nav>
+      </details>
+      <nav className="doc-a4-toolbar-links hidden sm:flex" aria-label={b.toolbarMore}>
+        {links}
+      </nav>
+    </div>
+  );
+}
+
+export function CapabilityBrochure({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+  const b = dict.brochure;
+  const v = dict.documentViewer;
   const downloadName =
     locale === "fr" ? "OPEN_Note_de_capacites_web.pdf" : "OPEN_Capability_Statement_web.pdf";
 
   return (
     <DocumentA4Viewport
-      title={b.title}
+      title={b.coverTitle}
       downloadLabel={v.downloadWebPdf}
       downloadFileName={downloadName}
       printLabel={b.print}
-      pageCountHint={v.a4PagesHint}
-      toolbarExtra={
-        <>
-          <p className="text-sm text-on-surface-variant">{b.officialNote}</p>
-          <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-sm font-semibold text-primary">
-            <Link href={`${home}/documents/capability-us-drc-en`}>{b.viewOfficialEn}</Link>
-            <Link href={`${home}/documents/capability-bilingual`}>{b.viewOfficialBilingual}</Link>
-            <Link href={`${home}/documents`}>{v.allDocuments}</Link>
-            <Link href={`${home}/documents/templates`}>{b.templatesLink}</Link>
-            <Link href={home}>{b.back}</Link>
-          </div>
-        </>
-      }
+      pageCountHint={`${b.coverSubtitle} · ${v.a4PagesHint}`}
+      toolbarExtra={<BrochureToolbarLinks locale={locale} dict={dict} />}
     >
       <OpenDocumentSheet variant="cover" website={WEBSITE}>
         <p className="doc-cover-kicker">{b.kicker}</p>
         <h1 className="doc-cover-title">{b.coverTitle}</h1>
+        <p className="doc-cover-subtitle">{b.coverSubtitle}</p>
         <p className="doc-cover-lead">{b.lead}</p>
-        {b.coverSubtitle ? <p className="doc-cover-subtitle">{b.coverSubtitle}</p> : null}
       </OpenDocumentSheet>
 
       <OpenDocumentSheet variant="letter" website={WEBSITE}>
