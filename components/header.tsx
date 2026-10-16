@@ -225,15 +225,15 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               className="header-fade-layer absolute inset-0 flex items-center"
               style={{ opacity: headerLight, pointerEvents: headerLight > 0.4 ? "auto" : "none" }}
             >
-              <Logo href={home} tone="light" height={36} priority className="sm:hidden" />
-              <Logo href={home} tone="light" height={40} priority className="hidden sm:block" />
+              <Logo href={home} variant="mark" tone="light" height={36} priority className="sm:hidden" />
+              <Logo href={home} variant="mark" tone="light" height={40} priority className="hidden sm:block" />
             </div>
             <div
               className="header-fade-layer absolute inset-0 flex items-center"
               style={{ opacity: headerSolid, pointerEvents: headerSolid > 0.4 ? "auto" : "none" }}
             >
-              <Logo href={home} tone="brand" height={36} className="sm:hidden" />
-              <Logo href={home} tone="brand" height={40} className="hidden sm:block" />
+              <Logo href={home} variant="mark" tone="brand" height={36} className="sm:hidden" />
+              <Logo href={home} variant="mark" tone="brand" height={40} className="hidden sm:block" />
             </div>
           </div>
 

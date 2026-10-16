@@ -76,7 +76,7 @@ export function OpenDocumentSheet({
       <article className={`doc-sheet doc-sheet--cover ${className}`.trim()} aria-label="Cover">
         <div className="doc-sheet-inner">
           <header className="doc-cover-header">
-            <Logo variant="full" height={40} />
+            <Logo variant="full" unbounded className="doc-brand-logo doc-brand-logo--cover" />
           </header>
           <div className="doc-cover-watermark" aria-hidden="true">
             <Logo variant="mark" height={340} />
@@ -94,7 +94,7 @@ export function OpenDocumentSheet({
       <p className="doc-letter-site">{website}</p>
       <div className="doc-sheet-inner">
         <header className="doc-letter-header">
-          <Logo variant="full" height={36} />
+          <Logo variant="full" unbounded className="doc-brand-logo doc-brand-logo--letter" />
         </header>
         <div className="doc-letter-body">{children}</div>
         <DocSheetFooter website={website} />

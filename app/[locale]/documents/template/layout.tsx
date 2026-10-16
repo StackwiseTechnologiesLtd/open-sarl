@@ -8,8 +8,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!isLocale(locale)) return {};
   const dict = getDictionary(locale);
   return {
-    title: dict.documentTemplates.metaTitle,
-    description: dict.documentTemplates.metaDescription,
+    title: dict.documentTemplatesHub.metaTitle,
+    description: dict.documentTemplatesHub.metaDescription,
   };
 }
 

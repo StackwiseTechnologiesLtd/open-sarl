@@ -7,7 +7,7 @@
   --color-secondary-fixed-dim: #bec6e0;
   --color-tertiary-fixed-dim: #b7c8e1;
   --color-on-tertiary: #ffffff;
-  --color-on-primary-container: #ccd8ff;
+  --color-on-primary-container: #000040;
   --color-tertiary-container: #506076;
   --color-on-tertiary-container: #cadaf5;
   --color-background: #f7f9fb;
@@ -15,9 +15,9 @@
   --color-tertiary-fixed: #d3e4fe;
   --color-inverse-surface: #2d3133;
   --color-surface-container-lowest: #ffffff;
-  --color-primary-fixed: #dae2ff;
+  --color-primary-fixed: #e8e8f2;
   --color-error: #ba1a1a;
-  --color-primary-fixed-dim: #b2c5ff;
+  --color-primary-fixed-dim: #c5c5dc;
   --color-outline: #737785;
   --color-on-primary-fixed: #001847;
   --color-surface-bright: #f7f9fb;
@@ -34,7 +34,7 @@
   --color-surface-variant: #e0e3e5;
   --color-on-secondary-fixed: #131b2e;
   --color-surface-container: #eceef0;
-  --color-inverse-primary: #b2c5ff;
+  --color-inverse-primary: #8080b8;
   --color-on-surface: #191c1e;
   --color-inverse-on-surface: #eff1f3;
   --color-on-primary: #ffffff;
@@ -2021,6 +2021,42 @@ button:focus-visible {
   margin-bottom: 6mm;
 }
 
+.doc-doc-subject {
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.doc-letter-section-title {
+  margin: 1.25rem 0 0.35rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.doc-letter-prose + .doc-letter-section-title {
+  margin-top: 1.5rem;
+}
+
+.doc-brand-logo {
+  display: block;
+  height: auto;
+  width: auto;
+}
+
+.doc-brand-logo--letter {
+  width: min(56mm, 100%);
+  max-height: 20mm;
+}
+
+.doc-brand-logo--cover {
+  width: min(64mm, 100%);
+  max-height: 22mm;
+}
+
 .doc-letter-body {
   flex: 1;
   font-size: 0.8125rem;
@@ -2211,7 +2247,7 @@ button:focus-visible {
   right: 0;
   left: 0;
   height: 4px;
-  background: linear-gradient(90deg, #000068, #0000a0);
+  background: linear-gradient(90deg, #000068, #00004d);
 }
 
 .doc-hub-card {

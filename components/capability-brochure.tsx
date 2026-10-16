@@ -27,7 +27,7 @@ export function CapabilityBrochure({ locale, dict }: { locale: Locale; dict: Dic
             <Link href={`${home}/documents/capability-us-drc-en`}>{b.viewOfficialEn}</Link>
             <Link href={`${home}/documents/capability-bilingual`}>{b.viewOfficialBilingual}</Link>
             <Link href={`${home}/documents`}>{v.allDocuments}</Link>
-            <Link href={`${home}/documents/template`}>{b.templatesLink}</Link>
+            <Link href={`${home}/documents/templates`}>{b.templatesLink}</Link>
             <Link href={home}>{b.back}</Link>
           </div>
         </>
