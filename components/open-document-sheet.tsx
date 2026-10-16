@@ -4,6 +4,23 @@ import { contactEmail, offices } from "@/lib/i18n";
 
 type SheetVariant = "cover" | "letter";
 
+function formatWebsiteUrl(website: string) {
+  if (website.startsWith("http://") || website.startsWith("https://")) return website;
+  const host = website.startsWith("www.") ? website : `www.${website}`;
+  return `https://${host}`;
+}
+
+function DocLetterheadBand({ website }: { website: string }) {
+  return (
+    <div className="doc-letterhead-band">
+      <header className="doc-letterhead-logo">
+        <Logo variant="full" unbounded className="doc-brand-logo doc-brand-logo--letterhead" />
+      </header>
+      <p className="doc-letterhead-site">{formatWebsiteUrl(website)}</p>
+    </div>
+  );
+}
+
 function DocAccentBar({ position }: { position: "header" | "footer" }) {
   return (
     <div className={`doc-accent doc-accent--${position}`} aria-hidden="true">
@@ -74,13 +91,9 @@ export function OpenDocumentSheet({
   if (variant === "cover") {
     return (
       <article className={`doc-sheet doc-sheet--cover ${className}`.trim()} aria-label="Cover">
-        <div className="doc-sheet-inner">
-          <header className="doc-cover-header">
-            <Logo variant="full" unbounded className="doc-brand-logo doc-brand-logo--cover" />
-          </header>
-          <div className="doc-cover-watermark" aria-hidden="true">
-            <Logo variant="mark" height={340} />
-          </div>
+        <DocAccentBar position="header" />
+        <DocLetterheadBand website={website} />
+        <div className="doc-sheet-inner doc-sheet-inner--below-letterhead">
           <div className="doc-cover-body">{children}</div>
           <DocSheetFooter website={website} />
         </div>
@@ -91,11 +104,8 @@ export function OpenDocumentSheet({
   return (
     <article className={`doc-sheet doc-sheet--letter ${className}`.trim()}>
       <DocAccentBar position="header" />
-      <p className="doc-letter-site">{website}</p>
-      <div className="doc-sheet-inner">
-        <header className="doc-letter-header">
-          <Logo variant="full" unbounded className="doc-brand-logo doc-brand-logo--letter" />
-        </header>
+      <DocLetterheadBand website={website} />
+      <div className="doc-sheet-inner doc-sheet-inner--below-letterhead">
         <div className="doc-letter-body">{children}</div>
         <DocSheetFooter website={website} />
       </div>
