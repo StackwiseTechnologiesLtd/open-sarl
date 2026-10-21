@@ -3,6 +3,7 @@ import { Logo } from "@/components/logo";
 import { contactEmail, offices } from "@/lib/i18n";
 
 type SheetVariant = "cover" | "letter";
+export type DocumentSheetTheme = "corporate" | "classic";
 
 function formatWebsiteUrl(website: string) {
   if (website.startsWith("http://") || website.startsWith("https://")) return website;
@@ -21,6 +22,22 @@ function DocLetterheadTop({ website }: { website: string }) {
         </header>
       </div>
     </>
+  );
+}
+
+function DocClassicWatermark() {
+  return (
+    <div className="doc-classic-watermark" aria-hidden="true">
+      <Logo variant="mark" unbounded className="doc-classic-watermark-logo" />
+    </div>
+  );
+}
+
+function DocClassicHeader() {
+  return (
+    <header className="doc-classic-header">
+      <Logo variant="full" unbounded className="doc-brand-logo doc-brand-logo--classic" />
+    </header>
   );
 }
 
@@ -80,20 +97,84 @@ function DocSheetFooter({ website }: { website: string }) {
   );
 }
 
+function DocClassicFooter({
+  website,
+  addressLines,
+}: {
+  website: string;
+  addressLines: readonly string[];
+}) {
+  const siteUrl = formatWebsiteUrl(website);
+  const displaySite = website.startsWith("www.") ? website : siteUrl.replace(/^https:\/\//, "");
+
+  return (
+    <footer className="doc-classic-footer">
+      <address className="doc-classic-footer-address not-italic">
+        {addressLines.map((line) => (
+          <span key={line} className="block">
+            {line}
+          </span>
+        ))}
+      </address>
+      <div className="doc-classic-footer-contact">
+        <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+        <span>{displaySite}</span>
+      </div>
+    </footer>
+  );
+}
+
 export function OpenDocumentSheet({
   variant,
+  theme = "corporate",
   website,
+  classicAddressLines,
   children,
   className = "",
 }: {
   variant: SheetVariant;
+  theme?: DocumentSheetTheme;
   website: string;
+  /** Required when theme is classic (footer address column). */
+  classicAddressLines?: readonly string[];
   children?: ReactNode;
   className?: string;
 }) {
+  const themeClass = theme === "classic" ? "doc-sheet--classic" : "doc-sheet--corporate";
+  const addressLines = classicAddressLines ?? [];
+
+  if (theme === "classic") {
+    if (variant === "cover") {
+      return (
+        <article
+          className={`doc-sheet doc-sheet--cover ${themeClass} ${className}`.trim()}
+          aria-label="Cover"
+        >
+          <DocClassicWatermark />
+          <div className="doc-sheet-inner doc-sheet-inner--classic">
+            <DocClassicHeader />
+            <div className="doc-cover-body doc-cover-body--classic">{children}</div>
+            <DocClassicFooter website={website} addressLines={addressLines} />
+          </div>
+        </article>
+      );
+    }
+
+    return (
+      <article className={`doc-sheet doc-sheet--letter ${themeClass} ${className}`.trim()}>
+        <DocClassicWatermark />
+        <div className="doc-sheet-inner doc-sheet-inner--classic">
+          <DocClassicHeader />
+          <div className="doc-letter-body doc-letter-body--classic">{children}</div>
+          <DocClassicFooter website={website} addressLines={addressLines} />
+        </div>
+      </article>
+    );
+  }
+
   if (variant === "cover") {
     return (
-      <article className={`doc-sheet doc-sheet--cover ${className}`.trim()} aria-label="Cover">
+      <article className={`doc-sheet doc-sheet--cover ${themeClass} ${className}`.trim()} aria-label="Cover">
         <DocLetterheadTop website={website} />
         <div className="doc-sheet-inner doc-sheet-inner--below-letterhead">
           <div className="doc-cover-body">{children}</div>
@@ -104,7 +185,7 @@ export function OpenDocumentSheet({
   }
 
   return (
-    <article className={`doc-sheet doc-sheet--letter ${className}`.trim()}>
+    <article className={`doc-sheet doc-sheet--letter ${themeClass} ${className}`.trim()}>
       <DocLetterheadTop website={website} />
       <div className="doc-sheet-inner doc-sheet-inner--below-letterhead">
         <div className="doc-letter-body">{children}</div>

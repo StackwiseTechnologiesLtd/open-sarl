@@ -887,7 +887,7 @@ const dictionaries = {
       allTemplatesCombined: "Voir les trois modèles",
       combinedViewerTitle: "Modèles documentaires OPEN",
       combinedIntro:
-        "En-tête, proposition et rapport — charte OPEN, textes de communication prêts à personnaliser.",
+        "En-tête (bandeau institutionnel + variante épurée filigrane), proposition et rapport — textes prêts à personnaliser.",
       pageCountHint: "{count} pages A4 · faites défiler",
       backToDocuments: "Retour aux documents",
     },
@@ -901,10 +901,18 @@ const dictionaries = {
       toName: "M. / Mme [Nom du destinataire]",
       toCompany: "Ministère / agence / bailleur",
       toAddress: "Adresse postale\nKinshasa, République démocratique du Congo",
+      classicVariant: {
+        coverKicker: "Variante épurée · comparaison",
+        coverTitle: "En-tête minimal",
+        coverSubtitle: "Filigrane · pied de page contact",
+        coverLead:
+          "Mise en page sobre : logo en tête, marque en filigrane à droite, coordonnées en bas de page — sans bandeau géométrique.",
+        footerAddressLines: ["Kinshasa", "République démocratique du Congo"],
+      },
       kinds: {
         letterhead: {
           title: "En-tête",
-          desc: "Courriers officiels, notes de transmission et correspondance institutionnelle.",
+          desc: "Courriers officiels — variante institutionnelle (bandeau) et variante épurée (filigrane).",
           viewerTitle: "Modèle en-tête OPEN",
           intro: "Gabarit en-tête pour courriers et notes.",
           coverTitle: "En-tête OPEN",
@@ -1793,7 +1801,8 @@ const dictionaries = {
       allTemplates: "All templates",
       allTemplatesCombined: "View all three templates",
       combinedViewerTitle: "OPEN document templates",
-      combinedIntro: "Letterhead, proposal, and report — OPEN branding with communication-ready sample text.",
+      combinedIntro:
+        "Letterhead (institutional banner + minimal watermark variant), proposal, and report — ready-to-edit copy.",
       pageCountHint: "{count} A4 pages · scroll through",
       backToDocuments: "Back to documents",
     },
@@ -1807,10 +1816,18 @@ const dictionaries = {
       toName: "Mr / Ms [Recipient name]",
       toCompany: "Ministry / agency / development partner",
       toAddress: "Postal address\nKinshasa, Democratic Republic of the Congo",
+      classicVariant: {
+        coverKicker: "Minimal variant · comparison",
+        coverTitle: "Minimal letterhead",
+        coverSubtitle: "Watermark · contact footer",
+        coverLead:
+          "Quiet layout: header logo, right-side watermark mark, contact lines at the foot — no geometric banner.",
+        footerAddressLines: ["Kinshasa", "Democratic Republic of the Congo"],
+      },
       kinds: {
         letterhead: {
           title: "Letterhead",
-          desc: "Official letters, transmittal notes, and institutional correspondence.",
+          desc: "Official letters — institutional (banner) and minimal (watermark) variants.",
           viewerTitle: "OPEN letterhead template",
           intro: "Letterhead layout for correspondence.",
           coverTitle: "OPEN letterhead",

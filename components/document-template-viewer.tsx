@@ -41,6 +41,28 @@ function LetterMetaBlock({
   );
 }
 
+function LetterheadLetterBody({ locale }: { locale: Locale }) {
+  const shared = getDictionary(locale).documentTemplates;
+  const lh = shared.kinds.letterhead;
+  return (
+    <>
+      <LetterMetaBlock
+        sampleDate={shared.sampleDate}
+        toLabel={shared.toLabel}
+        toName={shared.toName}
+        toCompany={shared.toCompany}
+        toAddress={shared.toAddress}
+      />
+      <p className="doc-doc-subject">{lh.subjectLabel}</p>
+      <p className="doc-letter-prose">{lh.salutation}</p>
+      <p className="doc-letter-prose">{lh.bodyParagraph1}</p>
+      <p className="doc-letter-prose">{lh.bodyParagraph2}</p>
+      {lh.closing ? <p className="doc-letter-prose">{lh.closing}</p> : null}
+      <p className="doc-letter-prose doc-letter-signature whitespace-pre-line">{lh.signatureBlock}</p>
+    </>
+  );
+}
+
 function TemplateSheets({
   templateId,
   locale,
@@ -55,7 +77,7 @@ function TemplateSheets({
 
   return (
     <>
-      <OpenDocumentSheet variant="cover" website={WEBSITE} className={`doc-sheet--template-${templateId}`}>
+      <OpenDocumentSheet variant="cover" website={WEBSITE} theme="corporate" className={`doc-sheet--template-${templateId}`}>
         <p className="doc-cover-kicker">{shared.coverHint}</p>
         <h2 className="doc-cover-title">{cover.coverTitle}</h2>
         {cover.coverSubtitle ? <p className="doc-cover-subtitle">{cover.coverSubtitle}</p> : null}
@@ -63,23 +85,31 @@ function TemplateSheets({
       </OpenDocumentSheet>
 
       {templateId === "letterhead" ? (
-        <OpenDocumentSheet variant="letter" website={WEBSITE}>
-          <LetterMetaBlock
-            sampleDate={shared.sampleDate}
-            toLabel={shared.toLabel}
-            toName={shared.toName}
-            toCompany={shared.toCompany}
-            toAddress={shared.toAddress}
-          />
-          <p className="doc-doc-subject">{kinds.letterhead.subjectLabel}</p>
-          <p className="doc-letter-prose">{kinds.letterhead.salutation}</p>
-          <p className="doc-letter-prose">{kinds.letterhead.bodyParagraph1}</p>
-          <p className="doc-letter-prose">{kinds.letterhead.bodyParagraph2}</p>
-          {kinds.letterhead.closing ? <p className="doc-letter-prose">{kinds.letterhead.closing}</p> : null}
-          <p className="doc-letter-prose doc-letter-signature whitespace-pre-line">
-            {kinds.letterhead.signatureBlock}
-          </p>
-        </OpenDocumentSheet>
+        <>
+          <OpenDocumentSheet variant="letter" website={WEBSITE} theme="corporate">
+            <LetterheadLetterBody locale={locale} />
+          </OpenDocumentSheet>
+          <OpenDocumentSheet
+            variant="cover"
+            website={WEBSITE}
+            theme="classic"
+            classicAddressLines={shared.classicVariant.footerAddressLines}
+            className="doc-sheet--template-letterhead-classic"
+          >
+            <p className="doc-cover-kicker">{shared.classicVariant.coverKicker}</p>
+            <h2 className="doc-cover-title">{shared.classicVariant.coverTitle}</h2>
+            <p className="doc-cover-subtitle">{shared.classicVariant.coverSubtitle}</p>
+            <p className="doc-cover-lead">{shared.classicVariant.coverLead}</p>
+          </OpenDocumentSheet>
+          <OpenDocumentSheet
+            variant="letter"
+            website={WEBSITE}
+            theme="classic"
+            classicAddressLines={shared.classicVariant.footerAddressLines}
+          >
+            <LetterheadLetterBody locale={locale} />
+          </OpenDocumentSheet>
+        </>
       ) : null}
 
       {templateId === "proposal" ? (
@@ -147,7 +177,10 @@ export function DocumentTemplatesAllViewer() {
   const dict = getDictionary(locale);
   const hub = dict.documentTemplatesHub;
   const v = dict.documentViewer;
-  const pageCount = documentTemplateCatalog.length * 2;
+  const pageCount = documentTemplateCatalog.reduce(
+    (total, entry) => total + (entry.id === "letterhead" ? 4 : 2),
+    0,
+  );
 
   return (
     <main className="page-main brochure-page bg-[#dfe2e8] pb-12 pt-6 sm:pb-16 sm:pt-8 print:bg-white print:pb-0 print:pt-0">
