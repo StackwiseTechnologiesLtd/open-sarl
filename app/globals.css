@@ -1957,13 +1957,15 @@ button:focus-visible {
   position: relative;
   z-index: 1;
   display: flex;
+  box-sizing: border-box;
   min-height: 297mm;
   flex-direction: column;
-  padding: 14mm 16mm 16mm;
+  padding: 4px 16mm 4px;
 }
 
 .doc-classic-header {
-  margin-bottom: 6mm;
+  flex-shrink: 0;
+  margin: 0 0 6mm;
 }
 
 .doc-classic-header img.doc-brand-logo--classic {
@@ -2016,12 +2018,13 @@ button:focus-visible {
 
 .doc-classic-footer {
   display: flex;
+  flex-shrink: 0;
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
   gap: 1.25rem 2rem;
   margin-top: auto;
-  padding-top: 1.5rem;
+  padding-top: 0;
   font-size: 0.625rem;
   font-weight: 600;
   line-height: 1.65;
@@ -2076,9 +2079,12 @@ button:focus-visible {
 }
 
 .doc-sheet-inner--below-letterhead {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  box-sizing: border-box;
   min-height: 0;
-  flex: 1;
-  padding-top: 8mm;
+  padding: 8mm 18mm 4px;
 }
 
 .doc-sheet--cover .doc-sheet-inner--below-letterhead {
@@ -2231,8 +2237,8 @@ button:focus-visible {
   max-width: 51mm;
 }
 
-.doc-sheet--letter .doc-sheet-inner--below-letterhead {
-  padding-bottom: 16mm;
+.doc-sheet--letter.doc-sheet--corporate .doc-sheet-inner--below-letterhead {
+  padding-bottom: 4px;
 }
 
 .doc-doc-subject {
@@ -2348,14 +2354,21 @@ button:focus-visible {
   font-style: italic;
 }
 
+.doc-cover-body,
+.doc-letter-body {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
 .doc-sheet-footer {
   position: relative;
   z-index: 2;
   display: grid;
+  flex-shrink: 0;
   grid-template-columns: 1fr;
   gap: 0.65rem;
   margin-top: auto;
-  padding-top: 1rem;
+  padding-top: 0;
   font-size: 0.5625rem;
   line-height: 1.5;
   color: #6b7280;
