@@ -1975,12 +1975,40 @@ button:focus-visible {
 .doc-cover-body--classic {
   flex: 1;
   max-width: 32rem;
-  padding: 10mm 0 8mm;
+  padding: 0 0 8mm;
+}
+
+.doc-sheet--classic.doc-sheet--cover .doc-cover-kicker {
+  margin-bottom: 0.5rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--color-primary) 45%, #64748b);
+}
+
+.doc-sheet--classic.doc-sheet--cover .doc-cover-title {
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  font-weight: 600;
+  color: #475569;
+}
+
+.doc-sheet--classic.doc-sheet--cover .doc-cover-subtitle {
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.doc-sheet--classic.doc-sheet--cover .doc-cover-lead {
+  margin-top: 0.65rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  font-weight: 500;
+  color: #94a3b8;
 }
 
 .doc-letter-body--classic {
   flex: 1;
-  padding-top: 16mm;
+  padding-top: 0;
   font-size: 0.8125rem;
   line-height: 1.65;
   color: #1e293b;
