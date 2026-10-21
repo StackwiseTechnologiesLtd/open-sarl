@@ -1960,7 +1960,7 @@ button:focus-visible {
   box-sizing: border-box;
   min-height: 297mm;
   flex-direction: column;
-  padding: 4px 16mm 4px;
+  padding: 4px 16mm 8px;
 }
 
 .doc-classic-header {
@@ -2084,7 +2084,7 @@ button:focus-visible {
   flex-direction: column;
   box-sizing: border-box;
   min-height: 0;
-  padding: 8mm 18mm 4px;
+  padding: 8mm 18mm 12px;
 }
 
 .doc-sheet--cover .doc-sheet-inner--below-letterhead {
@@ -2238,7 +2238,7 @@ button:focus-visible {
 }
 
 .doc-sheet--letter.doc-sheet--corporate .doc-sheet-inner--below-letterhead {
-  padding-bottom: 4px;
+  padding-bottom: 12px;
 }
 
 .doc-doc-subject {
