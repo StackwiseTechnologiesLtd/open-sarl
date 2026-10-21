@@ -1422,20 +1422,6 @@ section[id] {
   border-color: rgba(0, 0, 104, 0.22);
 }
 
-.service-card-index {
-  font-family: var(--font-display-lg);
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.04em;
-  color: rgba(0, 0, 104, 0.35);
-  transition: color 0.3s ease;
-}
-
-.premium-card:hover .service-card-index {
-  color: rgba(0, 0, 104, 0.65);
-}
-
 .section-dark {
   position: relative;
   overflow: hidden;

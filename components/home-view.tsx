@@ -48,10 +48,7 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
                     <Icon name={item.icon} className="h-5 w-5" />
                   </div>
                   <div className="min-w-0">
-                    <div className="mb-2 flex items-baseline gap-3">
-                      <span className="service-card-index">{String(index + 1).padStart(2, "0")}</span>
-                      <h3 className="font-headline-md text-base font-semibold sm:text-lg">{item.title}</h3>
-                    </div>
+                    <h3 className="mb-2 font-headline-md text-base font-semibold sm:text-lg">{item.title}</h3>
                     <p className="text-sm leading-relaxed text-on-surface-variant sm:text-body-md">{item.text}</p>
                   </div>
                 </article>
