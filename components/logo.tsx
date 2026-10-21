@@ -37,7 +37,7 @@ export function Logo({
       alt="OPEN"
       width={unbounded ? undefined : width}
       height={unbounded ? undefined : height}
-      className={`block h-auto w-auto max-w-none object-contain object-left ${toneClass} ${className}`.trim()}
+      className={`block h-auto w-auto object-contain object-left ${unbounded ? "max-w-full" : "max-w-none"} ${toneClass} ${className}`.trim()}
       style={
         unbounded
           ? undefined
