@@ -4,7 +4,6 @@ import { EnvelopeDecor } from "@/components/brand/envelope-decor";
 import {
   envelopeArtLayout,
   envelopeBoard,
-  envelopeFooterLines,
   letterArt,
   type EnvelopeVariant,
 } from "@/lib/brand-export";
@@ -14,6 +13,7 @@ import {
   invoiceLines,
   invoiceTotal,
   money,
+  stationeryFooterItems,
   type BrandCopy,
 } from "@/lib/brand-guide";
 import type { Locale } from "@/lib/i18n";
@@ -64,31 +64,35 @@ export function CoverSheet({ navy }: { navy?: boolean }) {
   );
 }
 
-function EnvelopeFooterText({ variant }: { variant: EnvelopeVariant }) {
+function EnvelopeFooterBar({ variant }: { variant: EnvelopeVariant }) {
   const board = envelopeBoard;
-  const lines = envelopeFooterLines();
-  const fill = variant === "navy" ? "#FFFFFF" : board.navy;
-  const x = board.width - board.logoX;
-  const y =
-    board.height -
-    board.footerBottomInset -
-    (lines.length - 1) * board.footerLineHeight;
+  const items = stationeryFooterItems();
+  const barY = board.height - board.footerBarHeight;
+  const barFill = variant === "navy" ? board.accent : board.navy;
+  const padX = 36;
+  const slot = (board.width - padX * 2) / items.length;
+  const textY = barY + board.footerBarHeight * 0.68;
 
   return (
-    <text
-      x={x}
-      y={y}
-      fill={fill}
-      fontFamily="var(--font-label-md), IBM Plex Sans, sans-serif"
-      fontSize={board.footerFontSize}
-      textAnchor="end"
-    >
-      {lines.map((line, index) => (
-        <tspan key={line} x={x} dy={index === 0 ? 0 : board.footerLineHeight}>
-          {line}
-        </tspan>
-      ))}
-    </text>
+    <>
+      <rect x={0} y={barY} width={board.width} height={board.footerBarHeight} fill={barFill} />
+      {items.map((label, index) => {
+        const x = padX + slot * index + slot / 2;
+        return (
+          <text
+            key={label}
+            x={x}
+            y={textY}
+            fill="#FFFFFF"
+            fontFamily="var(--font-label-md), IBM Plex Sans, sans-serif"
+            fontSize={board.footerFontSize}
+            textAnchor="middle"
+          >
+            {label}
+          </text>
+        );
+      })}
+    </>
   );
 }
 
@@ -156,7 +160,7 @@ export function EnvelopeSheet({
           height={board.logoHeight}
           filter={variant === "navy" ? `url(#${white})` : undefined}
         />
-        <EnvelopeFooterText variant={variant} />
+        <EnvelopeFooterBar variant={variant} />
       </g>
     </svg>
   );
@@ -195,6 +199,19 @@ function PhoneIcon() {
   );
 }
 
+function SiteIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm7.93 9h-3.18a15.7 15.7 0 0 0-1.12-4.36A8.03 8.03 0 0 1 19.93 11zM12 4c.95 1.6 1.62 3.4 1.94 5.36H10.06A12.1 12.1 0 0 1 12 4zM4.37 13h3.18c.22 1.52.62 2.98 1.12 4.36A8.03 8.03 0 0 1 4.37 13zm3.18-2H4.37a8.03 8.03 0 0 1 4.3-4.36C8.17 7.98 7.77 9.44 7.55 11zm2.51 7.64A13.8 13.8 0 0 1 8.7 13h6.6a13.8 13.8 0 0 1-1.36 5.64A7.96 7.96 0 0 1 12 20a7.96 7.96 0 0 1-1.94-.36zM14.3 18.64c.5-1.38.9-2.84 1.12-4.36h3.18a8.03 8.03 0 0 1-4.3 4.36zM16.88 11c-.22-1.52-.62-2.98-1.12-4.36A8.03 8.03 0 0 1 19.63 11h-2.75z"
+      />
+    </svg>
+  );
+}
+
+const footerIcons = [PinIcon, PhoneIcon, MailIcon, SiteIcon] as const;
+
 function SheetChrome({
   children,
   dense = false,
@@ -229,22 +246,15 @@ function SheetChrome({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="stat-foot-strip" src={letterArt.topStrip} alt="" />
         <div className="stat-foot-inner">
-          <span className="stat-foot-item stat-foot-phones">
-            <PhoneIcon />
-            <span className="stat-foot-stack">
-              {cardIdentity.phones.map((phone) => (
-                <span key={phone}>{phone}</span>
-              ))}
-            </span>
-          </span>
-          <span className="stat-foot-item">
-            <PinIcon />
-            <span>{cardIdentity.address}</span>
-          </span>
-          <span className="stat-foot-item stat-foot-end">
-            <MailIcon />
-            <span>{cardIdentity.email}</span>
-          </span>
+          {stationeryFooterItems().map((label, index) => {
+            const Icon = footerIcons[index];
+            return (
+              <span key={label} className="stat-foot-item">
+                <Icon />
+                <span>{label}</span>
+              </span>
+            );
+          })}
         </div>
       </footer>
     </article>

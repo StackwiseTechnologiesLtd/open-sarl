@@ -1,4 +1,4 @@
-import { cardIdentity } from "./brand-guide";
+import { mist, navy, stationeryFooterItems } from "./brand-guide";
 
 export type EnvelopeVariant = "navy" | "paper";
 
@@ -7,10 +7,9 @@ export const envelopeBoard = {
   height: 630,
   radius: 20,
   navy: "#000068",
-  paper: "#FFFFFF",
-  footerFontSize: 11,
-  footerLineHeight: 14,
-  footerBottomInset: 16,
+  paper: mist,
+  footerBarHeight: 54,
+  footerFontSize: 10,
   accent: "#545497",
   window: "#333486",
   windowOpacity: 0.88,
@@ -77,7 +76,7 @@ export function envelopeArtLayout() {
   const board = envelopeBoard;
   const bottomScale = board.bottomArt.width / board.bottomArt.nativeWidth;
   const bottomHeight = board.bottomArt.nativeHeight * bottomScale;
-  const bottomY = board.height - bottomHeight;
+  const bottomY = board.height - bottomHeight - board.footerBarHeight;
   const topWidth = board.bottomArt.width;
   const topHeight = bottomHeight;
   const topX = board.width - topWidth + board.topArt.xOffset;
@@ -91,31 +90,21 @@ export function envelopeArtLayout() {
   };
 }
 
-export function envelopeFooterLines() {
-  return [
-    cardIdentity.phones[0],
-    cardIdentity.phones[1],
-    cardIdentity.address,
-    cardIdentity.email,
-  ];
-}
-
 function envelopeFooterSvg(variant: EnvelopeVariant) {
   const board = envelopeBoard;
-  const lines = envelopeFooterLines();
-  const fill = variant === "navy" ? "#FFFFFF" : board.navy;
-  const x = board.width - board.logoX;
-  const y =
-    board.height -
-    board.footerBottomInset -
-    (lines.length - 1) * board.footerLineHeight;
-  const tspans = lines
-    .map(
-      (line, index) =>
-        `<tspan x="${x}" dy="${index === 0 ? 0 : board.footerLineHeight}">${line}</tspan>`,
-    )
+  const items = stationeryFooterItems();
+  const barY = board.height - board.footerBarHeight;
+  const barFill = variant === "navy" ? board.accent : navy;
+  const padX = 36;
+  const slot = (board.width - padX * 2) / items.length;
+  const textY = barY + board.footerBarHeight * 0.68;
+  const labels = items
+    .map((label, index) => {
+      const x = padX + slot * index + slot / 2;
+      return `<text x="${x}" y="${textY}" fill="#FFFFFF" font-family="IBM Plex Sans, Arial, sans-serif" font-size="${board.footerFontSize}" text-anchor="middle">${label}</text>`;
+    })
     .join("");
-  return `<text x="${x}" y="${y}" fill="${fill}" font-family="IBM Plex Sans, Arial, sans-serif" font-size="${board.footerFontSize}" text-anchor="end">${tspans}</text>`;
+  return `<rect x="0" y="${barY}" width="${board.width}" height="${board.footerBarHeight}" fill="${barFill}"/>${labels}`;
 }
 
 export function composeEnvelopeSvg(
@@ -144,7 +133,13 @@ export function composeEnvelopeSvg(
   </defs>
   <g clip-path="url(#open-envelope-round)">
     <rect width="${board.width}" height="${board.height}" fill="${field}"/>
-    ${placedArt(bottomSvg, board.bottomArt.x, layout.bottomY, board.bottomArt.width, board.bottomArt.nativeWidth)}
+    ${placedArt(
+      bottomSvg,
+      board.bottomArt.x,
+      layout.bottomY,
+      board.bottomArt.width,
+      board.bottomArt.nativeWidth,
+    )}
     <g transform="translate(${layout.topX} ${layout.topY}) scale(${topScaleX} ${topScaleY})">${stripSvg(topSvg)}</g>
     <rect x="${board.windowX}" y="${board.windowY}" width="${board.windowWidth}" height="${board.windowHeight}" rx="${board.windowRx}" fill="${board.window}" fill-opacity="${board.windowOpacity}"/>
     <g transform="translate(${board.logoX} ${board.logoY}) scale(${logoScale})">${logoInner}</g>

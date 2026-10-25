@@ -102,6 +102,16 @@ export const correspondence = {
   siteUrl: "https://www.open-consulting.fr",
 } as const;
 
+/** One row for letter, invoice, receipt, and envelope footers. */
+export function stationeryFooterItems() {
+  return [
+    cardIdentity.address,
+    cardIdentity.phones.join(" · "),
+    cardIdentity.email,
+    correspondence.site,
+  ];
+}
+
 const fr = {
   metaTitle: "Charte graphique",
   metaDescription:
@@ -200,7 +210,7 @@ const fr = {
   envelopeBody:
     "Deux champs : marine et papier. Le logo ouvre en haut à gauche (blanc sur marine, marine sur papier). La fenêtre d’adresse reste vide sous le logo. La boîte aux lettres est en haut à droite, la grue en bas à gauche. Les coordonnées du gérant (Goma) sont alignées en bas à droite, comme le pied des lettres.",
   envelopeMeta: "Paysage · champ marine",
-  envelopeMetaWhite: "Paysage · champ papier",
+  envelopeMetaWhite: "Paysage · brume #E7E8EC",
   letterTitle: "Lettre officielle",
   letterBody:
     "La lettre reprend la couverture en plus serré : coin marine, adresse du site en haut à droite, logo, puis le texte. Les intertitres sont en capitales, marine, sans puce décorative. Le pied est un bandeau marine pleine largeur : les deux lignes mobiles, l’adresse à Goma et l’e-mail du gérant.",
@@ -272,7 +282,7 @@ const fr = {
   cardsBody:
     "Format 85 × 55 mm. Le recto papier porte le QR du site, le logo, et les coordonnées du gérant telles qu’imprimées : Goma, les deux lignes mobiles, l’adresse personnelle. Le verso marine est le verrouillage blanc, seul. La carte marine reprend le recto quand le fond doit être sombre.",
   cardsRule:
-    "Les coordonnées imprimées sur la carte et le pied des lettres, factures et enveloppes sont les mêmes : Goma, les deux mobiles, l’adresse du lac et deancin@gmail.com. Le site institutionnel reste en en-tête, pas dans le pied.",
+    "Les coordonnées imprimées sur la carte et le pied des lettres, factures et enveloppes sont les mêmes : adresse, les deux mobiles sur une ligne, e-mail et site — toujours sur une seule rangée dans le bandeau marine.",
   cardPaperIcons: "Recto papier · icônes",
   cardPaperAddress: "Recto papier · adresse en toutes lettres",
   cardNavyBack: "Verso marine",
@@ -391,7 +401,7 @@ const en = {
   envelopeBody:
     "Two fields: navy and paper. The logo opens at the top left (white on navy, navy on paper). The address window stays empty below the logo. The mailbox sits at the top right; the crane is cut by the bottom edge on the left. The managing director’s Goma contact lines up at the bottom right, matching the letter footer.",
   envelopeMeta: "Landscape · navy field",
-  envelopeMetaWhite: "Landscape · paper field",
+  envelopeMetaWhite: "Landscape · mist #E7E8EC",
   letterTitle: "Official letter",
   letterBody:
     "The letter is the cover, tightened: a navy corner, the site address at the top right, the logo, then the text. Section labels are capitals, in navy, without decorative bullets. The footer is a full-width navy band: both mobile lines, the Goma address, and the managing director’s email.",
@@ -463,7 +473,7 @@ const en = {
   cardsBody:
     "85 × 55 mm. The paper front carries the site QR, the logo, and the managing director’s details as printed: Goma, both mobile lines, the personal address. The navy back is the white lockup, alone. The navy front repeats the contact side when the field must be dark.",
   cardsRule:
-    "The printed details on the card and on letter, invoice, and envelope footers match: Goma, both mobiles, the lake address, and deancin@gmail.com. The institutional site stays in the header, not the footer.",
+    "The printed details on the card and on letter, invoice, and envelope footers match: address, both mobiles on one line, email, and site — always a single row in the navy band.",
   cardPaperIcons: "Paper front · icons",
   cardPaperAddress: "Paper front · address spelled out",
   cardNavyBack: "Navy back",
