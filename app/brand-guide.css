@@ -1128,7 +1128,7 @@
   z-index: 1;
   top: 50%;
   left: 50%;
-  width: 61.2%;
+  width: 39%;
   transform: translate(-50%, -50%);
 }
 
@@ -1152,7 +1152,6 @@
     display: block;
     width: 100%;
   }
-
 }
 
 @media (max-width: 640px) {
