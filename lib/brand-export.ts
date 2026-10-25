@@ -3,6 +3,7 @@ export const envelopeBoard = {
   height: 630,
   radius: 40,
   navy: "#000068",
+  accent: "#2C2C33",
   window: "#333486",
   windowOpacity: 0.88,
   windowRx: 20,
@@ -18,8 +19,8 @@ export const envelopeBoard = {
     path: "/images/bottom-svg-enveloppe.svg",
     nativeWidth: 1007,
     nativeHeight: 768,
-    width: 614,
-    x: -42,
+    width: 491,
+    x: -34,
   },
   topArt: {
     path: "/images/top-svg-enveloppe.svg",
@@ -94,7 +95,7 @@ export function composeEnvelopeSvg(logoSvg: string, topSvg: string, bottomSvg: s
   <g clip-path="url(#open-envelope-round)">
     <rect width="${board.width}" height="${board.height}" fill="${board.navy}"/>
     ${placedArt(bottomSvg, board.bottomArt.x, layout.bottomY, board.bottomArt.width, board.bottomArt.nativeWidth)}
-    <g transform="translate(${layout.topX} ${layout.topY}) scale(${topScale})">${stripSvg(topSvg)}</g>
+    <g transform="translate(${layout.topX} ${layout.topY}) scale(${topScale})">${recolorPaint(stripSvg(topSvg), board.accent)}</g>
     <rect x="${board.windowX}" y="${board.windowY}" width="${board.windowWidth}" height="${board.windowHeight}" rx="${board.windowRx}" fill="${board.window}" fill-opacity="${board.windowOpacity}"/>
     <g transform="translate(${board.logoX} ${board.logoY}) scale(${logoScale})">${logo}</g>
   </g>

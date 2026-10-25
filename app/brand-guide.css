@@ -639,6 +639,7 @@
 
 .env-decor-layer {
   position: absolute;
+  z-index: 0;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
@@ -668,18 +669,20 @@
 }
 
 .env-decor-layer.is-compact .env-decor-bottom {
-  left: -8%;
+  left: -10%;
   bottom: 0;
-  width: 58%;
-  max-height: 62%;
+  width: 50%;
+  height: auto;
+  opacity: 1;
 }
 
 .env-decor-layer.is-compact .env-decor-top {
-  right: 1%;
+  right: 0;
   top: 0;
   left: auto;
-  width: 13%;
-  max-height: 48%;
+  width: 17%;
+  height: auto;
+  opacity: 0.9;
 }
 
 .stat-sheet {
