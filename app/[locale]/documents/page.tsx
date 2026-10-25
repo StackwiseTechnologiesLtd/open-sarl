@@ -30,6 +30,11 @@ export default async function DocumentsHubPage({ params }: Props) {
         <div className="doc-hub-hero max-w-3xl">
           <h1 className="font-headline-xl text-3xl font-bold text-primary sm:text-4xl">{hub.title}</h1>
           <p className="mt-4 max-w-2xl text-on-surface-variant">{hub.intro}</p>
+          <p className="mt-4">
+            <Link href={`/${locale}/branding`} className="font-medium text-primary underline-offset-4 hover:underline">
+              {hub.brandLink}
+            </Link>
+          </p>
         </div>
         <ul className="grid gap-5 sm:grid-cols-2 lg:max-w-4xl">
           {documentCatalog.map((doc) => (

@@ -1,5 +1,6 @@
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { HideOnBrand } from "@/components/hide-on-brand";
 import { getDictionary, isLocale, locales } from "@/lib/i18n";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -36,11 +37,15 @@ export default async function LocaleLayout({ children, params }: Props) {
       >
         {dict.ui.skip}
       </a>
-      <Header locale={locale} dict={dict} />
+      <HideOnBrand>
+        <Header locale={locale} dict={dict} />
+      </HideOnBrand>
       <div id="contenu" className="min-w-0">
         {children}
       </div>
-      <Footer locale={locale} dict={dict} />
+      <HideOnBrand>
+        <Footer locale={locale} dict={dict} />
+      </HideOnBrand>
     </>
   );
 }
