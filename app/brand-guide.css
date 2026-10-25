@@ -745,12 +745,17 @@
   z-index: 1;
 }
 
-.stat-sheet.is-billing .stat-logo {
-  width: 176px;
+.stat-sheet.is-field-navy {
+  background: #000068;
+  color: #fff;
 }
 
-.stat-sheet.is-billing .stat-main {
-  top: calc(var(--stat-strip) + 12.8%);
+.stat-sheet.is-field-navy .stat-url {
+  color: #fff;
+}
+
+.stat-sheet.is-field-navy .stat-bg-icon {
+  opacity: 0.48;
 }
 
 .stat-foot {
@@ -823,6 +828,56 @@
 
 .is-dense .stat-main {
   top: calc(var(--stat-strip) + 11.2%);
+}
+
+.stat-doc-body,
+.stat-doc-cover {
+  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #0a1628;
+}
+
+.stat-doc-cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 34rem;
+}
+
+.stat-doc-cover .doc-cover-kicker,
+.stat-doc-body .doc-cover-kicker {
+  margin: 0 0 0.5rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, #000068 45%, #64748b);
+}
+
+.stat-doc-cover .doc-cover-title {
+  margin: 0;
+  font-family: var(--font-headline-md);
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  font-weight: 650;
+  color: #000068;
+}
+
+.stat-doc-cover .doc-cover-subtitle,
+.stat-doc-cover .doc-cover-lead {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.stat-doc-body .doc-section-title {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-headline-md);
+  font-size: 1rem;
+  font-weight: 650;
+  color: #000068;
 }
 
 .letter-meta {

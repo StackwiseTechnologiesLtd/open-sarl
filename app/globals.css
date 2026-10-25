@@ -2696,6 +2696,15 @@ button:focus-visible {
   .doc-sheet:last-child {
     page-break-after: auto;
   }
+
+  .doc-sheet.stat-sheet {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .doc-sheet.stat-sheet:last-child {
+    page-break-after: auto;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

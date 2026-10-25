@@ -85,31 +85,9 @@ function TemplateSheets({
       </OpenDocumentSheet>
 
       {templateId === "letterhead" ? (
-        <>
-          <OpenDocumentSheet variant="letter" website={WEBSITE} theme="corporate">
-            <LetterheadLetterBody locale={locale} />
-          </OpenDocumentSheet>
-          <OpenDocumentSheet
-            variant="cover"
-            website={WEBSITE}
-            theme="classic"
-            classicAddressLines={shared.classicVariant.footerAddressLines}
-            className="doc-sheet--template-letterhead-classic"
-          >
-            <p className="doc-cover-kicker">{shared.classicVariant.coverKicker}</p>
-            <h2 className="doc-cover-title">{shared.classicVariant.coverTitle}</h2>
-            <p className="doc-cover-subtitle">{shared.classicVariant.coverSubtitle}</p>
-            <p className="doc-cover-lead">{shared.classicVariant.coverLead}</p>
-          </OpenDocumentSheet>
-          <OpenDocumentSheet
-            variant="letter"
-            website={WEBSITE}
-            theme="classic"
-            classicAddressLines={shared.classicVariant.footerAddressLines}
-          >
-            <LetterheadLetterBody locale={locale} />
-          </OpenDocumentSheet>
-        </>
+        <OpenDocumentSheet variant="letter" website={WEBSITE} theme="corporate">
+          <LetterheadLetterBody locale={locale} />
+        </OpenDocumentSheet>
       ) : null}
 
       {templateId === "proposal" ? (
@@ -185,10 +163,7 @@ export function DocumentTemplatesAllViewer({
   const dict = getDictionary(locale);
   const hub = dict.documentTemplatesHub;
   const v = dict.documentViewer;
-  const pageCount = documentTemplateCatalog.reduce(
-    (total, entry) => total + (entry.id === "letterhead" ? 4 : 2),
-    0,
-  );
+  const pageCount = documentTemplateCatalog.length * 2;
 
   const branding = `/${locale}/branding`;
   const viewport = (
