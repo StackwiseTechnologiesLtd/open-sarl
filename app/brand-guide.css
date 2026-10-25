@@ -607,28 +607,28 @@
 
 .cover-logo {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   top: 7%;
   left: 7%;
   width: 34%;
 }
 
-.mark-ghost {
+.cover-bg-icon {
   position: absolute;
-  pointer-events: none;
+  z-index: 0;
+  right: -4%;
+  bottom: 10%;
+  width: 75%;
   height: auto;
+  pointer-events: none;
 }
 
-.cover-mark {
-  width: 92%;
-  right: -14%;
-  bottom: 2%;
-  opacity: 0.08;
+.cover-sheet.is-paper .cover-bg-icon {
+  opacity: 0.22;
 }
 
-.cover-sheet.is-navy .cover-mark {
-  opacity: 0.4;
-  filter: brightness(0) invert(1);
+.cover-sheet.is-navy .cover-bg-icon {
+  opacity: 0.35;
 }
 
 .env-svg {
@@ -684,7 +684,7 @@
 
 .stat-sheet {
   --stat-strip: 8.02%;
-  --stat-strip-span: 75%;
+  --stat-strip-span: 50%;
   font-family: var(--font-body-md);
 }
 
@@ -702,9 +702,9 @@
   position: absolute;
   z-index: 0;
   top: auto;
-  bottom: 20%;
-  right: -12%;
-  width: 64.8%;
+  bottom: calc(var(--stat-strip) + 10%);
+  right: -8%;
+  width: 52%;
   height: auto;
   pointer-events: none;
 }
@@ -761,32 +761,28 @@
   right: 0;
   bottom: 0;
   left: 0;
-  height: var(--stat-strip);
+  height: calc(var(--stat-strip) + 1.8%);
   color: #fff;
 }
 
-.stat-foot-strip {
+.stat-foot-band {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: var(--stat-strip-span);
-  height: auto;
-  transform: scaleY(-1);
-  pointer-events: none;
+  inset: 0;
+  background: #000068;
+  clip-path: polygon(0 22%, 56px 0, 100% 0, 100% 100%, 0 100%);
 }
 
 .stat-foot-inner {
   position: relative;
   z-index: 1;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 0.9fr;
+  align-items: end;
+  gap: 12px 16px;
   height: 100%;
-  padding: calc(var(--stat-strip) * 0.28) 28px 10px 36px;
-  transform: translateY(5%);
+  padding: 14px 32px 12px 36px;
   font-family: var(--font-label-md);
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.01em;
 }
 
@@ -804,7 +800,8 @@
 }
 
 .stat-foot-end {
-  margin-left: auto;
+  justify-self: end;
+  text-align: right;
 }
 
 .is-dense .stat-main {

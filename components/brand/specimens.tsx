@@ -46,23 +46,14 @@ export function Board({
   );
 }
 
-function MarkGhost({ className = "" }: { className?: string }) {
-  return (
-    <Logo
-      variant="mark"
-      unbounded
-      className={`mark-ghost ${className}`.trim()}
-    />
-  );
-}
-
 export function CoverSheet({ navy }: { navy?: boolean }) {
   return (
     <article className={`cover-sheet ${navy ? "is-navy" : "is-paper"}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className="cover-bg-icon" src={letterArt.background} alt="" />
       <div className="cover-logo">
         <Logo variant="full" unbounded tone={navy ? "light" : "brand"} className="cover-logo-img" />
       </div>
-      <MarkGhost className="cover-mark" />
     </article>
   );
 }
@@ -92,22 +83,6 @@ export function EnvelopeSheet({ label }: { label: string }) {
       <g clipPath={`url(#${clip})`}>
         <rect width={board.width} height={board.height} fill={board.navy} />
         <image
-          href="/images/open-logo.svg"
-          x={board.logoX}
-          y={board.logoY}
-          width={board.logoWidth}
-          height={board.logoHeight}
-          filter={`url(#${white})`}
-        />
-        <rect
-          x={board.windowX}
-          y={board.windowY}
-          width={board.windowWidth}
-          height={board.windowHeight}
-          rx={14}
-          fill={board.window}
-        />
-        <image
           href={board.bottomArt.path}
           x={board.bottomArt.x}
           y={layout.bottomY}
@@ -122,6 +97,23 @@ export function EnvelopeSheet({ label }: { label: string }) {
           width={layout.topWidth}
           height={layout.topHeight}
           preserveAspectRatio="xMaxYMin meet"
+        />
+        <rect
+          x={board.windowX}
+          y={board.windowY}
+          width={board.windowWidth}
+          height={board.windowHeight}
+          rx={board.windowRx}
+          fill={board.window}
+          fillOpacity={board.windowOpacity}
+        />
+        <image
+          href="/images/open-logo.svg"
+          x={board.logoX}
+          y={board.logoY}
+          width={board.logoWidth}
+          height={board.logoHeight}
+          filter={`url(#${white})`}
         />
       </g>
     </svg>
@@ -205,8 +197,7 @@ function SheetChrome({
       </header>
       <div className="stat-main">{children}</div>
       <footer className="stat-foot">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="stat-foot-strip" src={letterArt.topStrip} alt="" />
+        <div className="stat-foot-band" aria-hidden="true" />
         <div className="stat-foot-inner">
           <span className="stat-foot-item">
             <PinIcon />

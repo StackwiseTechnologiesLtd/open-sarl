@@ -1,31 +1,33 @@
 export const envelopeBoard = {
   width: 1100,
   height: 630,
-  radius: 36,
+  radius: 40,
   navy: "#000068",
   window: "#333486",
-  windowX: 72,
-  windowY: 252,
-  windowWidth: 470,
-  windowHeight: 168,
-  logoX: 72,
-  logoY: 48,
-  logoWidth: 268,
-  logoHeight: 182,
+  windowOpacity: 0.88,
+  windowRx: 20,
+  windowX: 68,
+  windowY: 262,
+  windowWidth: 492,
+  windowHeight: 176,
+  logoX: 68,
+  logoY: 42,
+  logoWidth: 278,
+  logoHeight: 189,
   bottomArt: {
     path: "/images/bottom-svg-enveloppe.svg",
     nativeWidth: 1007,
     nativeHeight: 768,
-    width: 700,
-    x: -36,
+    width: 768,
+    x: -52,
   },
   topArt: {
     path: "/images/top-svg-enveloppe.svg",
     nativeWidth: 364,
     nativeHeight: 848,
-    height: 602,
-    xOffset: -8,
-    y: -20,
+    height: 500,
+    xOffset: 10,
+    y: -8,
   },
 } as const;
 
@@ -91,10 +93,10 @@ export function composeEnvelopeSvg(logoSvg: string, topSvg: string, bottomSvg: s
   </defs>
   <g clip-path="url(#open-envelope-round)">
     <rect width="${board.width}" height="${board.height}" fill="${board.navy}"/>
-    <g transform="translate(${board.logoX} ${board.logoY}) scale(${logoScale})">${logo}</g>
-    <rect x="${board.windowX}" y="${board.windowY}" width="${board.windowWidth}" height="${board.windowHeight}" rx="14" fill="${board.window}"/>
     ${placedArt(bottomSvg, board.bottomArt.x, layout.bottomY, board.bottomArt.width, board.bottomArt.nativeWidth)}
     <g transform="translate(${layout.topX} ${layout.topY}) scale(${topScale})">${stripSvg(topSvg)}</g>
+    <rect x="${board.windowX}" y="${board.windowY}" width="${board.windowWidth}" height="${board.windowHeight}" rx="${board.windowRx}" fill="${board.window}" fill-opacity="${board.windowOpacity}"/>
+    <g transform="translate(${board.logoX} ${board.logoY}) scale(${logoScale})">${logo}</g>
   </g>
 </svg>`;
 }
