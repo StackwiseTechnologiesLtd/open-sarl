@@ -18,16 +18,16 @@ export const envelopeBoard = {
     path: "/images/bottom-svg-enveloppe.svg",
     nativeWidth: 1007,
     nativeHeight: 768,
-    width: 768,
-    x: -52,
+    width: 614,
+    x: -42,
   },
   topArt: {
     path: "/images/top-svg-enveloppe.svg",
     nativeWidth: 364,
     nativeHeight: 848,
-    height: 500,
-    xOffset: 10,
-    y: -8,
+    height: 360,
+    xOffset: 6,
+    y: 4,
   },
 } as const;
 

@@ -197,7 +197,8 @@ function SheetChrome({
       </header>
       <div className="stat-main">{children}</div>
       <footer className="stat-foot">
-        <div className="stat-foot-band" aria-hidden="true" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className="stat-foot-strip" src={letterArt.topStrip} alt="" />
         <div className="stat-foot-inner">
           <span className="stat-foot-item">
             <PinIcon />
