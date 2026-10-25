@@ -1,4 +1,4 @@
-import { navy, paper, stationeryFooterItems } from "./brand-guide";
+import { navy, stationeryFooterItems } from "./brand-guide";
 
 export type EnvelopeVariant = "navy" | "paper";
 
@@ -7,7 +7,8 @@ export const envelopeBoard = {
   height: 630,
   radius: 20,
   navy: "#000068",
-  paper,
+  paper: "#FFFFFF",
+  backdrop: "#E1E8F0",
   footerTextBottomInset: 16,
   footerFontSize: 9.5,
   accent: "#545497",
@@ -90,6 +91,19 @@ export function envelopeArtLayout() {
   };
 }
 
+export function envelopeWindowStyle(variant: EnvelopeVariant) {
+  const board = envelopeBoard;
+  if (variant === "paper") {
+    return { fill: board.backdrop, opacity: 1 };
+  }
+  return { fill: board.window, opacity: board.windowOpacity };
+}
+
+export function envelopeDecorSvg(svg: string, variant: EnvelopeVariant) {
+  if (variant === "navy") return svg;
+  return recolorPaint(svg, envelopeBoard.backdrop);
+}
+
 export function envelopeFooterLabel(variant: EnvelopeVariant) {
   const board = envelopeBoard;
   return {
@@ -122,6 +136,9 @@ export function composeEnvelopeSvg(
   const layout = envelopeArtLayout();
   const topScaleX = layout.topWidth / board.topArt.nativeWidth;
   const topScaleY = layout.topHeight / board.topArt.nativeHeight;
+  const windowStyle = envelopeWindowStyle(variant);
+  const bottomDecor = envelopeDecorSvg(bottomSvg, variant);
+  const topDecor = envelopeDecorSvg(topSvg, variant);
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${board.width} ${board.height}" width="${board.width}" height="${board.height}">
@@ -132,17 +149,17 @@ export function composeEnvelopeSvg(
   </defs>
   <g clip-path="url(#open-envelope-round)">
     <rect width="${board.width}" height="${board.height}" fill="${field}"/>
-    <rect x="${board.windowX}" y="${board.windowY}" width="${board.windowWidth}" height="${board.windowHeight}" rx="${board.windowRx}" fill="${board.window}" fill-opacity="${board.windowOpacity}"/>
+    <rect x="${board.windowX}" y="${board.windowY}" width="${board.windowWidth}" height="${board.windowHeight}" rx="${board.windowRx}" fill="${windowStyle.fill}" fill-opacity="${windowStyle.opacity}"/>
     <g transform="translate(${board.logoX} ${board.logoY}) scale(${logoScale})">${logoInner}</g>
     ${envelopeFooterSvg(variant)}
     ${placedArt(
-      bottomSvg,
+      bottomDecor,
       board.bottomArt.x,
       layout.bottomY,
       board.bottomArt.width,
       board.bottomArt.nativeWidth,
     )}
-    <g transform="translate(${layout.topX} ${layout.topY}) scale(${topScaleX} ${topScaleY})">${stripSvg(topSvg)}</g>
+    <g transform="translate(${layout.topX} ${layout.topY}) scale(${topScaleX} ${topScaleY})">${stripSvg(topDecor)}</g>
   </g>
 </svg>`;
 }

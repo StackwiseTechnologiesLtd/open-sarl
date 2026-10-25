@@ -5,6 +5,7 @@ import {
   envelopeArtLayout,
   envelopeBoard,
   envelopeFooterLabel,
+  envelopeWindowStyle,
   letterArt,
   type EnvelopeVariant,
 } from "@/lib/brand-export";
@@ -91,9 +92,11 @@ export function EnvelopeSheet({
   const rawId = useId().replace(/:/g, "");
   const clip = `${rawId}-clip`;
   const white = `${rawId}-white`;
+  const decorTint = `${rawId}-decor`;
   const board = envelopeBoard;
   const layout = envelopeArtLayout();
   const field = variant === "navy" ? board.navy : board.paper;
+  const windowStyle = envelopeWindowStyle(variant);
 
   return (
     <svg
@@ -109,6 +112,10 @@ export function EnvelopeSheet({
         <filter id={white} colorInterpolationFilters="sRGB">
           <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0" />
         </filter>
+        <filter id={decorTint} colorInterpolationFilters="sRGB">
+          <feFlood floodColor={board.backdrop} result="flood" />
+          <feComposite in="flood" in2="SourceGraphic" operator="in" />
+        </filter>
       </defs>
       <g clipPath={`url(#${clip})`}>
         <rect width={board.width} height={board.height} fill={field} />
@@ -118,8 +125,8 @@ export function EnvelopeSheet({
           width={board.windowWidth}
           height={board.windowHeight}
           rx={board.windowRx}
-          fill={board.window}
-          fillOpacity={board.windowOpacity}
+          fill={windowStyle.fill}
+          fillOpacity={windowStyle.opacity}
         />
         <image
           href="/images/open-logo.svg"
@@ -137,6 +144,7 @@ export function EnvelopeSheet({
           width={board.bottomArt.width}
           height={layout.bottomHeight}
           preserveAspectRatio="xMinYMax meet"
+          filter={variant === "paper" ? `url(#${decorTint})` : undefined}
         />
         <image
           href={board.topArt.path}
@@ -145,6 +153,7 @@ export function EnvelopeSheet({
           width={layout.topWidth}
           height={layout.topHeight}
           preserveAspectRatio="xMaxYMin meet"
+          filter={variant === "paper" ? `url(#${decorTint})` : undefined}
         />
       </g>
     </svg>

@@ -210,7 +210,7 @@ const fr = {
   envelopeBody:
     "Deux champs : marine et papier blanc. Le logo ouvre en haut à gauche (blanc sur marine, marine sur papier). La fenêtre d’adresse reste vide sous le logo. La boîte aux lettres est en haut à droite, la grue en bas à gauche. Les coordonnées reprennent la lettre, en une ligne à droite sous le décor, sans bandeau.",
   envelopeMeta: "Paysage · champ marine",
-  envelopeMetaWhite: "Paysage · champ papier",
+  envelopeMetaWhite: "Paysage · papier blanc · fonds #E1E8F0",
   letterTitle: "Lettre officielle",
   letterBody:
     "La lettre reprend la couverture en plus serré : coin marine, adresse du site en haut à droite, logo, puis le texte. Les intertitres sont en capitales, marine, sans puce décorative. Le pied est un bandeau marine pleine largeur : les deux lignes mobiles, l’adresse à Goma et l’e-mail du gérant.",
@@ -401,7 +401,7 @@ const en = {
   envelopeBody:
     "Two fields: navy and white paper. The logo opens at the top left (white on navy, navy on paper). The address window stays empty below the logo. The mailbox sits at the top right; the crane is cut by the bottom edge on the left. Contact matches the letter, one line on the right under the decor, with no band.",
   envelopeMeta: "Landscape · navy field",
-  envelopeMetaWhite: "Landscape · paper field",
+  envelopeMetaWhite: "Landscape · white paper · #E1E8F0 backdrops",
   letterTitle: "Official letter",
   letterBody:
     "The letter is the cover, tightened: a navy corner, the site address at the top right, the logo, then the text. Section labels are capitals, in navy, without decorative bullets. The footer is a full-width navy band: both mobile lines, the Goma address, and the managing director’s email.",
