@@ -12,7 +12,7 @@ describe("envelope export", () => {
     expect(svg).toContain('fill="#FFFFFF"');
     expect(svg).toContain('fill="#333486"');
     expect(svg).toContain('fill="#545497"');
-    expect(svg).toContain('rx="40"');
+    expect(svg).toContain('rx="20"');
     expect(stripSvg(svg)).not.toContain("<svg");
     expect(recolorPaint(logo, "#FFFFFF")).toContain('fill="#FFFFFF"');
     expect(recolorPaint(logo, "#FFFFFF")).not.toContain("#000068");

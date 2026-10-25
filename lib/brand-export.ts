@@ -1,7 +1,7 @@
 export const envelopeBoard = {
   width: 1100,
   height: 630,
-  radius: 40,
+  radius: 20,
   navy: "#000068",
   accent: "#545497",
   window: "#333486",
@@ -26,9 +26,8 @@ export const envelopeBoard = {
     path: "/images/top-svg-enveloppe.svg",
     nativeWidth: 364,
     nativeHeight: 848,
-    height: 360,
     xOffset: 6,
-    y: 4,
+    topInsetRatio: 0.04,
   },
 } as const;
 
@@ -71,16 +70,16 @@ export function envelopeArtLayout() {
   const bottomScale = board.bottomArt.width / board.bottomArt.nativeWidth;
   const bottomHeight = board.bottomArt.nativeHeight * bottomScale;
   const bottomY = board.height - bottomHeight;
-  const topScale = board.topArt.height / board.topArt.nativeHeight;
-  const topWidth = board.topArt.nativeWidth * topScale;
+  const topWidth = board.bottomArt.width;
+  const topHeight = bottomHeight;
   const topX = board.width - topWidth + board.topArt.xOffset;
   return {
     bottomY,
     bottomHeight,
     topX,
-    topY: board.topArt.y,
+    topY: board.height * board.topArt.topInsetRatio,
     topWidth,
-    topHeight: board.topArt.height,
+    topHeight,
   };
 }
 
@@ -93,7 +92,8 @@ export function composeEnvelopeSvg(
   const logo = recolorPaint(stripSvg(logoSvg), "#FFFFFF");
   const logoScale = board.logoWidth / 4453;
   const layout = envelopeArtLayout();
-  const topScale = board.topArt.height / board.topArt.nativeHeight;
+  const topScaleX = layout.topWidth / board.topArt.nativeWidth;
+  const topScaleY = layout.topHeight / board.topArt.nativeHeight;
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${board.width} ${board.height}" width="${board.width}" height="${board.height}">
@@ -105,7 +105,7 @@ export function composeEnvelopeSvg(
   <g clip-path="url(#open-envelope-round)">
     <rect width="${board.width}" height="${board.height}" fill="${board.navy}"/>
     ${placedArt(bottomSvg, board.bottomArt.x, layout.bottomY, board.bottomArt.width, board.bottomArt.nativeWidth)}
-    <g transform="translate(${layout.topX} ${layout.topY}) scale(${topScale})">${stripSvg(topSvg)}</g>
+    <g transform="translate(${layout.topX} ${layout.topY}) scale(${topScaleX} ${topScaleY})">${stripSvg(topSvg)}</g>
     <rect x="${board.windowX}" y="${board.windowY}" width="${board.windowWidth}" height="${board.windowHeight}" rx="${board.windowRx}" fill="${board.window}" fill-opacity="${board.windowOpacity}"/>
     <g transform="translate(${board.logoX} ${board.logoY}) scale(${logoScale})">${logo}</g>
   </g>
