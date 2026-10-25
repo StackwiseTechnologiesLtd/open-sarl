@@ -15,6 +15,9 @@ describe("envelope export", () => {
     const paper = composeEnvelopeSvg(logo, top, bottom, "paper");
     expect(paper).toContain('fill="#E1E8F0"');
     expect(paper).not.toContain('fill="#545497"');
+    const printable = composeEnvelopeSvg(logo, top, bottom, "navy", { printable: true });
+    expect(printable).not.toContain("clip-path");
+    expect(printable).not.toContain("open-envelope-round");
     expect(svg).toContain('rx="20"');
     expect(stripSvg(svg)).not.toContain("<svg");
     expect(recolorPaint(logo, "#FFFFFF")).toContain('fill="#FFFFFF"');

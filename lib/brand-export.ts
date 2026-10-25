@@ -120,35 +120,22 @@ function envelopeFooterSvg(variant: EnvelopeVariant) {
   return `<text x="${label.x}" y="${label.y}" fill="${label.fill}" font-family="IBM Plex Sans, Arial, sans-serif" font-size="${label.fontSize}" text-anchor="end">${label.text}</text>`;
 }
 
-export function composeEnvelopeSvg(
-  logoSvg: string,
-  topSvg: string,
-  bottomSvg: string,
-  variant: EnvelopeVariant = "navy",
-) {
-  const board = envelopeBoard;
-  const field = variant === "navy" ? board.navy : board.paper;
-  const logoInner =
-    variant === "navy"
-      ? recolorPaint(stripSvg(logoSvg), "#FFFFFF")
-      : stripSvg(logoSvg);
-  const logoScale = board.logoWidth / 4453;
-  const layout = envelopeArtLayout();
-  const topScaleX = layout.topWidth / board.topArt.nativeWidth;
-  const topScaleY = layout.topHeight / board.topArt.nativeHeight;
-  const windowStyle = envelopeWindowStyle(variant);
-  const bottomDecor = envelopeDecorSvg(bottomSvg, variant);
-  const topDecor = envelopeDecorSvg(topSvg, variant);
+export type ComposeEnvelopeOptions = { printable?: boolean };
 
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${board.width} ${board.height}" width="${board.width}" height="${board.height}">
-  <defs>
-    <clipPath id="open-envelope-round">
-      <rect width="${board.width}" height="${board.height}" rx="${board.radius}"/>
-    </clipPath>
-  </defs>
-  <g clip-path="url(#open-envelope-round)">
-    <rect width="${board.width}" height="${board.height}" fill="${field}"/>
+function envelopeInnerMarkup(
+  board: typeof envelopeBoard,
+  variant: EnvelopeVariant,
+  logoInner: string,
+  layout: ReturnType<typeof envelopeArtLayout>,
+  windowStyle: ReturnType<typeof envelopeWindowStyle>,
+  bottomDecor: string,
+  topDecor: string,
+  topScaleX: number,
+  topScaleY: number,
+) {
+  const field = variant === "navy" ? board.navy : board.paper;
+  const logoScale = board.logoWidth / 4453;
+  return `<rect width="${board.width}" height="${board.height}" fill="${field}"/>
     <rect x="${board.windowX}" y="${board.windowY}" width="${board.windowWidth}" height="${board.windowHeight}" rx="${board.windowRx}" fill="${windowStyle.fill}" fill-opacity="${windowStyle.opacity}"/>
     <g transform="translate(${board.logoX} ${board.logoY}) scale(${logoScale})">${logoInner}</g>
     ${envelopeFooterSvg(variant)}
@@ -159,13 +146,65 @@ export function composeEnvelopeSvg(
       board.bottomArt.width,
       board.bottomArt.nativeWidth,
     )}
-    <g transform="translate(${layout.topX} ${layout.topY}) scale(${topScaleX} ${topScaleY})">${stripSvg(topDecor)}</g>
-  </g>
+    <g transform="translate(${layout.topX} ${layout.topY}) scale(${topScaleX} ${topScaleY})">${stripSvg(topDecor)}</g>`;
+}
+
+export function composeEnvelopeSvg(
+  logoSvg: string,
+  topSvg: string,
+  bottomSvg: string,
+  variant: EnvelopeVariant = "navy",
+  options?: ComposeEnvelopeOptions,
+) {
+  const board = envelopeBoard;
+  const logoInner =
+    variant === "navy"
+      ? recolorPaint(stripSvg(logoSvg), "#FFFFFF")
+      : stripSvg(logoSvg);
+  const layout = envelopeArtLayout();
+  const topScaleX = layout.topWidth / board.topArt.nativeWidth;
+  const topScaleY = layout.topHeight / board.topArt.nativeHeight;
+  const windowStyle = envelopeWindowStyle(variant);
+  const bottomDecor = envelopeDecorSvg(bottomSvg, variant);
+  const topDecor = envelopeDecorSvg(topSvg, variant);
+  const inner = envelopeInnerMarkup(
+    board,
+    variant,
+    logoInner,
+    layout,
+    windowStyle,
+    bottomDecor,
+    topDecor,
+    topScaleX,
+    topScaleY,
+  );
+
+  if (options?.printable) {
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${board.width} ${board.height}" width="${board.width}" height="${board.height}">
+  <g>${inner}</g>
+</svg>`;
+  }
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${board.width} ${board.height}" width="${board.width}" height="${board.height}">
+  <defs>
+    <clipPath id="open-envelope-round">
+      <rect width="${board.width}" height="${board.height}" rx="${board.radius}"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#open-envelope-round)">${inner}</g>
 </svg>`;
 }
 
+export type EnvelopeAssetKind =
+  | "envelope"
+  | "envelope-paper"
+  | "envelope-print"
+  | "envelope-paper-print";
+
 export async function loadAssetSvg(
-  kind: "logo" | "logo-white" | "mark" | "envelope" | "envelope-paper",
+  kind: "logo" | "logo-white" | "mark" | EnvelopeAssetKind,
 ) {
   const logo = await fetch("/images/open-logo.svg").then((response) =>
     response.text(),
@@ -182,6 +221,12 @@ export async function loadAssetSvg(
   ]);
   if (kind === "envelope-paper") {
     return composeEnvelopeSvg(logo, top, bottom, "paper");
+  }
+  if (kind === "envelope-print") {
+    return composeEnvelopeSvg(logo, top, bottom, "navy", { printable: true });
+  }
+  if (kind === "envelope-paper-print") {
+    return composeEnvelopeSvg(logo, top, bottom, "paper", { printable: true });
   }
   return composeEnvelopeSvg(logo, top, bottom, "navy");
 }

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { LanguageSwitch } from "@/components/language-switch";
 import { Logo } from "@/components/logo";
+import { BrandDocumentsSection } from "@/components/brand/documents-section";
 import { ExportBar } from "@/components/brand/export-bar";
 import {
   Board,
@@ -32,6 +33,14 @@ export function BrandGuide({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const [theme, setTheme] = useState<"paper" | "ink">("paper");
   const [active, setActive] = useState<BrandSectionId>("introduction");
+
+  useEffect(() => {
+    const hash = window.location.hash.replace(/^#/, "");
+    if (hash) {
+      const target = document.getElementById(hash);
+      if (target) target.scrollIntoView({ behavior: "auto", block: "start" });
+    }
+  }, []);
 
   useEffect(() => {
     const nodes = brandSectionIds
@@ -357,20 +366,11 @@ export function BrandGuide({ locale }: { locale: Locale }) {
           </div>
         </section>
 
-        <section className="brand-section" id="files">
+        <section className="brand-section" id="documents">
           <p className="brand-kicker">10</p>
-          <h2>{copy.filesTitle}</h2>
-          <p className="brand-prose">{copy.filesBody}</p>
-          <ul className="file-list">
-            {copy.files.map((file) => (
-              <li key={file.href}>
-                <a href={file.href} download>
-                  {file.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <ExportBar kind="envelope" filename="open-envelope" labels={exportLabels} />
+          <h2>{copy.documentsTitle}</h2>
+          <p className="brand-prose">{copy.documentsBody}</p>
+          <BrandDocumentsSection locale={locale} />
         </section>
       </main>
     </div>

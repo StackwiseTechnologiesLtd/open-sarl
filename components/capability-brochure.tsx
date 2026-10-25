@@ -6,17 +6,33 @@ import { contactEmail, mailHref } from "@/lib/i18n";
 
 const WEBSITE = "www.open-consulting.fr";
 
-function BrochureToolbarLinks({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+function BrochureToolbarLinks({
+  locale,
+  dict,
+  embedded = false,
+}: {
+  locale: Locale;
+  dict: Dictionary;
+  embedded?: boolean;
+}) {
   const b = dict.brochure;
   const v = dict.documentViewer;
   const home = `/${locale}`;
+  const branding = `${home}/branding`;
 
-  const links = (
+  const links = embedded ? (
     <>
-      <Link href={`${home}/documents/capability-us-drc-en`}>{b.viewOfficialEn}</Link>
-      <Link href={`${home}/documents/capability-bilingual`}>{b.viewOfficialBilingual}</Link>
-      <Link href={`${home}/documents`}>{v.allDocuments}</Link>
-      <Link href={`${home}/documents/templates`}>{b.templatesLink}</Link>
+      <a href={`${branding}#documents-pdfs`}>{b.viewOfficialEn}</a>
+      <a href={`${branding}#documents-pdfs`}>{b.viewOfficialBilingual}</a>
+      <a href={`${branding}#documents-templates`}>{b.templatesLink}</a>
+      <a href={home}>{b.back}</a>
+    </>
+  ) : (
+    <>
+      <Link href={`${branding}#documents-pdfs`}>{b.viewOfficialEn}</Link>
+      <Link href={`${branding}#documents-pdfs`}>{b.viewOfficialBilingual}</Link>
+      <Link href={`${branding}#documents`}>{v.allDocuments}</Link>
+      <Link href={`${branding}#documents-templates`}>{b.templatesLink}</Link>
       <Link href={home}>{b.back}</Link>
     </>
   );
@@ -38,7 +54,15 @@ function BrochureToolbarLinks({ locale, dict }: { locale: Locale; dict: Dictiona
   );
 }
 
-export function CapabilityBrochure({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+export function CapabilityBrochure({
+  locale,
+  dict,
+  embedded = false,
+}: {
+  locale: Locale;
+  dict: Dictionary;
+  embedded?: boolean;
+}) {
   const b = dict.brochure;
   const v = dict.documentViewer;
   const downloadName =
@@ -51,7 +75,7 @@ export function CapabilityBrochure({ locale, dict }: { locale: Locale; dict: Dic
       downloadFileName={downloadName}
       printLabel={b.print}
       pageCountHint={`${b.coverSubtitle} · ${v.a4PagesHint}`}
-      toolbarExtra={<BrochureToolbarLinks locale={locale} dict={dict} />}
+      toolbarExtra={<BrochureToolbarLinks locale={locale} dict={dict} embedded={embedded} />}
     >
       <OpenDocumentSheet variant="cover" website={WEBSITE}>
         <p className="doc-cover-kicker">{b.kicker}</p>

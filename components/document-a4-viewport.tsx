@@ -43,7 +43,6 @@ export function DocumentA4Viewport({
             letterRendering: true,
           },
           jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-          pagebreak: { mode: ["css", "legacy"], before: ".doc-sheet:not(:first-child)" },
         })
         .from(el)
         .save();

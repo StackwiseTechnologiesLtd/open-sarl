@@ -1160,6 +1160,151 @@
   }
 }
 
+.brand-documents {
+  display: grid;
+  gap: 2.5rem;
+  margin-top: 1.25rem;
+}
+
+.brand-documents-block {
+  min-width: 0;
+}
+
+.brand-documents-heading {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-headline-md);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--g-ink);
+}
+
+.brand-doc-hub-list {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.brand-doc-hub-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--g-line);
+  color: var(--g-ink);
+  text-decoration: none;
+}
+
+.brand-doc-hub-card:hover {
+  border-color: var(--g-ink);
+}
+
+.brand-doc-hub-badge {
+  font-family: var(--font-label-md);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--g-muted);
+}
+
+.brand-doc-hub-title {
+  font-weight: 600;
+}
+
+.brand-documents-embed {
+  padding: 1rem 0;
+  border-top: 1px solid var(--g-line);
+}
+
+.brand-documents-embed .doc-a4-viewport {
+  margin-top: 0.5rem;
+}
+
+.brand-documents-viewport .doc-a4-toolbar-title {
+  color: var(--g-ink);
+}
+
+.print-pack-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.75rem 0;
+}
+
+.print-pack-actions button,
+.print-pack-list button {
+  border: 1px solid var(--g-line);
+  background: transparent;
+  color: var(--g-ink);
+  cursor: pointer;
+  font-family: var(--font-label-md);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.65rem;
+}
+
+.print-pack-actions button:hover:not(:disabled),
+.print-pack-list button:hover:not(:disabled) {
+  background: var(--g-ink);
+  color: var(--g-bg);
+}
+
+.print-pack-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr));
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.print-pack-list li {
+  margin: 0;
+}
+
+.print-pack-list button {
+  width: 100%;
+  text-align: left;
+  text-transform: none;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+}
+
+.brand-print-offscreen {
+  position: fixed;
+  left: -20000px;
+  top: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.brand-print-stack .brand-print-sheet + .brand-print-sheet {
+  margin-top: 0;
+}
+
+.brand-print-sheet {
+  overflow: hidden;
+  background: #fff;
+  page-break-after: always;
+}
+
+.brand-print-sheet-inner {
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-print-sheet-inner .cover-sheet,
+.brand-print-sheet-inner .stat-sheet,
+.brand-print-sheet-inner .visit,
+.brand-print-sheet-inner .env-svg {
+  width: 100%;
+  height: 100%;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .brand-guide {
     scroll-behavior: auto;

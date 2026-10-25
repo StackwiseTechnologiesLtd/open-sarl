@@ -165,7 +165,7 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
             <Reveal>
               <SectionIntro title={dict.livrables.title} intro={dict.livrables.intro} />
             </Reveal>
-            <ButtonLink href={`${home}/brochure`} variant="ghost" className="hidden shrink-0 md:inline-flex">
+            <ButtonLink href={`${home}/branding#documents-brochure`} variant="ghost" className="hidden shrink-0 md:inline-flex">
               {dict.livrables.catalog}
               <Icon name="chevron_right" className="h-5 w-5" />
             </ButtonLink>
@@ -191,7 +191,7 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
             ))}
           </div>
           <div className="mt-8 md:hidden">
-            <ButtonLink href={`${home}/brochure`} variant="ghost" full className="w-full sm:w-auto">
+            <ButtonLink href={`${home}/branding#documents-brochure`} variant="ghost" full className="w-full sm:w-auto">
               {dict.livrables.catalog}
               <Icon name="chevron_right" className="h-5 w-5" />
             </ButtonLink>
@@ -240,7 +240,7 @@ export function HomeView({ locale, dict }: { locale: Locale; dict: Dictionary })
             <p className="section-lead text-primary-fixed mb-8 max-w-[65ch] sm:mb-10 md:mx-auto">{dict.cta.text}</p>
             <div className="flex w-full flex-col gap-4 sm:flex-row sm:w-auto md:justify-center">
               <PillLink href={mailHref(locale, "project")}>{dict.cta.primary}</PillLink>
-              <ButtonLink href={`${home}/brochure`} variant="outline-light" size="lg">
+              <ButtonLink href={`${home}/branding#documents-brochure`} variant="outline-light" size="lg">
                 {dict.cta.secondary}
               </ButtonLink>
             </div>

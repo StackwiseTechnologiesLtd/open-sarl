@@ -170,10 +170,18 @@ function TemplateSheets({
   );
 }
 
-export function DocumentTemplatesAllViewer() {
+export function DocumentTemplatesAllViewer({
+  embedded = false,
+  locale: localeProp,
+}: {
+  embedded?: boolean;
+  locale?: Locale;
+} = {}) {
   const params = useParams();
   const localeParam = params.locale;
-  const locale = typeof localeParam === "string" && isLocale(localeParam) ? localeParam : "fr";
+  const locale =
+    localeProp ??
+    (typeof localeParam === "string" && isLocale(localeParam) ? localeParam : "fr");
   const dict = getDictionary(locale);
   const hub = dict.documentTemplatesHub;
   const v = dict.documentViewer;
@@ -182,33 +190,40 @@ export function DocumentTemplatesAllViewer() {
     0,
   );
 
+  const branding = `/${locale}/branding`;
+  const viewport = (
+    <DocumentA4Viewport
+      title={hub.combinedViewerTitle}
+      downloadLabel={v.downloadWebPdf}
+      downloadFileName={`OPEN_Document_Templates_${locale}.pdf`}
+      printLabel={dict.documentTemplates.print}
+      pageCountHint={hub.pageCountHint.replace("{count}", String(pageCount))}
+      toolbarExtra={
+        <p className="text-sm text-on-surface-variant">
+          {hub.combinedIntro}{" "}
+          <Link href={`${branding}#documents`} className="font-semibold text-primary hover:underline">
+            {v.allDocuments}
+          </Link>
+          {" · "}
+          <Link href={`${branding}#documents-brochure`} className="font-semibold text-primary hover:underline">
+            {dict.documentTemplates.backToBrochure}
+          </Link>
+        </p>
+      }
+    >
+      {documentTemplateCatalog.map((entry) => (
+        <TemplateSheets key={entry.id} templateId={entry.id} locale={locale} />
+      ))}
+    </DocumentA4Viewport>
+  );
+
+  if (embedded) {
+    return <div className="brand-documents-viewport">{viewport}</div>;
+  }
+
   return (
     <main className="page-main brochure-page bg-[#dfe2e8] pb-12 pt-6 sm:pb-16 sm:pt-8 print:bg-white print:pb-0 print:pt-0">
-      <div className="mx-auto w-full min-w-0 max-w-none px-4 sm:px-6">
-        <DocumentA4Viewport
-          title={hub.combinedViewerTitle}
-          downloadLabel={v.downloadWebPdf}
-          downloadFileName={`OPEN_Document_Templates_${locale}.pdf`}
-          printLabel={dict.documentTemplates.print}
-          pageCountHint={hub.pageCountHint.replace("{count}", String(pageCount))}
-          toolbarExtra={
-            <p className="text-sm text-on-surface-variant">
-              {hub.combinedIntro}{" "}
-              <Link href={`/${locale}/documents`} className="font-semibold text-primary hover:underline">
-                {v.allDocuments}
-              </Link>
-              {" · "}
-              <Link href={`/${locale}/brochure`} className="font-semibold text-primary hover:underline">
-                {dict.documentTemplates.backToBrochure}
-              </Link>
-            </p>
-          }
-        >
-          {documentTemplateCatalog.map((entry) => (
-            <TemplateSheets key={entry.id} templateId={entry.id} locale={locale} />
-          ))}
-        </DocumentA4Viewport>
-      </div>
+      <div className="mx-auto w-full min-w-0 max-w-none px-4 sm:px-6">{viewport}</div>
     </main>
   );
 }
