@@ -613,17 +613,19 @@
   width: 34%;
 }
 
-.cover-bg-icon {
+.cover-bg-icon,
+.stat-bg-icon {
   position: absolute;
   z-index: 0;
   right: -4%;
-  bottom: 5%;
-  width: 82.5%;
+  bottom: 2%;
+  width: 60%;
   height: auto;
   pointer-events: none;
 }
 
-.cover-sheet.is-paper .cover-bg-icon {
+.cover-sheet.is-paper .cover-bg-icon,
+.stat-sheet .stat-bg-icon {
   opacity: 0.4;
 }
 
@@ -700,17 +702,6 @@
   top: 0;
   left: 0;
   width: var(--stat-strip-span);
-  height: auto;
-  pointer-events: none;
-}
-
-.stat-bg-icon {
-  position: absolute;
-  z-index: 0;
-  top: auto;
-  bottom: calc(var(--stat-strip) + 10%);
-  right: -8%;
-  width: 57.2%;
   height: auto;
   pointer-events: none;
 }
