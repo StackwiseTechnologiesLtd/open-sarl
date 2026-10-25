@@ -1,7 +1,13 @@
 import { useId, type ReactNode } from "react";
 import { Logo } from "@/components/logo";
 import { EnvelopeDecor } from "@/components/brand/envelope-decor";
-import { envelopeArtLayout, envelopeBoard, letterArt } from "@/lib/brand-export";
+import {
+  envelopeArtLayout,
+  envelopeBoard,
+  envelopeFooterLines,
+  letterArt,
+  type EnvelopeVariant,
+} from "@/lib/brand-export";
 import {
   cardIdentity,
   correspondence,
@@ -58,12 +64,47 @@ export function CoverSheet({ navy }: { navy?: boolean }) {
   );
 }
 
-export function EnvelopeSheet({ label }: { label: string }) {
+function EnvelopeFooterText({ variant }: { variant: EnvelopeVariant }) {
+  const board = envelopeBoard;
+  const lines = envelopeFooterLines();
+  const fill = variant === "navy" ? "#FFFFFF" : board.navy;
+  const x = board.width - board.logoX;
+  const y =
+    board.height -
+    board.footerBottomInset -
+    (lines.length - 1) * board.footerLineHeight;
+
+  return (
+    <text
+      x={x}
+      y={y}
+      fill={fill}
+      fontFamily="var(--font-label-md), IBM Plex Sans, sans-serif"
+      fontSize={board.footerFontSize}
+      textAnchor="end"
+    >
+      {lines.map((line, index) => (
+        <tspan key={line} x={x} dy={index === 0 ? 0 : board.footerLineHeight}>
+          {line}
+        </tspan>
+      ))}
+    </text>
+  );
+}
+
+export function EnvelopeSheet({
+  label,
+  variant = "navy",
+}: {
+  label: string;
+  variant?: EnvelopeVariant;
+}) {
   const rawId = useId().replace(/:/g, "");
   const clip = `${rawId}-clip`;
   const white = `${rawId}-white`;
   const board = envelopeBoard;
   const layout = envelopeArtLayout();
+  const field = variant === "navy" ? board.navy : board.paper;
 
   return (
     <svg
@@ -81,7 +122,7 @@ export function EnvelopeSheet({ label }: { label: string }) {
         </filter>
       </defs>
       <g clipPath={`url(#${clip})`}>
-        <rect width={board.width} height={board.height} fill={board.navy} />
+        <rect width={board.width} height={board.height} fill={field} />
         <image
           href={board.bottomArt.path}
           x={board.bottomArt.x}
@@ -113,8 +154,9 @@ export function EnvelopeSheet({ label }: { label: string }) {
           y={board.logoY}
           width={board.logoWidth}
           height={board.logoHeight}
-          filter={`url(#${white})`}
+          filter={variant === "navy" ? `url(#${white})` : undefined}
         />
+        <EnvelopeFooterText variant={variant} />
       </g>
     </svg>
   );
@@ -142,17 +184,6 @@ function MailIcon() {
   );
 }
 
-function InfoIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M12 2a10 10 0 1 0 .01 20.01A10 10 0 0 0 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-      />
-    </svg>
-  );
-}
-
 function PhoneIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -165,12 +196,10 @@ function PhoneIcon() {
 }
 
 function SheetChrome({
-  copy,
   children,
   dense = false,
   billing = false,
 }: {
-  copy: BrandCopy;
   children: ReactNode;
   dense?: boolean;
   billing?: boolean;
@@ -200,17 +229,21 @@ function SheetChrome({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="stat-foot-strip" src={letterArt.topStrip} alt="" />
         <div className="stat-foot-inner">
+          <span className="stat-foot-item stat-foot-phones">
+            <PhoneIcon />
+            <span className="stat-foot-stack">
+              {cardIdentity.phones.map((phone) => (
+                <span key={phone}>{phone}</span>
+              ))}
+            </span>
+          </span>
           <span className="stat-foot-item">
             <PinIcon />
-            <span>{copy.place}</span>
-          </span>
-          <span className="stat-foot-item">
-            <MailIcon />
-            <span>{correspondence.email}</span>
+            <span>{cardIdentity.address}</span>
           </span>
           <span className="stat-foot-item stat-foot-end">
-            <InfoIcon />
-            <span>{correspondence.site}</span>
+            <MailIcon />
+            <span>{cardIdentity.email}</span>
           </span>
         </div>
       </footer>
@@ -220,7 +253,7 @@ function SheetChrome({
 
 export function LetterSheet({ copy }: { copy: BrandCopy }) {
   return (
-    <SheetChrome copy={copy} dense>
+    <SheetChrome dense>
       <div className="letter-meta">
         <p>{copy.letterDate}</p>
         <div className="letter-to">
@@ -258,7 +291,7 @@ export function InvoiceSheet({ copy, locale }: { copy: BrandCopy; locale: Locale
   }));
 
   return (
-    <SheetChrome copy={copy} billing>
+    <SheetChrome billing>
       <header className="bill-head">
         <h3>{copy.invoiceTitle}</h3>
         <p>{copy.invoiceMeta}</p>
@@ -319,7 +352,7 @@ export function InvoiceSheet({ copy, locale }: { copy: BrandCopy; locale: Locale
 
 export function ReceiptSheet({ copy, locale }: { copy: BrandCopy; locale: Locale }) {
   return (
-    <SheetChrome copy={copy} billing>
+    <SheetChrome billing>
       <header className="bill-head">
         <h3>{copy.receiptTitle}</h3>
         <p>{copy.receiptMeta}</p>

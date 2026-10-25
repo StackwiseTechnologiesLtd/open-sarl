@@ -8,6 +8,7 @@ const raster = {
   "logo-white": { width: 1600, height: Math.round((1600 * 3030) / 4453) },
   mark: { width: 800, height: Math.round((800 * 2720) / 1535) },
   envelope: { width: 2200, height: 1260 },
+  "envelope-paper": { width: 2200, height: 1260 },
 } as const;
 
 export function ExportBar({

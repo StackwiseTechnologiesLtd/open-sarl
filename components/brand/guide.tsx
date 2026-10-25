@@ -297,10 +297,18 @@ export function BrandGuide({ locale }: { locale: Locale }) {
           <p className="brand-kicker">06</p>
           <h2>{copy.envelopeTitle}</h2>
           <p className="brand-prose">{copy.envelopeBody}</p>
-          <Board width={1100} height={630} min={560} label={copy.envelopeMeta}>
-            <EnvelopeSheet label={copy.envelopeTitle} />
-          </Board>
-          <ExportBar kind="envelope" filename="open-envelope" labels={exportLabels} />
+          <div className="pair">
+            <Board width={1100} height={630} min={560} label={copy.envelopeMeta}>
+              <EnvelopeSheet label={copy.envelopeTitle} variant="navy" />
+            </Board>
+            <Board width={1100} height={630} min={560} label={copy.envelopeMetaWhite}>
+              <EnvelopeSheet label={copy.envelopeTitle} variant="paper" />
+            </Board>
+          </div>
+          <div className="export-row">
+            <ExportBar kind="envelope" filename="open-envelope-navy" labels={exportLabels} />
+            <ExportBar kind="envelope-paper" filename="open-envelope-white" labels={exportLabels} />
+          </div>
         </section>
 
         <section className="brand-section" id="letter">

@@ -198,11 +198,12 @@ const fr = {
   avoid: "Éviter",
   envelopeTitle: "Enveloppe",
   envelopeBody:
-    "Un seul champ marine, coins arrondis. Le logo blanc ouvre en haut à gauche. La fenêtre d’adresse, plus sombre, reste vide sous le logo. La boîte aux lettres est en haut à droite. La grue est coupée par le bord bas, à gauche.",
+    "Deux champs : marine et papier. Le logo ouvre en haut à gauche (blanc sur marine, marine sur papier). La fenêtre d’adresse reste vide sous le logo. La boîte aux lettres est en haut à droite, la grue en bas à gauche. Les coordonnées du gérant (Goma) sont alignées en bas à droite, comme le pied des lettres.",
   envelopeMeta: "Paysage · champ marine",
+  envelopeMetaWhite: "Paysage · champ papier",
   letterTitle: "Lettre officielle",
   letterBody:
-    "La lettre reprend la couverture en plus serré : coin marine, adresse du site en haut à droite, logo, puis le texte. Les intertitres sont en capitales, marine, sans puce décorative. Le pied est un bandeau marine pleine largeur : Kinshasa, l’adresse de correspondance, le site.",
+    "La lettre reprend la couverture en plus serré : coin marine, adresse du site en haut à droite, logo, puis le texte. Les intertitres sont en capitales, marine, sans puce décorative. Le pied est un bandeau marine pleine largeur : les deux lignes mobiles, l’adresse à Goma et l’e-mail du gérant.",
   letterMeta: "A4 · 210 × 297 mm",
   letterDate: "28 août 2024",
   letterToLabel: "À.",
@@ -271,7 +272,7 @@ const fr = {
   cardsBody:
     "Format 85 × 55 mm. Le recto papier porte le QR du site, le logo, et les coordonnées du gérant telles qu’imprimées : Goma, les deux lignes mobiles, l’adresse personnelle. Le verso marine est le verrouillage blanc, seul. La carte marine reprend le recto quand le fond doit être sombre.",
   cardsRule:
-    "Le courrier institutionnel, lui, reste sur Kinshasa et contact@open-consulting.fr. On ne mélange pas la ligne personnelle de la carte et le pied des lettres.",
+    "Les coordonnées imprimées sur la carte et le pied des lettres, factures et enveloppes sont les mêmes : Goma, les deux mobiles, l’adresse du lac et deancin@gmail.com. Le site institutionnel reste en en-tête, pas dans le pied.",
   cardPaperIcons: "Recto papier · icônes",
   cardPaperAddress: "Recto papier · adresse en toutes lettres",
   cardNavyBack: "Verso marine",
@@ -388,11 +389,12 @@ const en = {
   avoid: "Avoid",
   envelopeTitle: "Envelope",
   envelopeBody:
-    "One navy field, with rounded corners. The white logo opens at the top left. The darker address window stays empty, below the logo. The mailbox sits at the top right. The crane is cut by the bottom edge, on the left.",
+    "Two fields: navy and paper. The logo opens at the top left (white on navy, navy on paper). The address window stays empty below the logo. The mailbox sits at the top right; the crane is cut by the bottom edge on the left. The managing director’s Goma contact lines up at the bottom right, matching the letter footer.",
   envelopeMeta: "Landscape · navy field",
+  envelopeMetaWhite: "Landscape · paper field",
   letterTitle: "Official letter",
   letterBody:
-    "The letter is the cover, tightened: a navy corner, the site address at the top right, the logo, then the text. Section labels are capitals, in navy, without decorative bullets. The footer is a full-width navy band: Kinshasa, the correspondence address, the site.",
+    "The letter is the cover, tightened: a navy corner, the site address at the top right, the logo, then the text. Section labels are capitals, in navy, without decorative bullets. The footer is a full-width navy band: both mobile lines, the Goma address, and the managing director’s email.",
   letterMeta: "A4 · 210 × 297 mm",
   letterDate: "28 August 2024",
   letterToLabel: "To.",
@@ -461,7 +463,7 @@ const en = {
   cardsBody:
     "85 × 55 mm. The paper front carries the site QR, the logo, and the managing director’s details as printed: Goma, both mobile lines, the personal address. The navy back is the white lockup, alone. The navy front repeats the contact side when the field must be dark.",
   cardsRule:
-    "Institutional letters stay on Kinshasa and contact@open-consulting.fr. Do not mix the personal line from the card into the letter footer.",
+    "The printed details on the card and on letter, invoice, and envelope footers match: Goma, both mobiles, the lake address, and deancin@gmail.com. The institutional site stays in the header, not the footer.",
   cardPaperIcons: "Paper front · icons",
   cardPaperAddress: "Paper front · address spelled out",
   cardNavyBack: "Navy back",

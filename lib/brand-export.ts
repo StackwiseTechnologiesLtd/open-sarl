@@ -1,8 +1,16 @@
+import { cardIdentity } from "./brand-guide";
+
+export type EnvelopeVariant = "navy" | "paper";
+
 export const envelopeBoard = {
   width: 1100,
   height: 630,
   radius: 20,
   navy: "#000068",
+  paper: "#FFFFFF",
+  footerFontSize: 11,
+  footerLineHeight: 14,
+  footerBottomInset: 16,
   accent: "#545497",
   window: "#333486",
   windowOpacity: 0.88,
@@ -83,13 +91,45 @@ export function envelopeArtLayout() {
   };
 }
 
+export function envelopeFooterLines() {
+  return [
+    cardIdentity.phones[0],
+    cardIdentity.phones[1],
+    cardIdentity.address,
+    cardIdentity.email,
+  ];
+}
+
+function envelopeFooterSvg(variant: EnvelopeVariant) {
+  const board = envelopeBoard;
+  const lines = envelopeFooterLines();
+  const fill = variant === "navy" ? "#FFFFFF" : board.navy;
+  const x = board.width - board.logoX;
+  const y =
+    board.height -
+    board.footerBottomInset -
+    (lines.length - 1) * board.footerLineHeight;
+  const tspans = lines
+    .map(
+      (line, index) =>
+        `<tspan x="${x}" dy="${index === 0 ? 0 : board.footerLineHeight}">${line}</tspan>`,
+    )
+    .join("");
+  return `<text x="${x}" y="${y}" fill="${fill}" font-family="IBM Plex Sans, Arial, sans-serif" font-size="${board.footerFontSize}" text-anchor="end">${tspans}</text>`;
+}
+
 export function composeEnvelopeSvg(
   logoSvg: string,
   topSvg: string,
   bottomSvg: string,
+  variant: EnvelopeVariant = "navy",
 ) {
   const board = envelopeBoard;
-  const logo = recolorPaint(stripSvg(logoSvg), "#FFFFFF");
+  const field = variant === "navy" ? board.navy : board.paper;
+  const logoInner =
+    variant === "navy"
+      ? recolorPaint(stripSvg(logoSvg), "#FFFFFF")
+      : stripSvg(logoSvg);
   const logoScale = board.logoWidth / 4453;
   const layout = envelopeArtLayout();
   const topScaleX = layout.topWidth / board.topArt.nativeWidth;
@@ -103,17 +143,18 @@ export function composeEnvelopeSvg(
     </clipPath>
   </defs>
   <g clip-path="url(#open-envelope-round)">
-    <rect width="${board.width}" height="${board.height}" fill="${board.navy}"/>
+    <rect width="${board.width}" height="${board.height}" fill="${field}"/>
     ${placedArt(bottomSvg, board.bottomArt.x, layout.bottomY, board.bottomArt.width, board.bottomArt.nativeWidth)}
     <g transform="translate(${layout.topX} ${layout.topY}) scale(${topScaleX} ${topScaleY})">${stripSvg(topSvg)}</g>
     <rect x="${board.windowX}" y="${board.windowY}" width="${board.windowWidth}" height="${board.windowHeight}" rx="${board.windowRx}" fill="${board.window}" fill-opacity="${board.windowOpacity}"/>
-    <g transform="translate(${board.logoX} ${board.logoY}) scale(${logoScale})">${logo}</g>
+    <g transform="translate(${board.logoX} ${board.logoY}) scale(${logoScale})">${logoInner}</g>
+    ${envelopeFooterSvg(variant)}
   </g>
 </svg>`;
 }
 
 export async function loadAssetSvg(
-  kind: "logo" | "logo-white" | "mark" | "envelope",
+  kind: "logo" | "logo-white" | "mark" | "envelope" | "envelope-paper",
 ) {
   const logo = await fetch("/images/open-logo.svg").then((response) =>
     response.text(),
@@ -128,7 +169,10 @@ export async function loadAssetSvg(
     fetch(envelopeBoard.topArt.path).then((response) => response.text()),
     fetch(envelopeBoard.bottomArt.path).then((response) => response.text()),
   ]);
-  return composeEnvelopeSvg(logo, top, bottom);
+  if (kind === "envelope-paper") {
+    return composeEnvelopeSvg(logo, top, bottom, "paper");
+  }
+  return composeEnvelopeSvg(logo, top, bottom, "navy");
 }
 
 export function downloadBlob(filename: string, blob: Blob) {

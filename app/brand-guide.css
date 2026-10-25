@@ -758,7 +758,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  height: calc(var(--stat-strip) + 2.4%);
+  height: calc(var(--stat-strip) + 5%);
   color: #fff;
 }
 
@@ -819,6 +819,17 @@
 
 .stat-foot-end {
   margin-left: auto;
+  flex-shrink: 0;
+}
+
+.stat-foot-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  line-height: 1.2;
+}
+
+.stat-foot-phones {
   flex-shrink: 0;
 }
 
