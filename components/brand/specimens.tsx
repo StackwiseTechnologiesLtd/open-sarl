@@ -1,5 +1,6 @@
 import { useId, type ReactNode } from "react";
 import { Logo } from "@/components/logo";
+import { EnvelopeDecor } from "@/components/brand/envelope-decor";
 import { envelopeArtLayout, envelopeBoard, letterArt } from "@/lib/brand-export";
 import {
   cardIdentity,
@@ -66,19 +67,6 @@ export function CoverSheet({ navy }: { navy?: boolean }) {
   );
 }
 
-function Mailbox({ className = "" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 48 72" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M10 18h28v42H10zM8 18h32l-3.5-8h-25z"
-      />
-      <circle cx="24" cy="34" r="3.2" fill="currentColor" opacity="0.35" />
-      <circle cx="24" cy="48" r="3.2" fill="currentColor" opacity="0.35" />
-    </svg>
-  );
-}
-
 export function EnvelopeSheet({ label }: { label: string }) {
   const rawId = useId().replace(/:/g, "");
   const clip = `${rawId}-clip`;
@@ -116,6 +104,7 @@ export function EnvelopeSheet({ label }: { label: string }) {
           y={board.windowY}
           width={board.windowWidth}
           height={board.windowHeight}
+          rx={14}
           fill={board.window}
         />
         <image
@@ -124,6 +113,7 @@ export function EnvelopeSheet({ label }: { label: string }) {
           y={layout.bottomY}
           width={board.bottomArt.width}
           height={layout.bottomHeight}
+          preserveAspectRatio="xMinYMax meet"
         />
         <image
           href={board.topArt.path}
@@ -131,6 +121,7 @@ export function EnvelopeSheet({ label }: { label: string }) {
           y={layout.topY}
           width={layout.topWidth}
           height={layout.topHeight}
+          preserveAspectRatio="xMaxYMin meet"
         />
       </g>
     </svg>
@@ -185,33 +176,51 @@ function SheetChrome({
   copy,
   children,
   dense = false,
+  billing = false,
 }: {
   copy: BrandCopy;
   children: ReactNode;
   dense?: boolean;
+  billing?: boolean;
 }) {
+  const sheetClass = [
+    "stat-sheet",
+    dense ? "is-dense" : "",
+    billing ? "is-billing" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <article className={`stat-sheet ${dense ? "is-dense" : ""}`}>
+    <article className={sheetClass}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img className="stat-top-strip" src={letterArt.topStrip} alt="" />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img className="stat-bg-icon" src={letterArt.background} alt="" />
-      <p className="stat-url">{correspondence.siteUrl}</p>
-      <div className="stat-logo">
-        <Logo variant="full" unbounded className="cover-logo-img" />
-      </div>
+      <header className="stat-head">
+        <div className="stat-logo">
+          <Logo variant="full" unbounded className="cover-logo-img" />
+        </div>
+        <p className="stat-url">{correspondence.siteUrl}</p>
+      </header>
       <div className="stat-main">{children}</div>
       <footer className="stat-foot">
-        <span className="stat-foot-item">
-          <PinIcon />
-          <span>{copy.place}</span>
-        </span>
-        <span className="stat-foot-item">
-          <MailIcon />
-          <span>{correspondence.email}</span>
-        </span>
-        <span className="stat-foot-item stat-foot-end">
-          <InfoIcon />
-          <span>{correspondence.site}</span>
-        </span>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className="stat-foot-strip" src={letterArt.topStrip} alt="" />
+        <div className="stat-foot-inner">
+          <span className="stat-foot-item">
+            <PinIcon />
+            <span>{copy.place}</span>
+          </span>
+          <span className="stat-foot-item">
+            <MailIcon />
+            <span>{correspondence.email}</span>
+          </span>
+          <span className="stat-foot-item stat-foot-end">
+            <InfoIcon />
+            <span>{correspondence.site}</span>
+          </span>
+        </div>
       </footer>
     </article>
   );
@@ -257,7 +266,7 @@ export function InvoiceSheet({ copy, locale }: { copy: BrandCopy; locale: Locale
   }));
 
   return (
-    <SheetChrome copy={copy}>
+    <SheetChrome copy={copy} billing>
       <header className="bill-head">
         <h3>{copy.invoiceTitle}</h3>
         <p>{copy.invoiceMeta}</p>
@@ -318,7 +327,7 @@ export function InvoiceSheet({ copy, locale }: { copy: BrandCopy; locale: Locale
 
 export function ReceiptSheet({ copy, locale }: { copy: BrandCopy; locale: Locale }) {
   return (
-    <SheetChrome copy={copy}>
+    <SheetChrome copy={copy} billing>
       <header className="bill-head">
         <h3>{copy.receiptTitle}</h3>
         <p>{copy.receiptMeta}</p>
@@ -410,11 +419,10 @@ export function CardSheet({
   if (variant === "back") {
     return (
       <article className="visit visit-back">
-        <Mailbox className="visit-box" />
+        <EnvelopeDecor />
         <div className="visit-back-logo">
           <Logo variant="full" unbounded tone="light" className="cover-logo-img" />
         </div>
-        <MarkGhost className="visit-mark" />
       </article>
     );
   }
