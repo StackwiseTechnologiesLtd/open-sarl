@@ -4,6 +4,7 @@ import { EnvelopeDecor } from "@/components/brand/envelope-decor";
 import {
   envelopeArtLayout,
   envelopeBoard,
+  envelopeFooterLabel,
   letterArt,
   type EnvelopeVariant,
 } from "@/lib/brand-export";
@@ -65,32 +66,18 @@ export function CoverSheet({ navy }: { navy?: boolean }) {
 }
 
 function EnvelopeFooterLine({ variant }: { variant: EnvelopeVariant }) {
-  const board = envelopeBoard;
-  const items = stationeryFooterItems();
-  const fill = variant === "navy" ? "#FFFFFF" : board.navy;
-  const padX = 36;
-  const slot = (board.width - padX * 2) / items.length;
-  const textY = board.height - board.footerTextBottomInset;
-
+  const label = envelopeFooterLabel(variant);
   return (
-    <>
-      {items.map((label, index) => {
-        const x = padX + slot * index + slot / 2;
-        return (
-          <text
-            key={label}
-            x={x}
-            y={textY}
-            fill={fill}
-            fontFamily="var(--font-label-md), IBM Plex Sans, sans-serif"
-            fontSize={board.footerFontSize}
-            textAnchor="middle"
-          >
-            {label}
-          </text>
-        );
-      })}
-    </>
+    <text
+      x={label.x}
+      y={label.y}
+      fill={label.fill}
+      fontFamily="var(--font-label-md), IBM Plex Sans, sans-serif"
+      fontSize={label.fontSize}
+      textAnchor="end"
+    >
+      {label.text}
+    </text>
   );
 }
 
@@ -125,22 +112,6 @@ export function EnvelopeSheet({
       </defs>
       <g clipPath={`url(#${clip})`}>
         <rect width={board.width} height={board.height} fill={field} />
-        <image
-          href={board.bottomArt.path}
-          x={board.bottomArt.x}
-          y={layout.bottomY}
-          width={board.bottomArt.width}
-          height={layout.bottomHeight}
-          preserveAspectRatio="xMinYMax meet"
-        />
-        <image
-          href={board.topArt.path}
-          x={layout.topX}
-          y={layout.topY}
-          width={layout.topWidth}
-          height={layout.topHeight}
-          preserveAspectRatio="xMaxYMin meet"
-        />
         <rect
           x={board.windowX}
           y={board.windowY}
@@ -159,6 +130,22 @@ export function EnvelopeSheet({
           filter={variant === "navy" ? `url(#${white})` : undefined}
         />
         <EnvelopeFooterLine variant={variant} />
+        <image
+          href={board.bottomArt.path}
+          x={board.bottomArt.x}
+          y={layout.bottomY}
+          width={board.bottomArt.width}
+          height={layout.bottomHeight}
+          preserveAspectRatio="xMinYMax meet"
+        />
+        <image
+          href={board.topArt.path}
+          x={layout.topX}
+          y={layout.topY}
+          width={layout.topWidth}
+          height={layout.topHeight}
+          preserveAspectRatio="xMaxYMin meet"
+        />
       </g>
     </svg>
   );

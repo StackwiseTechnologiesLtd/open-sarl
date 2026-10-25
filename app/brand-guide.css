@@ -693,6 +693,7 @@
 .stat-sheet {
   --stat-strip: 8.02%;
   --stat-strip-span: 50%;
+  --stat-foot-band: calc(var(--stat-strip) + 2.4%);
   font-family: var(--font-body-md);
 }
 
@@ -738,7 +739,7 @@
   position: absolute;
   top: calc(var(--stat-strip) + 11.8%);
   right: 40px;
-  bottom: calc(var(--stat-strip) + 1.2%);
+  bottom: var(--stat-foot-band);
   left: 40px;
   overflow: hidden;
   z-index: 1;
@@ -758,7 +759,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  height: calc(var(--stat-strip) + 2.4%);
+  height: var(--stat-foot-band);
   color: #fff;
 }
 
@@ -785,16 +786,10 @@
   justify-content: space-evenly;
   gap: 10px;
   height: 100%;
-  padding: 10px 28px 8px calc(var(--stat-strip-span) * 0.55);
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgb(0 0 104 / 96%) 18%,
-    #000068 32%,
-    #000068 100%
-  );
+  padding: 0 24px 0 calc(var(--stat-strip-span) * 0.55);
+  background: #000068;
   font-family: var(--font-label-md);
-  font-size: 9.5px;
+  font-size: clamp(8px, 0.95cqw, 11px);
   letter-spacing: 0.02em;
 }
 

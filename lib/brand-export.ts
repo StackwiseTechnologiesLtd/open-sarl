@@ -1,4 +1,4 @@
-import { mist, navy, stationeryFooterItems } from "./brand-guide";
+import { navy, paper, stationeryFooterItems } from "./brand-guide";
 
 export type EnvelopeVariant = "navy" | "paper";
 
@@ -7,7 +7,7 @@ export const envelopeBoard = {
   height: 630,
   radius: 20,
   navy: "#000068",
-  paper: mist,
+  paper,
   footerTextBottomInset: 16,
   footerFontSize: 9.5,
   accent: "#545497",
@@ -90,19 +90,20 @@ export function envelopeArtLayout() {
   };
 }
 
-function envelopeFooterSvg(variant: EnvelopeVariant) {
+export function envelopeFooterLabel(variant: EnvelopeVariant) {
   const board = envelopeBoard;
-  const items = stationeryFooterItems();
-  const fill = variant === "navy" ? "#FFFFFF" : navy;
-  const padX = 36;
-  const slot = (board.width - padX * 2) / items.length;
-  const textY = board.height - board.footerTextBottomInset;
-  return items
-    .map((label, index) => {
-      const x = padX + slot * index + slot / 2;
-      return `<text x="${x}" y="${textY}" fill="${fill}" font-family="IBM Plex Sans, Arial, sans-serif" font-size="${board.footerFontSize}" text-anchor="middle">${label}</text>`;
-    })
-    .join("");
+  return {
+    fill: variant === "navy" ? "#FFFFFF" : navy,
+    x: board.width - board.logoX,
+    y: board.height - board.footerTextBottomInset,
+    text: stationeryFooterItems().join(" · "),
+    fontSize: board.footerFontSize,
+  };
+}
+
+function envelopeFooterSvg(variant: EnvelopeVariant) {
+  const label = envelopeFooterLabel(variant);
+  return `<text x="${label.x}" y="${label.y}" fill="${label.fill}" font-family="IBM Plex Sans, Arial, sans-serif" font-size="${label.fontSize}" text-anchor="end">${label.text}</text>`;
 }
 
 export function composeEnvelopeSvg(
@@ -131,6 +132,9 @@ export function composeEnvelopeSvg(
   </defs>
   <g clip-path="url(#open-envelope-round)">
     <rect width="${board.width}" height="${board.height}" fill="${field}"/>
+    <rect x="${board.windowX}" y="${board.windowY}" width="${board.windowWidth}" height="${board.windowHeight}" rx="${board.windowRx}" fill="${board.window}" fill-opacity="${board.windowOpacity}"/>
+    <g transform="translate(${board.logoX} ${board.logoY}) scale(${logoScale})">${logoInner}</g>
+    ${envelopeFooterSvg(variant)}
     ${placedArt(
       bottomSvg,
       board.bottomArt.x,
@@ -139,9 +143,6 @@ export function composeEnvelopeSvg(
       board.bottomArt.nativeWidth,
     )}
     <g transform="translate(${layout.topX} ${layout.topY}) scale(${topScaleX} ${topScaleY})">${stripSvg(topSvg)}</g>
-    <rect x="${board.windowX}" y="${board.windowY}" width="${board.windowWidth}" height="${board.windowHeight}" rx="${board.windowRx}" fill="${board.window}" fill-opacity="${board.windowOpacity}"/>
-    <g transform="translate(${board.logoX} ${board.logoY}) scale(${logoScale})">${logoInner}</g>
-    ${envelopeFooterSvg(variant)}
   </g>
 </svg>`;
 }

@@ -208,9 +208,9 @@ const fr = {
   avoid: "Éviter",
   envelopeTitle: "Enveloppe",
   envelopeBody:
-    "Deux champs : marine et brume. Le logo ouvre en haut à gauche (blanc sur marine, marine sur brume). La fenêtre d’adresse reste vide sous le logo. La boîte aux lettres est en haut à droite, la grue en bas à gauche. Les mêmes coordonnées que la lettre, en une rangée en bas, sans bandeau : texte blanc sur marine, marine sur brume.",
+    "Deux champs : marine et papier blanc. Le logo ouvre en haut à gauche (blanc sur marine, marine sur papier). La fenêtre d’adresse reste vide sous le logo. La boîte aux lettres est en haut à droite, la grue en bas à gauche. Les coordonnées reprennent la lettre, en une ligne à droite sous le décor, sans bandeau.",
   envelopeMeta: "Paysage · champ marine",
-  envelopeMetaWhite: "Paysage · brume #E7E8EC",
+  envelopeMetaWhite: "Paysage · champ papier",
   letterTitle: "Lettre officielle",
   letterBody:
     "La lettre reprend la couverture en plus serré : coin marine, adresse du site en haut à droite, logo, puis le texte. Les intertitres sont en capitales, marine, sans puce décorative. Le pied est un bandeau marine pleine largeur : les deux lignes mobiles, l’adresse à Goma et l’e-mail du gérant.",
@@ -399,9 +399,9 @@ const en = {
   avoid: "Avoid",
   envelopeTitle: "Envelope",
   envelopeBody:
-    "Two fields: navy and mist. The logo opens at the top left (white on navy, navy on mist). The address window stays empty below the logo. The mailbox sits at the top right; the crane is cut by the bottom edge on the left. The same contact row as the letter, along the bottom with no band: white on navy, navy on mist.",
+    "Two fields: navy and white paper. The logo opens at the top left (white on navy, navy on paper). The address window stays empty below the logo. The mailbox sits at the top right; the crane is cut by the bottom edge on the left. Contact matches the letter, one line on the right under the decor, with no band.",
   envelopeMeta: "Landscape · navy field",
-  envelopeMetaWhite: "Landscape · mist #E7E8EC",
+  envelopeMetaWhite: "Landscape · paper field",
   letterTitle: "Official letter",
   letterBody:
     "The letter is the cover, tightened: a navy corner, the site address at the top right, the logo, then the text. Section labels are capitals, in navy, without decorative bullets. The footer is a full-width navy band: both mobile lines, the Goma address, and the managing director’s email.",
