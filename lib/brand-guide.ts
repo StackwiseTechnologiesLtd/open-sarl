@@ -70,7 +70,7 @@ export const contrastPairs = [
   { fg: paper, bg: mist },
 ] as const;
 
-export const logoHeights = [72, 48, 32, 24] as const;
+export const logoHeights = [72, 60, 48, 38, 30, 24, 18] as const;
 
 export const cardIdentity = {
   name: "Ir DEAN ERIC MULIMBI",
@@ -190,10 +190,8 @@ const fr = {
   avoid: "Éviter",
   envelopeTitle: "Enveloppe",
   envelopeBody:
-    "Format paysage, proche du DL. Le champ papier est un rectangle blanc tenu par un cadre marine. Le champ marine est plein. La fenêtre d’adresse reste vide : elle ne reçoit que l’adresse, jamais un slogan. Le symbole est petit, en bas à gauche.",
-  envelopeLight: "Cadre marine, fenêtre brume",
-  envelopeNavy: "Champ marine, fenêtre plus sombre",
-  envelopeMeta: "DL · 220 × 110 mm",
+    "Un seul champ marine, coins arrondis. Le logo blanc ouvre en haut à gauche. La fenêtre d’adresse, plus sombre, reste vide sous le logo. La boîte aux lettres est en haut à droite. La grue est coupée par le bord bas, à gauche.",
+  envelopeMeta: "Paysage · champ marine",
   letterTitle: "Lettre officielle",
   letterBody:
     "La lettre reprend la couverture en plus serré : coin marine, adresse du site en haut à droite, logo, puis le texte. Les intertitres sont en capitales, marine, sans puce décorative. Le pied est un bandeau marine pleine largeur : Kinshasa, l’adresse de correspondance, le site.",
@@ -273,7 +271,11 @@ const fr = {
   cardMeta: "85 × 55 mm",
   addressLabel: "Adresse",
   filesTitle: "Fichiers",
-  filesBody: "Ce sont les vectoriels déjà servis par le site. Le QR ouvre la page publique.",
+  filesBody: "Chaque pièce s’exporte en SVG, en PNG, ou se copie pour être collée dans Figma. Le QR ouvre la page publique.",
+  exportSvg: "SVG",
+  exportPng: "PNG",
+  exportCopy: "Copier le SVG",
+  exportCopied: "Copié",
   files: [
     { href: "/images/open-logo.svg", label: "Verrouillage SVG" },
     { href: "/images/open-logo-mark.svg", label: "Symbole SVG" },
@@ -378,10 +380,8 @@ const en = {
   avoid: "Avoid",
   envelopeTitle: "Envelope",
   envelopeBody:
-    "Landscape, close to DL. The paper version is a white panel held by a navy frame. The navy version is a full field. The address window stays empty: it receives an address, never a slogan. The symbol sits small, bottom left.",
-  envelopeLight: "Navy frame, mist window",
-  envelopeNavy: "Navy field, darker window",
-  envelopeMeta: "DL · 220 × 110 mm",
+    "One navy field, with rounded corners. The white logo opens at the top left. The darker address window stays empty, below the logo. The mailbox sits at the top right. The crane is cut by the bottom edge, on the left.",
+  envelopeMeta: "Landscape · navy field",
   letterTitle: "Official letter",
   letterBody:
     "The letter is the cover, tightened: a navy corner, the site address at the top right, the logo, then the text. Section labels are capitals, in navy, without decorative bullets. The footer is a full-width navy band: Kinshasa, the correspondence address, the site.",
@@ -461,7 +461,11 @@ const en = {
   cardMeta: "85 × 55 mm",
   addressLabel: "Address",
   filesTitle: "Files",
-  filesBody: "These are the vectors already served by the site. The QR opens the public page.",
+  filesBody: "Each piece exports as SVG or PNG, or copies so it can be pasted into Figma. The QR opens the public page.",
+  exportSvg: "SVG",
+  exportPng: "PNG",
+  exportCopy: "Copy SVG",
+  exportCopied: "Copied",
   files: [
     { href: "/images/open-logo.svg", label: "Lockup SVG" },
     { href: "/images/open-logo-mark.svg", label: "Symbol SVG" },

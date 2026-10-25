@@ -1,5 +1,6 @@
-import type { ReactNode } from "react";
+import { useId, type ReactNode } from "react";
 import { Logo } from "@/components/logo";
+import { envelopeArtLayout, envelopeBoard, letterArt } from "@/lib/brand-export";
 import {
   cardIdentity,
   correspondence,
@@ -78,18 +79,61 @@ function Mailbox({ className = "" }: { className?: string }) {
   );
 }
 
-export function EnvelopeSheet({ navy }: { navy?: boolean }) {
+export function EnvelopeSheet({ label }: { label: string }) {
+  const rawId = useId().replace(/:/g, "");
+  const clip = `${rawId}-clip`;
+  const white = `${rawId}-white`;
+  const board = envelopeBoard;
+  const layout = envelopeArtLayout();
+
   return (
-    <article className={`env-sheet ${navy ? "is-navy" : "is-paper"}`}>
-      <div className="env-face">
-        <div className="env-logo">
-          <Logo variant="full" unbounded tone={navy ? "light" : "brand"} className="cover-logo-img" />
-        </div>
-        <div className="env-window" />
-        <Mailbox className="env-box" />
-        <MarkGhost className="env-mark" />
-      </div>
-    </article>
+    <svg
+      className="env-svg"
+      viewBox={`0 0 ${board.width} ${board.height}`}
+      role="img"
+      aria-label={label}
+    >
+      <defs>
+        <clipPath id={clip}>
+          <rect width={board.width} height={board.height} rx={board.radius} />
+        </clipPath>
+        <filter id={white} colorInterpolationFilters="sRGB">
+          <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0" />
+        </filter>
+      </defs>
+      <g clipPath={`url(#${clip})`}>
+        <rect width={board.width} height={board.height} fill={board.navy} />
+        <image
+          href="/images/open-logo.svg"
+          x={board.logoX}
+          y={board.logoY}
+          width={board.logoWidth}
+          height={board.logoHeight}
+          filter={`url(#${white})`}
+        />
+        <rect
+          x={board.windowX}
+          y={board.windowY}
+          width={board.windowWidth}
+          height={board.windowHeight}
+          fill={board.window}
+        />
+        <image
+          href={board.bottomArt.path}
+          x={board.bottomArt.x}
+          y={layout.bottomY}
+          width={board.bottomArt.width}
+          height={layout.bottomHeight}
+        />
+        <image
+          href={board.topArt.path}
+          x={layout.topX}
+          y={layout.topY}
+          width={layout.topWidth}
+          height={layout.topHeight}
+        />
+      </g>
+    </svg>
   );
 }
 
@@ -148,12 +192,12 @@ function SheetChrome({
 }) {
   return (
     <article className={`stat-sheet ${dense ? "is-dense" : ""}`}>
-      <span className="stat-corner" aria-hidden="true" />
+      <img className="stat-top-strip" src={letterArt.topStrip} alt="" />
+      <img className="stat-bg-icon" src={letterArt.background} alt="" />
       <p className="stat-url">{correspondence.siteUrl}</p>
       <div className="stat-logo">
         <Logo variant="full" unbounded className="cover-logo-img" />
       </div>
-      <MarkGhost className="stat-mark" />
       <div className="stat-main">{children}</div>
       <footer className="stat-foot">
         <span className="stat-foot-item">

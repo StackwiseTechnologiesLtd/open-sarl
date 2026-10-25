@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { LanguageSwitch } from "@/components/language-switch";
 import { Logo } from "@/components/logo";
+import { ExportBar } from "@/components/brand/export-bar";
 import {
   Board,
   CardSheet,
@@ -59,6 +60,12 @@ export function BrandGuide({ locale }: { locale: Locale }) {
   }
 
   const ink = theme === "ink";
+  const exportLabels = {
+    svg: copy.exportSvg,
+    png: copy.exportPng,
+    copy: copy.exportCopy,
+    copied: copy.exportCopied,
+  };
 
   return (
     <div className="brand-guide" data-theme={theme}>
@@ -136,30 +143,33 @@ export function BrandGuide({ locale }: { locale: Locale }) {
             <figure className="lockup">
               <Logo unbounded className="cover-logo-img" />
               <figcaption className="board-caption">{copy.marksLight}</figcaption>
+              <ExportBar kind="logo" filename="open-logo" labels={exportLabels} />
             </figure>
             <figure className="lockup is-navy">
               <Logo unbounded tone="light" className="cover-logo-img" />
               <figcaption className="board-caption" style={{ color: "#d5d8ef" }}>
                 {copy.marksNavy}
               </figcaption>
+              <ExportBar kind="logo-white" filename="open-logo-white" labels={exportLabels} />
             </figure>
             <figure className="lockup">
               <Logo variant="mark" height={120} />
               <figcaption className="board-caption">{copy.markAlone}</figcaption>
+              <ExportBar kind="mark" filename="open-mark" labels={exportLabels} />
             </figure>
           </div>
           <h3 className="brand-rule">{copy.clearTitle}</h3>
           <p className="brand-prose">{copy.clearBody}</p>
           <h3 className="brand-rule">{copy.scaleTitle}</h3>
           <p className="brand-prose">{copy.scaleBody}</p>
-          <div className="scale-row">
+          <ol className="scale-list">
             {logoHeights.map((height) => (
-              <figure key={height}>
+              <li key={height}>
+                <span>{height} px</span>
                 <Logo height={height} />
-                <figcaption className="board-caption">{height} px</figcaption>
-              </figure>
+              </li>
             ))}
-          </div>
+          </ol>
         </section>
 
         <section className="brand-section" id="color">
@@ -286,14 +296,10 @@ export function BrandGuide({ locale }: { locale: Locale }) {
           <p className="brand-kicker">06</p>
           <h2>{copy.envelopeTitle}</h2>
           <p className="brand-prose">{copy.envelopeBody}</p>
-          <div className="pair">
-            <Board width={880} height={440} min={320} label={`${copy.envelopeLight} · ${copy.envelopeMeta}`}>
-              <EnvelopeSheet />
-            </Board>
-            <Board width={880} height={440} min={320} label={`${copy.envelopeNavy} · ${copy.envelopeMeta}`}>
-              <EnvelopeSheet navy />
-            </Board>
-          </div>
+          <Board width={1100} height={630} min={560} label={copy.envelopeMeta}>
+            <EnvelopeSheet label={copy.envelopeTitle} />
+          </Board>
+          <ExportBar kind="envelope" filename="open-envelope" labels={exportLabels} />
         </section>
 
         <section className="brand-section" id="letter">
@@ -355,6 +361,7 @@ export function BrandGuide({ locale }: { locale: Locale }) {
               </li>
             ))}
           </ul>
+          <ExportBar kind="envelope" filename="open-envelope" labels={exportLabels} />
         </section>
       </main>
     </div>
