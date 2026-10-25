@@ -13,14 +13,14 @@ export const envelopeBoard = {
   windowHeight: 176,
   logoX: 68,
   logoY: 42,
-  logoWidth: 278,
-  logoHeight: 189,
+  logoWidth: 222,
+  logoHeight: 151,
   bottomArt: {
     path: "/images/bottom-svg-enveloppe.svg",
     nativeWidth: 1007,
     nativeHeight: 768,
-    width: 491,
-    x: -34,
+    width: 224,
+    x: 66,
   },
   topArt: {
     path: "/images/top-svg-enveloppe.svg",
@@ -55,7 +55,13 @@ export function recolorSvgDocument(svg: string, color: string) {
   return recolorPaint(svg, color);
 }
 
-function placedArt(svg: string, x: number, y: number, width: number, nativeWidth: number) {
+function placedArt(
+  svg: string,
+  x: number,
+  y: number,
+  width: number,
+  nativeWidth: number,
+) {
   const scale = width / nativeWidth;
   return `<g transform="translate(${x} ${y}) scale(${scale})">${stripSvg(svg)}</g>`;
 }
@@ -78,7 +84,11 @@ export function envelopeArtLayout() {
   };
 }
 
-export function composeEnvelopeSvg(logoSvg: string, topSvg: string, bottomSvg: string) {
+export function composeEnvelopeSvg(
+  logoSvg: string,
+  topSvg: string,
+  bottomSvg: string,
+) {
   const board = envelopeBoard;
   const logo = recolorPaint(stripSvg(logoSvg), "#FFFFFF");
   const logoScale = board.logoWidth / 4453;
@@ -102,11 +112,18 @@ export function composeEnvelopeSvg(logoSvg: string, topSvg: string, bottomSvg: s
 </svg>`;
 }
 
-export async function loadAssetSvg(kind: "logo" | "logo-white" | "mark" | "envelope") {
-  const logo = await fetch("/images/open-logo.svg").then((response) => response.text());
+export async function loadAssetSvg(
+  kind: "logo" | "logo-white" | "mark" | "envelope",
+) {
+  const logo = await fetch("/images/open-logo.svg").then((response) =>
+    response.text(),
+  );
   if (kind === "logo") return logo;
   if (kind === "logo-white") return recolorSvgDocument(logo, "#FFFFFF");
-  if (kind === "mark") return fetch("/images/open-logo-mark.svg").then((response) => response.text());
+  if (kind === "mark")
+    return fetch("/images/open-logo-mark.svg").then((response) =>
+      response.text(),
+    );
   const [top, bottom] = await Promise.all([
     fetch(envelopeBoard.topArt.path).then((response) => response.text()),
     fetch(envelopeBoard.bottomArt.path).then((response) => response.text()),
@@ -125,7 +142,9 @@ export function downloadBlob(filename: string, blob: Blob) {
 
 export function svgToPngBlob(svg: string, width: number, height: number) {
   return new Promise<Blob>((resolve, reject) => {
-    const url = URL.createObjectURL(new Blob([svg], { type: "image/svg+xml;charset=utf-8" }));
+    const url = URL.createObjectURL(
+      new Blob([svg], { type: "image/svg+xml;charset=utf-8" }),
+    );
     const image = new Image();
     image.onload = () => {
       const canvas = document.createElement("canvas");
