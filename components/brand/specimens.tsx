@@ -62,7 +62,6 @@ export function EnvelopeSheet({ label }: { label: string }) {
   const rawId = useId().replace(/:/g, "");
   const clip = `${rawId}-clip`;
   const white = `${rawId}-white`;
-  const accent = `${rawId}-accent`;
   const board = envelopeBoard;
   const layout = envelopeArtLayout();
 
@@ -79,10 +78,6 @@ export function EnvelopeSheet({ label }: { label: string }) {
         </clipPath>
         <filter id={white} colorInterpolationFilters="sRGB">
           <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0" />
-        </filter>
-        <filter id={accent} colorInterpolationFilters="sRGB">
-          <feFlood floodColor={board.accent} result="tone" />
-          <feComposite in="tone" in2="SourceAlpha" operator="in" />
         </filter>
       </defs>
       <g clipPath={`url(#${clip})`}>
@@ -102,7 +97,6 @@ export function EnvelopeSheet({ label }: { label: string }) {
           width={layout.topWidth}
           height={layout.topHeight}
           preserveAspectRatio="xMaxYMin meet"
-          filter={`url(#${accent})`}
         />
         <rect
           x={board.windowX}
