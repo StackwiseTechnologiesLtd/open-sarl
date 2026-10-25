@@ -72,6 +72,14 @@ export const contrastPairs = [
 
 export const logoHeights = [72, 60, 48, 38, 30, 24, 18] as const;
 
+/** Business card artwork ratio (source files). */
+export const cardArtboard = { width: 6248, height: 3595 } as const;
+
+export const cardBoard = {
+  width: 625,
+  height: Math.round((625 * cardArtboard.height) / cardArtboard.width),
+} as const;
+
 export const cardIdentity = {
   name: "Ir DEAN ERIC MULIMBI",
   title: "Dir. Gérant / CEO",

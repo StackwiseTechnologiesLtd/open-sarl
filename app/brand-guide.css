@@ -654,8 +654,37 @@
   object-position: right top;
 }
 
+.env-decor-layer:not(.is-compact) .env-decor-bottom {
+  left: -3.3%;
+  bottom: 0;
+  width: 63.6%;
+}
+
+.env-decor-layer:not(.is-compact) .env-decor-top {
+  right: -0.7%;
+  top: -3.2%;
+  left: auto;
+  width: 22.5%;
+}
+
+.env-decor-layer.is-compact .env-decor-bottom {
+  left: -8%;
+  bottom: 0;
+  width: 58%;
+  max-height: 62%;
+}
+
+.env-decor-layer.is-compact .env-decor-top {
+  right: 1%;
+  top: 0;
+  left: auto;
+  width: 13%;
+  max-height: 48%;
+}
+
 .stat-sheet {
   --stat-strip: 8.02%;
+  --stat-strip-span: 75%;
   font-family: var(--font-body-md);
 }
 
@@ -664,7 +693,7 @@
   z-index: 1;
   top: 0;
   left: 0;
-  width: 100%;
+  width: var(--stat-strip-span);
   height: auto;
   pointer-events: none;
 }
@@ -672,7 +701,8 @@
 .stat-bg-icon {
   position: absolute;
   z-index: 0;
-  top: 34%;
+  top: auto;
+  bottom: 20%;
   right: -12%;
   width: 64.8%;
   height: auto;
@@ -690,12 +720,13 @@
 
 .stat-url {
   position: absolute;
-  top: calc(var(--stat-strip) * 0.42);
+  top: calc(var(--stat-strip) * 0.18);
   right: 0;
   margin: 0;
-  color: #fff;
+  color: #000068;
   font-family: var(--font-label-md);
   font-size: 13px;
+  font-weight: 700;
   letter-spacing: 0.01em;
 }
 
@@ -738,7 +769,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: var(--stat-strip-span);
   height: auto;
   transform: scaleY(-1);
   pointer-events: none;
@@ -753,6 +784,7 @@
   gap: 16px;
   height: 100%;
   padding: calc(var(--stat-strip) * 0.28) 28px 10px 36px;
+  transform: translateY(5%);
   font-family: var(--font-label-md);
   font-size: 12px;
   letter-spacing: 0.01em;

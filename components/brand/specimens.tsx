@@ -419,7 +419,7 @@ export function CardSheet({
   if (variant === "back") {
     return (
       <article className="visit visit-back">
-        <EnvelopeDecor />
+        <EnvelopeDecor compact />
         <div className="visit-back-logo">
           <Logo variant="full" unbounded tone="light" className="cover-logo-img" />
         </div>

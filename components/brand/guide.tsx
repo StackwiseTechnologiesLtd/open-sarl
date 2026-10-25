@@ -21,6 +21,7 @@ import {
   brandSupport,
   contrastPairs,
   contrastRatio,
+  cardBoard,
   logoHeights,
   type BrandSectionId,
 } from "@/lib/brand-guide";
@@ -333,16 +334,16 @@ export function BrandGuide({ locale }: { locale: Locale }) {
           <p className="brand-prose">{copy.cardsBody}</p>
           <p className="brand-rule">{copy.cardsRule}</p>
           <div className="card-grid">
-            <Board width={680} height={440} label={`${copy.cardPaperIcons} · ${copy.cardMeta}`}>
+            <Board width={cardBoard.width} height={cardBoard.height} label={`${copy.cardPaperIcons} · ${copy.cardMeta}`}>
               <CardSheet copy={copy} variant="icons" />
             </Board>
-            <Board width={680} height={440} label={`${copy.cardPaperAddress} · ${copy.cardMeta}`}>
+            <Board width={cardBoard.width} height={cardBoard.height} label={`${copy.cardPaperAddress} · ${copy.cardMeta}`}>
               <CardSheet copy={copy} variant="address" />
             </Board>
-            <Board width={680} height={440} label={`${copy.cardNavyBack} · ${copy.cardMeta}`}>
+            <Board width={cardBoard.width} height={cardBoard.height} label={`${copy.cardNavyBack} · ${copy.cardMeta}`}>
               <CardSheet copy={copy} variant="back" />
             </Board>
-            <Board width={680} height={440} label={`${copy.cardNavyFront} · ${copy.cardMeta}`}>
+            <Board width={cardBoard.width} height={cardBoard.height} label={`${copy.cardNavyFront} · ${copy.cardMeta}`}>
               <CardSheet copy={copy} variant="front" />
             </Board>
           </div>

@@ -3,6 +3,8 @@ import {
   brandColors,
   brandGuide,
   brandSectionIds,
+  cardArtboard,
+  cardBoard,
   contrastRatio,
   invoiceLines,
   invoiceTotal,
@@ -19,6 +21,12 @@ describe("brand guide", () => {
     }
     expect(brandGuide.fr.letterSections).toHaveLength(brandGuide.en.letterSections.length);
     expect(brandGuide.fr.files.map((file) => file.href)).toEqual(brandGuide.en.files.map((file) => file.href));
+  });
+
+  it("keeps the business card board on the 6248×3595 ratio", () => {
+    const ratio = cardBoard.width / cardBoard.height;
+    const source = cardArtboard.width / cardArtboard.height;
+    expect(Math.abs(ratio - source)).toBeLessThan(0.01);
   });
 
   it("uses the printed navy and keeps paper text at AAA", () => {
