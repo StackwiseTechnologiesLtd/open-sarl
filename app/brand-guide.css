@@ -669,19 +669,23 @@
 }
 
 .env-decor-layer.is-compact .env-decor-bottom {
-  left: -10%;
+  left: 5%;
   bottom: 0;
-  width: 50%;
+  width: 20%;
   height: auto;
   opacity: 1;
 }
 
 .env-decor-layer.is-compact .env-decor-top {
-  right: 0;
-  top: 0;
+  right: 2%;
+  top: 2%;
   left: auto;
-  width: 17%;
-  height: auto;
+  width: auto;
+  height: 32%;
+  max-width: 12%;
+  min-width: 22px;
+  object-fit: contain;
+  object-position: right top;
   opacity: 0.9;
 }
 
