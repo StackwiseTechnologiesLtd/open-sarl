@@ -8,8 +8,8 @@ export const envelopeBoard = {
   radius: 20,
   navy: "#000068",
   paper: mist,
-  footerBarHeight: 54,
-  footerFontSize: 10,
+  footerTextBottomInset: 16,
+  footerFontSize: 9.5,
   accent: "#545497",
   window: "#333486",
   windowOpacity: 0.88,
@@ -76,7 +76,7 @@ export function envelopeArtLayout() {
   const board = envelopeBoard;
   const bottomScale = board.bottomArt.width / board.bottomArt.nativeWidth;
   const bottomHeight = board.bottomArt.nativeHeight * bottomScale;
-  const bottomY = board.height - bottomHeight - board.footerBarHeight;
+  const bottomY = board.height - bottomHeight;
   const topWidth = board.bottomArt.width;
   const topHeight = bottomHeight;
   const topX = board.width - topWidth + board.topArt.xOffset;
@@ -93,18 +93,16 @@ export function envelopeArtLayout() {
 function envelopeFooterSvg(variant: EnvelopeVariant) {
   const board = envelopeBoard;
   const items = stationeryFooterItems();
-  const barY = board.height - board.footerBarHeight;
-  const barFill = variant === "navy" ? board.accent : navy;
+  const fill = variant === "navy" ? "#FFFFFF" : navy;
   const padX = 36;
   const slot = (board.width - padX * 2) / items.length;
-  const textY = barY + board.footerBarHeight * 0.68;
-  const labels = items
+  const textY = board.height - board.footerTextBottomInset;
+  return items
     .map((label, index) => {
       const x = padX + slot * index + slot / 2;
-      return `<text x="${x}" y="${textY}" fill="#FFFFFF" font-family="IBM Plex Sans, Arial, sans-serif" font-size="${board.footerFontSize}" text-anchor="middle">${label}</text>`;
+      return `<text x="${x}" y="${textY}" fill="${fill}" font-family="IBM Plex Sans, Arial, sans-serif" font-size="${board.footerFontSize}" text-anchor="middle">${label}</text>`;
     })
     .join("");
-  return `<rect x="0" y="${barY}" width="${board.width}" height="${board.footerBarHeight}" fill="${barFill}"/>${labels}`;
 }
 
 export function composeEnvelopeSvg(

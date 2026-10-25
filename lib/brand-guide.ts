@@ -208,7 +208,7 @@ const fr = {
   avoid: "Éviter",
   envelopeTitle: "Enveloppe",
   envelopeBody:
-    "Deux champs : marine et papier. Le logo ouvre en haut à gauche (blanc sur marine, marine sur papier). La fenêtre d’adresse reste vide sous le logo. La boîte aux lettres est en haut à droite, la grue en bas à gauche. Les coordonnées du gérant (Goma) sont alignées en bas à droite, comme le pied des lettres.",
+    "Deux champs : marine et brume. Le logo ouvre en haut à gauche (blanc sur marine, marine sur brume). La fenêtre d’adresse reste vide sous le logo. La boîte aux lettres est en haut à droite, la grue en bas à gauche. Les mêmes coordonnées que la lettre, en une rangée en bas, sans bandeau : texte blanc sur marine, marine sur brume.",
   envelopeMeta: "Paysage · champ marine",
   envelopeMetaWhite: "Paysage · brume #E7E8EC",
   letterTitle: "Lettre officielle",
@@ -282,7 +282,7 @@ const fr = {
   cardsBody:
     "Format 85 × 55 mm. Le recto papier porte le QR du site, le logo, et les coordonnées du gérant telles qu’imprimées : Goma, les deux lignes mobiles, l’adresse personnelle. Le verso marine est le verrouillage blanc, seul. La carte marine reprend le recto quand le fond doit être sombre.",
   cardsRule:
-    "Les coordonnées imprimées sur la carte et le pied des lettres, factures et enveloppes sont les mêmes : adresse, les deux mobiles sur une ligne, e-mail et site — toujours sur une seule rangée dans le bandeau marine.",
+    "Les coordonnées imprimées sur la carte, les lettres et les enveloppes sont les mêmes. Lettres et factures : une rangée dans le bandeau marine. Enveloppes : la même rangée, directement sur le fond, sans bandeau.",
   cardPaperIcons: "Recto papier · icônes",
   cardPaperAddress: "Recto papier · adresse en toutes lettres",
   cardNavyBack: "Verso marine",
@@ -399,7 +399,7 @@ const en = {
   avoid: "Avoid",
   envelopeTitle: "Envelope",
   envelopeBody:
-    "Two fields: navy and paper. The logo opens at the top left (white on navy, navy on paper). The address window stays empty below the logo. The mailbox sits at the top right; the crane is cut by the bottom edge on the left. The managing director’s Goma contact lines up at the bottom right, matching the letter footer.",
+    "Two fields: navy and mist. The logo opens at the top left (white on navy, navy on mist). The address window stays empty below the logo. The mailbox sits at the top right; the crane is cut by the bottom edge on the left. The same contact row as the letter, along the bottom with no band: white on navy, navy on mist.",
   envelopeMeta: "Landscape · navy field",
   envelopeMetaWhite: "Landscape · mist #E7E8EC",
   letterTitle: "Official letter",
@@ -473,7 +473,7 @@ const en = {
   cardsBody:
     "85 × 55 mm. The paper front carries the site QR, the logo, and the managing director’s details as printed: Goma, both mobile lines, the personal address. The navy back is the white lockup, alone. The navy front repeats the contact side when the field must be dark.",
   cardsRule:
-    "The printed details on the card and on letter, invoice, and envelope footers match: address, both mobiles on one line, email, and site — always a single row in the navy band.",
+    "The printed details on the card, letters, and envelopes match. Letters and invoices: one row in the navy band. Envelopes: the same row on the field, with no band.",
   cardPaperIcons: "Paper front · icons",
   cardPaperAddress: "Paper front · address spelled out",
   cardNavyBack: "Navy back",

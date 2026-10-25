@@ -64,18 +64,16 @@ export function CoverSheet({ navy }: { navy?: boolean }) {
   );
 }
 
-function EnvelopeFooterBar({ variant }: { variant: EnvelopeVariant }) {
+function EnvelopeFooterLine({ variant }: { variant: EnvelopeVariant }) {
   const board = envelopeBoard;
   const items = stationeryFooterItems();
-  const barY = board.height - board.footerBarHeight;
-  const barFill = variant === "navy" ? board.accent : board.navy;
+  const fill = variant === "navy" ? "#FFFFFF" : board.navy;
   const padX = 36;
   const slot = (board.width - padX * 2) / items.length;
-  const textY = barY + board.footerBarHeight * 0.68;
+  const textY = board.height - board.footerTextBottomInset;
 
   return (
     <>
-      <rect x={0} y={barY} width={board.width} height={board.footerBarHeight} fill={barFill} />
       {items.map((label, index) => {
         const x = padX + slot * index + slot / 2;
         return (
@@ -83,7 +81,7 @@ function EnvelopeFooterBar({ variant }: { variant: EnvelopeVariant }) {
             key={label}
             x={x}
             y={textY}
-            fill="#FFFFFF"
+            fill={fill}
             fontFamily="var(--font-label-md), IBM Plex Sans, sans-serif"
             fontSize={board.footerFontSize}
             textAnchor="middle"
@@ -160,7 +158,7 @@ export function EnvelopeSheet({
           height={board.logoHeight}
           filter={variant === "navy" ? `url(#${white})` : undefined}
         />
-        <EnvelopeFooterBar variant={variant} />
+        <EnvelopeFooterLine variant={variant} />
       </g>
     </svg>
   );
