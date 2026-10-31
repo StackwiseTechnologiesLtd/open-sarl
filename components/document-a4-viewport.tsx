@@ -30,22 +30,24 @@ export function DocumentA4Viewport({
     if (!el) return;
     setBusy(true);
     try {
+      const { mountStationeryPdfCapture, pdfJsFormatForCapture, stationeryHtml2PdfOptions, unmountStationeryPdfCapture } =
+        await import("@/lib/stationery-pdf-export");
+      const captureRoot = mountStationeryPdfCapture(el);
+      const format = pdfJsFormatForCapture(el);
       const html2pdf = (await import("html2pdf.js")).default;
-      await html2pdf()
-        .set({
-          margin: 0,
-          filename: downloadFileName,
-          image: { type: "jpeg", quality: 0.96 },
-          html2canvas: {
-            scale: 2,
-            useCORS: true,
-            logging: false,
-            letterRendering: true,
-          },
-          jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-        })
-        .from(el)
-        .save();
+      const captureTarget =
+        captureRoot.firstElementChild instanceof HTMLElement ? captureRoot.firstElementChild : captureRoot;
+      try {
+        await html2pdf()
+          .set({
+            ...stationeryHtml2PdfOptions("portrait", format),
+            filename: downloadFileName,
+          })
+          .from(captureTarget)
+          .save();
+      } finally {
+        unmountStationeryPdfCapture(captureRoot);
+      }
     } finally {
       setBusy(false);
     }

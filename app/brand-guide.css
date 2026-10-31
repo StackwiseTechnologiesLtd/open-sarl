@@ -783,7 +783,8 @@
 .stat-sheet {
   --stat-strip: 8.02%;
   --stat-strip-span: 50%;
-  --stat-foot-band: var(--stat-strip);
+  --stat-foot-band: calc(var(--stat-strip) + 4.2%);
+  container-type: inline-size;
   font-family: var(--font-body-md);
 }
 
@@ -883,12 +884,12 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  padding: 0 4px;
+  gap: 10px;
+  padding: 0 6px;
   background: transparent;
   font-family: var(--font-label-md);
-  font-size: clamp(7px, 0.72cqw, 9px);
-  line-height: 1;
+  font-size: clamp(11px, 1.5cqw, 13px);
+  line-height: 1.2;
   letter-spacing: 0.02em;
 }
 
@@ -908,8 +909,8 @@
 
 .stat-foot-item svg {
   box-sizing: border-box;
-  width: 11px;
-  height: 11px;
+  width: 14px;
+  height: 14px;
   flex: 0 0 auto;
   padding: 1px;
   border: 1px solid rgb(255 255 255 / 55%);
@@ -1442,12 +1443,13 @@
 
 .brand-print-offscreen {
   position: fixed;
-  left: -20000px;
+  left: -9999px;
   top: 0;
-  width: 0;
-  height: 0;
-  overflow: hidden;
+  width: max-content;
+  height: max-content;
+  overflow: visible;
   pointer-events: none;
+  opacity: 0;
 }
 
 .brand-print-stack .brand-print-sheet + .brand-print-sheet {
@@ -1463,18 +1465,58 @@
 .brand-print-sheet-inner {
   position: relative;
   overflow: hidden;
+  width: 794px;
+  height: 1123px;
 }
 
-.brand-print-sheet-inner .cover-sheet,
+.brand-print-sheet-inner .board,
 .brand-print-sheet-inner .stat-sheet,
 .brand-print-sheet-inner .visit,
 .brand-print-sheet-inner .env-svg {
   width: 100%;
   height: 100%;
+  transform: none !important;
+}
+
+.stationery-pdf-capture .stat-sheet,
+.stationery-pdf-capture .doc-sheet.stat-sheet {
+  width: 794px !important;
+  height: 1123px !important;
+  min-height: 1123px !important;
+  max-width: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.stationery-pdf-capture .board {
+  transform: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .brand-guide {
     scroll-behavior: auto;
+  }
+}
+
+@media print {
+  .stat-sheet,
+  .stat-sheet.doc-sheet {
+    width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-width: none !important;
+    box-shadow: none !important;
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .stat-sheet:last-child,
+  .stat-sheet.doc-sheet:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  .board {
+    transform: none !important;
   }
 }
