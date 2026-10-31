@@ -1,5 +1,5 @@
 import type { Locale } from "./i18n";
-import { navy, paymentTransferLines, stationeryFooterItems } from "./brand-guide";
+import { navy, stationeryFooterItems } from "./brand-guide";
 
 export type EnvelopeVariant = "navy" | "paper";
 
@@ -106,24 +106,6 @@ export function envelopeDecorSvg(svg: string, variant: EnvelopeVariant) {
   return recolorPaint(svg, envelopeBoard.backdrop);
 }
 
-function escapeSvgText(text: string) {
-  return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
-
-export function envelopePaymentSvgMarkup(lines: readonly string[]) {
-  const board = envelopeBoard;
-  const x = board.windowX + 22;
-  const startY = board.windowY + 32;
-  const lineHeight = 15.5;
-  return lines
-    .map((line, index) => {
-      const weight = index === 0 ? 650 : 400;
-      const size = index === 0 ? 11.5 : 10.5;
-      return `<text x="${x}" y="${startY + index * lineHeight}" fill="${navy}" font-family="IBM Plex Sans, Arial, sans-serif" font-size="${size}" font-weight="${weight}">${escapeSvgText(line)}</text>`;
-    })
-    .join("\n    ");
-}
-
 export function envelopeFooterLabel(variant: EnvelopeVariant) {
   const board = envelopeBoard;
   return {
@@ -140,7 +122,19 @@ function envelopeFooterSvg(variant: EnvelopeVariant) {
   return `<text x="${label.x}" y="${label.y}" fill="${label.fill}" font-family="IBM Plex Sans, Arial, sans-serif" font-size="${label.fontSize}" text-anchor="end">${label.text}</text>`;
 }
 
-export type ComposeEnvelopeOptions = { printable?: boolean; locale?: Locale };
+export type ComposeEnvelopeOptions = {
+  printable?: boolean;
+  locale?: Locale;
+  showWindow?: boolean;
+};
+
+function envelopeWindowMarkup(
+  board: typeof envelopeBoard,
+  variant: EnvelopeVariant,
+  windowStyle: ReturnType<typeof envelopeWindowStyle>,
+) {
+  return `<rect x="${board.windowX}" y="${board.windowY}" width="${board.windowWidth}" height="${board.windowHeight}" rx="${board.windowRx}" fill="${windowStyle.fill}" fill-opacity="${windowStyle.opacity}"/>`;
+}
 
 function envelopeInnerMarkup(
   board: typeof envelopeBoard,
@@ -152,15 +146,13 @@ function envelopeInnerMarkup(
   topDecor: string,
   topScaleX: number,
   topScaleY: number,
-  locale: Locale = "fr",
+  showWindow: boolean,
 ) {
   const field = variant === "navy" ? board.navy : board.paper;
   const logoScale = board.logoWidth / board.logoArtWidth;
-  const paymentBlock =
-    variant === "paper" ? envelopePaymentSvgMarkup(paymentTransferLines(locale)) : "";
+  const windowBlock = showWindow ? envelopeWindowMarkup(board, variant, windowStyle) : "";
   return `<rect width="${board.width}" height="${board.height}" fill="${field}"/>
-    <rect x="${board.windowX}" y="${board.windowY}" width="${board.windowWidth}" height="${board.windowHeight}" rx="${board.windowRx}" fill="${windowStyle.fill}" fill-opacity="${windowStyle.opacity}"/>
-    ${paymentBlock}
+    ${windowBlock}
     <g transform="translate(${board.logoX} ${board.logoY}) scale(${logoScale})">${logoInner}</g>
     ${envelopeFooterSvg(variant)}
     ${placedArt(
@@ -188,7 +180,7 @@ export function composeEnvelopeSvg(
   const windowStyle = envelopeWindowStyle(variant);
   const bottomDecor = envelopeDecorSvg(bottomSvg, variant);
   const topDecor = envelopeDecorSvg(topSvg, variant);
-  const locale = options?.locale ?? "fr";
+  const showWindow = options?.showWindow !== false;
   const inner = envelopeInnerMarkup(
     board,
     variant,
@@ -199,7 +191,7 @@ export function composeEnvelopeSvg(
     topDecor,
     topScaleX,
     topScaleY,
-    locale,
+    showWindow,
   );
 
   const square = options?.printable !== false;

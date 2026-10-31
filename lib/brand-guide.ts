@@ -85,7 +85,7 @@ export const cardIdentity = {
   title: "Dir. Gérant / CEO",
   email: "deancin@gmail.com",
   address: "227, Avenue du Lac, Katindo, Goma",
-  phones: ["+243 994 261 675", "+243 853 261 675"],
+  phones: ["+243 994 261 675", "+243 814 279 213"],
 } as const;
 
 export const invoiceLines = [
@@ -107,7 +107,7 @@ export function stationeryFooterItems() {
   return [cardIdentity.address, cardIdentity.phones.join(" · "), cardIdentity.email];
 }
 
-/** Printed in the payment window on the white envelope. */
+/** Bank transfer block on invoices (not on envelopes). */
 export const paymentTransferDetails = {
   fr: {
     heading: "Coordonnées bancaires",
@@ -230,9 +230,11 @@ const fr = {
   avoid: "Éviter",
   envelopeTitle: "Enveloppe",
   envelopeBody:
-    "Deux champs : marine et papier blanc. Le logo ouvre en haut à gauche (blanc sur marine, marine sur papier). Sur papier, la fenêtre sous le logo porte les coordonnées bancaires. La boîte aux lettres est en haut à droite, la grue en bas à gauche. Les coordonnées de contact reprennent la lettre, en une ligne à droite sous le décor, sans bandeau.",
-  envelopeMeta: "Paysage · champ marine",
-  envelopeMetaWhite: "Paysage · papier blanc · fonds #E1E8F0",
+    "Deux champs : marine et papier blanc. Le logo ouvre en haut à gauche (blanc sur marine, marine sur papier). Deux déclinaisons : avec fenêtre d’adresse sous le logo, ou sans fenêtre. La boîte aux lettres est en haut à droite, la grue en bas à gauche. Les coordonnées reprennent la lettre, en une ligne à droite sous le décor, sans bandeau. Coordonnées bancaires : sur la facture.",
+  envelopeMeta: "Paysage · marine · avec fenêtre",
+  envelopeMetaNavyPlain: "Paysage · marine · sans fenêtre",
+  envelopeMetaWhite: "Paysage · papier · avec fenêtre",
+  envelopeMetaPaperPlain: "Paysage · papier · sans fenêtre",
   letterTitle: "Lettre officielle",
   letterBody:
     "La lettre reprend la couverture en plus serré : coin marine, adresse du site en haut à droite, logo, puis le texte. Les intertitres sont en capitales, marine, sans puce décorative. Le pied est un bandeau marine pleine largeur : les deux lignes mobiles, l’adresse à Goma et l’e-mail du gérant.",
@@ -289,7 +291,7 @@ const fr = {
   invoiceCols: ["Désignation", "Qté", "Unité", "Montant"],
   invoiceTotalLabel: "Total",
   invoiceNote:
-    "Spécimen de charte. Les montants montrent la grille ; ils ne constituent pas une offre. Règlement par virement — coordonnées bancaires sur l’enveloppe papier.",
+    "Spécimen de charte. Les montants montrent la grille ; ils ne constituent pas une offre.",
   receiptTitle: "Reçu",
   receiptMeta: "A4 · spécimen",
   receiptNumberLabel: "Reçu n°",
@@ -449,9 +451,11 @@ const en = {
   avoid: "Avoid",
   envelopeTitle: "Envelope",
   envelopeBody:
-    "Two fields: navy and white paper. The logo opens at the top left (white on navy, navy on paper). On paper, the window below the logo carries bank transfer details. The mailbox sits at the top right; the crane is cut by the bottom edge on the left. Contact matches the letter, one line on the right under the decor, with no band.",
-  envelopeMeta: "Landscape · navy field",
-  envelopeMetaWhite: "Landscape · white paper · #E1E8F0 backdrops",
+    "Two fields: navy and white paper. The logo opens at the top left (white on navy, navy on paper). Two variants: with an address window below the logo, or without a window. The mailbox sits at the top right; the crane is cut by the bottom edge on the left. Contact matches the letter, one line on the right under the decor, with no band. Bank details: on the invoice.",
+  envelopeMeta: "Landscape · navy · with window",
+  envelopeMetaNavyPlain: "Landscape · navy · no window",
+  envelopeMetaWhite: "Landscape · paper · with window",
+  envelopeMetaPaperPlain: "Landscape · paper · no window",
   letterTitle: "Official letter",
   letterBody:
     "The letter is the cover, tightened: a navy corner, the site address at the top right, the logo, then the text. Section labels are capitals, in navy, without decorative bullets. The footer is a full-width navy band: both mobile lines, the Goma address, and the managing director’s email.",
@@ -508,7 +512,7 @@ const en = {
   invoiceCols: ["Description", "Qty", "Unit", "Amount"],
   invoiceTotalLabel: "Total",
   invoiceNote:
-    "Guidelines specimen. The amounts show the grid; they are not an offer. Payment is by transfer — bank details on the paper envelope.",
+    "Guidelines specimen. The amounts show the grid; they are not an offer.",
   receiptTitle: "Receipt",
   receiptMeta: "A4 · specimen",
   receiptNumberLabel: "Receipt no.",

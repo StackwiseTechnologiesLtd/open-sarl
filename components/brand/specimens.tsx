@@ -14,7 +14,7 @@ import {
   envelopeWindowStyle,
   type EnvelopeVariant,
 } from "@/lib/brand-export";
-import { cardIdentity, invoiceLines, invoiceTotal, money, paymentTransferLines, type BrandCopy } from "@/lib/brand-guide";
+import { cardIdentity, invoiceLines, invoiceTotal, money, paymentTransferDetails, type BrandCopy } from "@/lib/brand-guide";
 import type { Locale } from "@/lib/i18n";
 
 export function Board({
@@ -71,42 +71,14 @@ function EnvelopeFooterLine({ variant }: { variant: EnvelopeVariant }) {
   );
 }
 
-function EnvelopePaymentText({
-  lines,
-}: {
-  lines: readonly string[];
-}) {
-  const board = envelopeBoard;
-  const x = board.windowX + 22;
-  const startY = board.windowY + 32;
-  const lineHeight = 15.5;
-  return (
-    <g aria-hidden="true">
-      {lines.map((line, index) => (
-        <text
-          key={line}
-          x={x}
-          y={startY + index * lineHeight}
-          fill="#000068"
-          fontFamily="var(--font-label-md), IBM Plex Sans, sans-serif"
-          fontSize={index === 0 ? 11.5 : 10.5}
-          fontWeight={index === 0 ? 650 : 400}
-        >
-          {line}
-        </text>
-      ))}
-    </g>
-  );
-}
-
 export function EnvelopeSheet({
   label,
   variant = "navy",
-  locale = "fr",
+  showWindow = true,
 }: {
   label: string;
   variant?: EnvelopeVariant;
-  locale?: Locale;
+  showWindow?: boolean;
 }) {
   const rawId = useId().replace(/:/g, "");
   const decorTint = `${rawId}-decor`;
@@ -116,7 +88,6 @@ export function EnvelopeSheet({
   const windowStyle = envelopeWindowStyle(variant);
   const logoSrc =
     variant === "navy" ? "/images/open-logo-white.svg" : "/images/open-logo-navy.svg";
-  const paymentLines = variant === "paper" ? paymentTransferLines(locale) : null;
 
   return (
     <svg
@@ -133,16 +104,17 @@ export function EnvelopeSheet({
       </defs>
       <g>
         <rect width={board.width} height={board.height} fill={field} />
-        <rect
-          x={board.windowX}
-          y={board.windowY}
-          width={board.windowWidth}
-          height={board.windowHeight}
-          rx={board.windowRx}
-          fill={windowStyle.fill}
-          fillOpacity={windowStyle.opacity}
-        />
-        {paymentLines ? <EnvelopePaymentText lines={paymentLines} /> : null}
+        {showWindow ? (
+          <rect
+            x={board.windowX}
+            y={board.windowY}
+            width={board.windowWidth}
+            height={board.windowHeight}
+            rx={board.windowRx}
+            fill={windowStyle.fill}
+            fillOpacity={windowStyle.opacity}
+          />
+        ) : null}
         <image
           href={logoSrc}
           x={board.logoX}
@@ -268,6 +240,12 @@ export function InvoiceSheet({ copy, locale }: { copy: BrandCopy; locale: Locale
           </tr>
         </tfoot>
       </table>
+      <div className="bill-payment">
+        <p className="bill-payment-title">{paymentTransferDetails[locale].heading}</p>
+        {paymentTransferDetails[locale].lines.map((line) => (
+          <p key={line}>{line}</p>
+        ))}
+      </div>
       <p className="bill-note">{copy.invoiceNote}</p>
     </StationerySheet>
   );

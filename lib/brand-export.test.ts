@@ -19,8 +19,11 @@ describe("envelope export", () => {
     expect(printable).not.toContain("clip-path");
     expect(printable).not.toContain("open-envelope-round");
     expect(svg).not.toContain("clip-path");
-    const paperPayment = composeEnvelopeSvg(logo, top, bottom, "paper", { printable: true });
-    expect(paperPayment).toContain("Coordonnées bancaires");
+    const paperPlain = composeEnvelopeSvg(logo, top, bottom, "paper", {
+      printable: true,
+      showWindow: false,
+    });
+    expect(paperPlain).not.toContain('y="262"');
     expect(stripSvg(svg)).not.toContain("<svg");
     expect(recolorPaint(logo, "#FFFFFF")).toContain('fill="#FFFFFF"');
     expect(recolorPaint(logo, "#FFFFFF")).not.toContain("#000068");

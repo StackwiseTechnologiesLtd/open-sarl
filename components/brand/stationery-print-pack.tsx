@@ -198,10 +198,10 @@ export function StationeryPrintPack({
         </div>
         <div className="brand-print-stack">
           <PrintSheet width={1100} height={630}>
-            <EnvelopeSheet label={copy.envelopeTitle} variant="navy" locale={locale} />
+            <EnvelopeSheet label={copy.envelopeTitle} variant="navy" showWindow />
           </PrintSheet>
           <PrintSheet width={1100} height={630}>
-            <EnvelopeSheet label={copy.envelopeTitle} variant="paper" locale={locale} />
+            <EnvelopeSheet label={copy.envelopeTitle} variant="paper" showWindow />
           </PrintSheet>
         </div>
       </div>
