@@ -318,17 +318,17 @@ const fr = {
   addressLabel: "Adresse",
   documentsTitle: "Documents",
   documentsBody:
-    "Pièces de la charte à imprimer ou à exporter, note de capacités web, PDF officiels et gabarits courrier — tout est regroupé ici.",
+    "Exports charte, note de capacités, PDF officiels, gabarits et rédaction sur papeterie OPEN.",
   printPackTitle: "Impressions charte",
   printPackBody:
-    "Téléchargez chaque pièce en PDF (A4 ou carte) ou les enveloppes en PNG sans repère de découpe. Les fichiers sont prêts pour l’impression.",
+    "PDF par pièce (A4 ou carte) ou PNG pour les enveloppes. Sans repères de découpe.",
   assetsTitle: "Fichiers marque",
   pdfsTitle: "PDF officiels",
   brochureTitle: "Note de capacités (web)",
   templatesTitle: "Gabarits courrier",
   documentsComposeTitle: "Rédiger et imprimer",
   documentsComposeBody:
-    "Remplissez un modèle (courrier, proposition, rapport, facture ou reçu) avec vos textes, puis exportez en PDF ou imprimez sur la papeterie OPEN.",
+    "Courrier, proposition, rapport, facture ou reçu : saisissez vos textes, vérifiez l’aperçu, imprimez ou enregistrez le PDF.",
   printPack: {
     downloadAll: "Tout télécharger",
     downloadAllA4: "Toutes les pièces A4 (PDF)",
@@ -544,17 +544,17 @@ const en = {
   addressLabel: "Address",
   documentsTitle: "Documents",
   documentsBody:
-    "Guideline stationery to print or export, the web capability brochure, official PDFs, and letter templates — all in one place.",
+    "Guideline exports, capability statement, official PDFs, templates, and authoring on OPEN stationery.",
   printPackTitle: "Print stationery",
   printPackBody:
-    "Download each piece as PDF (A4 or card) or envelopes as PNG without cut marks. Files are print-ready.",
+    "PDF per piece (A4 or card) or PNG for envelopes. No crop marks.",
   assetsTitle: "Brand files",
   pdfsTitle: "Official PDFs",
   brochureTitle: "Capability brochure (web)",
   templatesTitle: "Letter templates",
   documentsComposeTitle: "Write and print",
   documentsComposeBody:
-    "Fill in a template (letter, proposal, report, invoice, or receipt) with your copy, then export PDF or print on OPEN stationery.",
+    "Letter, proposal, report, invoice, or receipt: enter your copy, check the preview, print or save PDF.",
   printPack: {
     downloadAll: "Download all",
     downloadAllA4: "All A4 pieces (PDF)",

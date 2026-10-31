@@ -200,8 +200,8 @@ export function InvoiceSheet({
           </tr>
         </thead>
         <tbody>
-          {lines.map((line) => (
-            <tr key={line.title}>
+          {lines.map((line, index) => (
+            <tr key={`${index}-${line.title}`}>
               <td>{line.title}</td>
               <td>{line.qty}</td>
               <td>{line.unit}</td>

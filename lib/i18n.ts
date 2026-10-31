@@ -880,13 +880,13 @@ const dictionaries = {
     documentComposer: {
       kicker: "Rédaction",
       title: "Composer un document OPEN",
-      lead: "Choisissez un gabarit, complétez les champs, puis téléchargez en PDF ou imprimez avec la charte (en-tête, pied de page, filigrane).",
+      lead: "Choisissez un gabarit, remplissez les champs, vérifiez l’aperçu avec en-tête, pied de page et filigrane, puis imprimez ou enregistrez le PDF.",
       backToDocuments: "Retour aux documents",
       formTitle: "Contenu",
       formAria: "Formulaire du document",
       previewTitle: "Aperçu",
       previewAria: "Aperçu du document",
-      previewHint: "A4 · charte OPEN",
+      previewHint: "A4 · papeterie OPEN",
       templateLabel: "Modèle",
       coverTitle: "Titre de couverture",
       coverSubtitle: "Sous-titre",
@@ -909,7 +909,7 @@ const dictionaries = {
       sectionTitle: "Titre de section",
       sectionBody: "Texte de section",
       bullets: "Puces (une par ligne)",
-      longFormHint: "Les champs principaux suffisent pour un brouillon ; affinez le texte dans l’aperçu avant envoi.",
+      longFormHint: "Les champs ci-dessous alimentent directement l’aperçu page par page.",
       openComposer: "Composer un document",
     },
     documentTemplatesHub: {
@@ -918,7 +918,7 @@ const dictionaries = {
         "En-tête, proposition et rapport OPEN — gabarits A4 complets pour la communication institutionnelle, export PDF.",
       title: "Modèles documentaires",
       intro:
-        "En-tête courrier, proposition commerciale et rapport de mission sur une seule vue A4. Textes d’exemple à adapter avant envoi.",
+        "En-tête, proposition et rapport sur une vue A4. Remplacez les textes d’exemple avant envoi.",
       templateBadge: "Modèle · A4",
       allTemplates: "Tous les modèles",
       allTemplatesCombined: "Voir les trois modèles",
@@ -1715,7 +1715,7 @@ const dictionaries = {
     },
     cta: {
       title: "Structure your investment pipeline",
-      text: "National ministries, provincial governments, public agencies, PIUs, utilities, and corridor authorities — let's discuss your priority programs.",
+      text: "National ministries, provincial governments, public agencies, PIUs, utilities, and corridor authorities: tell us which programmes you want to move forward.",
       primary: "Get in touch",
       secondary: "Download the capability statement",
     },
@@ -1832,7 +1832,7 @@ const dictionaries = {
     documentComposer: {
       kicker: "Authoring",
       title: "Compose an OPEN document",
-      lead: "Pick a template, fill in the fields, then download PDF or print with full stationery (header, footer, watermark).",
+      lead: "Pick a template, fill in the fields, check the preview with header, footer band, and watermark, then print or save the PDF.",
       backToDocuments: "Back to documents",
       formTitle: "Content",
       formAria: "Document form",
@@ -1861,7 +1861,7 @@ const dictionaries = {
       sectionTitle: "Section title",
       sectionBody: "Section text",
       bullets: "Bullets (one per line)",
-      longFormHint: "Main fields are enough for a draft; refine copy in the preview before sending.",
+      longFormHint: "The fields below feed the page preview directly.",
       openComposer: "Compose a document",
     },
     documentTemplatesHub: {
@@ -1870,7 +1870,7 @@ const dictionaries = {
         "OPEN letterhead, proposal, and report — full A4 templates for institutional communications and PDF export.",
       title: "Document templates",
       intro:
-        "Letterhead, commercial proposal, and mission report in one scrollable A4 view. Sample copy to adapt before sending.",
+        "Letterhead, proposal, and report in one A4 scroll. Replace the sample copy before you send.",
       templateBadge: "Template · A4",
       allTemplates: "All templates",
       allTemplatesCombined: "View all three templates",
