@@ -172,7 +172,7 @@ export type ComposerFormState = {
 };
 
 export function composerPageCount(state: ComposerFormState) {
-  const extra = state.layout.extraPages.length;
+  const extra = state.layout.extraPages.filter((page) => page.trim()).length;
   switch (state.templateId) {
     case "official-letter":
     case "invoice":
