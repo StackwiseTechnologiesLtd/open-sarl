@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState, type Dispatch, type SetStateAction } from "react";
 import {
   InvoiceSheet,
+  LetterSheet,
   ReceiptSheet,
 } from "@/components/brand/specimens";
 import type { InvoiceLineInput } from "@/lib/document-composer";
@@ -15,6 +16,7 @@ import {
   composerTemplateOrder,
   createComposerFormState,
   invoiceFormToOverrides,
+  letterFormToOverrides,
   proposalBullets,
   receiptFormToOverrides,
   reportBullets,
@@ -93,6 +95,22 @@ function ComposerPreview({
   const shared = dict.documentTemplates;
   const copy = brandGuide[locale];
   const { templateId } = state;
+
+  if (templateId === "cover") {
+    const f = state.cover;
+    return (
+      <OpenDocumentSheet variant="cover" website={WEBSITE} theme="corporate">
+        <p className="doc-cover-kicker">{f.kicker}</p>
+        <h2 className="doc-cover-title">{f.title}</h2>
+        <p className="doc-cover-subtitle">{f.subtitle}</p>
+        <p className="doc-cover-lead">{f.lead}</p>
+      </OpenDocumentSheet>
+    );
+  }
+
+  if (templateId === "letter") {
+    return <LetterSheet copy={copy} data={letterFormToOverrides(state.letter)} />;
+  }
 
   if (templateId === "invoice") {
     return (
@@ -301,7 +319,7 @@ function ComposerForm({
   locale: Locale;
 }) {
   const c = dict.documentComposer;
-  const kinds = dict.documentTemplates.kinds;
+  const templateTypes = c.templateTypes;
   const copy = brandGuide[locale];
   const { templateId } = state;
 
@@ -329,15 +347,68 @@ function ComposerForm({
         >
           {composerTemplateOrder.map((item) => (
             <option key={item.id} value={item.id}>
-              {item.id === "invoice"
-                ? copy.invoiceTitle
-                : item.id === "receipt"
-                  ? copy.receiptTitle
-                  : kinds[item.id].title}
+              {templateTypes[item.id]}
             </option>
           ))}
         </select>
       </label>
+
+      {templateId === "cover" ? (
+        <>
+          <Field label={c.coverKicker} value={state.cover.kicker} onChange={(v) => patch("cover", (p) => ({ ...p, kicker: v }))} />
+          <Field label={c.coverTitle} value={state.cover.title} onChange={(v) => patch("cover", (p) => ({ ...p, title: v }))} />
+          <Field label={c.coverSubtitle} value={state.cover.subtitle} onChange={(v) => patch("cover", (p) => ({ ...p, subtitle: v }))} />
+          <Field label={c.coverLead} value={state.cover.lead} onChange={(v) => patch("cover", (p) => ({ ...p, lead: v }))} multiline />
+        </>
+      ) : null}
+
+      {templateId === "letter" ? (
+        <>
+          <Field label={c.date} value={state.letter.date} onChange={(v) => patch("letter", (p) => ({ ...p, date: v }))} />
+          <Field label={c.recipientBlock} value={state.letter.toLines} onChange={(v) => patch("letter", (p) => ({ ...p, toLines: v }))} multiline />
+          <Field label={c.subject} value={state.letter.subject} onChange={(v) => patch("letter", (p) => ({ ...p, subject: v }))} />
+          <Field label={c.body1} value={state.letter.intro} onChange={(v) => patch("letter", (p) => ({ ...p, intro: v }))} multiline />
+          {state.letter.sections.map((section, index) => (
+            <div key={index} className="doc-compose-section-block">
+              <p className="doc-compose-section">
+                {c.sectionTitle} {index + 1}
+              </p>
+              <Field
+                label={c.sectionTitle}
+                value={section.title}
+                onChange={(v) =>
+                  patch("letter", (p) => ({
+                    ...p,
+                    sections: p.sections.map((row, i) => (i === index ? { ...row, title: v } : row)),
+                  }))
+                }
+              />
+              <Field
+                label={c.sectionBody}
+                value={section.body}
+                onChange={(v) =>
+                  patch("letter", (p) => ({
+                    ...p,
+                    sections: p.sections.map((row, i) => (i === index ? { ...row, body: v } : row)),
+                  }))
+                }
+                multiline
+              />
+              <Field
+                label={c.bullets}
+                value={section.bullets}
+                onChange={(v) =>
+                  patch("letter", (p) => ({
+                    ...p,
+                    sections: p.sections.map((row, i) => (i === index ? { ...row, bullets: v } : row)),
+                  }))
+                }
+                multiline
+              />
+            </div>
+          ))}
+        </>
+      ) : null}
 
       {templateId === "letterhead" ? (
         <>

@@ -15,10 +15,10 @@ import {
   type EnvelopeVariant,
 } from "@/lib/brand-export";
 import { cardIdentity, invoiceLines, invoiceTotal, money, paymentTransferDetails, type BrandCopy } from "@/lib/brand-guide";
-import type { InvoiceOverrides, ReceiptOverrides } from "@/lib/document-composer";
+import type { InvoiceOverrides, LetterOverrides, ReceiptOverrides } from "@/lib/document-composer";
 import type { Locale } from "@/lib/i18n";
 
-export type { InvoiceLineInput, InvoiceOverrides, ReceiptOverrides } from "@/lib/document-composer";
+export type { InvoiceLineInput, InvoiceOverrides, LetterOverrides, ReceiptOverrides } from "@/lib/document-composer";
 
 export function CoverSheet({ navy }: { navy?: boolean }) {
   return <StationerySheet navyField={!!navy} />;
@@ -115,28 +115,43 @@ export function EnvelopeSheet({
   );
 }
 
-export function LetterSheet({ copy }: { copy: BrandCopy }) {
+export function LetterSheet({
+  copy,
+  data,
+}: {
+  copy: BrandCopy;
+  data?: LetterOverrides;
+}) {
+  const toLines = data?.to ?? copy.letterTo;
+  const sections =
+    data?.sections ??
+    copy.letterSections.map((section) => ({
+      title: section.title,
+      body: section.body,
+      bullets: "bullets" in section && section.bullets ? [...section.bullets] : undefined,
+    }));
+
   return (
     <StationerySheet dense>
       <div className="letter-meta">
-        <p>{copy.letterDate}</p>
+        <p>{data?.date ?? copy.letterDate}</p>
         <div className="letter-to">
           <p className="letter-to-label">{copy.letterToLabel}</p>
-          {copy.letterTo.map((line) => (
-            <p key={line}>{line}</p>
+          {toLines.map((line, index) => (
+            <p key={`${index}-${line}`}>{line}</p>
           ))}
         </div>
       </div>
-      <p className="letter-subject">{copy.letterSubject}</p>
-      <p className="letter-p">{copy.letterIntro}</p>
-      {copy.letterSections.map((section) => (
-        <section key={section.title} className="letter-sec">
+      <p className="letter-subject">{data?.subject ?? copy.letterSubject}</p>
+      <p className="letter-p">{data?.intro ?? copy.letterIntro}</p>
+      {sections.map((section, index) => (
+        <section key={`${index}-${section.title}`} className="letter-sec">
           <h3>{section.title}</h3>
           <p>{section.body}</p>
-          {"bullets" in section && section.bullets ? (
+          {section.bullets && section.bullets.length > 0 ? (
             <ul>
-              {section.bullets.map((item) => (
-                <li key={item}>{item}</li>
+              {section.bullets.map((item, bulletIndex) => (
+                <li key={`${bulletIndex}-${item}`}>{item}</li>
               ))}
             </ul>
           ) : null}

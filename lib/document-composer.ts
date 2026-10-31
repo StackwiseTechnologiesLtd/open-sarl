@@ -29,7 +29,15 @@ export type ReceiptOverrides = {
   signLabel?: string;
 };
 
-export type ComposerTemplateId = DocumentTemplateId | "invoice" | "receipt";
+export type LetterOverrides = {
+  date?: string;
+  to?: string[];
+  subject?: string;
+  intro?: string;
+  sections?: { title: string; body: string; bullets?: string[] }[];
+};
+
+export type ComposerTemplateId = DocumentTemplateId | "cover" | "letter" | "invoice" | "receipt";
 
 export type ComposerTemplateOption = {
   id: ComposerTemplateId;
@@ -37,12 +45,35 @@ export type ComposerTemplateOption = {
 };
 
 export const composerTemplateOrder: ComposerTemplateOption[] = [
+  { id: "cover", labelKey: "cover" },
+  { id: "letter", labelKey: "letter" },
   { id: "letterhead", labelKey: "letterhead" },
   { id: "proposal", labelKey: "proposal" },
   { id: "report", labelKey: "report" },
   { id: "invoice", labelKey: "invoice" },
   { id: "receipt", labelKey: "receipt" },
 ];
+
+export type CoverForm = {
+  kicker: string;
+  title: string;
+  subtitle: string;
+  lead: string;
+};
+
+export type LetterSectionForm = {
+  title: string;
+  body: string;
+  bullets: string;
+};
+
+export type OfficialLetterForm = {
+  date: string;
+  toLines: string;
+  subject: string;
+  intro: string;
+  sections: LetterSectionForm[];
+};
 
 export type LetterheadForm = {
   coverTitle: string;
@@ -119,6 +150,8 @@ export type ReceiptForm = {
 
 export type ComposerFormState = {
   templateId: ComposerTemplateId;
+  cover: CoverForm;
+  letter: OfficialLetterForm;
   letterhead: LetterheadForm;
   proposal: ProposalForm;
   report: ReportForm;
@@ -150,8 +183,27 @@ export function createComposerFormState(locale: Locale): ComposerFormState {
     amount: line.amount,
   }));
 
+  const letterSections = copy.letterSections.map((section) => ({
+    title: section.title,
+    body: section.body,
+    bullets: "bullets" in section && section.bullets ? bulletsToText(section.bullets) : "",
+  }));
+
   return {
-    templateId: "letterhead",
+    templateId: "cover",
+    cover: {
+      kicker: shared.coverHint,
+      title: kinds.letterhead.coverTitle,
+      subtitle: kinds.letterhead.coverSubtitle,
+      lead: kinds.letterhead.coverLead,
+    },
+    letter: {
+      date: copy.letterDate,
+      toLines: copy.letterTo.join("\n"),
+      subject: copy.letterSubject,
+      intro: copy.letterIntro,
+      sections: letterSections,
+    },
     letterhead: {
       coverTitle: kinds.letterhead.coverTitle,
       coverSubtitle: kinds.letterhead.coverSubtitle,
@@ -262,8 +314,24 @@ export function reportBullets(form: ReportForm) {
   };
 }
 
+export function letterFormToOverrides(form: OfficialLetterForm) {
+  return {
+    date: form.date,
+    to: form.toLines.split("\n").map((l) => l.trim()).filter(Boolean),
+    subject: form.subject,
+    intro: form.intro,
+    sections: form.sections.map((section) => ({
+      title: section.title,
+      body: section.body,
+      bullets: textToBullets(section.bullets),
+    })),
+  };
+}
+
 export function composerDownloadName(templateId: ComposerTemplateId, locale: Locale) {
   const prefix: Record<ComposerTemplateId, string> = {
+    cover: "OPEN_Cover",
+    letter: "OPEN_Letter",
     letterhead: "OPEN_Letterhead",
     proposal: "OPEN_Proposal",
     report: "OPEN_Report",
