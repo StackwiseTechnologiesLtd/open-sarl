@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useState, type Dispatch, type SetStateAction } from "react";
 import {
   InvoiceSheet,
   ReceiptSheet,
@@ -296,7 +296,7 @@ function ComposerForm({
   locale,
 }: {
   state: ComposerFormState;
-  setState: (next: ComposerFormState) => void;
+  setState: Dispatch<SetStateAction<ComposerFormState>>;
   dict: Dictionary;
   locale: Locale;
 }) {
