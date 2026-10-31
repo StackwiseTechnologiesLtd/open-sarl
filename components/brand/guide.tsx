@@ -426,7 +426,7 @@ export function BrandGuide({ locale }: { locale: Locale }) {
               width={cardBoard.width}
               height={cardBoard.height}
               label={`${copy.cardPaperIcons} · ${copy.cardMeta}`}
-              export={{ mode: "pdf", filename: "open-card-icons" }}
+              export={{ mode: "board", filename: "open-card-icons", width: cardBoard.width, height: cardBoard.height }}
               exportLabels={exportLabels}
             >
               <CardSheet copy={copy} variant="icons" />
@@ -435,7 +435,7 @@ export function BrandGuide({ locale }: { locale: Locale }) {
               width={cardBoard.width}
               height={cardBoard.height}
               label={`${copy.cardPaperAddress} · ${copy.cardMeta}`}
-              export={{ mode: "pdf", filename: "open-card-address" }}
+              export={{ mode: "board", filename: "open-card-address", width: cardBoard.width, height: cardBoard.height }}
               exportLabels={exportLabels}
             >
               <CardSheet copy={copy} variant="address" />
@@ -444,7 +444,7 @@ export function BrandGuide({ locale }: { locale: Locale }) {
               width={cardBoard.width}
               height={cardBoard.height}
               label={`${copy.cardNavyBack} · ${copy.cardMeta}`}
-              export={{ mode: "pdf", filename: "open-card-back" }}
+              export={{ mode: "board", filename: "open-card-back", width: cardBoard.width, height: cardBoard.height }}
               exportLabels={exportLabels}
             >
               <CardSheet copy={copy} variant="back" />
@@ -453,7 +453,7 @@ export function BrandGuide({ locale }: { locale: Locale }) {
               width={cardBoard.width}
               height={cardBoard.height}
               label={`${copy.cardNavyFront} · ${copy.cardMeta}`}
-              export={{ mode: "pdf", filename: "open-card-front" }}
+              export={{ mode: "board", filename: "open-card-front", width: cardBoard.width, height: cardBoard.height }}
               exportLabels={exportLabels}
             >
               <CardSheet copy={copy} variant="front" />

@@ -8,6 +8,11 @@ import {
   svgToPngBlob,
   type LoadableSvgKind,
 } from "@/lib/brand-export";
+import {
+  boardToPngBlob,
+  boardToSvgString,
+  cardExportRaster,
+} from "@/lib/brand-board-export";
 import { brandAssetRaster, type BrandAssetRasterKind } from "@/lib/brand-asset-raster";
 import { downloadPdfFromElement } from "@/lib/html2pdf-download";
 import type { Locale } from "@/lib/i18n";
@@ -30,6 +35,13 @@ export type BoardExportConfig =
   | {
       mode: "pdf";
       filename: string;
+      orientation?: "portrait" | "landscape";
+    }
+  | {
+      mode: "board";
+      filename: string;
+      width: number;
+      height: number;
       orientation?: "portrait" | "landscape";
     };
 
@@ -70,12 +82,44 @@ export function BoardExportOverlay({
   }
 
   async function runPdf() {
-    if (config.mode !== "pdf") return;
+    const node = boardRef?.current;
+    if (!node) return;
+    if (config.mode !== "pdf" && config.mode !== "board") return;
+    setBusy(true);
+    try {
+      await downloadPdfFromElement(
+        node,
+        `${config.filename}.pdf`,
+        config.orientation ?? "portrait",
+      );
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function runBoard(action: "svg" | "png" | "copy") {
+    if (config.mode !== "board") return;
     const node = boardRef?.current;
     if (!node) return;
     setBusy(true);
     try {
-      await downloadPdfFromElement(node, `${config.filename}.pdf`, config.orientation ?? "portrait");
+      const { width, height } = config;
+      const exportWidth = cardExportRaster.width;
+      if (action === "png") {
+        downloadBlob(
+          `${config.filename}.png`,
+          await boardToPngBlob(node, width, height, exportWidth),
+        );
+        return;
+      }
+      const svg = await boardToSvgString(node, width, height, exportWidth);
+      if (action === "svg") {
+        downloadBlob(`${config.filename}.svg`, new Blob([svg], { type: "image/svg+xml" }));
+        return;
+      }
+      await copySvg(svg);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1600);
     } finally {
       setBusy(false);
     }
@@ -88,6 +132,25 @@ export function BoardExportOverlay({
       <div className={barClass}>
         <button type="button" disabled={busy} onClick={() => void runPdf()}>
           {labels.pdf}
+        </button>
+      </div>
+    );
+  }
+
+  if (config.mode === "board") {
+    return (
+      <div className={barClass}>
+        <button type="button" disabled={busy} onClick={() => void runBoard("svg")}>
+          {labels.svg}
+        </button>
+        <button type="button" disabled={busy} onClick={() => void runBoard("png")}>
+          {labels.png}
+        </button>
+        <button type="button" disabled={busy} onClick={() => void runPdf()}>
+          {labels.pdf}
+        </button>
+        <button type="button" disabled={busy} onClick={() => void runBoard("copy")}>
+          {copied ? labels.copied : labels.copy}
         </button>
       </div>
     );
