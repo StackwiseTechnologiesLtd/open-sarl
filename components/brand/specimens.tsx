@@ -14,7 +14,7 @@ import {
   envelopeWindowStyle,
   type EnvelopeVariant,
 } from "@/lib/brand-export";
-import { cardIdentity, invoiceLines, invoiceTotal, money, type BrandCopy } from "@/lib/brand-guide";
+import { cardIdentity, invoiceLines, invoiceTotal, money, paymentTransferLines, type BrandCopy } from "@/lib/brand-guide";
 import type { Locale } from "@/lib/i18n";
 
 export function Board({
@@ -71,21 +71,52 @@ function EnvelopeFooterLine({ variant }: { variant: EnvelopeVariant }) {
   );
 }
 
+function EnvelopePaymentText({
+  lines,
+}: {
+  lines: readonly string[];
+}) {
+  const board = envelopeBoard;
+  const x = board.windowX + 22;
+  const startY = board.windowY + 32;
+  const lineHeight = 15.5;
+  return (
+    <g aria-hidden="true">
+      {lines.map((line, index) => (
+        <text
+          key={line}
+          x={x}
+          y={startY + index * lineHeight}
+          fill="#000068"
+          fontFamily="var(--font-label-md), IBM Plex Sans, sans-serif"
+          fontSize={index === 0 ? 11.5 : 10.5}
+          fontWeight={index === 0 ? 650 : 400}
+        >
+          {line}
+        </text>
+      ))}
+    </g>
+  );
+}
+
 export function EnvelopeSheet({
   label,
   variant = "navy",
+  locale = "fr",
 }: {
   label: string;
   variant?: EnvelopeVariant;
+  locale?: Locale;
 }) {
   const rawId = useId().replace(/:/g, "");
-  const clip = `${rawId}-clip`;
-  const white = `${rawId}-white`;
   const decorTint = `${rawId}-decor`;
   const board = envelopeBoard;
   const layout = envelopeArtLayout();
   const field = variant === "navy" ? board.navy : board.paper;
   const windowStyle = envelopeWindowStyle(variant);
+  const logoSrc =
+    variant === "navy" ? "/images/open-logo-white.svg" : "/images/open-logo-navy.svg";
+  const paymentLines = variant === "paper" ? paymentTransferLines(locale) : null;
 
   return (
     <svg
@@ -95,18 +126,12 @@ export function EnvelopeSheet({
       aria-label={label}
     >
       <defs>
-        <clipPath id={clip}>
-          <rect width={board.width} height={board.height} rx={board.radius} />
-        </clipPath>
-        <filter id={white} colorInterpolationFilters="sRGB">
-          <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0" />
-        </filter>
         <filter id={decorTint} colorInterpolationFilters="sRGB">
           <feFlood floodColor={board.backdrop} result="flood" />
           <feComposite in="flood" in2="SourceGraphic" operator="in" />
         </filter>
       </defs>
-      <g clipPath={`url(#${clip})`}>
+      <g>
         <rect width={board.width} height={board.height} fill={field} />
         <rect
           x={board.windowX}
@@ -117,13 +142,13 @@ export function EnvelopeSheet({
           fill={windowStyle.fill}
           fillOpacity={windowStyle.opacity}
         />
+        {paymentLines ? <EnvelopePaymentText lines={paymentLines} /> : null}
         <image
-          href="/images/open-logo.svg"
+          href={logoSrc}
           x={board.logoX}
           y={board.logoY}
           width={board.logoWidth}
           height={board.logoHeight}
-          filter={variant === "navy" ? `url(#${white})` : undefined}
         />
         <EnvelopeFooterLine variant={variant} />
         <image
@@ -364,7 +389,7 @@ export function CardSheet({
         <p className="visit-name">{cardIdentity.name}</p>
         <p className="visit-role">{cardIdentity.title}</p>
       </div>
-      <CardContacts copy={copy} spelled={variant === "address" || navy} light={!navy} />
+      <CardContacts copy={copy} spelled={false} light={!navy} />
     </article>
   );
 }

@@ -1,8 +1,13 @@
 import Link from "next/link";
 
-const FULL_RATIO = 4453 / 3030;
+const FULL_RATIO = 4408 / 2974;
 /** Matches open-logo-mark.svg viewBox (crane mark, wordmark clipped out). */
 const MARK_RATIO = 1535 / 2720;
+
+const fullLogoSrc = {
+  brand: "/images/open-logo-navy.svg?v=1",
+  light: "/images/open-logo-white.svg?v=1",
+} as const;
 
 type LogoProps = {
   href?: string;
@@ -27,8 +32,7 @@ export function Logo({
   const ratio = variant === "mark" ? MARK_RATIO : FULL_RATIO;
   const width = Math.ceil(height * ratio);
   const src =
-    variant === "mark" ? "/images/open-logo-mark.svg?v=4" : "/images/open-logo.svg?v=2";
-  const toneClass = tone === "light" ? "brightness-0 invert" : "";
+    variant === "mark" ? "/images/open-logo-mark.svg?v=4" : fullLogoSrc[tone];
 
   const image = (
     // eslint-disable-next-line @next/next/no-img-element
@@ -37,7 +41,7 @@ export function Logo({
       alt="OPEN"
       width={unbounded ? undefined : width}
       height={unbounded ? undefined : height}
-      className={`block h-auto w-auto object-contain object-left ${unbounded ? "max-w-full" : "max-w-none"} ${toneClass} ${className}`.trim()}
+      className={`block h-auto w-auto object-contain object-left ${unbounded ? "max-w-full" : "max-w-none"} ${className}`.trim()}
       style={
         unbounded
           ? undefined

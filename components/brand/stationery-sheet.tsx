@@ -36,18 +36,7 @@ export function PhoneIcon() {
   );
 }
 
-function SiteIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm7.93 9h-3.18a15.7 15.7 0 0 0-1.12-4.36A8.03 8.03 0 0 1 19.93 11zM12 4c.95 1.6 1.62 3.4 1.94 5.36H10.06A12.1 12.1 0 0 1 12 4zM4.37 13h3.18c.22 1.52.62 2.98 1.12 4.36A8.03 8.03 0 0 1 4.37 13zm3.18-2H4.37a8.03 8.03 0 0 1 4.3-4.36C8.17 7.98 7.77 9.44 7.55 11zm2.51 7.64A13.8 13.8 0 0 1 8.7 13h6.6a13.8 13.8 0 0 1-1.36 5.64A7.96 7.96 0 0 1 12 20a7.96 7.96 0 0 1-1.94-.36zM14.3 18.64c.5-1.38.9-2.84 1.12-4.36h3.18a8.03 8.03 0 0 1-4.3 4.36zM16.88 11c-.22-1.52-.62-2.98-1.12-4.36A8.03 8.03 0 0 1 19.63 11h-2.75z"
-      />
-    </svg>
-  );
-}
-
-const footerIcons = [PinIcon, PhoneIcon, MailIcon, SiteIcon] as const;
+const footerIcons = [PinIcon, PhoneIcon, MailIcon] as const;
 
 export function StationerySheet({
   children,
@@ -87,7 +76,7 @@ export function StationerySheet({
             className="cover-logo-img"
           />
         </div>
-        <p className="stat-url">{correspondence.siteUrl}</p>
+        <p className="stat-url">{correspondence.site}</p>
       </header>
       <div className="stat-main">{children}</div>
       <footer className="stat-foot">

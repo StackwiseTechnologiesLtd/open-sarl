@@ -4,8 +4,8 @@ import { useState } from "react";
 import { copySvg, downloadBlob, loadAssetSvg, svgToPngBlob } from "@/lib/brand-export";
 
 const raster = {
-  logo: { width: 1600, height: Math.round((1600 * 3030) / 4453) },
-  "logo-white": { width: 1600, height: Math.round((1600 * 3030) / 4453) },
+  logo: { width: 1600, height: Math.round((1600 * 2974) / 4408) },
+  "logo-white": { width: 1600, height: Math.round((1600 * 2974) / 4408) },
   mark: { width: 800, height: Math.round((800 * 2720) / 1535) },
   envelope: { width: 2200, height: 1260 },
   "envelope-paper": { width: 2200, height: 1260 },

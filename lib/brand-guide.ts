@@ -104,12 +104,34 @@ export const correspondence = {
 
 /** One row for letter, invoice, receipt, and envelope footers. */
 export function stationeryFooterItems() {
-  return [
-    cardIdentity.address,
-    cardIdentity.phones.join(" · "),
-    cardIdentity.email,
-    correspondence.site,
-  ];
+  return [cardIdentity.address, cardIdentity.phones.join(" · "), cardIdentity.email];
+}
+
+/** Printed in the payment window on the white envelope. */
+export const paymentTransferDetails = {
+  fr: {
+    heading: "Coordonnées bancaires",
+    lines: [
+      "Titulaire : OPEN SARL",
+      "Banque : Rawbank — Goma",
+      "IBAN : CDxx xxxx xxxx xxxx xxxx xxxx xxx",
+      "SWIFT : RAWBCDCG",
+    ],
+  },
+  en: {
+    heading: "Bank transfer details",
+    lines: [
+      "Account holder: OPEN SARL",
+      "Bank: Rawbank — Goma",
+      "IBAN: CDxx xxxx xxxx xxxx xxxx xxxx xxx",
+      "SWIFT: RAWBCDCG",
+    ],
+  },
+} as const;
+
+export function paymentTransferLines(locale: Locale) {
+  const block = paymentTransferDetails[locale];
+  return [block.heading, ...block.lines];
 }
 
 const fr = {
@@ -208,7 +230,7 @@ const fr = {
   avoid: "Éviter",
   envelopeTitle: "Enveloppe",
   envelopeBody:
-    "Deux champs : marine et papier blanc. Le logo ouvre en haut à gauche (blanc sur marine, marine sur papier). La fenêtre d’adresse reste vide sous le logo. La boîte aux lettres est en haut à droite, la grue en bas à gauche. Les coordonnées reprennent la lettre, en une ligne à droite sous le décor, sans bandeau.",
+    "Deux champs : marine et papier blanc. Le logo ouvre en haut à gauche (blanc sur marine, marine sur papier). Sur papier, la fenêtre sous le logo porte les coordonnées bancaires. La boîte aux lettres est en haut à droite, la grue en bas à gauche. Les coordonnées de contact reprennent la lettre, en une ligne à droite sous le décor, sans bandeau.",
   envelopeMeta: "Paysage · champ marine",
   envelopeMetaWhite: "Paysage · papier blanc · fonds #E1E8F0",
   letterTitle: "Lettre officielle",
@@ -267,7 +289,7 @@ const fr = {
   invoiceCols: ["Désignation", "Qté", "Unité", "Montant"],
   invoiceTotalLabel: "Total",
   invoiceNote:
-    "Spécimen de charte. Les montants montrent la grille ; ils ne constituent pas une offre. Règlement par virement : les coordonnées bancaires partent avec le devis, elles ne sont pas imprimées ici.",
+    "Spécimen de charte. Les montants montrent la grille ; ils ne constituent pas une offre. Règlement par virement — coordonnées bancaires sur l’enveloppe papier.",
   receiptTitle: "Reçu",
   receiptMeta: "A4 · spécimen",
   receiptNumberLabel: "Reçu n°",
@@ -322,7 +344,9 @@ const fr = {
   exportCopy: "Copier le SVG",
   exportCopied: "Copié",
   files: [
-    { href: "/images/open-logo.svg", label: "Verrouillage SVG" },
+    { href: "/images/open-logo-navy.svg", label: "Verrouillage marine SVG" },
+    { href: "/images/open-logo-white.svg", label: "Verrouillage blanc SVG" },
+    { href: "/images/open-logo.svg", label: "Verrouillage SVG (legacy)" },
     { href: "/images/open-logo-mark.svg", label: "Symbole SVG" },
     { href: "/images/open-qr.svg", label: "QR du site SVG" },
   ],
@@ -425,7 +449,7 @@ const en = {
   avoid: "Avoid",
   envelopeTitle: "Envelope",
   envelopeBody:
-    "Two fields: navy and white paper. The logo opens at the top left (white on navy, navy on paper). The address window stays empty below the logo. The mailbox sits at the top right; the crane is cut by the bottom edge on the left. Contact matches the letter, one line on the right under the decor, with no band.",
+    "Two fields: navy and white paper. The logo opens at the top left (white on navy, navy on paper). On paper, the window below the logo carries bank transfer details. The mailbox sits at the top right; the crane is cut by the bottom edge on the left. Contact matches the letter, one line on the right under the decor, with no band.",
   envelopeMeta: "Landscape · navy field",
   envelopeMetaWhite: "Landscape · white paper · #E1E8F0 backdrops",
   letterTitle: "Official letter",
@@ -484,7 +508,7 @@ const en = {
   invoiceCols: ["Description", "Qty", "Unit", "Amount"],
   invoiceTotalLabel: "Total",
   invoiceNote:
-    "Guidelines specimen. The amounts show the grid; they are not an offer. Payment is by transfer: bank details go out with the quote and are not printed here.",
+    "Guidelines specimen. The amounts show the grid; they are not an offer. Payment is by transfer — bank details on the paper envelope.",
   receiptTitle: "Receipt",
   receiptMeta: "A4 · specimen",
   receiptNumberLabel: "Receipt no.",
@@ -539,7 +563,9 @@ const en = {
   exportCopy: "Copy SVG",
   exportCopied: "Copied",
   files: [
-    { href: "/images/open-logo.svg", label: "Lockup SVG" },
+    { href: "/images/open-logo-navy.svg", label: "Navy lockup SVG" },
+    { href: "/images/open-logo-white.svg", label: "White lockup SVG" },
+    { href: "/images/open-logo.svg", label: "Lockup SVG (legacy)" },
     { href: "/images/open-logo-mark.svg", label: "Symbol SVG" },
     { href: "/images/open-qr.svg", label: "Site QR SVG" },
   ],

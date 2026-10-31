@@ -110,10 +110,10 @@ export function StationeryPrintPack({
   }, [locale]);
 
   const downloadEnvelope = useCallback(async (kind: EnvelopeAssetKind, filename: string) => {
-    const svg = await loadAssetSvg(kind);
+    const svg = await loadAssetSvg(kind, locale);
     const blob = await svgToPngBlob(svg, ENVELOPE_PNG.width, ENVELOPE_PNG.height);
     downloadBlob(filename, blob);
-  }, []);
+  }, [locale]);
 
   const downloadAllEnvelopes = useCallback(async () => {
     for (const item of envelopeKinds) {
@@ -198,10 +198,10 @@ export function StationeryPrintPack({
         </div>
         <div className="brand-print-stack">
           <PrintSheet width={1100} height={630}>
-            <EnvelopeSheet label={copy.envelopeTitle} variant="navy" />
+            <EnvelopeSheet label={copy.envelopeTitle} variant="navy" locale={locale} />
           </PrintSheet>
           <PrintSheet width={1100} height={630}>
-            <EnvelopeSheet label={copy.envelopeTitle} variant="paper" />
+            <EnvelopeSheet label={copy.envelopeTitle} variant="paper" locale={locale} />
           </PrintSheet>
         </div>
       </div>
