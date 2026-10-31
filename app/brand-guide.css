@@ -876,7 +876,7 @@
   position: absolute;
   z-index: 2;
   right: 40px;
-  bottom: 0;
+  bottom: -10px;
   left: 40px;
   box-sizing: border-box;
   display: flex;
