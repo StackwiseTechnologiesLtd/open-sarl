@@ -7,7 +7,9 @@ import { OpenDocumentSheet } from "@/components/open-document-sheet";
 import { documentTemplateCatalog, type DocumentTemplateId } from "@/lib/document-templates";
 import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 
-const WEBSITE = "www.open-consulting.fr";
+import { siteHost } from "@/lib/site";
+
+const WEBSITE = siteHost;
 
 function LetterMetaBlock({
   sampleDate,

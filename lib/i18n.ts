@@ -1,9 +1,11 @@
 import type { IconName } from "@/components/icon";
+import { contactEmail } from "@/lib/site";
+
+export { contactEmail } from "@/lib/site";
 
 export const locales = ["fr", "en"] as const;
 export type Locale = (typeof locales)[number];
 
-export const contactEmail = "contact@open-consulting.fr";
 export const offices = ["Kinshasa, République démocratique du Congo"] as const;
 
 export function isLocale(value: string): value is Locale {
@@ -777,11 +779,11 @@ const dictionaries = {
         "Infrastructures urbaines",
       ],
       companyLinks: [
+        { href: "/about", label: "À propos" },
         { href: "#missions", label: "Missions" },
         { href: "#poles", label: "Pôles" },
         { href: "#expertise", label: "Expertise" },
         { href: "#portfolio", label: "Portfolio" },
-        { href: "/branding", label: "Charte" },
       ],
       sectors: "Secteurs",
       company: "Entreprise",
@@ -839,6 +841,20 @@ const dictionaries = {
       rightsTitle: "Vos demandes",
       rightsLead:
         "Pour accéder aux informations liées à un échange, les rectifier ou demander leur suppression, écrivez à",
+      back: "Retour à l'accueil",
+    },
+    aboutPage: {
+      metaTitle: "À propos",
+      title: "OPEN SARL",
+      intro:
+        "OPEN SARL est une société de conseil et d'ingénierie basée à Kinshasa. Nous aidons les autorités publiques et leurs partenaires à préparer, structurer et mettre en œuvre des programmes d'infrastructures stratégiques en RDC et en Afrique centrale.",
+      roleTitle: "Ce que nous faisons",
+      roleBody:
+        "Deux pôles complémentaires — conseil amont (préparation, faisabilité, structuration, appui institutionnel) et ingénierie de delivery (études, supervision, coordination) — au sein d'une même équipe, avec une charte documentaire et des livrables alignés sur les standards des bailleurs.",
+      officeTitle: "Siège",
+      officeBody: "Kinshasa, République démocratique du Congo.",
+      webLabel: "Site",
+      contactCta: "Prendre contact",
       back: "Retour à l'accueil",
     },
     notFound: {
@@ -1748,11 +1764,11 @@ const dictionaries = {
         "Urban infrastructure",
       ],
       companyLinks: [
+        { href: "/about", label: "About" },
         { href: "#missions", label: "Missions" },
         { href: "#poles", label: "Practices" },
         { href: "#expertise", label: "Expertise" },
         { href: "#portfolio", label: "Portfolio" },
-        { href: "/branding", label: "Guidelines" },
       ],
       sectors: "Sectors",
       company: "Company",
@@ -1810,6 +1826,20 @@ const dictionaries = {
       rightsTitle: "Your requests",
       rightsLead:
         "To access, correct or delete information linked to an exchange, write to",
+      back: "Back to home",
+    },
+    aboutPage: {
+      metaTitle: "About",
+      title: "OPEN SARL",
+      intro:
+        "OPEN SARL is an advisory and engineering firm based in Kinshasa. We help public authorities and their partners prepare, structure, and deliver strategic infrastructure programmes in the DRC and Central Africa.",
+      roleTitle: "What we do",
+      roleBody:
+        "Two complementary practices — upstream advisory (preparation, feasibility, structuring, institutional support) and delivery engineering (design support, supervision, coordination) — within one team, with document standards and deliverables aligned to donor requirements.",
+      officeTitle: "Office",
+      officeBody: "Kinshasa, Democratic Republic of the Congo.",
+      webLabel: "Website",
+      contactCta: "Get in touch",
       back: "Back to home",
     },
     notFound: {

@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/i18n";
+import { contactEmail, siteHost, siteUrl } from "@/lib/site";
 
 export const brandSectionIds = [
   "introduction",
@@ -97,9 +98,9 @@ export const invoiceLines = [
 export const invoiceTotal = invoiceLines.reduce((sum, line) => sum + line.amount, 0);
 
 export const correspondence = {
-  email: "contact@open-consulting.fr",
-  site: "www.open-consulting.fr",
-  siteUrl: "https://www.open-consulting.fr",
+  email: contactEmail,
+  site: siteHost,
+  siteUrl,
 } as const;
 
 /** One row for letter, invoice, receipt, and envelope footers. */
@@ -360,7 +361,7 @@ const fr = {
     { href: "/images/open-logo-mark.svg", label: "Symbole SVG" },
     { href: "/images/open-qr.svg", label: "QR du site SVG" },
   ],
-  qrAlt: "QR vers https://www.open-consulting.fr",
+  qrAlt: "QR vers " + siteUrl,
 };
 
 const en = {
@@ -586,7 +587,7 @@ const en = {
     { href: "/images/open-logo-mark.svg", label: "Symbol SVG" },
     { href: "/images/open-qr.svg", label: "Site QR SVG" },
   ],
-  qrAlt: "QR code for https://www.open-consulting.fr",
+  qrAlt: "QR code for " + siteUrl,
 };
 
 export const brandGuide = { fr, en };

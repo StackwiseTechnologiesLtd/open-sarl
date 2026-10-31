@@ -6,12 +6,14 @@ import {
   cardArtboard,
   cardBoard,
   contrastRatio,
+  correspondence,
   invoiceLines,
   invoiceTotal,
   navy,
   paper,
 } from "./brand-guide";
-import { getDictionary, resolveNavItemHref } from "./i18n";
+import { getDictionary } from "./i18n";
+import { siteHost } from "./site";
 
 describe("brand guide", () => {
   it("keeps the same sections in French and English", () => {
@@ -36,10 +38,12 @@ describe("brand guide", () => {
     expect(invoiceLines.reduce((sum, line) => sum + line.amount, 0)).toBe(invoiceTotal);
   });
 
-  it("links the public site to the guidelines", () => {
-    expect(resolveNavItemHref("fr", "/branding")).toBe("/fr/branding");
-    expect(resolveNavItemHref("en", "/branding")).toBe("/en/branding");
-    expect(getDictionary("fr").footer.companyLinks.some((item) => item.href === "/branding")).toBe(true);
-    expect(getDictionary("en").footer.companyLinks.some((item) => item.href === "/branding")).toBe(true);
+  it("uses the published site host on correspondence", () => {
+    expect(correspondence.site).toBe(siteHost);
+  });
+
+  it("links the public site footer to About", () => {
+    expect(getDictionary("fr").footer.companyLinks.some((item) => item.href === "/about")).toBe(true);
+    expect(getDictionary("en").footer.companyLinks.some((item) => item.href === "/about")).toBe(true);
   });
 });

@@ -4,7 +4,9 @@ import { OpenDocumentSheet } from "@/components/open-document-sheet";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import { contactEmail, mailHref } from "@/lib/i18n";
 
-const WEBSITE = "www.open-consulting.fr";
+import { siteHost } from "@/lib/site";
+
+const WEBSITE = siteHost;
 
 function BrochureToolbarLinks({
   locale,
