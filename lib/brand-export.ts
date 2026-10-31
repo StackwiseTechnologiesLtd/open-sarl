@@ -65,15 +65,23 @@ export function recolorSvgDocument(svg: string, color: string) {
   return recolorPaint(svg, color);
 }
 
-function placedArt(
+/** Match SVG `<image preserveAspectRatio="… meet">` with uniform scale inside a box. */
+function placedArtMeet(
   svg: string,
-  x: number,
-  y: number,
-  width: number,
+  boxX: number,
+  boxY: number,
+  boxWidth: number,
+  boxHeight: number,
   nativeWidth: number,
+  nativeHeight: number,
+  align: "xMinYMax" | "xMaxYMin",
 ) {
-  const scale = width / nativeWidth;
-  return `<g transform="translate(${x} ${y}) scale(${scale})">${stripSvg(svg)}</g>`;
+  const scale = Math.min(boxWidth / nativeWidth, boxHeight / nativeHeight);
+  const innerW = nativeWidth * scale;
+  const innerH = nativeHeight * scale;
+  const padX = align === "xMaxYMin" ? boxWidth - innerW : 0;
+  const padY = align === "xMaxYMin" ? 0 : boxHeight - innerH;
+  return `<g transform="translate(${boxX + padX} ${boxY + padY}) scale(${scale})">${stripSvg(svg)}</g>`;
 }
 
 export function envelopeArtLayout() {
@@ -145,8 +153,6 @@ function envelopeInnerMarkup(
   windowStyle: ReturnType<typeof envelopeWindowStyle>,
   bottomDecor: string,
   topDecor: string,
-  topScaleX: number,
-  topScaleY: number,
   showWindow: boolean,
 ) {
   const field = variant === "navy" ? board.navy : board.paper;
@@ -156,14 +162,26 @@ function envelopeInnerMarkup(
     ${windowBlock}
     <g transform="translate(${board.logoX} ${board.logoY}) scale(${logoScale})">${logoInner}</g>
     ${envelopeFooterSvg(variant)}
-    ${placedArt(
+    ${placedArtMeet(
       bottomDecor,
       board.bottomArt.x,
       layout.bottomY,
       board.bottomArt.width,
+      layout.bottomHeight,
       board.bottomArt.nativeWidth,
+      board.bottomArt.nativeHeight,
+      "xMinYMax",
     )}
-    <g transform="translate(${layout.topX} ${layout.topY}) scale(${topScaleX} ${topScaleY})">${stripSvg(topDecor)}</g>`;
+    ${placedArtMeet(
+      topDecor,
+      layout.topX,
+      layout.topY,
+      layout.topWidth,
+      layout.topHeight,
+      board.topArt.nativeWidth,
+      board.topArt.nativeHeight,
+      "xMaxYMin",
+    )}`;
 }
 
 export function composeEnvelopeSvg(
@@ -176,8 +194,6 @@ export function composeEnvelopeSvg(
   const board = envelopeBoard;
   const logoInner = stripSvg(logoSvg);
   const layout = envelopeArtLayout();
-  const topScaleX = layout.topWidth / board.topArt.nativeWidth;
-  const topScaleY = layout.topHeight / board.topArt.nativeHeight;
   const windowStyle = envelopeWindowStyle(variant);
   const bottomDecor = envelopeDecorSvg(bottomSvg, variant);
   const topDecor = envelopeDecorSvg(topSvg, variant);
@@ -190,8 +206,6 @@ export function composeEnvelopeSvg(
     windowStyle,
     bottomDecor,
     topDecor,
-    topScaleX,
-    topScaleY,
     showWindow,
   );
 

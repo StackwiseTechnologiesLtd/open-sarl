@@ -25,6 +25,7 @@ describe("envelope export", () => {
     });
     expect(paperPlain).not.toContain('y="262"');
     expect(stripSvg(svg)).not.toContain("<svg");
+    expect(svg).not.toMatch(/scale\([\d.]+ [\d.]+\)/);
     expect(recolorPaint(logo, "#FFFFFF")).toContain('fill="#FFFFFF"');
     expect(recolorPaint(logo, "#FFFFFF")).not.toContain("#000068");
   });
