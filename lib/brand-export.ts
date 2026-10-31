@@ -43,6 +43,7 @@ export const envelopeBoard = {
 
 export const letterArt = {
   topStrip: "/images/letter-top-strip.svg",
+  bottomStrip: "/images/letter-bottom-strip.svg",
   background: "/images/background-icon.svg",
 } as const;
 

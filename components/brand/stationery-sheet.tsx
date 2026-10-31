@@ -81,7 +81,7 @@ export function StationerySheet({
       <div className="stat-main">{children}</div>
       <footer className="stat-foot">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="stat-foot-strip" src={letterArt.topStrip} alt="" />
+        <img className="stat-foot-strip" src={letterArt.bottomStrip} alt="" />
         <div className="stat-foot-inner">
           {stationeryFooterItems().map((label, index) => {
             const Icon = footerIcons[index];

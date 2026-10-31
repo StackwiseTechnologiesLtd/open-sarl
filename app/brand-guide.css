@@ -706,8 +706,7 @@
 .stat-sheet {
   --stat-strip: 8.02%;
   --stat-strip-span: 50%;
-  --stat-foot-row: 4.2%;
-  --stat-foot-band: calc(var(--stat-strip) + var(--stat-foot-row));
+  --stat-foot-band: var(--stat-strip);
   font-family: var(--font-body-md);
 }
 
@@ -784,35 +783,32 @@
 
 .stat-foot-strip {
   position: absolute;
+  z-index: 1;
   bottom: 0;
   left: 0;
-  z-index: 2;
-  width: var(--stat-strip-span);
+  width: 100%;
   height: auto;
-  max-height: calc(100% - var(--stat-foot-row));
+  max-height: 100%;
+  pointer-events: none;
   object-fit: contain;
   object-position: left bottom;
-  transform: scaleY(-1);
-  transform-origin: center bottom;
-  pointer-events: none;
 }
 
 .stat-foot-inner {
   position: absolute;
-  z-index: 1;
-  right: 0;
+  z-index: 2;
+  right: 40px;
   bottom: 0;
-  left: 0;
+  left: 40px;
   box-sizing: border-box;
   display: flex;
+  height: 59%;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  width: 100%;
-  height: var(--stat-foot-row);
-  padding: 0 12px;
-  background: #000068;
+  padding: 0 4px;
+  background: transparent;
   font-family: var(--font-label-md);
   font-size: clamp(7px, 0.72cqw, 9px);
   line-height: 1;
