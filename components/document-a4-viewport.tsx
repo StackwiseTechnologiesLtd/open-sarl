@@ -2,6 +2,7 @@
 
 import { useCallback, useRef, useState, type ReactNode } from "react";
 import { Button } from "@/components/button";
+import { printStationeryStack } from "@/lib/stationery-print";
 
 type DocumentA4ViewportProps = {
   title: string;
@@ -53,6 +54,12 @@ export function DocumentA4Viewport({
     }
   }, [downloadFileName]);
 
+  const printDocuments = useCallback(() => {
+    const el = stackRef.current;
+    if (!el) return;
+    printStationeryStack(el);
+  }, []);
+
   return (
     <div className="doc-a4-viewport">
       <div className="doc-a4-toolbar">
@@ -64,7 +71,7 @@ export function DocumentA4Viewport({
           <Button type="button" variant="primary" disabled={busy} onClick={() => void downloadPdf()}>
             {busy ? "…" : downloadLabel}
           </Button>
-          <Button type="button" variant="outline" onClick={() => window.print()}>
+          <Button type="button" variant="outline" onClick={printDocuments}>
             {printLabel}
           </Button>
         </div>

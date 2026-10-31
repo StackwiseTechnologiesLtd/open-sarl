@@ -2705,6 +2705,47 @@ button:focus-visible {
   .doc-sheet.stat-sheet:last-child {
     page-break-after: auto;
   }
+
+  html.doc-a4-print-active body > :not(.doc-a4-print-portal) {
+    display: none !important;
+  }
+
+  html.doc-a4-print-active .doc-a4-print-portal {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    z-index: auto !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    background: #fff !important;
+  }
+
+  html.doc-a4-print-active .doc-a4-print-portal .doc-stack {
+    gap: 0;
+    align-items: stretch;
+  }
+
+  html.doc-a4-print-active .doc-a4-print-portal .doc-sheet,
+  html.doc-a4-print-active .doc-a4-print-portal .stat-sheet {
+    width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-width: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  html.doc-a4-print-active .doc-a4-print-portal .doc-sheet:last-child,
+  html.doc-a4-print-active .doc-a4-print-portal .stat-sheet:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
