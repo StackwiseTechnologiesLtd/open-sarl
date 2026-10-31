@@ -446,28 +446,30 @@
 }
 
 .lockup {
-  min-height: 220px;
-  padding: 1.25rem;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-end;
-  gap: 0.75rem;
+  gap: 0;
   border: 1px solid var(--g-line);
 }
 
-.lockup img {
+.lockup.is-navy {
+  border-color: #000068;
+}
+
+.lockup .lockup-preview {
+  flex: 1;
+  min-height: 180px;
+}
+
+.lockup .lockup-preview img {
   width: min(100%, 280px);
   height: auto;
 }
 
-.lockup.is-navy {
-  background: #000068;
-  border-color: #000068;
-}
-
 .lockup figcaption {
-  margin-top: 0.55rem;
+  margin: 0;
+  padding: 0 0 0.55rem;
 }
 
 .scale-list {
@@ -575,6 +577,81 @@
   container-type: inline-size;
   position: relative;
   width: 100%;
+}
+
+.board-export-frame {
+  position: relative;
+  overflow: visible;
+}
+
+.board-export-frame:focus-within .board-tile-actions,
+.board-export-frame:hover .board-tile-actions {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.board-tile-actions {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 10;
+  display: flex;
+  gap: 4px;
+  padding: 2px;
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 6px;
+  background: rgb(10 10 12 / 42%);
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+  transition: opacity 0.18s ease;
+}
+
+.board-tile-actions.is-on-dark {
+  border-color: rgb(255 255 255 / 10%);
+  background: rgb(0 0 0 / 34%);
+}
+
+.board-tile-actions button {
+  border: 0;
+  border-radius: 4px;
+  padding: 0.35rem 0.5rem;
+  background: rgb(255 255 255 / 12%);
+  color: #fff;
+  cursor: pointer;
+  font-family: var(--font-label-md);
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.board-tile-actions button:hover:not(:disabled) {
+  background: rgb(255 255 255 / 22%);
+}
+
+.board-tile-actions button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.lockup-preview {
+  position: relative;
+  display: flex;
+  min-height: 140px;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: var(--g-well);
+}
+
+.lockup-preview.is-on-dark {
+  background: #000068;
+}
+
+.lockup-preview.board-export-frame:focus-within .board-tile-actions,
+.lockup-preview.board-export-frame:hover .board-tile-actions {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .board {

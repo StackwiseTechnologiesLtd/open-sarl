@@ -1,22 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { copySvg, downloadBlob, loadAssetSvg, svgToPngBlob } from "@/lib/brand-export";
-
-const raster = {
-  logo: { width: 1600, height: Math.round((1600 * 2974) / 4408) },
-  "logo-white": { width: 1600, height: Math.round((1600 * 2974) / 4408) },
-  mark: { width: 800, height: Math.round((800 * 2720) / 1535) },
-  envelope: { width: 2200, height: 1260 },
-  "envelope-paper": { width: 2200, height: 1260 },
-} as const;
+import { brandAssetRaster, type BrandAssetRasterKind } from "@/lib/brand-asset-raster";
+import { copySvg, downloadBlob, loadAssetSvg, type LoadableSvgKind, svgToPngBlob } from "@/lib/brand-export";
 
 export function ExportBar({
   kind,
   filename,
   labels,
 }: {
-  kind: keyof typeof raster;
+  kind: BrandAssetRasterKind;
   filename: string;
   labels: { svg: string; png: string; copy: string; copied: string };
 }) {
@@ -26,13 +19,13 @@ export function ExportBar({
   async function run(action: "svg" | "png" | "copy") {
     setBusy(true);
     try {
-      const svg = await loadAssetSvg(kind);
+      const svg = await loadAssetSvg(kind as LoadableSvgKind);
       if (action === "svg") {
         downloadBlob(`${filename}.svg`, new Blob([svg], { type: "image/svg+xml" }));
         return;
       }
       if (action === "png") {
-        const size = raster[kind];
+        const size = brandAssetRaster[kind];
         downloadBlob(`${filename}.png`, await svgToPngBlob(svg, size.width, size.height));
         return;
       }

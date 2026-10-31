@@ -1,4 +1,4 @@
-import { useId, type ReactNode } from "react";
+import { useId } from "react";
 import { Logo } from "@/components/logo";
 import { EnvelopeDecor } from "@/components/brand/envelope-decor";
 import {
@@ -16,40 +16,6 @@ import {
 } from "@/lib/brand-export";
 import { cardIdentity, invoiceLines, invoiceTotal, money, paymentTransferDetails, type BrandCopy } from "@/lib/brand-guide";
 import type { Locale } from "@/lib/i18n";
-
-export function Board({
-  width,
-  height,
-  min = 0,
-  label,
-  children,
-}: {
-  width: number;
-  height: number;
-  min?: number;
-  label: string;
-  children: ReactNode;
-}) {
-  return (
-    <figure className="board-figure">
-      <div className="board-scroll">
-        <div
-          className="board-fit"
-          style={{
-            aspectRatio: `${width} / ${height}`,
-            minWidth: min || undefined,
-            ["--board-w" as string]: `${width}px`,
-          }}
-        >
-          <div className="board" style={{ width, height }}>
-            {children}
-          </div>
-        </div>
-      </div>
-      <figcaption className="board-caption">{label}</figcaption>
-    </figure>
-  );
-}
 
 export function CoverSheet({ navy }: { navy?: boolean }) {
   return <StationerySheet navyField={!!navy} />;

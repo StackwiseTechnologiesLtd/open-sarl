@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import { LanguageSwitch } from "@/components/language-switch";
 import { Logo } from "@/components/logo";
 import { BrandDocumentsSection } from "@/components/brand/documents-section";
-import { ExportBar } from "@/components/brand/export-bar";
+import { Board, LockupFrame } from "@/components/brand/board";
+import type { BoardExportLabels } from "@/components/brand/board-export-overlay";
 import {
-  Board,
   CardSheet,
   CoverSheet,
   EnvelopeSheet,
@@ -70,9 +70,10 @@ export function BrandGuide({ locale }: { locale: Locale }) {
   }
 
   const ink = theme === "ink";
-  const exportLabels = {
+  const exportLabels: BoardExportLabels = {
     svg: copy.exportSvg,
     png: copy.exportPng,
+    pdf: copy.exportPdf,
     copy: copy.exportCopy,
     copied: copy.exportCopied,
   };
@@ -129,10 +130,24 @@ export function BrandGuide({ locale }: { locale: Locale }) {
             <p className="brand-lead">{copy.lead}</p>
           </div>
           <div className="pair">
-            <Board width={794} height={1123} min={280} label={copy.coverLight}>
+            <Board
+              width={794}
+              height={1123}
+              min={280}
+              label={copy.coverLight}
+              export={{ mode: "pdf", filename: "open-cover-paper" }}
+              exportLabels={exportLabels}
+            >
               <CoverSheet />
             </Board>
-            <Board width={794} height={1123} min={280} label={copy.coverNavy}>
+            <Board
+              width={794}
+              height={1123}
+              min={280}
+              label={copy.coverNavy}
+              export={{ mode: "pdf", filename: "open-cover-navy" }}
+              exportLabels={exportLabels}
+            >
               <CoverSheet navy />
             </Board>
           </div>
@@ -150,23 +165,28 @@ export function BrandGuide({ locale }: { locale: Locale }) {
           <h2>{copy.marksTitle}</h2>
           <p className="brand-prose">{copy.marksBody}</p>
           <div className="lockup-row">
-            <figure className="lockup">
+            <LockupFrame
+              label={copy.marksLight}
+              export={{ mode: "asset", kind: "logo", filename: "open-logo" }}
+              exportLabels={exportLabels}
+            >
               <Logo unbounded className="cover-logo-img" />
-              <figcaption className="board-caption">{copy.marksLight}</figcaption>
-              <ExportBar kind="logo" filename="open-logo" labels={exportLabels} />
-            </figure>
-            <figure className="lockup is-navy">
+            </LockupFrame>
+            <LockupFrame
+              label={copy.marksNavy}
+              export={{ mode: "asset", kind: "logo-white", filename: "open-logo-white" }}
+              exportLabels={exportLabels}
+              onDark
+            >
               <Logo unbounded tone="light" className="cover-logo-img" />
-              <figcaption className="board-caption" style={{ color: "#d5d8ef" }}>
-                {copy.marksNavy}
-              </figcaption>
-              <ExportBar kind="logo-white" filename="open-logo-white" labels={exportLabels} />
-            </figure>
-            <figure className="lockup">
+            </LockupFrame>
+            <LockupFrame
+              label={copy.markAlone}
+              export={{ mode: "asset", kind: "mark", filename: "open-mark" }}
+              exportLabels={exportLabels}
+            >
               <Logo variant="mark" height={120} />
-              <figcaption className="board-caption">{copy.markAlone}</figcaption>
-              <ExportBar kind="mark" filename="open-mark" labels={exportLabels} />
-            </figure>
+            </LockupFrame>
           </div>
           <h3 className="brand-rule">{copy.clearTitle}</h3>
           <p className="brand-prose">{copy.clearBody}</p>
@@ -307,22 +327,46 @@ export function BrandGuide({ locale }: { locale: Locale }) {
           <h2>{copy.envelopeTitle}</h2>
           <p className="brand-prose">{copy.envelopeBody}</p>
           <div className="envelope-grid">
-            <Board width={1100} height={630} min={560} label={copy.envelopeMeta}>
+            <Board
+              width={1100}
+              height={630}
+              min={560}
+              label={copy.envelopeMeta}
+              export={{ mode: "asset", kind: "envelope-print", filename: "open-envelope-navy-window" }}
+              exportLabels={exportLabels}
+            >
               <EnvelopeSheet label={copy.envelopeTitle} variant="navy" showWindow />
             </Board>
-            <Board width={1100} height={630} min={560} label={copy.envelopeMetaNavyPlain}>
+            <Board
+              width={1100}
+              height={630}
+              min={560}
+              label={copy.envelopeMetaNavyPlain}
+              export={{ mode: "asset", kind: "envelope-print-plain", filename: "open-envelope-navy-plain" }}
+              exportLabels={exportLabels}
+            >
               <EnvelopeSheet label={copy.envelopeTitle} variant="navy" showWindow={false} />
             </Board>
-            <Board width={1100} height={630} min={560} label={copy.envelopeMetaWhite}>
+            <Board
+              width={1100}
+              height={630}
+              min={560}
+              label={copy.envelopeMetaWhite}
+              export={{ mode: "asset", kind: "envelope-paper-print", filename: "open-envelope-paper-window" }}
+              exportLabels={exportLabels}
+            >
               <EnvelopeSheet label={copy.envelopeTitle} variant="paper" showWindow />
             </Board>
-            <Board width={1100} height={630} min={560} label={copy.envelopeMetaPaperPlain}>
+            <Board
+              width={1100}
+              height={630}
+              min={560}
+              label={copy.envelopeMetaPaperPlain}
+              export={{ mode: "asset", kind: "envelope-paper-print-plain", filename: "open-envelope-paper-plain" }}
+              exportLabels={exportLabels}
+            >
               <EnvelopeSheet label={copy.envelopeTitle} variant="paper" showWindow={false} />
             </Board>
-          </div>
-          <div className="export-row">
-            <ExportBar kind="envelope" filename="open-envelope-navy" labels={exportLabels} />
-            <ExportBar kind="envelope-paper" filename="open-envelope-white" labels={exportLabels} />
           </div>
         </section>
 
@@ -331,7 +375,14 @@ export function BrandGuide({ locale }: { locale: Locale }) {
           <h2>{copy.letterTitle}</h2>
           <p className="brand-prose">{copy.letterBody}</p>
           <div className="stack-pair" style={{ gridTemplateColumns: "minmax(0, 760px)" }}>
-            <Board width={794} height={1123} min={640} label={copy.letterMeta}>
+            <Board
+              width={794}
+              height={1123}
+              min={640}
+              label={copy.letterMeta}
+              export={{ mode: "pdf", filename: "open-letter" }}
+              exportLabels={exportLabels}
+            >
               <LetterSheet copy={copy} />
             </Board>
           </div>
@@ -342,10 +393,24 @@ export function BrandGuide({ locale }: { locale: Locale }) {
           <h2>{copy.billingTitle}</h2>
           <p className="brand-prose">{copy.billingBody}</p>
           <div className="stack-pair">
-            <Board width={794} height={1123} min={520} label={copy.invoiceMeta}>
+            <Board
+              width={794}
+              height={1123}
+              min={520}
+              label={copy.invoiceMeta}
+              export={{ mode: "pdf", filename: "open-invoice" }}
+              exportLabels={exportLabels}
+            >
               <InvoiceSheet copy={copy} locale={locale} />
             </Board>
-            <Board width={794} height={1123} min={520} label={copy.receiptMeta}>
+            <Board
+              width={794}
+              height={1123}
+              min={520}
+              label={copy.receiptMeta}
+              export={{ mode: "pdf", filename: "open-receipt" }}
+              exportLabels={exportLabels}
+            >
               <ReceiptSheet copy={copy} locale={locale} />
             </Board>
           </div>
@@ -357,16 +422,40 @@ export function BrandGuide({ locale }: { locale: Locale }) {
           <p className="brand-prose">{copy.cardsBody}</p>
           <p className="brand-rule">{copy.cardsRule}</p>
           <div className="card-grid">
-            <Board width={cardBoard.width} height={cardBoard.height} label={`${copy.cardPaperIcons} · ${copy.cardMeta}`}>
+            <Board
+              width={cardBoard.width}
+              height={cardBoard.height}
+              label={`${copy.cardPaperIcons} · ${copy.cardMeta}`}
+              export={{ mode: "pdf", filename: "open-card-icons" }}
+              exportLabels={exportLabels}
+            >
               <CardSheet copy={copy} variant="icons" />
             </Board>
-            <Board width={cardBoard.width} height={cardBoard.height} label={`${copy.cardPaperAddress} · ${copy.cardMeta}`}>
+            <Board
+              width={cardBoard.width}
+              height={cardBoard.height}
+              label={`${copy.cardPaperAddress} · ${copy.cardMeta}`}
+              export={{ mode: "pdf", filename: "open-card-address" }}
+              exportLabels={exportLabels}
+            >
               <CardSheet copy={copy} variant="address" />
             </Board>
-            <Board width={cardBoard.width} height={cardBoard.height} label={`${copy.cardNavyBack} · ${copy.cardMeta}`}>
+            <Board
+              width={cardBoard.width}
+              height={cardBoard.height}
+              label={`${copy.cardNavyBack} · ${copy.cardMeta}`}
+              export={{ mode: "pdf", filename: "open-card-back" }}
+              exportLabels={exportLabels}
+            >
               <CardSheet copy={copy} variant="back" />
             </Board>
-            <Board width={cardBoard.width} height={cardBoard.height} label={`${copy.cardNavyFront} · ${copy.cardMeta}`}>
+            <Board
+              width={cardBoard.width}
+              height={cardBoard.height}
+              label={`${copy.cardNavyFront} · ${copy.cardMeta}`}
+              export={{ mode: "pdf", filename: "open-card-front" }}
+              exportLabels={exportLabels}
+            >
               <CardSheet copy={copy} variant="front" />
             </Board>
           </div>

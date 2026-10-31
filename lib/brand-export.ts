@@ -219,12 +219,13 @@ export type EnvelopeAssetKind =
   | "envelope"
   | "envelope-paper"
   | "envelope-print"
-  | "envelope-paper-print";
+  | "envelope-print-plain"
+  | "envelope-paper-print"
+  | "envelope-paper-print-plain";
 
-export async function loadAssetSvg(
-  kind: "logo" | "logo-white" | "mark" | EnvelopeAssetKind,
-  locale: Locale = "fr",
-) {
+export type LoadableSvgKind = "logo" | "logo-white" | "mark" | EnvelopeAssetKind;
+
+export async function loadAssetSvg(kind: LoadableSvgKind, locale: Locale = "fr") {
   const [logoNavy, logoWhite] = await Promise.all([
     fetch("/images/open-logo-navy.svg").then((response) => response.text()),
     fetch("/images/open-logo-white.svg").then((response) => response.text()),
@@ -246,8 +247,14 @@ export async function loadAssetSvg(
   if (kind === "envelope-print") {
     return composeEnvelopeSvg(logoWhite, top, bottom, "navy", envelopeOpts);
   }
+  if (kind === "envelope-print-plain") {
+    return composeEnvelopeSvg(logoWhite, top, bottom, "navy", { ...envelopeOpts, showWindow: false });
+  }
   if (kind === "envelope-paper-print") {
     return composeEnvelopeSvg(logoNavy, top, bottom, "paper", envelopeOpts);
+  }
+  if (kind === "envelope-paper-print-plain") {
+    return composeEnvelopeSvg(logoNavy, top, bottom, "paper", { ...envelopeOpts, showWindow: false });
   }
   return composeEnvelopeSvg(logoWhite, top, bottom, "navy", envelopeOpts);
 }

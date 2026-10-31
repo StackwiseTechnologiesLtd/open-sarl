@@ -343,6 +343,7 @@ const fr = {
   },
   exportSvg: "SVG",
   exportPng: "PNG",
+  exportPdf: "PDF",
   exportCopy: "Copier le SVG",
   exportCopied: "Copié",
   files: [
@@ -564,6 +565,7 @@ const en = {
   },
   exportSvg: "SVG",
   exportPng: "PNG",
+  exportPdf: "PDF",
   exportCopy: "Copy SVG",
   exportCopied: "Copied",
   files: [
