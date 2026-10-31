@@ -2907,6 +2907,59 @@ button:focus-visible {
   cursor: not-allowed;
 }
 
+.doc-compose-template-picker {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.doc-compose-template-picker legend {
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-on-surface-variant);
+}
+
+.doc-compose-template-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+  gap: 0.4rem;
+}
+
+.doc-compose-template-btn {
+  border: 1px solid #d7dbe3;
+  background: #fff;
+  padding: 0.5rem 0.45rem;
+  font-family: var(--font-label-md);
+  font-size: 0.6875rem;
+  line-height: 1.25;
+  text-align: left;
+  cursor: pointer;
+  color: var(--color-on-surface);
+}
+
+.doc-compose-template-btn.is-active {
+  border-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 8%, #fff);
+  color: var(--color-primary);
+  font-weight: 650;
+}
+
+.doc-compose-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--color-on-surface);
+}
+
+.doc-compose-extra-page {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
 .doc-compose-section-block {
   display: flex;
   flex-direction: column;
@@ -2936,6 +2989,23 @@ button:focus-visible {
 .brand-doc-compose-link:hover {
   background: var(--g-ink);
   color: var(--g-bg);
+}
+
+.brand-doc-compose-types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8125rem;
+}
+
+.brand-doc-compose-types a {
+  color: var(--g-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .brand-documents-compose-cta {

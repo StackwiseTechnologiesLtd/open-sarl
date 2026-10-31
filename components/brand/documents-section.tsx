@@ -22,6 +22,20 @@ export function BrandDocumentsSection({ locale }: { locale: Locale }) {
         <a href={`/${locale}/documents/compose`} className="brand-doc-compose-link">
           {compose.openComposer}
         </a>
+        <ul className="brand-doc-compose-types">
+          <li>
+            <a href={`/${locale}/documents/compose?type=official-letter`}>{compose.templateTypes["official-letter"]}</a>
+          </li>
+          <li>
+            <a href={`/${locale}/documents/compose?type=invoice`}>{compose.templateTypes.invoice}</a>
+          </li>
+          <li>
+            <a href={`/${locale}/documents/compose?type=receipt`}>{compose.templateTypes.receipt}</a>
+          </li>
+          <li>
+            <a href={`/${locale}/documents/compose?type=invoice-receipt`}>{compose.templateTypes["invoice-receipt"]}</a>
+          </li>
+        </ul>
       </div>
 
       <div className="brand-documents-block">

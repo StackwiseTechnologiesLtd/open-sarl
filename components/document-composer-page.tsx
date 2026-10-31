@@ -1,20 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState, type Dispatch, type SetStateAction } from "react";
+import { useSearchParams } from "next/navigation";
+import { useMemo, useState, type Dispatch, type ReactNode, type SetStateAction } from "react";
 import {
   InvoiceSheet,
   LetterSheet,
   ReceiptSheet,
 } from "@/components/brand/specimens";
-import type { InvoiceLineInput } from "@/lib/document-composer";
 import { DocumentA4Viewport } from "@/components/document-a4-viewport";
 import { OpenDocumentSheet } from "@/components/open-document-sheet";
 import { brandGuide } from "@/lib/brand-guide";
 import {
   composerDownloadName,
+  composerPageCount,
   composerTemplateOrder,
   createComposerFormState,
+  isComposerTemplateId,
   invoiceFormToOverrides,
   letterFormToOverrides,
   proposalBullets,
@@ -22,6 +24,7 @@ import {
   reportBullets,
   type ComposerFormState,
   type ComposerTemplateId,
+  type CoverForm,
 } from "@/lib/document-composer";
 import type { Dictionary, Locale } from "@/lib/i18n";
 
@@ -48,6 +51,26 @@ function Field({
         <input className={className} type="text" value={value} onChange={(e) => onChange(e.target.value)} />
       )}
     </label>
+  );
+}
+
+function CoverPage({ cover }: { cover: CoverForm }) {
+  return (
+    <OpenDocumentSheet variant="cover" website={WEBSITE} theme="corporate">
+      <p className="doc-cover-kicker">{cover.kicker}</p>
+      <h2 className="doc-cover-title">{cover.title}</h2>
+      <p className="doc-cover-subtitle">{cover.subtitle}</p>
+      <p className="doc-cover-lead">{cover.lead}</p>
+    </OpenDocumentSheet>
+  );
+}
+
+function ContinuationPage({ body }: { body: string }) {
+  if (!body.trim()) return null;
+  return (
+    <OpenDocumentSheet variant="letter" website={WEBSITE} theme="corporate">
+      <p className="doc-letter-prose whitespace-pre-line">{body}</p>
+    </OpenDocumentSheet>
   );
 }
 
@@ -94,33 +117,61 @@ function ComposerPreview({
 }) {
   const shared = dict.documentTemplates;
   const copy = brandGuide[locale];
-  const { templateId } = state;
+  const { templateId, layout } = state;
+  const extras = layout.extraPages.map((body, index) => (
+    <ContinuationPage key={`extra-${index}`} body={body} />
+  ));
 
-  if (templateId === "cover") {
-    const f = state.cover;
-    return (
-      <OpenDocumentSheet variant="cover" website={WEBSITE} theme="corporate">
-        <p className="doc-cover-kicker">{f.kicker}</p>
-        <h2 className="doc-cover-title">{f.title}</h2>
-        <p className="doc-cover-subtitle">{f.subtitle}</p>
-        <p className="doc-cover-lead">{f.lead}</p>
-      </OpenDocumentSheet>
-    );
+  const prefix: ReactNode[] = [];
+  if (layout.includeCover && templateId !== "letterhead" && templateId !== "proposal" && templateId !== "report") {
+    prefix.push(<CoverPage key="cover" cover={state.cover} />);
   }
 
-  if (templateId === "letter") {
-    return <LetterSheet copy={copy} data={letterFormToOverrides(state.letter)} />;
+  if (templateId === "official-letter") {
+    return (
+      <>
+        {prefix}
+        <LetterSheet copy={copy} data={letterFormToOverrides(state.letter)} />
+        {extras}
+      </>
+    );
   }
 
   if (templateId === "invoice") {
     return (
-      <InvoiceSheet copy={copy} locale={locale} data={invoiceFormToOverrides(state.invoice)} />
+      <>
+        {prefix}
+        <InvoiceSheet copy={copy} locale={locale} data={invoiceFormToOverrides(state.invoice)} />
+        {extras}
+      </>
     );
   }
 
   if (templateId === "receipt") {
     return (
-      <ReceiptSheet copy={copy} locale={locale} data={receiptFormToOverrides(state.receipt)} />
+      <>
+        {prefix}
+        <ReceiptSheet copy={copy} locale={locale} data={receiptFormToOverrides(state.receipt)} />
+        {extras}
+      </>
+    );
+  }
+
+  if (templateId === "invoice-receipt") {
+    const invoiceData = invoiceFormToOverrides(state.invoice);
+    const total = (invoiceData.lines ?? []).reduce((sum, line) => sum + line.amount, 0);
+    const receiptData = receiptFormToOverrides({
+      ...state.receipt,
+      amount: String(total || state.receipt.amount),
+      invoiceNumber: state.invoice.number,
+    });
+    return (
+      <>
+        {prefix}
+        <InvoiceSheet copy={copy} locale={locale} data={invoiceData} />
+        <ReceiptSheet copy={copy} locale={locale} data={receiptData} />
+        {extras}
+      </>
     );
   }
 
@@ -148,6 +199,7 @@ function ComposerPreview({
           <p className="doc-letter-prose">{f.bodyParagraph2}</p>
           <p className="doc-letter-prose doc-letter-signature whitespace-pre-line">{f.signatureBlock}</p>
         </OpenDocumentSheet>
+        {extras}
       </>
     );
   }
@@ -192,6 +244,7 @@ function ComposerPreview({
           <p className="doc-letter-section-title">{f.sectionTermsTitle}</p>
           <p className="doc-letter-prose">{f.sectionTermsBody}</p>
         </OpenDocumentSheet>
+        {extras}
       </>
     );
   }
@@ -226,6 +279,7 @@ function ComposerPreview({
           ))}
         </ul>
       </OpenDocumentSheet>
+      {extras}
     </>
   );
 }
@@ -235,8 +289,8 @@ function InvoiceLineEditor({
   onChange,
   labels,
 }: {
-  lines: InvoiceLineInput[];
-  onChange: (lines: InvoiceLineInput[]) => void;
+  lines: import("@/lib/document-composer").InvoiceLineInput[];
+  onChange: (lines: import("@/lib/document-composer").InvoiceLineInput[]) => void;
   labels: { designation: string; qty: string; unit: string; amount: string; add: string; remove: string };
 }) {
   return (
@@ -297,9 +351,7 @@ function InvoiceLineEditor({
       <button
         type="button"
         className="doc-compose-line-add"
-        onClick={() =>
-          onChange([...lines, { title: "", qty: "1", unit: "", amount: 0 }])
-        }
+        onClick={() => onChange([...lines, { title: "", qty: "1", unit: "", amount: 0 }])}
       >
         {labels.add}
       </button>
@@ -336,25 +388,52 @@ function ComposerForm({
     }));
   };
 
+  const usesOptionalCover =
+    templateId === "official-letter" ||
+    templateId === "invoice" ||
+    templateId === "receipt" ||
+    templateId === "invoice-receipt";
+
+  const usesInvoiceFields = templateId === "invoice" || templateId === "invoice-receipt";
+  const usesReceiptFields = templateId === "receipt" || templateId === "invoice-receipt";
+
   return (
     <div className="doc-compose-form">
-      <label className="doc-compose-label">
-        <span>{c.templateLabel}</span>
-        <select
-          className="doc-compose-field"
-          value={templateId}
-          onChange={(e) => setTemplate(e.target.value as ComposerTemplateId)}
-        >
+      <fieldset className="doc-compose-template-picker">
+        <legend>{c.templateLabel}</legend>
+        <div className="doc-compose-template-grid">
           {composerTemplateOrder.map((item) => (
-            <option key={item.id} value={item.id}>
+            <button
+              key={item.id}
+              type="button"
+              className={`doc-compose-template-btn${templateId === item.id ? " is-active" : ""}`}
+              onClick={() => setTemplate(item.id)}
+            >
               {templateTypes[item.id]}
-            </option>
+            </button>
           ))}
-        </select>
-      </label>
+        </div>
+      </fieldset>
 
-      {templateId === "cover" ? (
+      {usesOptionalCover ? (
+        <label className="doc-compose-check">
+          <input
+            type="checkbox"
+            checked={state.layout.includeCover}
+            onChange={(e) =>
+              patch("layout", (p) => ({
+                ...p,
+                includeCover: e.target.checked,
+              }))
+            }
+          />
+          <span>{c.includeCover}</span>
+        </label>
+      ) : null}
+
+      {usesOptionalCover && state.layout.includeCover ? (
         <>
+          <p className="doc-compose-section">{c.coverPageTitle}</p>
           <Field label={c.coverKicker} value={state.cover.kicker} onChange={(v) => patch("cover", (p) => ({ ...p, kicker: v }))} />
           <Field label={c.coverTitle} value={state.cover.title} onChange={(v) => patch("cover", (p) => ({ ...p, title: v }))} />
           <Field label={c.coverSubtitle} value={state.cover.subtitle} onChange={(v) => patch("cover", (p) => ({ ...p, subtitle: v }))} />
@@ -362,7 +441,7 @@ function ComposerForm({
         </>
       ) : null}
 
-      {templateId === "letter" ? (
+      {templateId === "official-letter" ? (
         <>
           <Field label={c.date} value={state.letter.date} onChange={(v) => patch("letter", (p) => ({ ...p, date: v }))} />
           <Field label={c.recipientBlock} value={state.letter.toLines} onChange={(v) => patch("letter", (p) => ({ ...p, toLines: v }))} multiline />
@@ -410,25 +489,9 @@ function ComposerForm({
         </>
       ) : null}
 
-      {templateId === "letterhead" ? (
+      {usesInvoiceFields ? (
         <>
-          <Field label={c.coverTitle} value={state.letterhead.coverTitle} onChange={(v) => patch("letterhead", (p) => ({ ...p, coverTitle: v }))} />
-          <Field label={c.coverSubtitle} value={state.letterhead.coverSubtitle} onChange={(v) => patch("letterhead", (p) => ({ ...p, coverSubtitle: v }))} multiline />
-          <Field label={c.coverLead} value={state.letterhead.coverLead} onChange={(v) => patch("letterhead", (p) => ({ ...p, coverLead: v }))} multiline />
-          <Field label={c.date} value={state.letterhead.sampleDate} onChange={(v) => patch("letterhead", (p) => ({ ...p, sampleDate: v }))} />
-          <Field label={c.recipientName} value={state.letterhead.toName} onChange={(v) => patch("letterhead", (p) => ({ ...p, toName: v }))} />
-          <Field label={c.recipientOrg} value={state.letterhead.toCompany} onChange={(v) => patch("letterhead", (p) => ({ ...p, toCompany: v }))} />
-          <Field label={c.recipientAddress} value={state.letterhead.toAddress} onChange={(v) => patch("letterhead", (p) => ({ ...p, toAddress: v }))} multiline />
-          <Field label={c.subject} value={state.letterhead.subjectLabel} onChange={(v) => patch("letterhead", (p) => ({ ...p, subjectLabel: v }))} />
-          <Field label={c.salutation} value={state.letterhead.salutation} onChange={(v) => patch("letterhead", (p) => ({ ...p, salutation: v }))} />
-          <Field label={c.body1} value={state.letterhead.bodyParagraph1} onChange={(v) => patch("letterhead", (p) => ({ ...p, bodyParagraph1: v }))} multiline />
-          <Field label={c.body2} value={state.letterhead.bodyParagraph2} onChange={(v) => patch("letterhead", (p) => ({ ...p, bodyParagraph2: v }))} multiline />
-          <Field label={c.signature} value={state.letterhead.signatureBlock} onChange={(v) => patch("letterhead", (p) => ({ ...p, signatureBlock: v }))} multiline />
-        </>
-      ) : null}
-
-      {templateId === "invoice" ? (
-        <>
+          <p className="doc-compose-section">{copy.invoiceTitle}</p>
           <Field label={copy.invoiceNumberLabel} value={state.invoice.number} onChange={(v) => patch("invoice", (p) => ({ ...p, number: v }))} />
           <Field label={copy.invoiceDateLabel} value={state.invoice.date} onChange={(v) => patch("invoice", (p) => ({ ...p, date: v }))} />
           <Field label={copy.invoiceDueLabel} value={state.invoice.due} onChange={(v) => patch("invoice", (p) => ({ ...p, due: v }))} />
@@ -450,8 +513,9 @@ function ComposerForm({
         </>
       ) : null}
 
-      {templateId === "receipt" ? (
+      {usesReceiptFields && templateId !== "invoice-receipt" ? (
         <>
+          <p className="doc-compose-section">{copy.receiptTitle}</p>
           <Field label={copy.receiptNumberLabel} value={state.receipt.number} onChange={(v) => patch("receipt", (p) => ({ ...p, number: v }))} />
           <Field label={copy.invoiceDateLabel} value={state.receipt.date} onChange={(v) => patch("receipt", (p) => ({ ...p, date: v }))} />
           <Field label={copy.invoiceNumberLabel} value={state.receipt.invoiceNumber} onChange={(v) => patch("receipt", (p) => ({ ...p, invoiceNumber: v }))} />
@@ -463,9 +527,33 @@ function ComposerForm({
         </>
       ) : null}
 
-      {(templateId === "proposal" || templateId === "report") && (
-        <p className="doc-compose-hint">{c.longFormHint}</p>
-      )}
+      {templateId === "invoice-receipt" ? (
+        <>
+          <p className="doc-compose-section">{copy.receiptTitle}</p>
+          <Field label={copy.receiptNumberLabel} value={state.receipt.number} onChange={(v) => patch("receipt", (p) => ({ ...p, number: v }))} />
+          <Field label={copy.receiptForLabel} value={state.receipt.forText} onChange={(v) => patch("receipt", (p) => ({ ...p, forText: v }))} multiline />
+          <Field label={c.place} value={state.receipt.place} onChange={(v) => patch("receipt", (p) => ({ ...p, place: v }))} />
+          <Field label={c.signOff} value={state.receipt.signLabel} onChange={(v) => patch("receipt", (p) => ({ ...p, signLabel: v }))} />
+          <p className="doc-compose-hint">{c.invoiceReceiptHint}</p>
+        </>
+      ) : null}
+
+      {templateId === "letterhead" ? (
+        <>
+          <Field label={c.coverTitle} value={state.letterhead.coverTitle} onChange={(v) => patch("letterhead", (p) => ({ ...p, coverTitle: v }))} />
+          <Field label={c.coverSubtitle} value={state.letterhead.coverSubtitle} onChange={(v) => patch("letterhead", (p) => ({ ...p, coverSubtitle: v }))} multiline />
+          <Field label={c.coverLead} value={state.letterhead.coverLead} onChange={(v) => patch("letterhead", (p) => ({ ...p, coverLead: v }))} multiline />
+          <Field label={c.date} value={state.letterhead.sampleDate} onChange={(v) => patch("letterhead", (p) => ({ ...p, sampleDate: v }))} />
+          <Field label={c.recipientName} value={state.letterhead.toName} onChange={(v) => patch("letterhead", (p) => ({ ...p, toName: v }))} />
+          <Field label={c.recipientOrg} value={state.letterhead.toCompany} onChange={(v) => patch("letterhead", (p) => ({ ...p, toCompany: v }))} />
+          <Field label={c.recipientAddress} value={state.letterhead.toAddress} onChange={(v) => patch("letterhead", (p) => ({ ...p, toAddress: v }))} multiline />
+          <Field label={c.subject} value={state.letterhead.subjectLabel} onChange={(v) => patch("letterhead", (p) => ({ ...p, subjectLabel: v }))} />
+          <Field label={c.salutation} value={state.letterhead.salutation} onChange={(v) => patch("letterhead", (p) => ({ ...p, salutation: v }))} />
+          <Field label={c.body1} value={state.letterhead.bodyParagraph1} onChange={(v) => patch("letterhead", (p) => ({ ...p, bodyParagraph1: v }))} multiline />
+          <Field label={c.body2} value={state.letterhead.bodyParagraph2} onChange={(v) => patch("letterhead", (p) => ({ ...p, bodyParagraph2: v }))} multiline />
+          <Field label={c.signature} value={state.letterhead.signatureBlock} onChange={(v) => patch("letterhead", (p) => ({ ...p, signatureBlock: v }))} multiline />
+        </>
+      ) : null}
 
       {templateId === "proposal" ? (
         <>
@@ -507,18 +595,83 @@ function ComposerForm({
           <Field label={c.bullets} value={state.report.sectionNextBullets} onChange={(v) => patch("report", (p) => ({ ...p, sectionNextBullets: v }))} multiline />
         </>
       ) : null}
+
+      <div className="doc-compose-section-block">
+        <p className="doc-compose-section">{c.extraPagesTitle}</p>
+        <p className="doc-compose-hint">{c.extraPagesHint}</p>
+        {state.layout.extraPages.map((body, index) => (
+          <div key={index} className="doc-compose-extra-page">
+            <Field
+              label={`${c.extraPageLabel} ${index + 1}`}
+              value={body}
+              onChange={(v) =>
+                patch("layout", (p) => ({
+                  ...p,
+                  extraPages: p.extraPages.map((row, i) => (i === index ? v : row)),
+                }))
+              }
+              multiline
+            />
+            <button
+              type="button"
+              className="doc-compose-line-remove"
+              onClick={() =>
+                patch("layout", (p) => ({
+                  ...p,
+                  extraPages: p.extraPages.filter((_, i) => i !== index),
+                }))
+              }
+            >
+              {c.removeLine}
+            </button>
+          </div>
+        ))}
+        <button
+          type="button"
+          className="doc-compose-line-add"
+          onClick={() => patch("layout", (p) => ({ ...p, extraPages: [...p.extraPages, ""] }))}
+        >
+          {c.addExtraPage}
+        </button>
+      </div>
     </div>
   );
 }
 
 export function DocumentComposerPage({ locale, dict }: { locale: Locale; dict: Dictionary }) {
-  const [state, setState] = useState(() => createComposerFormState(locale));
+  const searchParams = useSearchParams();
+  const type = searchParams.get("type");
+  const initialTemplateId = type && isComposerTemplateId(type) ? type : undefined;
+  return (
+    <DocumentComposerPageInner
+      key={initialTemplateId ?? "default"}
+      locale={locale}
+      dict={dict}
+      initialTemplateId={initialTemplateId}
+    />
+  );
+}
+
+function DocumentComposerPageInner({
+  locale,
+  dict,
+  initialTemplateId,
+}: {
+  locale: Locale;
+  dict: Dictionary;
+  initialTemplateId?: ComposerTemplateId;
+}) {
+  const [state, setState] = useState(() => createComposerFormState(locale, initialTemplateId));
   const c = dict.documentComposer;
   const v = dict.documentViewer;
+
   const downloadName = useMemo(
     () => composerDownloadName(state.templateId, locale),
     [state.templateId, locale],
   );
+
+  const pageCount = composerPageCount(state);
+  const pageCountHint = c.pageCountHint.replace("{count}", String(pageCount));
 
   return (
     <main className="page-main doc-compose-page">
@@ -542,12 +695,11 @@ export function DocumentComposerPage({ locale, dict }: { locale: Locale; dict: D
 
           <section className="doc-compose-preview-wrap" aria-label={c.previewAria}>
             <DocumentA4Viewport
-              key={state.templateId}
               title={c.previewTitle}
               downloadLabel={v.downloadWebPdf}
               downloadFileName={downloadName}
               printLabel={dict.documentTemplates.print}
-              pageCountHint={c.previewHint}
+              pageCountHint={pageCountHint}
             >
               <ComposerPreview state={state} locale={locale} dict={dict} />
             </DocumentA4Viewport>

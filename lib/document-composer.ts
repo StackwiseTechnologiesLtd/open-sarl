@@ -37,7 +37,18 @@ export type LetterOverrides = {
   sections?: { title: string; body: string; bullets?: string[] }[];
 };
 
-export type ComposerTemplateId = DocumentTemplateId | "cover" | "letter" | "invoice" | "receipt";
+export type ComposerTemplateId =
+  | DocumentTemplateId
+  | "official-letter"
+  | "invoice"
+  | "receipt"
+  | "invoice-receipt";
+
+export type ComposerDocumentLayout = {
+  includeCover: boolean;
+  /** Additional A4 body pages (plain text, same stationery). */
+  extraPages: string[];
+};
 
 export type ComposerTemplateOption = {
   id: ComposerTemplateId;
@@ -45,13 +56,13 @@ export type ComposerTemplateOption = {
 };
 
 export const composerTemplateOrder: ComposerTemplateOption[] = [
-  { id: "cover", labelKey: "cover" },
-  { id: "letter", labelKey: "letter" },
+  { id: "official-letter", labelKey: "official-letter" },
+  { id: "invoice", labelKey: "invoice" },
+  { id: "receipt", labelKey: "receipt" },
+  { id: "invoice-receipt", labelKey: "invoice-receipt" },
   { id: "letterhead", labelKey: "letterhead" },
   { id: "proposal", labelKey: "proposal" },
   { id: "report", labelKey: "report" },
-  { id: "invoice", labelKey: "invoice" },
-  { id: "receipt", labelKey: "receipt" },
 ];
 
 export type CoverForm = {
@@ -150,6 +161,7 @@ export type ReceiptForm = {
 
 export type ComposerFormState = {
   templateId: ComposerTemplateId;
+  layout: ComposerDocumentLayout;
   cover: CoverForm;
   letter: OfficialLetterForm;
   letterhead: LetterheadForm;
@@ -158,6 +170,24 @@ export type ComposerFormState = {
   invoice: InvoiceForm;
   receipt: ReceiptForm;
 };
+
+export function composerPageCount(state: ComposerFormState) {
+  const extra = state.layout.extraPages.length;
+  switch (state.templateId) {
+    case "official-letter":
+    case "invoice":
+    case "receipt":
+      return (state.layout.includeCover ? 1 : 0) + 1 + extra;
+    case "invoice-receipt":
+      return (state.layout.includeCover ? 1 : 0) + 2 + extra;
+    case "letterhead":
+    case "proposal":
+    case "report":
+      return 2 + extra;
+    default:
+      return 1 + extra;
+  }
+}
 
 function bulletsToText(items: readonly string[]) {
   return items.join("\n");
@@ -170,7 +200,14 @@ function textToBullets(text: string) {
     .filter(Boolean);
 }
 
-export function createComposerFormState(locale: Locale): ComposerFormState {
+export function isComposerTemplateId(value: string): value is ComposerTemplateId {
+  return composerTemplateOrder.some((t) => t.id === value);
+}
+
+export function createComposerFormState(
+  locale: Locale,
+  initialTemplateId?: ComposerTemplateId,
+): ComposerFormState {
   const dict = getDictionary(locale);
   const shared = dict.documentTemplates;
   const kinds = shared.kinds;
@@ -190,7 +227,11 @@ export function createComposerFormState(locale: Locale): ComposerFormState {
   }));
 
   return {
-    templateId: "cover",
+    templateId: initialTemplateId ?? "official-letter",
+    layout: {
+      includeCover: false,
+      extraPages: [],
+    },
     cover: {
       kicker: shared.coverHint,
       title: kinds.letterhead.coverTitle,
@@ -330,13 +371,13 @@ export function letterFormToOverrides(form: OfficialLetterForm) {
 
 export function composerDownloadName(templateId: ComposerTemplateId, locale: Locale) {
   const prefix: Record<ComposerTemplateId, string> = {
-    cover: "OPEN_Cover",
-    letter: "OPEN_Letter",
+    "official-letter": "OPEN_Official_Letter",
     letterhead: "OPEN_Letterhead",
     proposal: "OPEN_Proposal",
     report: "OPEN_Report",
     invoice: "OPEN_Invoice",
     receipt: "OPEN_Receipt",
+    "invoice-receipt": "OPEN_Invoice_Receipt",
   };
   return `${prefix[templateId]}_${locale}.pdf`;
 }
