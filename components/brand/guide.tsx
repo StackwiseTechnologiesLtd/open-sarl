@@ -74,6 +74,7 @@ export function BrandGuide({ locale }: { locale: Locale }) {
     svg: copy.exportSvg,
     png: copy.exportPng,
     pdf: copy.exportPdf,
+    print: copy.exportPrint,
     copy: copy.exportCopy,
     copied: copy.exportCopied,
   };

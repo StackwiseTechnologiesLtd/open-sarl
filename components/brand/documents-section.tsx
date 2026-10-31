@@ -5,6 +5,7 @@ import { DocumentTemplatesAllViewer } from "@/components/document-template-viewe
 import { StationeryPrintPack } from "@/components/brand/stationery-print-pack";
 import { documentCatalog } from "@/lib/documents";
 import { brandGuide } from "@/lib/brand-guide";
+import { printPdfUrl } from "@/lib/print-pdf-url";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
 export function BrandDocumentsSection({ locale }: { locale: Locale }) {
@@ -17,18 +18,35 @@ export function BrandDocumentsSection({ locale }: { locale: Locale }) {
       <div className="brand-documents-block">
         <h3 className="brand-documents-heading">{copy.printPackTitle}</h3>
         <p className="brand-prose">{copy.printPackBody}</p>
-        <StationeryPrintPack locale={locale} labels={copy.printPack} />
+        <StationeryPrintPack
+          locale={locale}
+          labels={copy.printPack}
+          exportPdfLabel={copy.exportPdf}
+          exportPrintLabel={copy.exportPrint}
+        />
       </div>
 
       <div className="brand-documents-block" id="documents-pdfs">
         <h3 className="brand-documents-heading">{copy.pdfsTitle}</h3>
         <ul className="brand-doc-hub-list">
           {documentCatalog.map((doc) => (
-            <li key={doc.id}>
-              <a href={doc.filePath} download={doc.downloadName} className="brand-doc-hub-card">
+            <li key={doc.id} className="brand-doc-hub-item">
+              <div className="brand-doc-hub-card">
                 <span className="brand-doc-hub-badge">PDF</span>
                 <span className="brand-doc-hub-title">{hub.titles[doc.titleKey]}</span>
-              </a>
+              </div>
+              <div className="brand-doc-hub-actions">
+                <a href={doc.filePath} download={doc.downloadName} className="brand-doc-hub-btn">
+                  {copy.exportPdf}
+                </a>
+                <button
+                  type="button"
+                  className="brand-doc-hub-btn"
+                  onClick={() => printPdfUrl(doc.filePath)}
+                >
+                  {copy.exportPrint}
+                </button>
+              </div>
             </li>
           ))}
         </ul>

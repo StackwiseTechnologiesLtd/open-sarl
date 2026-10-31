@@ -59,6 +59,21 @@ export function mountStationeryPdfCapture(source: HTMLElement): HTMLElement {
     return host;
   }
 
+  if (clone.classList.contains("brand-print-sheet")) {
+    const { width, height } = boardPixelSize(source);
+    clone.style.boxSizing = "border-box";
+    clone.style.width = `${width}px`;
+    clone.style.height = `${height}px`;
+    clone.style.transform = "none";
+    clone.style.overflow = "hidden";
+    host.style.width = `${width}px`;
+    host.style.height = `${height}px`;
+    host.style.overflow = "hidden";
+    host.appendChild(clone);
+    document.body.appendChild(host);
+    return host;
+  }
+
   if (clone.classList.contains("stat-sheet") || clone.classList.contains("doc-sheet")) {
     applyA4SheetStyles(clone);
   } else {

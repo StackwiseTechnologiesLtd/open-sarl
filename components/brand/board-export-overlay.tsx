@@ -15,12 +15,14 @@ import {
 } from "@/lib/brand-board-export";
 import { brandAssetRaster, type BrandAssetRasterKind } from "@/lib/brand-asset-raster";
 import { downloadPdfFromElement } from "@/lib/html2pdf-download";
+import { printStationeryStack } from "@/lib/stationery-print";
 import type { Locale } from "@/lib/i18n";
 
 export type BoardExportLabels = {
   svg: string;
   png: string;
   pdf: string;
+  print: string;
   copy: string;
   copied: string;
 };
@@ -81,6 +83,13 @@ export function BoardExportOverlay({
     }
   }
 
+  async function runPrint() {
+    const node = boardRef?.current;
+    if (!node) return;
+    if (config.mode !== "pdf" && config.mode !== "board") return;
+    printStationeryStack(node);
+  }
+
   async function runPdf() {
     const node = boardRef?.current;
     if (!node) return;
@@ -133,6 +142,9 @@ export function BoardExportOverlay({
         <button type="button" disabled={busy} onClick={() => void runPdf()}>
           {labels.pdf}
         </button>
+        <button type="button" disabled={busy} onClick={() => void runPrint()}>
+          {labels.print}
+        </button>
       </div>
     );
   }
@@ -148,6 +160,9 @@ export function BoardExportOverlay({
         </button>
         <button type="button" disabled={busy} onClick={() => void runPdf()}>
           {labels.pdf}
+        </button>
+        <button type="button" disabled={busy} onClick={() => void runPrint()}>
+          {labels.print}
         </button>
         <button type="button" disabled={busy} onClick={() => void runBoard("copy")}>
           {copied ? labels.copied : labels.copy}

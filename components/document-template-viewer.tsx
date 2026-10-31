@@ -166,6 +166,37 @@ export function DocumentTemplatesAllViewer({
   const pageCount = documentTemplateCatalog.length * 2;
 
   const branding = `/${locale}/branding`;
+  const kinds = dict.documentTemplates.kinds;
+
+  if (embedded) {
+    return (
+      <div className="brand-documents-viewport brand-documents-template-stack">
+        {documentTemplateCatalog.map((entry) => (
+          <DocumentA4Viewport
+            key={entry.id}
+            title={kinds[entry.id].viewerTitle}
+            downloadLabel={v.downloadWebPdf}
+            downloadFileName={`${entry.downloadPrefix}_${locale}.pdf`}
+            printLabel={dict.documentTemplates.print}
+            pageCountHint={v.a4TwoPagesHint}
+          >
+            <TemplateSheets templateId={entry.id} locale={locale} />
+          </DocumentA4Viewport>
+        ))}
+        <p className="brand-prose brand-documents-template-note">
+          {hub.combinedIntro}{" "}
+          <Link href={`${branding}#documents`} className="font-semibold text-primary hover:underline">
+            {v.allDocuments}
+          </Link>
+          {" · "}
+          <Link href={`${branding}#documents-brochure`} className="font-semibold text-primary hover:underline">
+            {dict.documentTemplates.backToBrochure}
+          </Link>
+        </p>
+      </div>
+    );
+  }
+
   const viewport = (
     <DocumentA4Viewport
       title={hub.combinedViewerTitle}
@@ -191,10 +222,6 @@ export function DocumentTemplatesAllViewer({
       ))}
     </DocumentA4Viewport>
   );
-
-  if (embedded) {
-    return <div className="brand-documents-viewport">{viewport}</div>;
-  }
 
   return (
     <main className="page-main brochure-page bg-[#dfe2e8] pb-12 pt-6 sm:pb-16 sm:pt-8 print:bg-white print:pb-0 print:pt-0">

@@ -17,6 +17,7 @@ import {
 } from "@/lib/brand-export";
 import { brandGuide, cardBoard, type BrandCopy } from "@/lib/brand-guide";
 import { downloadPdfFromElement } from "@/lib/html2pdf-download";
+import { printStationeryStack } from "@/lib/stationery-print";
 import type { Locale } from "@/lib/i18n";
 
 const A4 = { width: 794, height: 1123 };
@@ -75,9 +76,13 @@ function PrintSheet({
 export function StationeryPrintPack({
   locale,
   labels,
+  exportPdfLabel,
+  exportPrintLabel,
 }: {
   locale: Locale;
   labels: BrandCopy["printPack"];
+  exportPdfLabel: string;
+  exportPrintLabel: string;
 }) {
   const copy = brandGuide[locale];
   const stackRef = useRef<HTMLDivElement>(null);
@@ -102,6 +107,14 @@ export function StationeryPrintPack({
     },
     [],
   );
+
+  const printSheet = useCallback((key: SheetKey) => {
+    const stack = stackRef.current;
+    if (!stack) return;
+    const sheet = stack.querySelector(`[data-print-sheet="${key}"]`);
+    if (!(sheet instanceof HTMLElement)) return;
+    printStationeryStack(sheet);
+  }, []);
 
   const downloadAllSheets = useCallback(async () => {
     const stack = stackRef.current;
@@ -143,14 +156,24 @@ export function StationeryPrintPack({
       </div>
       <ul className="print-pack-list">
         {sheetOrder.map((key) => (
-          <li key={key}>
-            <button
-              type="button"
-              disabled={busy !== null}
-              onClick={() => void run(() => downloadSheet(key), key)}
-            >
-              {sheetLabels[key]}
-            </button>
+          <li key={key} className="print-pack-item">
+            <span className="print-pack-item-label">{sheetLabels[key]}</span>
+            <div className="print-pack-item-actions">
+              <button
+                type="button"
+                disabled={busy !== null}
+                onClick={() => void run(() => downloadSheet(key), key)}
+              >
+                {exportPdfLabel}
+              </button>
+              <button
+                type="button"
+                disabled={busy !== null}
+                onClick={() => void run(() => Promise.resolve(printSheet(key)), `${key}-print`)}
+              >
+                {exportPrintLabel}
+              </button>
+            </div>
           </li>
         ))}
         {envelopeKinds.map((item) => (

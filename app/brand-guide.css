@@ -1355,6 +1355,12 @@
   list-style: none;
 }
 
+.brand-doc-hub-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
 .brand-doc-hub-card {
   display: flex;
   align-items: center;
@@ -1362,7 +1368,30 @@
   padding: 0.85rem 1rem;
   border: 1px solid var(--g-line);
   color: var(--g-ink);
+}
+
+.brand-doc-hub-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.brand-doc-hub-btn {
+  border: 1px solid var(--g-line);
+  background: transparent;
+  color: var(--g-ink);
+  cursor: pointer;
+  font-family: var(--font-label-md);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.65rem;
   text-decoration: none;
+}
+
+.brand-doc-hub-btn:hover {
+  background: var(--g-ink);
+  color: var(--g-bg);
 }
 
 .brand-doc-hub-card:hover {
@@ -1392,6 +1421,16 @@
 
 .brand-documents-viewport .doc-a4-toolbar-title {
   color: var(--g-ink);
+}
+
+.brand-documents-template-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.brand-documents-template-note {
+  margin: 0;
 }
 
 .print-pack-actions {
@@ -1431,6 +1470,29 @@
 
 .print-pack-list li {
   margin: 0;
+}
+
+.print-pack-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.print-pack-item-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--g-ink);
+}
+
+.print-pack-item-actions {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.print-pack-item-actions button {
+  flex: 1;
+  text-align: center;
 }
 
 .print-pack-list button {
