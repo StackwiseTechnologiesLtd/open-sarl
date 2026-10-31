@@ -2972,6 +2972,14 @@ button:focus-visible {
   max-width: none;
 }
 
+.doc-compose-preview-wrap .doc-a4-canvas {
+  min-height: min(297mm, calc(100dvh - 14rem));
+}
+
+.doc-stack--a4 > .stat-sheet.doc-sheet {
+  height: auto;
+}
+
 .brand-doc-compose-link {
   display: inline-flex;
   margin-top: 0.65rem;

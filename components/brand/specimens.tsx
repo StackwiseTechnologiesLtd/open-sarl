@@ -132,7 +132,7 @@ export function LetterSheet({
     }));
 
   return (
-    <StationerySheet dense>
+    <StationerySheet a4Frame dense>
       <div className="letter-meta">
         <p>{data?.date ?? copy.letterDate}</p>
         <div className="letter-to">
@@ -180,7 +180,7 @@ export function InvoiceSheet({
   const total = lines.reduce((sum, line) => sum + line.amount, 0);
 
   return (
-    <StationerySheet dense>
+    <StationerySheet a4Frame dense>
       <header className="bill-head">
         <h3>{copy.invoiceTitle}</h3>
       </header>
@@ -262,7 +262,7 @@ export function ReceiptSheet({
   const client = data?.client ?? copy.invoiceClient;
 
   return (
-    <StationerySheet dense>
+    <StationerySheet a4Frame dense>
       <header className="bill-head">
         <h3>{copy.receiptTitle}</h3>
       </header>
