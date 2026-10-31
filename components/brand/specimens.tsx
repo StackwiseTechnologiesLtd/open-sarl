@@ -15,7 +15,10 @@ import {
   type EnvelopeVariant,
 } from "@/lib/brand-export";
 import { cardIdentity, invoiceLines, invoiceTotal, money, paymentTransferDetails, type BrandCopy } from "@/lib/brand-guide";
+import type { InvoiceOverrides, ReceiptOverrides } from "@/lib/document-composer";
 import type { Locale } from "@/lib/i18n";
+
+export type { InvoiceLineInput, InvoiceOverrides, ReceiptOverrides } from "@/lib/document-composer";
 
 export function CoverSheet({ navy }: { navy?: boolean }) {
   return <StationerySheet navyField={!!navy} />;
@@ -143,37 +146,46 @@ export function LetterSheet({ copy }: { copy: BrandCopy }) {
   );
 }
 
-export function InvoiceSheet({ copy, locale }: { copy: BrandCopy; locale: Locale }) {
-  const lines = invoiceLines.map((line) => ({
+export function InvoiceSheet({
+  copy,
+  locale,
+  data,
+}: {
+  copy: BrandCopy;
+  locale: Locale;
+  data?: InvoiceOverrides;
+}) {
+  const defaultLines = invoiceLines.map((line) => ({
     title: line[locale].title,
     unit: line[locale].unit,
     qty: line.qty,
     amount: line.amount,
   }));
+  const lines = data?.lines ?? defaultLines;
+  const total = lines.reduce((sum, line) => sum + line.amount, 0);
 
   return (
     <StationerySheet dense>
       <header className="bill-head">
         <h3>{copy.invoiceTitle}</h3>
-        <p>{copy.invoiceMeta}</p>
       </header>
       <dl className="bill-meta">
         <div>
           <dt>{copy.invoiceNumberLabel}</dt>
-          <dd>{copy.invoiceNumber}</dd>
+          <dd>{data?.number ?? copy.invoiceNumber}</dd>
         </div>
         <div>
           <dt>{copy.invoiceDateLabel}</dt>
-          <dd>{copy.letterDate}</dd>
+          <dd>{data?.date ?? copy.letterDate}</dd>
         </div>
         <div>
           <dt>{copy.invoiceDueLabel}</dt>
-          <dd>{copy.invoiceDue}</dd>
+          <dd>{data?.due ?? copy.invoiceDue}</dd>
         </div>
       </dl>
       <div className="bill-client">
         <p className="bill-kicker">{copy.invoiceClientLabel}</p>
-        {copy.invoiceClient.map((line) => (
+        {(data?.client ?? copy.invoiceClient).map((line) => (
           <p key={line}>{line}</p>
         ))}
       </div>
@@ -202,55 +214,70 @@ export function InvoiceSheet({ copy, locale }: { copy: BrandCopy; locale: Locale
             <th scope="row" colSpan={3}>
               {copy.invoiceTotalLabel}
             </th>
-            <td>{money(locale, invoiceTotal)}</td>
+            <td>{money(locale, total)}</td>
           </tr>
         </tfoot>
       </table>
       <div className="bill-payment">
         <p className="bill-payment-title">{paymentTransferDetails[locale].heading}</p>
-        {paymentTransferDetails[locale].lines.map((line) => (
-          <p key={line}>{line}</p>
-        ))}
+        <dl className="bill-payment-grid">
+          {paymentTransferDetails[locale].rows.map((row) => (
+            <div key={row.label}>
+              <dt>{row.label}</dt>
+              <dd>{row.value}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
-      <p className="bill-note">{copy.invoiceNote}</p>
+      <p className="bill-note">{data?.note ?? copy.invoiceNote}</p>
     </StationerySheet>
   );
 }
 
-export function ReceiptSheet({ copy, locale }: { copy: BrandCopy; locale: Locale }) {
+export function ReceiptSheet({
+  copy,
+  locale,
+  data,
+}: {
+  copy: BrandCopy;
+  locale: Locale;
+  data?: ReceiptOverrides;
+}) {
+  const amount = data?.amount ?? invoiceTotal;
+  const client = data?.client ?? copy.invoiceClient;
+
   return (
     <StationerySheet dense>
       <header className="bill-head">
         <h3>{copy.receiptTitle}</h3>
-        <p>{copy.receiptMeta}</p>
       </header>
       <dl className="bill-meta">
         <div>
           <dt>{copy.receiptNumberLabel}</dt>
-          <dd>{copy.receiptNumber}</dd>
+          <dd>{data?.number ?? copy.receiptNumber}</dd>
         </div>
         <div>
           <dt>{copy.invoiceDateLabel}</dt>
-          <dd>{copy.letterDate}</dd>
+          <dd>{data?.date ?? copy.letterDate}</dd>
         </div>
         <div>
           <dt>{copy.invoiceNumberLabel}</dt>
-          <dd>{copy.invoiceNumber}</dd>
+          <dd>{data?.invoiceNumber ?? copy.invoiceNumber}</dd>
         </div>
       </dl>
       <div className="receipt-block">
         <p className="bill-kicker">{copy.receiptFromLabel}</p>
-        {copy.invoiceClient.map((line) => (
+        {client.map((line) => (
           <p key={line}>{line}</p>
         ))}
         <p className="bill-kicker receipt-gap">{copy.receiptAmountLabel}</p>
-        <p className="receipt-sum">{money(locale, invoiceTotal)}</p>
+        <p className="receipt-sum">{money(locale, amount)}</p>
         <p className="bill-kicker receipt-gap">{copy.receiptForLabel}</p>
-        <p>{copy.receiptFor}</p>
+        <p>{data?.forText ?? copy.receiptFor}</p>
       </div>
       <div className="receipt-sign">
-        <p>{copy.receiptPlace}</p>
-        <p className="receipt-for">{copy.receiptSign}</p>
+        <p>{data?.place ?? copy.receiptPlace}</p>
+        <p className="receipt-for">{data?.signLabel ?? copy.receiptSign}</p>
         <p className="receipt-name">{cardIdentity.name}</p>
         <p>{cardIdentity.title}</p>
       </div>

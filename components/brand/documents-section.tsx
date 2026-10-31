@@ -12,9 +12,18 @@ export function BrandDocumentsSection({ locale }: { locale: Locale }) {
   const copy = brandGuide[locale];
   const dict = getDictionary(locale);
   const hub = dict.documentsHub;
+  const compose = dict.documentComposer;
 
   return (
     <div className="brand-documents">
+      <div className="brand-documents-block brand-documents-compose-cta">
+        <h3 className="brand-documents-heading">{copy.documentsComposeTitle}</h3>
+        <p className="brand-prose">{copy.documentsComposeBody}</p>
+        <a href={`/${locale}/documents/compose`} className="brand-doc-compose-link">
+          {compose.openComposer}
+        </a>
+      </div>
+
       <div className="brand-documents-block">
         <h3 className="brand-documents-heading">{copy.printPackTitle}</h3>
         <p className="brand-prose">{copy.printPackBody}</p>

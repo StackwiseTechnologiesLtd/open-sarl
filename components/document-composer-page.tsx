@@ -1,0 +1,463 @@
+"use client";
+
+import Link from "next/link";
+import { useMemo, useState } from "react";
+import {
+  InvoiceSheet,
+  ReceiptSheet,
+} from "@/components/brand/specimens";
+import type { InvoiceLineInput } from "@/lib/document-composer";
+import { DocumentA4Viewport } from "@/components/document-a4-viewport";
+import { OpenDocumentSheet } from "@/components/open-document-sheet";
+import { brandGuide } from "@/lib/brand-guide";
+import {
+  composerDownloadName,
+  composerTemplateOrder,
+  createComposerFormState,
+  invoiceFormToOverrides,
+  proposalBullets,
+  receiptFormToOverrides,
+  reportBullets,
+  type ComposerFormState,
+  type ComposerTemplateId,
+} from "@/lib/document-composer";
+import type { Dictionary, Locale } from "@/lib/i18n";
+
+const WEBSITE = "www.open-consulting.fr";
+
+function Field({
+  label,
+  value,
+  onChange,
+  multiline = false,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  multiline?: boolean;
+}) {
+  const className = "doc-compose-field";
+  return (
+    <label className="doc-compose-label">
+      <span>{label}</span>
+      {multiline ? (
+        <textarea className={className} rows={4} value={value} onChange={(e) => onChange(e.target.value)} />
+      ) : (
+        <input className={className} type="text" value={value} onChange={(e) => onChange(e.target.value)} />
+      )}
+    </label>
+  );
+}
+
+function LetterMetaPreview({
+  sampleDate,
+  toLabel,
+  toName,
+  toCompany,
+  toAddress,
+}: {
+  sampleDate: string;
+  toLabel: string;
+  toName: string;
+  toCompany: string;
+  toAddress: string;
+}) {
+  return (
+    <div className="doc-letter-meta">
+      <p className="doc-letter-date">{sampleDate}</p>
+      <div className="doc-letter-recipient">
+        <span className="doc-letter-to">{toLabel}</span>
+        <p className="doc-letter-recipient-name">{toName}</p>
+        <p className="doc-letter-recipient-org">{toCompany}</p>
+        <p className="doc-letter-recipient-address">
+          {toAddress.split("\n").map((line) => (
+            <span key={line} className="block">
+              {line}
+            </span>
+          ))}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function ComposerPreview({
+  state,
+  locale,
+  dict,
+}: {
+  state: ComposerFormState;
+  locale: Locale;
+  dict: Dictionary;
+}) {
+  const shared = dict.documentTemplates;
+  const copy = brandGuide[locale];
+  const { templateId } = state;
+
+  if (templateId === "invoice") {
+    return (
+      <InvoiceSheet copy={copy} locale={locale} data={invoiceFormToOverrides(state.invoice)} />
+    );
+  }
+
+  if (templateId === "receipt") {
+    return (
+      <ReceiptSheet copy={copy} locale={locale} data={receiptFormToOverrides(state.receipt)} />
+    );
+  }
+
+  if (templateId === "letterhead") {
+    const f = state.letterhead;
+    return (
+      <>
+        <OpenDocumentSheet variant="cover" website={WEBSITE} theme="corporate">
+          <p className="doc-cover-kicker">{shared.coverHint}</p>
+          <h2 className="doc-cover-title">{f.coverTitle}</h2>
+          <p className="doc-cover-subtitle">{f.coverSubtitle}</p>
+          <p className="doc-cover-lead">{f.coverLead}</p>
+        </OpenDocumentSheet>
+        <OpenDocumentSheet variant="letter" website={WEBSITE} theme="corporate">
+          <LetterMetaPreview
+            sampleDate={f.sampleDate}
+            toLabel={shared.toLabel}
+            toName={f.toName}
+            toCompany={f.toCompany}
+            toAddress={f.toAddress}
+          />
+          <p className="doc-doc-subject">{f.subjectLabel}</p>
+          <p className="doc-letter-prose">{f.salutation}</p>
+          <p className="doc-letter-prose">{f.bodyParagraph1}</p>
+          <p className="doc-letter-prose">{f.bodyParagraph2}</p>
+          <p className="doc-letter-prose doc-letter-signature whitespace-pre-line">{f.signatureBlock}</p>
+        </OpenDocumentSheet>
+      </>
+    );
+  }
+
+  if (templateId === "proposal") {
+    const f = state.proposal;
+    const bullets = proposalBullets(f);
+    return (
+      <>
+        <OpenDocumentSheet variant="cover" website={WEBSITE}>
+          <p className="doc-cover-kicker">{shared.coverHint}</p>
+          <h2 className="doc-cover-title">{f.coverTitle}</h2>
+          <p className="doc-cover-subtitle">{f.coverSubtitle}</p>
+          <p className="doc-cover-lead">{f.coverLead}</p>
+        </OpenDocumentSheet>
+        <OpenDocumentSheet variant="letter" website={WEBSITE}>
+          <LetterMetaPreview
+            sampleDate={f.sampleDate}
+            toLabel={shared.toLabel}
+            toName={f.toName}
+            toCompany={f.toCompany}
+            toAddress={f.toAddress}
+          />
+          <p className="doc-doc-subject">{f.subjectLabel}</p>
+          <p className="doc-letter-prose">{f.sectionObjectiveIntro}</p>
+          <p className="doc-letter-section-title">{f.sectionObjectiveTitle}</p>
+          <p className="doc-letter-prose">{f.sectionObjective}</p>
+          <p className="doc-letter-section-title">{f.sectionScopeTitle}</p>
+          <p className="doc-letter-prose">{f.sectionScopeBody}</p>
+          <ul className="doc-list">
+            {bullets.scope.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          <p className="doc-letter-section-title">{f.sectionDeliverablesTitle}</p>
+          <p className="doc-letter-prose">{f.sectionDeliverablesBody}</p>
+          <ul className="doc-list">
+            {bullets.deliverables.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          <p className="doc-letter-section-title">{f.sectionTermsTitle}</p>
+          <p className="doc-letter-prose">{f.sectionTermsBody}</p>
+        </OpenDocumentSheet>
+      </>
+    );
+  }
+
+  const f = state.report;
+  const bullets = reportBullets(f);
+  return (
+    <>
+      <OpenDocumentSheet variant="cover" website={WEBSITE}>
+        <p className="doc-cover-kicker">{shared.coverHint}</p>
+        <h2 className="doc-cover-title">{f.coverTitle}</h2>
+        <p className="doc-cover-subtitle">{f.coverSubtitle}</p>
+        <p className="doc-cover-lead">{f.coverLead}</p>
+      </OpenDocumentSheet>
+      <OpenDocumentSheet variant="letter" website={WEBSITE}>
+        <p className="doc-doc-subject">{f.reportPeriod}</p>
+        <p className="doc-letter-prose">{f.reportIntro}</p>
+        <p className="doc-letter-section-title">{f.sectionSummaryTitle}</p>
+        <p className="doc-letter-prose">{f.sectionSummaryBody}</p>
+        <p className="doc-letter-section-title">{f.sectionFindingsTitle}</p>
+        <p className="doc-letter-prose">{f.sectionFindingsBody}</p>
+        <ul className="doc-list">
+          {bullets.findings.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+        <p className="doc-letter-section-title">{f.sectionNextTitle}</p>
+        <p className="doc-letter-prose">{f.sectionNextBody}</p>
+        <ul className="doc-list">
+          {bullets.next.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </OpenDocumentSheet>
+    </>
+  );
+}
+
+function InvoiceLineEditor({
+  lines,
+  onChange,
+  labels,
+}: {
+  lines: InvoiceLineInput[];
+  onChange: (lines: InvoiceLineInput[]) => void;
+  labels: { designation: string; qty: string; unit: string; amount: string; add: string; remove: string };
+}) {
+  return (
+    <div className="doc-compose-lines">
+      {lines.map((line, index) => (
+        <div key={index} className="doc-compose-line-row">
+          <input
+            className="doc-compose-field"
+            aria-label={labels.designation}
+            value={line.title}
+            onChange={(e) => {
+              const next = [...lines];
+              next[index] = { ...line, title: e.target.value };
+              onChange(next);
+            }}
+          />
+          <input
+            className="doc-compose-field doc-compose-field--narrow"
+            aria-label={labels.qty}
+            value={line.qty}
+            onChange={(e) => {
+              const next = [...lines];
+              next[index] = { ...line, qty: e.target.value };
+              onChange(next);
+            }}
+          />
+          <input
+            className="doc-compose-field doc-compose-field--narrow"
+            aria-label={labels.unit}
+            value={line.unit}
+            onChange={(e) => {
+              const next = [...lines];
+              next[index] = { ...line, unit: e.target.value };
+              onChange(next);
+            }}
+          />
+          <input
+            className="doc-compose-field doc-compose-field--narrow"
+            aria-label={labels.amount}
+            inputMode="decimal"
+            value={String(line.amount)}
+            onChange={(e) => {
+              const next = [...lines];
+              next[index] = { ...line, amount: Number.parseFloat(e.target.value) || 0 };
+              onChange(next);
+            }}
+          />
+          <button
+            type="button"
+            className="doc-compose-line-remove"
+            disabled={lines.length <= 1}
+            onClick={() => onChange(lines.filter((_, i) => i !== index))}
+          >
+            {labels.remove}
+          </button>
+        </div>
+      ))}
+      <button
+        type="button"
+        className="doc-compose-line-add"
+        onClick={() =>
+          onChange([...lines, { title: "", qty: "1", unit: "", amount: 0 }])
+        }
+      >
+        {labels.add}
+      </button>
+    </div>
+  );
+}
+
+function ComposerForm({
+  state,
+  setState,
+  dict,
+  locale,
+}: {
+  state: ComposerFormState;
+  setState: (next: ComposerFormState) => void;
+  dict: Dictionary;
+  locale: Locale;
+}) {
+  const c = dict.documentComposer;
+  const kinds = dict.documentTemplates.kinds;
+  const copy = brandGuide[locale];
+  const { templateId } = state;
+
+  const setTemplate = (id: ComposerTemplateId) => setState({ ...state, templateId: id });
+
+  const patch = <K extends keyof ComposerFormState>(
+    key: K,
+    value: ComposerFormState[K],
+  ) => setState({ ...state, [key]: value });
+
+  return (
+    <div className="doc-compose-form">
+      <label className="doc-compose-label">
+        <span>{c.templateLabel}</span>
+        <select
+          className="doc-compose-field"
+          value={templateId}
+          onChange={(e) => setTemplate(e.target.value as ComposerTemplateId)}
+        >
+          {composerTemplateOrder.map((item) => (
+            <option key={item.id} value={item.id}>
+              {item.id === "invoice"
+                ? copy.invoiceTitle
+                : item.id === "receipt"
+                  ? copy.receiptTitle
+                  : kinds[item.id].title}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      {templateId === "letterhead" ? (
+        <>
+          <Field label={c.coverTitle} value={state.letterhead.coverTitle} onChange={(v) => patch("letterhead", { ...state.letterhead, coverTitle: v })} />
+          <Field label={c.coverSubtitle} value={state.letterhead.coverSubtitle} onChange={(v) => patch("letterhead", { ...state.letterhead, coverSubtitle: v })} multiline />
+          <Field label={c.coverLead} value={state.letterhead.coverLead} onChange={(v) => patch("letterhead", { ...state.letterhead, coverLead: v })} multiline />
+          <Field label={c.date} value={state.letterhead.sampleDate} onChange={(v) => patch("letterhead", { ...state.letterhead, sampleDate: v })} />
+          <Field label={c.recipientName} value={state.letterhead.toName} onChange={(v) => patch("letterhead", { ...state.letterhead, toName: v })} />
+          <Field label={c.recipientOrg} value={state.letterhead.toCompany} onChange={(v) => patch("letterhead", { ...state.letterhead, toCompany: v })} />
+          <Field label={c.recipientAddress} value={state.letterhead.toAddress} onChange={(v) => patch("letterhead", { ...state.letterhead, toAddress: v })} multiline />
+          <Field label={c.subject} value={state.letterhead.subjectLabel} onChange={(v) => patch("letterhead", { ...state.letterhead, subjectLabel: v })} />
+          <Field label={c.salutation} value={state.letterhead.salutation} onChange={(v) => patch("letterhead", { ...state.letterhead, salutation: v })} />
+          <Field label={c.body1} value={state.letterhead.bodyParagraph1} onChange={(v) => patch("letterhead", { ...state.letterhead, bodyParagraph1: v })} multiline />
+          <Field label={c.body2} value={state.letterhead.bodyParagraph2} onChange={(v) => patch("letterhead", { ...state.letterhead, bodyParagraph2: v })} multiline />
+          <Field label={c.signature} value={state.letterhead.signatureBlock} onChange={(v) => patch("letterhead", { ...state.letterhead, signatureBlock: v })} multiline />
+        </>
+      ) : null}
+
+      {templateId === "invoice" ? (
+        <>
+          <Field label={copy.invoiceNumberLabel} value={state.invoice.number} onChange={(v) => patch("invoice", { ...state.invoice, number: v })} />
+          <Field label={copy.invoiceDateLabel} value={state.invoice.date} onChange={(v) => patch("invoice", { ...state.invoice, date: v })} />
+          <Field label={copy.invoiceDueLabel} value={state.invoice.due} onChange={(v) => patch("invoice", { ...state.invoice, due: v })} />
+          <Field label={copy.invoiceClientLabel} value={state.invoice.clientText} onChange={(v) => patch("invoice", { ...state.invoice, clientText: v })} multiline />
+          <p className="doc-compose-section">{c.lineItems}</p>
+          <InvoiceLineEditor
+            lines={state.invoice.lines}
+            onChange={(lines) => patch("invoice", { ...state.invoice, lines })}
+            labels={{
+              designation: copy.invoiceCols[0],
+              qty: copy.invoiceCols[1],
+              unit: copy.invoiceCols[2],
+              amount: copy.invoiceCols[3],
+              add: c.addLine,
+              remove: c.removeLine,
+            }}
+          />
+          <Field label={c.note} value={state.invoice.note} onChange={(v) => patch("invoice", { ...state.invoice, note: v })} multiline />
+        </>
+      ) : null}
+
+      {templateId === "receipt" ? (
+        <>
+          <Field label={copy.receiptNumberLabel} value={state.receipt.number} onChange={(v) => patch("receipt", { ...state.receipt, number: v })} />
+          <Field label={copy.invoiceDateLabel} value={state.receipt.date} onChange={(v) => patch("receipt", { ...state.receipt, date: v })} />
+          <Field label={copy.invoiceNumberLabel} value={state.receipt.invoiceNumber} onChange={(v) => patch("receipt", { ...state.receipt, invoiceNumber: v })} />
+          <Field label={copy.receiptFromLabel} value={state.receipt.clientText} onChange={(v) => patch("receipt", { ...state.receipt, clientText: v })} multiline />
+          <Field label={copy.receiptAmountLabel} value={state.receipt.amount} onChange={(v) => patch("receipt", { ...state.receipt, amount: v })} />
+          <Field label={copy.receiptForLabel} value={state.receipt.forText} onChange={(v) => patch("receipt", { ...state.receipt, forText: v })} multiline />
+          <Field label={c.place} value={state.receipt.place} onChange={(v) => patch("receipt", { ...state.receipt, place: v })} />
+          <Field label={c.signOff} value={state.receipt.signLabel} onChange={(v) => patch("receipt", { ...state.receipt, signLabel: v })} />
+        </>
+      ) : null}
+
+      {(templateId === "proposal" || templateId === "report") && (
+        <p className="doc-compose-hint">{c.longFormHint}</p>
+      )}
+
+      {templateId === "proposal" ? (
+        <>
+          <Field label={c.coverTitle} value={state.proposal.coverTitle} onChange={(v) => patch("proposal", { ...state.proposal, coverTitle: v })} />
+          <Field label={c.subject} value={state.proposal.subjectLabel} onChange={(v) => patch("proposal", { ...state.proposal, subjectLabel: v })} multiline />
+          <Field label={c.body1} value={state.proposal.sectionObjectiveIntro} onChange={(v) => patch("proposal", { ...state.proposal, sectionObjectiveIntro: v })} multiline />
+          <Field label={c.sectionTitle} value={state.proposal.sectionObjectiveTitle} onChange={(v) => patch("proposal", { ...state.proposal, sectionObjectiveTitle: v })} />
+          <Field label={c.sectionBody} value={state.proposal.sectionObjective} onChange={(v) => patch("proposal", { ...state.proposal, sectionObjective: v })} multiline />
+          <Field label={c.bullets} value={state.proposal.sectionScopeBullets} onChange={(v) => patch("proposal", { ...state.proposal, sectionScopeBullets: v })} multiline />
+          <Field label={c.sectionBody} value={state.proposal.sectionTermsBody} onChange={(v) => patch("proposal", { ...state.proposal, sectionTermsBody: v })} multiline />
+        </>
+      ) : null}
+
+      {templateId === "report" ? (
+        <>
+          <Field label={c.coverTitle} value={state.report.coverTitle} onChange={(v) => patch("report", { ...state.report, coverTitle: v })} />
+          <Field label={c.subject} value={state.report.reportPeriod} onChange={(v) => patch("report", { ...state.report, reportPeriod: v })} />
+          <Field label={c.body1} value={state.report.reportIntro} onChange={(v) => patch("report", { ...state.report, reportIntro: v })} multiline />
+          <Field label={c.sectionBody} value={state.report.sectionSummaryBody} onChange={(v) => patch("report", { ...state.report, sectionSummaryBody: v })} multiline />
+          <Field label={c.bullets} value={state.report.sectionFindingsBullets} onChange={(v) => patch("report", { ...state.report, sectionFindingsBullets: v })} multiline />
+          <Field label={c.bullets} value={state.report.sectionNextBullets} onChange={(v) => patch("report", { ...state.report, sectionNextBullets: v })} multiline />
+        </>
+      ) : null}
+    </div>
+  );
+}
+
+export function DocumentComposerPage({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+  const [state, setState] = useState(() => createComposerFormState(locale));
+  const c = dict.documentComposer;
+  const v = dict.documentViewer;
+  const downloadName = useMemo(
+    () => composerDownloadName(state.templateId, locale),
+    [state.templateId, locale],
+  );
+
+  return (
+    <main className="page-main doc-compose-page">
+      <div className="doc-compose-shell">
+        <header className="doc-compose-header">
+          <div>
+            <p className="doc-compose-kicker">{c.kicker}</p>
+            <h1 className="doc-compose-title">{c.title}</h1>
+            <p className="doc-compose-lead">{c.lead}</p>
+          </div>
+          <Link href={`/${locale}/branding#documents`} className="doc-compose-back">
+            {c.backToDocuments}
+          </Link>
+        </header>
+
+        <div className="doc-compose-layout">
+          <section className="doc-compose-panel" aria-label={c.formAria}>
+            <h2 className="doc-compose-panel-title">{c.formTitle}</h2>
+            <ComposerForm state={state} setState={setState} dict={dict} locale={locale} />
+          </section>
+
+          <section className="doc-compose-preview-wrap" aria-label={c.previewAria}>
+            <DocumentA4Viewport
+              title={c.previewTitle}
+              downloadLabel={v.downloadWebPdf}
+              downloadFileName={downloadName}
+              printLabel={dict.documentTemplates.print}
+              pageCountHint={c.previewHint}
+            >
+              <ComposerPreview state={state} locale={locale} dict={dict} />
+            </DocumentA4Viewport>
+          </section>
+        </div>
+      </div>
+    </main>
+  );
+}

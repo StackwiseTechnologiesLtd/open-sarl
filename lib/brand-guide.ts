@@ -111,27 +111,30 @@ export function stationeryFooterItems() {
 export const paymentTransferDetails = {
   fr: {
     heading: "Coordonnées bancaires",
-    lines: [
-      "Titulaire : OPEN SARL",
-      "Banque : Rawbank — Goma",
-      "IBAN : CDxx xxxx xxxx xxxx xxxx xxxx xxx",
-      "SWIFT : RAWBCDCG",
+    rows: [
+      { label: "Titulaire", value: "OPEN SARL" },
+      { label: "Banque", value: "Rawbank — Goma" },
+      { label: "IBAN", value: "CDxx xxxx xxxx xxxx xxxx xxxx xxx" },
+      { label: "SWIFT", value: "RAWBCDCG" },
     ],
   },
   en: {
     heading: "Bank transfer details",
-    lines: [
-      "Account holder: OPEN SARL",
-      "Bank: Rawbank — Goma",
-      "IBAN: CDxx xxxx xxxx xxxx xxxx xxxx xxx",
-      "SWIFT: RAWBCDCG",
+    rows: [
+      { label: "Account holder", value: "OPEN SARL" },
+      { label: "Bank", value: "Rawbank — Goma" },
+      { label: "IBAN", value: "CDxx xxxx xxxx xxxx xxxx xxxx xxx" },
+      { label: "SWIFT", value: "RAWBCDCG" },
     ],
   },
 } as const;
 
 export function paymentTransferLines(locale: Locale) {
   const block = paymentTransferDetails[locale];
-  return [block.heading, ...block.lines];
+  return [
+    block.heading,
+    ...block.rows.map((row) => `${row.label} : ${row.value}`),
+  ];
 }
 
 const fr = {
@@ -323,6 +326,9 @@ const fr = {
   pdfsTitle: "PDF officiels",
   brochureTitle: "Note de capacités (web)",
   templatesTitle: "Gabarits courrier",
+  documentsComposeTitle: "Rédiger et imprimer",
+  documentsComposeBody:
+    "Remplissez un modèle (courrier, proposition, rapport, facture ou reçu) avec vos textes, puis exportez en PDF ou imprimez sur la papeterie OPEN.",
   printPack: {
     downloadAll: "Tout télécharger",
     downloadAllA4: "Toutes les pièces A4 (PDF)",
@@ -546,6 +552,9 @@ const en = {
   pdfsTitle: "Official PDFs",
   brochureTitle: "Capability brochure (web)",
   templatesTitle: "Letter templates",
+  documentsComposeTitle: "Write and print",
+  documentsComposeBody:
+    "Fill in a template (letter, proposal, report, invoice, or receipt) with your copy, then export PDF or print on OPEN stationery.",
   printPack: {
     downloadAll: "Download all",
     downloadAllA4: "All A4 pieces (PDF)",

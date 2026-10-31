@@ -2748,6 +2748,193 @@ button:focus-visible {
   }
 }
 
+.doc-compose-page {
+  background: #dfe2e8;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.doc-compose-shell {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.doc-compose-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.doc-compose-kicker {
+  margin: 0;
+  font-family: var(--font-label-md);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-on-surface-variant);
+}
+
+.doc-compose-title {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-headline-md);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--color-primary);
+}
+
+.doc-compose-lead {
+  margin: 0.5rem 0 0;
+  max-width: 42rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--color-on-surface-variant);
+}
+
+.doc-compose-back {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.doc-compose-back:hover {
+  text-decoration: underline;
+}
+
+.doc-compose-layout {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .doc-compose-layout {
+    grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.doc-compose-panel {
+  padding: 1rem 1.1rem 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 12%, #c5d4e8);
+  border-radius: 8px;
+  background: #fff;
+  max-height: calc(100dvh - 8rem);
+  overflow: auto;
+}
+
+.doc-compose-panel-title {
+  margin: 0 0 1rem;
+  font-family: var(--font-headline-md);
+  font-size: 1rem;
+  color: var(--color-primary);
+}
+
+.doc-compose-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.doc-compose-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-on-surface-variant);
+}
+
+.doc-compose-field {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid #d7dbe3;
+  border-radius: 4px;
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--color-on-surface);
+  background: #fff;
+}
+
+.doc-compose-field:focus {
+  outline: 2px solid color-mix(in srgb, var(--color-primary) 40%, #fff);
+  border-color: var(--color-primary);
+}
+
+.doc-compose-field--narrow {
+  min-width: 0;
+}
+
+.doc-compose-section {
+  margin: 0.25rem 0 0;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  color: var(--color-primary);
+}
+
+.doc-compose-hint {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--color-on-surface-variant);
+}
+
+.doc-compose-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.doc-compose-line-row {
+  display: grid;
+  grid-template-columns: 1fr 3.5rem 4.5rem 4.5rem auto;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.doc-compose-line-add,
+.doc-compose-line-remove {
+  border: 1px solid #d7dbe3;
+  background: #fff;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.6875rem;
+  cursor: pointer;
+}
+
+.doc-compose-line-remove:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.doc-compose-preview-wrap .doc-a4-viewport {
+  max-width: none;
+}
+
+.brand-doc-compose-link {
+  display: inline-flex;
+  margin-top: 0.65rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--g-ink);
+  color: var(--g-ink);
+  font-family: var(--font-label-md);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.brand-doc-compose-link:hover {
+  background: var(--g-ink);
+  color: var(--g-bg);
+}
+
+.brand-documents-compose-cta {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--g-line);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

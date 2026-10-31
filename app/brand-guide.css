@@ -1037,6 +1037,8 @@
   justify-content: space-between;
   align-items: baseline;
   gap: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid color-mix(in srgb, #000068 12%, #d7dbe3);
 }
 
 .bill-head h3 {
@@ -1056,12 +1058,59 @@
   margin: 0;
 }
 
-.bill-head p {
-  font-family: var(--font-label-md);
-  font-size: 12px;
-  letter-spacing: 0.08em;
+.bill-payment {
+  margin-top: 20px;
+  padding: 14px 16px 12px;
+  border: 1px solid color-mix(in srgb, #000068 14%, #c5d4e8);
+  border-radius: 6px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, #000068 5%, #fff) 0%,
+    color-mix(in srgb, #000068 2%, #fff) 100%
+  );
+  color: #0a1628;
+}
+
+.bill-payment-title {
+  margin: 0 0 10px;
+  color: #000068;
+  font-family: var(--font-headline-md);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+.bill-payment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 20px;
+  margin: 0;
+}
+
+.bill-payment-grid div {
+  display: grid;
+  grid-template-columns: minmax(5.5rem, 34%) 1fr;
+  gap: 8px;
+  align-items: baseline;
+  margin: 0;
+}
+
+.bill-payment-grid dt {
+  margin: 0;
   color: #5c6478;
+  font-family: var(--font-label-md);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.bill-payment-grid dd {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.35;
+  font-variant-numeric: tabular-nums;
 }
 
 .bill-meta {
@@ -1135,34 +1184,11 @@
 }
 
 .bill-note {
-  margin-top: 12px;
+  margin-top: 14px;
   max-width: 62ch;
   color: #3c4454;
   font-size: 12px;
   line-height: 1.45;
-}
-
-.bill-payment {
-  margin-top: 16px;
-  max-width: 36ch;
-  padding: 12px 14px;
-  border: 1px solid color-mix(in srgb, #000068 18%, #c5d4e8);
-  background: color-mix(in srgb, #000068 4%, #fff);
-  color: #0a1628;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-.bill-payment-title {
-  margin: 0 0 6px;
-  color: #000068;
-  font-family: var(--font-headline-md);
-  font-size: 13px;
-  font-weight: 650;
-}
-
-.bill-payment p:not(.bill-payment-title) {
-  margin: 0 0 2px;
 }
 
 .receipt-gap {
