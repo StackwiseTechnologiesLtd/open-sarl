@@ -783,7 +783,7 @@
 .stat-sheet {
   --stat-strip: 8.02%;
   --stat-strip-span: 50%;
-  --stat-foot-band: calc(var(--stat-strip) + 4.2%);
+  --stat-foot-band: calc(var(--stat-strip) + 5.4%);
   container-type: inline-size;
   font-family: var(--font-body-md);
 }
@@ -849,48 +849,60 @@
   opacity: 0.48;
 }
 
+.stat-sheet.is-field-navy .stat-foot-inner {
+  color: #fff;
+}
+
+.stat-sheet.is-field-navy .stat-foot-item svg {
+  border-color: rgb(255 255 255 / 55%);
+  color: #fff;
+}
+
 .stat-foot {
   position: absolute;
   z-index: 2;
   right: 0;
   bottom: 0;
   left: 0;
+  box-sizing: border-box;
+  display: flex;
   height: var(--stat-foot-band);
-  color: #fff;
-}
-
-.stat-foot-strip {
-  position: absolute;
-  z-index: 1;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  max-height: 100%;
-  pointer-events: none;
-  object-fit: contain;
-  object-position: left bottom;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0;
 }
 
 .stat-foot-inner {
-  position: absolute;
+  position: relative;
   z-index: 2;
-  right: 40px;
-  bottom: -10px;
-  left: 40px;
   box-sizing: border-box;
   display: flex;
-  height: 59%;
+  width: calc(100% - 80px);
+  flex: 0 0 auto;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+  margin: 0 40px 4px;
   padding: 0 6px;
   background: transparent;
+  color: #000068;
   font-family: var(--font-label-md);
   font-size: clamp(11px, 1.5cqw, 13px);
   line-height: 1.2;
   letter-spacing: 0.02em;
+}
+
+.stat-foot-strip {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  flex: 0 0 auto;
+  pointer-events: none;
+  object-fit: cover;
+  object-position: left bottom;
 }
 
 .stat-foot-item {
@@ -913,8 +925,9 @@
   height: 14px;
   flex: 0 0 auto;
   padding: 1px;
-  border: 1px solid rgb(255 255 255 / 55%);
+  border: 1px solid rgb(0 0 104 / 35%);
   border-radius: 999px;
+  color: #000068;
 }
 
 .is-dense .stat-main {
