@@ -3,7 +3,9 @@ import type { PoleSlug } from "@/lib/poles";
 
 const bySlug: Record<string, string> = {
   "urban-water-eastern-drc": sectorImages.water,
-  "hydropower-energy-systems": sectorImages.energy,
+  "inga-iii-umons-analysis": sectorImages.energy,
+  "solar-bess-katanga-thrive": sectorImages.energy,
+  "hydro-agro-recs-climate-finance": sectorImages.energy,
   "strategic-corridors": sectorImages.transport,
   "donor-programmes-drc": positioningImage,
   "urban-networks-supervision": sectorImages.urban,

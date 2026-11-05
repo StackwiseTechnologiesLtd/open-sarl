@@ -239,14 +239,39 @@ const dictionaries = {
             status: "Référence représentative",
           },
           {
-            slug: "hydropower-energy-systems",
-            title: "Hydropower & systèmes énergétiques",
-            sector: "Énergie",
+            slug: "inga-iii-umons-analysis",
+            title: "Inga III — analyse critique intégrée",
+            sector: "Énergie / hydroélectricité",
             location: "RDC",
-            clientType: "Ministère / utility / bailleur",
-            role: "Conseil technique, institutionnel et investment readiness",
-            summary: "Options techniques, readiness financier et alignement avec les exigences des financeurs.",
-            status: "Référence représentative",
+            clientType: "Université de Mons",
+            role: "Appui à l'analyse critique du méga-projet Inga III",
+            summary:
+              "Rapport d'analyse intégrée en cours de finalisation — articulation entre enjeux techniques, institutionnels, financeurs et réalités du terrain.",
+            status: "En cours · depuis mars 2026",
+          },
+          {
+            slug: "solar-bess-katanga-thrive",
+            title: "Solaire & BESS — Katanga",
+            sector: "Énergie (solaire & stockage)",
+            location: "Katanga, RDC",
+            clientType:
+              "Thrive Renewables (PTY) Ltd / Ministère des Ressources Hydrauliques et de l'Électricité",
+            role: "Préparation de projet et interface public–investisseur privé",
+            summary:
+              "Préparation d'un projet solaire avec stockage ; protocole d'accord (MoU) et mission de confirmation des sites octroyés en région minière.",
+            status: "En cours · depuis juin 2026",
+          },
+          {
+            slug: "hydro-agro-recs-climate-finance",
+            title: "Hydro-agro-industriel & finance climat",
+            sector: "Énergie & développement durable",
+            location: "RDC",
+            clientType:
+              "RECS Innovation Ltd (Corée) / Ministère du développement durable / ONUDI",
+            role: "Préparation de projet pour financement additionnel (fonds climat)",
+            summary:
+              "Structuration d'un projet hydroélectrique et agro-industriel reliant bailleurs internationaux, investisseurs privés et institutions publiques.",
+            status: "En cours · depuis septembre 2026",
           },
           {
             slug: "strategic-corridors",
@@ -347,31 +372,84 @@ const dictionaries = {
           "Meilleure readiness vis-à-vis des financeurs",
         ],
       },
-      "hydropower-energy-systems": {
+      "inga-iii-umons-analysis": {
         metaDescription:
-          "Conseil technique et investment readiness pour systèmes hydrauliques et énergétiques en RDC.",
-        body: "Accompagnement d'autorités et de partenaires techniques sur des programmes énergétiques où les choix technologiques, institutionnels et financiers doivent être alignés avant engagement des études majeures.",
-        mandateType: "Conseil technique et investment readiness",
+          "Appui à l'analyse critique du méga-projet Inga III en RDC — Université de Mons, rapport intégré en cours.",
+        body: "Mandat d'appui à une analyse critique du projet Inga III, en articulant dimensions techniques, environnementales, institutionnelles et financières pour éclairer les décisions des parties prenantes nationales et internationales.",
+        mandateType: "Analyse critique intégrée et appui décisionnel",
         challenge:
-          "Arbitrer entre options techniques et modèles institutionnels tout en démontrant la viabilité financière et la capacité de mise en œuvre aux yeux des bailleurs.",
+          "Produire une lecture indépendante et structurée d'un méga-projet où s'entrecroisent enjeux de souveraineté énergétique, financement international, impacts sociaux-environnementaux et faisabilité de mise en œuvre.",
         approach:
-          "Analyse multi-critères, revue de readiness institutionnelle et structuration progressive des dossiers de financement avec scénarios de risque explicites.",
+          "Revue documentaire, consolidation des hypothèses de projet, confrontation aux standards internationaux et aux contraintes de terrain — livrables orientés comités académiques et décideurs.",
         scope: [
-          "Analyse d'options techniques et institutionnelles",
-          "Évaluation de bancabilité et scénarios de financement",
-          "Alignement avec exigences IFI / bailleurs",
-          "Appui à la gouvernance sectorielle",
+          "Analyse critique des composantes techniques et institutionnelles",
+          "Revues des scénarios de financement et d'allocation des risques",
+          "Articulation avec les réalités sectorielles en RDC",
+          "Rédaction du rapport d'analyse intégrée",
         ],
         deliverables: [
-          "Analyses d'options et notes de faisabilité",
-          "Évaluations de bancabilité et allocation des risques",
-          "Roadmaps de préparation de projet",
-          "Notes de décision pour autorités de tutelle",
+          "Rapport d'analyse intégrée (finalisation en cours)",
+          "Synthèses thématiques pour parties prenantes",
+          "Registre de questions ouvertes et recommandations",
         ],
         outcomes: [
-          "Options techniques et de gouvernance comparées de façon transparente",
-          "Dossiers mieux préparés pour discussions avec financeurs",
-          "Réduction des zones d'incertitude avant études détaillées",
+          "Base commune pour débats éclairés sur Inga III",
+          "Lien explicite entre exigences bailleurs et contraintes locales",
+          "Recommandations actionnables pour la suite du cycle de décision",
+        ],
+      },
+      "solar-bess-katanga-thrive": {
+        metaDescription:
+          "Préparation d'un projet solaire & BESS au Katanga — Thrive Renewables et Ministère des Ressources Hydrauliques et de l'Électricité.",
+        body: "Accompagnement à la structuration d'un projet solaire avec stockage (BESS) en région minière du Katanga, en interface entre investisseur privé international et tutelle hydraulique et électrique congolaise.",
+        mandateType: "Préparation de projet et structuration public–privé",
+        challenge:
+          "Aligner calendrier investisseur, octroi de sites, exigences réglementaires et readiness technique avant engagement des études détaillées et des financements.",
+        approach:
+          "Préparation du dossier de projet, appui au protocole d'accord (MoU) et organisation de la mission de confirmation des sites octroyés.",
+        scope: [
+          "Structuration du concept solaire & BESS et du calendrier de mise en œuvre",
+          "Appui à la négociation et formalisation du MoU",
+          "Préparation de la mission de confirmation des sites (Katanga)",
+          "Interface avec le ministère de tutelle et l'investisseur",
+        ],
+        deliverables: [
+          "Dossier de préparation de projet et notes de cadrage",
+          "Support au MoU ministère–investisseur",
+          "Rapport de mission de confirmation des sites",
+          "Feuille de route vers études et financement",
+        ],
+        outcomes: [
+          "Cadre contractuel initial entre tutelle et investisseur",
+          "Sites confirmés et contraintes terrain documentées",
+          "Pipeline crédible vers études et closing financier",
+        ],
+      },
+      "hydro-agro-recs-climate-finance": {
+        metaDescription:
+          "Projet hydro-agro-industriel en RDC — RECS Innovation, ministère du développement durable et ONUDI, financement climat.",
+        body: "Préparation d'un projet combinant production hydroélectrique et composante agro-industrielle, structuré pour mobiliser un financement additionnel via les fonds climat, avec parties prenantes coréennes, congolaises et multilatérales.",
+        mandateType: "Préparation de projet et structuration finance climat",
+        challenge:
+          "Packager un projet multi-composantes acceptable pour institutions publiques, ONUDI et mécanismes de finance climat, tout en sécurisant la faisabilité agro-industrielle et énergétique.",
+        approach:
+          "Diagnostic intégré, alignement sur critères fonds climat, coordination des interfaces RECS / ministère / ONUDI et production de livrables de préparation progressive.",
+        scope: [
+          "Structuration technique et institutionnelle du projet intégré",
+          "Alignement sur exigences fonds climat et partenaires multilatéraux",
+          "Appui au dialogue RECS Innovation Ltd / tutelle / ONUDI",
+          "Préparation des dossiers de financement additionnel",
+        ],
+        deliverables: [
+          "Notes de structuration et matrice des parties prenantes",
+          "Dossiers de préparation pour financement climat",
+          "Scénarios de phasage et registres de risques",
+          "Briefings pour comités de pilotage",
+        ],
+        outcomes: [
+          "Projet lisible pour investisseurs privés et bailleurs climat",
+          "Interfaces institutionnelles clarifiées",
+          "Chemin documenté vers mobilisation de financement additionnel",
         ],
       },
       "strategic-corridors": {
@@ -517,7 +595,7 @@ const dictionaries = {
       viewAllCta: "Voir toutes les références",
       pageTitle: "Portfolio & références",
       pageIntro:
-        "Sélection de mandats rattachés aux deux pôles OPEN — cliquez sur une fiche pour le détail (contexte, périmètre, livrables).",
+        "Sélection de mandats rattachés aux deux pôles OPEN — dont des références récentes en énergie — cliquez sur une fiche pour le détail (contexte, périmètre, livrables).",
       categories: [
         "Water & Urban Infrastructure",
         "Energy & Power Systems",
@@ -527,12 +605,12 @@ const dictionaries = {
       ],
       note: "Chaque référence pourra détailler projet, secteur, localisation, client, rôle d'OPEN, livrables et résultats clés.",
       featuredSlugs: [
-        "urban-water-eastern-drc",
+        "inga-iii-umons-analysis",
+        "solar-bess-katanga-thrive",
+        "hydro-agro-recs-climate-finance",
         "strategic-corridors",
         "donor-programmes-drc",
-        "urban-networks-supervision",
-        "water-sanitation-engineering",
-        "hydropower-energy-systems",
+        "urban-water-eastern-drc",
       ],
     },
     hero: {
@@ -1232,14 +1310,39 @@ const dictionaries = {
             status: "Representative reference",
           },
           {
-            slug: "hydropower-energy-systems",
-            title: "Hydropower & energy systems",
-            sector: "Energy",
+            slug: "inga-iii-umons-analysis",
+            title: "Inga III — integrated critical analysis",
+            sector: "Energy / hydropower",
             location: "DRC",
-            clientType: "Ministry / utility / donor",
-            role: "Technical, institutional, and investment-readiness advisory",
-            summary: "Technical options, financial readiness, and alignment with financier requirements.",
-            status: "Representative reference",
+            clientType: "University of Mons",
+            role: "Support to critical analysis of the Inga III mega-project",
+            summary:
+              "Integrated analysis report nearing completion — linking technical, institutional, financier, and on-the-ground realities.",
+            status: "In progress · since March 2026",
+          },
+          {
+            slug: "solar-bess-katanga-thrive",
+            title: "Solar & BESS — Katanga",
+            sector: "Energy (solar & storage)",
+            location: "Katanga, DRC",
+            clientType:
+              "Thrive Renewables (PTY) Ltd / Ministry of Hydraulic Resources and Electricity",
+            role: "Project preparation and public–private interface",
+            summary:
+              "Solar-plus-storage project preparation; memorandum of understanding (MoU) and site confirmation mission in the mining region.",
+            status: "In progress · since June 2026",
+          },
+          {
+            slug: "hydro-agro-recs-climate-finance",
+            title: "Hydro-agro-industrial & climate finance",
+            sector: "Energy & sustainable development",
+            location: "DRC",
+            clientType:
+              "RECS Innovation Ltd (Korea) / Ministry of Sustainable Development / UNIDO",
+            role: "Project preparation for additional climate-fund financing",
+            summary:
+              "Packaging a hydropower and agro-industrial project bridging international donors, private investors, and public institutions.",
+            status: "In progress · since September 2026",
           },
           {
             slug: "strategic-corridors",
@@ -1339,30 +1442,84 @@ const dictionaries = {
           "Stronger readiness for financier discussions",
         ],
       },
-      "hydropower-energy-systems": {
-        metaDescription: "Technical advisory and investment readiness for hydropower and energy systems in the DRC.",
-        body: "Support to authorities and technical partners on energy programmes where technology, institutions, and finance must align before major studies are committed.",
-        mandateType: "Technical advisory and investment readiness",
+      "inga-iii-umons-analysis": {
+        metaDescription:
+          "Support to critical analysis of the Inga III mega-project in the DRC — University of Mons, integrated report in progress.",
+        body: "Advisory support to a critical review of Inga III, connecting technical, environmental, institutional, and financial dimensions to inform national and international stakeholders.",
+        mandateType: "Integrated critical analysis and decision support",
         challenge:
-          "Balance technical and institutional options while demonstrating financial viability and deliverability to development financiers.",
+          "Deliver an independent, structured reading of a mega-project where energy sovereignty, international finance, socio-environmental impacts, and deliverability intersect.",
         approach:
-          "Multi-criteria analysis, institutional readiness review, and progressive packaging of financing dossiers with explicit risk scenarios.",
+          "Document review, consolidation of project assumptions, benchmarking against international standards and field constraints — outputs tailored for academic and policy audiences.",
         scope: [
-          "Technical and institutional options analysis",
-          "Bankability assessment and financing scenarios",
-          "Alignment with IFI / donor requirements",
-          "Sector governance support",
+          "Critical review of technical and institutional components",
+          "Review of financing scenarios and risk allocation",
+          "Alignment with sector realities in the DRC",
+          "Drafting of the integrated analysis report",
         ],
         deliverables: [
-          "Options analysis and feasibility notes",
-          "Bankability assessments and risk allocation",
-          "Project preparation roadmaps",
-          "Decision notes for line ministries",
+          "Integrated analysis report (finalisation in progress)",
+          "Thematic briefs for stakeholders",
+          "Open issues register and recommendations",
         ],
         outcomes: [
-          "Transparent comparison of technical and governance options",
-          "Better prepared dossiers for financier dialogue",
-          "Reduced uncertainty before detailed design",
+          "Shared basis for informed debate on Inga III",
+          "Explicit link between donor requirements and local constraints",
+          "Actionable recommendations for the next decision cycle",
+        ],
+      },
+      "solar-bess-katanga-thrive": {
+        metaDescription:
+          "Solar & BESS project preparation in Katanga — Thrive Renewables and Ministry of Hydraulic Resources and Electricity.",
+        body: "Structuring support for a solar-plus-BESS project in the Katanga mining region, interfacing an international private investor with Congolese hydraulic and electricity oversight.",
+        mandateType: "Project preparation and public–private structuring",
+        challenge:
+          "Align investor timelines, site allocation, regulatory requirements, and technical readiness before detailed studies and financial close.",
+        approach:
+          "Project dossier preparation, MoU support, and organisation of the allocated-site confirmation mission.",
+        scope: [
+          "Solar & BESS concept and implementation timeline structuring",
+          "Support to MoU negotiation and signing",
+          "Preparation of the Katanga site confirmation mission",
+          "Interface between line ministry and investor",
+        ],
+        deliverables: [
+          "Project preparation dossier and framing notes",
+          "MoU support between ministry and investor",
+          "Site confirmation mission report",
+          "Roadmap toward studies and financing",
+        ],
+        outcomes: [
+          "Initial contractual framework between oversight and investor",
+          "Confirmed sites with documented field constraints",
+          "Credible pipeline toward studies and financial close",
+        ],
+      },
+      "hydro-agro-recs-climate-finance": {
+        metaDescription:
+          "Hydro-agro-industrial project in the DRC — RECS Innovation, sustainable development ministry, and UNIDO, climate finance.",
+        body: "Preparation of a project combining hydropower and agro-industrial components, structured to mobilise additional climate-fund financing with Korean, Congolese, and multilateral stakeholders.",
+        mandateType: "Project preparation and climate-finance structuring",
+        challenge:
+          "Package a multi-component project acceptable to public institutions, UNIDO, and climate finance mechanisms while securing agro-industrial and energy deliverability.",
+        approach:
+          "Integrated diagnostic, alignment with climate-fund criteria, coordination of RECS / ministry / UNIDO interfaces, and progressive preparation deliverables.",
+        scope: [
+          "Technical and institutional structuring of the integrated project",
+          "Alignment with climate-fund and multilateral requirements",
+          "Support to RECS Innovation Ltd / line ministry / UNIDO dialogue",
+          "Preparation of additional financing dossiers",
+        ],
+        deliverables: [
+          "Structuring notes and stakeholder matrix",
+          "Climate-finance preparation dossiers",
+          "Phasing scenarios and risk registers",
+          "Steering committee briefings",
+        ],
+        outcomes: [
+          "Project narrative legible to private investors and climate financiers",
+          "Clearer institutional interfaces",
+          "Documented path to additional financing mobilisation",
         ],
       },
       "strategic-corridors": {
@@ -1502,7 +1659,7 @@ const dictionaries = {
       viewAllCta: "View all projects",
       pageTitle: "Portfolio & references",
       pageIntro:
-        "A selection of mandates across both OPEN practices — open a card for context, scope, and deliverables.",
+        "A selection of mandates across both OPEN practices — including recent energy-sector references — open a card for context, scope, and deliverables.",
       categories: [
         "Water & Urban Infrastructure",
         "Energy & Power Systems",
@@ -1512,12 +1669,12 @@ const dictionaries = {
       ],
       note: "Each reference will cover project, sector, location, client, OPEN's role, deliverables, and key results where available.",
       featuredSlugs: [
-        "urban-water-eastern-drc",
+        "inga-iii-umons-analysis",
+        "solar-bess-katanga-thrive",
+        "hydro-agro-recs-climate-finance",
         "strategic-corridors",
         "donor-programmes-drc",
-        "urban-networks-supervision",
-        "water-sanitation-engineering",
-        "hydropower-energy-systems",
+        "urban-water-eastern-drc",
       ],
     },
     hero: {
