@@ -40,13 +40,25 @@ function slugify(topic) {
     .slice(0, 72);
 }
 
+function stripEmojis(text) {
+  return text
+    .replace(/\p{Extended_Pictographic}/gu, "")
+    .replace(/\uFE0F/g, "")
+    .replace(/[\u{1F3FB}-\u{1F3FF}]/gu, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
 function cleanLinkedInText(raw) {
   if (!raw) return { body: "", excerpt: "" };
   const stop = /^(Like|Comment|Share|To view or add|View C2PA|\d+$)/i;
-  const lines = raw.split("\n").map((l) => l.trim());
+  const lines = raw.split("\n").map((l) => stripEmojis(l.trim())).filter(Boolean);
   let start = 0;
   for (let i = 0; i < lines.length; i++) {
-    if (/^[🛑🏦🛤️⚡🧠💧🌍]/.test(lines[i]) || (lines[i].length > 40 && !lines[i].startsWith("Eric"))) {
+    const line = lines[i];
+    if (/^Eric MULIMBI C\.$/i.test(line)) continue;
+    if (/^\d+[mhdw](?:o)?$/i.test(line)) continue;
+    if (line.length > 40) {
       start = i;
       break;
     }
@@ -54,11 +66,10 @@ function cleanLinkedInText(raw) {
   const bodyLines = [];
   for (let i = start; i < lines.length; i++) {
     const line = lines[i];
-    if (!line) continue;
     if (stop.test(line)) break;
     if (line.startsWith("#") && bodyLines.length > 2) break;
-    if (/^Eric MULIMBI C\.$/.test(line)) continue;
-    if (/^\d+mo$/.test(line)) continue;
+    if (/^Eric MULIMBI C\.$/i.test(line)) continue;
+    if (/^\d+[mhdw](?:o)?$/i.test(line)) continue;
     bodyLines.push(line);
   }
   const body = bodyLines.join("\n\n").replace(/\n{3,}/g, "\n\n").trim();
@@ -83,7 +94,7 @@ function inferPole(topic) {
   return "advisory";
 }
 
-function localeBlock(body, hashtags, published) {
+function localeBlock(body, hashtags) {
   const paragraphs = body.split(/\n\n/).filter(Boolean);
   return {
     clientType: { en: "LinkedIn / public dialogue", fr: "LinkedIn / dialogue public" },
@@ -92,8 +103,8 @@ function localeBlock(body, hashtags, published) {
       fr: "Leadership d'opinion & perspective sectorielle",
     },
     status: {
-      en: published ? `Published · LinkedIn · ${published}` : "Published · LinkedIn",
-      fr: published ? `Publié · LinkedIn · ${published}` : "Publié · LinkedIn",
+      en: "Sector reference",
+      fr: "Référence sectorielle",
     },
     mandateType: {
       en: "Published insight & advisory perspective",
@@ -142,7 +153,7 @@ function main() {
 
     const sector = inferSector(row.topic);
     const pole = inferPole(row.topic);
-    const block = localeBlock(body, row.hashtags ?? [], row.publishedAt);
+    const block = localeBlock(body, row.hashtags ?? []);
 
     items.push({
       slug: `ref-${postId}-${slugify(row.topic)}`,

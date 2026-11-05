@@ -41,11 +41,6 @@ export function ProjectDetailView({
         ]}
         actions={
           <>
-            {project.linkedinUrl ? (
-              <PillLink href={project.linkedinUrl} target="_blank" rel="noopener noreferrer">
-                {shared.viewOnLinkedIn}
-              </PillLink>
-            ) : null}
             <PillLink href={mailHref(locale, "project")}>{shared.contactCta}</PillLink>
             <ButtonLink href={polePath(locale, pole)} variant="outline-light">
               {shared.backToPole}

@@ -1,6 +1,6 @@
 {
   "source": "linkedin-articles-enriched.json",
-  "builtAt": "2026-11-05T10:31:13.503Z",
+  "builtAt": "2026-11-05T10:40:36.922Z",
   "featuredSlugs": [
     "ref-01-faic-2026-fidic-engineering-leadership",
     "ref-02-drc-bankability-finance-ready-infrastructure",
@@ -34,12 +34,12 @@
         "fr": "Digital & ingénierie"
       },
       "summary": {
-        "en": "🛑 African infrastructure needs stronger engineering leadership, not only larger project pipelines.",
-        "fr": "🛑 African infrastructure needs stronger engineering leadership, not only larger project pipelines."
+        "en": "African infrastructure needs stronger engineering leadership, not only larger project pipelines.",
+        "fr": "African infrastructure needs stronger engineering leadership, not only larger project pipelines."
       },
       "body": {
-        "en": "🛑 African infrastructure needs stronger engineering leadership, not only larger project pipelines.\n\nFAIC 2026 reinforced a practical lesson: the quality of infrastructure delivery depends on the quality of preparation, contracts, supervision, and professional judgment behind each project.\n\nToo many projects enter procurement with weak scope definition, incomplete risk allocation, limited O&M thinking, and unclear institutional responsibilities. The result is predictable: delays, claims, cost escalation, and public frustration.\n\nFIDIC-type standards matter because they create discipline around roles, obligations, dispute management, and delivery accountability. But standards alone are not enough. They need engineers, public officials, advisors, and contractors who know how to apply them in local realities.\n\nFor African infrastructure, professionalism is not a technical luxury. It is a development requirement.\n\nWhat professional discipline do you think is most missing from infrastructure delivery today?",
-        "fr": "🛑 African infrastructure needs stronger engineering leadership, not only larger project pipelines.\n\nFAIC 2026 reinforced a practical lesson: the quality of infrastructure delivery depends on the quality of preparation, contracts, supervision, and professional judgment behind each project.\n\nToo many projects enter procurement with weak scope definition, incomplete risk allocation, limited O&M thinking, and unclear institutional responsibilities. The result is predictable: delays, claims, cost escalation, and public frustration.\n\nFIDIC-type standards matter because they create discipline around roles, obligations, dispute management, and delivery accountability. But standards alone are not enough. They need engineers, public officials, advisors, and contractors who know how to apply them in local realities.\n\nFor African infrastructure, professionalism is not a technical luxury. It is a development requirement.\n\nWhat professional discipline do you think is most missing from infrastructure delivery today?"
+        "en": "African infrastructure needs stronger engineering leadership, not only larger project pipelines.\n\nFAIC 2026 reinforced a practical lesson: the quality of infrastructure delivery depends on the quality of preparation, contracts, supervision, and professional judgment behind each project.\n\nToo many projects enter procurement with weak scope definition, incomplete risk allocation, limited O&M thinking, and unclear institutional responsibilities. The result is predictable: delays, claims, cost escalation, and public frustration.\n\nFIDIC-type standards matter because they create discipline around roles, obligations, dispute management, and delivery accountability. But standards alone are not enough. They need engineers, public officials, advisors, and contractors who know how to apply them in local realities.\n\nFor African infrastructure, professionalism is not a technical luxury. It is a development requirement.\n\nWhat professional discipline do you think is most missing from infrastructure delivery today?",
+        "fr": "African infrastructure needs stronger engineering leadership, not only larger project pipelines.\n\nFAIC 2026 reinforced a practical lesson: the quality of infrastructure delivery depends on the quality of preparation, contracts, supervision, and professional judgment behind each project.\n\nToo many projects enter procurement with weak scope definition, incomplete risk allocation, limited O&M thinking, and unclear institutional responsibilities. The result is predictable: delays, claims, cost escalation, and public frustration.\n\nFIDIC-type standards matter because they create discipline around roles, obligations, dispute management, and delivery accountability. But standards alone are not enough. They need engineers, public officials, advisors, and contractors who know how to apply them in local realities.\n\nFor African infrastructure, professionalism is not a technical luxury. It is a development requirement.\n\nWhat professional discipline do you think is most missing from infrastructure delivery today?"
       },
       "metaDescription": {
         "en": "FAIC 2026 / FIDIC engineering leadership — OPEN infrastructure perspective.",
@@ -54,8 +54,8 @@
         "fr": "Leadership d'opinion & perspective sectorielle"
       },
       "status": {
-        "en": "Published · LinkedIn · 3mo",
-        "fr": "Publié · LinkedIn · 3mo"
+        "en": "Sector reference",
+        "fr": "Référence sectorielle"
       },
       "mandateType": {
         "en": "Published insight & advisory perspective",
@@ -75,14 +75,14 @@
       },
       "scope": {
         "en": [
-          "🛑 African infrastructure needs stronger engineering leadership, not only larger project pipelines.",
+          "African infrastructure needs stronger engineering leadership, not only larger project pipelines.",
           "FAIC 2026 reinforced a practical lesson: the quality of infrastructure delivery depends on the quality of preparation, contracts, supervision, and professional judgment behind each project.",
           "Too many projects enter procurement with weak scope definition, incomplete risk allocation, limited O&M thinking, and unclear institutional responsibilities. The result is predictable: delays, claims, cost escalation, and public frustration.",
           "FIDIC-type standards matter because they create discipline around roles, obligations, dispute management, and delivery accountability. But standards alone are not enough. They need engineers, public officials, advisors, and contractors who know how to apply them in local realities.",
           "For African infrastructure, professionalism is not a technical luxury. It is a development requirement."
         ],
         "fr": [
-          "🛑 African infrastructure needs stronger engineering leadership, not only larger project pipelines.",
+          "African infrastructure needs stronger engineering leadership, not only larger project pipelines.",
           "FAIC 2026 reinforced a practical lesson: the quality of infrastructure delivery depends on the quality of preparation, contracts, supervision, and professional judgment behind each project.",
           "Too many projects enter procurement with weak scope definition, incomplete risk allocation, limited O&M thinking, and unclear institutional responsibilities. The result is predictable: delays, claims, cost escalation, and public frustration.",
           "FIDIC-type standards matter because they create discipline around roles, obligations, dispute management, and delivery accountability. But standards alone are not enough. They need engineers, public officials, advisors, and contractors who know how to apply them in local realities.",
@@ -138,12 +138,12 @@
         "fr": "Préparation & financement"
       },
       "summary": {
-        "en": "🏦 Bankability is not created inside a financial model.",
-        "fr": "🏦 Bankability is not created inside a financial model."
+        "en": "Bankability is not created inside a financial model.",
+        "fr": "Bankability is not created inside a financial model."
       },
       "body": {
-        "en": "🏦 Bankability is not created inside a financial model.\n\nIt begins much earlier, when a project is still being shaped into something credible, executable, and institutionally supported.\n\nIn the DRC, many infrastructure opportunities are technically important but not yet finance-ready. The missing pieces are often practical: confirmed demand, realistic CAPEX, affordable tariffs, land and permitting clarity, procurement readiness, O&M arrangements, risk allocation, and counterpart alignment.\n\nA project can have strong development logic and still struggle to attract serious financing if these fundamentals are weak.\n\nMy preferred test is simple: can the project survive due diligence by a donor, DFI, ministry, utility, contractor, and community representative at the same table?\n\nIf not, the work is not only to find financing. The work is to prepare the project properly.\n\nWhere do you usually see bankability break down first: technical scope, institutional readiness, tariffs, or risk allocation?",
-        "fr": "🏦 Bankability is not created inside a financial model.\n\nIt begins much earlier, when a project is still being shaped into something credible, executable, and institutionally supported.\n\nIn the DRC, many infrastructure opportunities are technically important but not yet finance-ready. The missing pieces are often practical: confirmed demand, realistic CAPEX, affordable tariffs, land and permitting clarity, procurement readiness, O&M arrangements, risk allocation, and counterpart alignment.\n\nA project can have strong development logic and still struggle to attract serious financing if these fundamentals are weak.\n\nMy preferred test is simple: can the project survive due diligence by a donor, DFI, ministry, utility, contractor, and community representative at the same table?\n\nIf not, the work is not only to find financing. The work is to prepare the project properly.\n\nWhere do you usually see bankability break down first: technical scope, institutional readiness, tariffs, or risk allocation?"
+        "en": "Bankability is not created inside a financial model.\n\nIt begins much earlier, when a project is still being shaped into something credible, executable, and institutionally supported.\n\nIn the DRC, many infrastructure opportunities are technically important but not yet finance-ready. The missing pieces are often practical: confirmed demand, realistic CAPEX, affordable tariffs, land and permitting clarity, procurement readiness, O&M arrangements, risk allocation, and counterpart alignment.\n\nA project can have strong development logic and still struggle to attract serious financing if these fundamentals are weak.\n\nMy preferred test is simple: can the project survive due diligence by a donor, DFI, ministry, utility, contractor, and community representative at the same table?\n\nIf not, the work is not only to find financing. The work is to prepare the project properly.\n\nWhere do you usually see bankability break down first: technical scope, institutional readiness, tariffs, or risk allocation?",
+        "fr": "Bankability is not created inside a financial model.\n\nIt begins much earlier, when a project is still being shaped into something credible, executable, and institutionally supported.\n\nIn the DRC, many infrastructure opportunities are technically important but not yet finance-ready. The missing pieces are often practical: confirmed demand, realistic CAPEX, affordable tariffs, land and permitting clarity, procurement readiness, O&M arrangements, risk allocation, and counterpart alignment.\n\nA project can have strong development logic and still struggle to attract serious financing if these fundamentals are weak.\n\nMy preferred test is simple: can the project survive due diligence by a donor, DFI, ministry, utility, contractor, and community representative at the same table?\n\nIf not, the work is not only to find financing. The work is to prepare the project properly.\n\nWhere do you usually see bankability break down first: technical scope, institutional readiness, tariffs, or risk allocation?"
       },
       "metaDescription": {
         "en": "DRC bankability / finance-ready infrastructure — OPEN infrastructure perspective.",
@@ -158,8 +158,8 @@
         "fr": "Leadership d'opinion & perspective sectorielle"
       },
       "status": {
-        "en": "Published · LinkedIn · 3mo",
-        "fr": "Publié · LinkedIn · 3mo"
+        "en": "Sector reference",
+        "fr": "Référence sectorielle"
       },
       "mandateType": {
         "en": "Published insight & advisory perspective",
@@ -179,14 +179,14 @@
       },
       "scope": {
         "en": [
-          "🏦 Bankability is not created inside a financial model.",
+          "Bankability is not created inside a financial model.",
           "It begins much earlier, when a project is still being shaped into something credible, executable, and institutionally supported.",
           "In the DRC, many infrastructure opportunities are technically important but not yet finance-ready. The missing pieces are often practical: confirmed demand, realistic CAPEX, affordable tariffs, land and permitting clarity, procurement readiness, O&M arrangements, risk allocation, and counterpart alignment.",
           "A project can have strong development logic and still struggle to attract serious financing if these fundamentals are weak.",
           "My preferred test is simple: can the project survive due diligence by a donor, DFI, ministry, utility, contractor, and community representative at the same table?"
         ],
         "fr": [
-          "🏦 Bankability is not created inside a financial model.",
+          "Bankability is not created inside a financial model.",
           "It begins much earlier, when a project is still being shaped into something credible, executable, and institutionally supported.",
           "In the DRC, many infrastructure opportunities are technically important but not yet finance-ready. The missing pieces are often practical: confirmed demand, realistic CAPEX, affordable tariffs, land and permitting clarity, procurement readiness, O&M arrangements, risk allocation, and counterpart alignment.",
           "A project can have strong development logic and still struggle to attract serious financing if these fundamentals are weak.",
@@ -242,12 +242,12 @@
         "fr": "Transport & corridors"
       },
       "summary": {
-        "en": "🛤️ Corridors are not roads, railways, ports, and border posts placed next to each other.",
-        "fr": "🛤️ Corridors are not roads, railways, ports, and border posts placed next to each other."
+        "en": "Corridors are not roads, railways, ports, and border posts placed next to each other.",
+        "fr": "Corridors are not roads, railways, ports, and border posts placed next to each other."
       },
       "body": {
-        "en": "🛤️ Corridors are not roads, railways, ports, and border posts placed next to each other.\n\nThey are economic systems that need coordination, maintenance, governance, and commercial discipline.\n\nFor the DRC and Central Africa, the Lobito corridor conversation is a useful reminder: infrastructure becomes strategic only when it reduces friction across the full chain.\n\nA railway section may be upgraded, but the corridor still underperforms if customs procedures are slow, border agencies are misaligned, logistics costs remain high, feeder roads are weak, or power supply is unreliable.\n\nCorridor development therefore needs a wider preparation lens. The right questions are not only engineering questions. They are also institutional, fiscal, security, trade, and private-sector questions.\n\nA corridor is successful when producers, transporters, public agencies, and investors can rely on it repeatedly.\n\nWhich corridor constraint deserves more attention: infrastructure gaps, border procedures, logistics costs, or maintenance funding?",
-        "fr": "🛤️ Corridors are not roads, railways, ports, and border posts placed next to each other.\n\nThey are economic systems that need coordination, maintenance, governance, and commercial discipline.\n\nFor the DRC and Central Africa, the Lobito corridor conversation is a useful reminder: infrastructure becomes strategic only when it reduces friction across the full chain.\n\nA railway section may be upgraded, but the corridor still underperforms if customs procedures are slow, border agencies are misaligned, logistics costs remain high, feeder roads are weak, or power supply is unreliable.\n\nCorridor development therefore needs a wider preparation lens. The right questions are not only engineering questions. They are also institutional, fiscal, security, trade, and private-sector questions.\n\nA corridor is successful when producers, transporters, public agencies, and investors can rely on it repeatedly.\n\nWhich corridor constraint deserves more attention: infrastructure gaps, border procedures, logistics costs, or maintenance funding?"
+        "en": "Corridors are not roads, railways, ports, and border posts placed next to each other.\n\nThey are economic systems that need coordination, maintenance, governance, and commercial discipline.\n\nFor the DRC and Central Africa, the Lobito corridor conversation is a useful reminder: infrastructure becomes strategic only when it reduces friction across the full chain.\n\nA railway section may be upgraded, but the corridor still underperforms if customs procedures are slow, border agencies are misaligned, logistics costs remain high, feeder roads are weak, or power supply is unreliable.\n\nCorridor development therefore needs a wider preparation lens. The right questions are not only engineering questions. They are also institutional, fiscal, security, trade, and private-sector questions.\n\nA corridor is successful when producers, transporters, public agencies, and investors can rely on it repeatedly.\n\nWhich corridor constraint deserves more attention: infrastructure gaps, border procedures, logistics costs, or maintenance funding?",
+        "fr": "Corridors are not roads, railways, ports, and border posts placed next to each other.\n\nThey are economic systems that need coordination, maintenance, governance, and commercial discipline.\n\nFor the DRC and Central Africa, the Lobito corridor conversation is a useful reminder: infrastructure becomes strategic only when it reduces friction across the full chain.\n\nA railway section may be upgraded, but the corridor still underperforms if customs procedures are slow, border agencies are misaligned, logistics costs remain high, feeder roads are weak, or power supply is unreliable.\n\nCorridor development therefore needs a wider preparation lens. The right questions are not only engineering questions. They are also institutional, fiscal, security, trade, and private-sector questions.\n\nA corridor is successful when producers, transporters, public agencies, and investors can rely on it repeatedly.\n\nWhich corridor constraint deserves more attention: infrastructure gaps, border procedures, logistics costs, or maintenance funding?"
       },
       "metaDescription": {
         "en": "Regional corridors / Lobito / trade infrastructure — OPEN infrastructure perspective.",
@@ -262,8 +262,8 @@
         "fr": "Leadership d'opinion & perspective sectorielle"
       },
       "status": {
-        "en": "Published · LinkedIn · 3mo",
-        "fr": "Publié · LinkedIn · 3mo"
+        "en": "Sector reference",
+        "fr": "Référence sectorielle"
       },
       "mandateType": {
         "en": "Published insight & advisory perspective",
@@ -283,14 +283,14 @@
       },
       "scope": {
         "en": [
-          "🛤️ Corridors are not roads, railways, ports, and border posts placed next to each other.",
+          "Corridors are not roads, railways, ports, and border posts placed next to each other.",
           "They are economic systems that need coordination, maintenance, governance, and commercial discipline.",
           "For the DRC and Central Africa, the Lobito corridor conversation is a useful reminder: infrastructure becomes strategic only when it reduces friction across the full chain.",
           "A railway section may be upgraded, but the corridor still underperforms if customs procedures are slow, border agencies are misaligned, logistics costs remain high, feeder roads are weak, or power supply is unreliable.",
           "Corridor development therefore needs a wider preparation lens. The right questions are not only engineering questions. They are also institutional, fiscal, security, trade, and private-sector questions."
         ],
         "fr": [
-          "🛤️ Corridors are not roads, railways, ports, and border posts placed next to each other.",
+          "Corridors are not roads, railways, ports, and border posts placed next to each other.",
           "They are economic systems that need coordination, maintenance, governance, and commercial discipline.",
           "For the DRC and Central Africa, the Lobito corridor conversation is a useful reminder: infrastructure becomes strategic only when it reduces friction across the full chain.",
           "A railway section may be upgraded, but the corridor still underperforms if customs procedures are slow, border agencies are misaligned, logistics costs remain high, feeder roads are weak, or power supply is unreliable.",
@@ -346,12 +346,12 @@
         "fr": "Digital & ingénierie"
       },
       "summary": {
-        "en": "🖥️ Digital tools do not fix weak infrastructure systems. They expose them faster.",
-        "fr": "🖥️ Digital tools do not fix weak infrastructure systems. They expose them faster."
+        "en": "Digital tools do not fix weak infrastructure systems. They expose them faster.",
+        "fr": "Digital tools do not fix weak infrastructure systems. They expose them faster."
       },
       "body": {
-        "en": "🖥️ Digital tools do not fix weak infrastructure systems. They expose them faster.\n\nAI, BIM, GIS, drones, dashboards, and digital twins can improve planning, supervision, asset management, and transparency. But their value depends on the maturity of the underlying data, institutions, and workflows.\n\nIn infrastructure delivery, digital maturity starts with basic discipline: reliable asset inventories, clean project documentation, georeferenced data, version control, clear reporting lines, and decision-makers who use evidence consistently.\n\nWithout these foundations, technology becomes another layer of complexity.\n\nFor the DRC and similar markets, the opportunity is significant. Digital tools can help map bottlenecks, monitor works, track climate risks, improve maintenance planning, and strengthen donor reporting.\n\nBut the entry point should be practical. Start with the decision the institution needs to make, then build the data system around that decision.\n\nWhere should infrastructure institutions begin: asset data, project dashboards, GIS mapping, or digital supervision?",
-        "fr": "🖥️ Digital tools do not fix weak infrastructure systems. They expose them faster.\n\nAI, BIM, GIS, drones, dashboards, and digital twins can improve planning, supervision, asset management, and transparency. But their value depends on the maturity of the underlying data, institutions, and workflows.\n\nIn infrastructure delivery, digital maturity starts with basic discipline: reliable asset inventories, clean project documentation, georeferenced data, version control, clear reporting lines, and decision-makers who use evidence consistently.\n\nWithout these foundations, technology becomes another layer of complexity.\n\nFor the DRC and similar markets, the opportunity is significant. Digital tools can help map bottlenecks, monitor works, track climate risks, improve maintenance planning, and strengthen donor reporting.\n\nBut the entry point should be practical. Start with the decision the institution needs to make, then build the data system around that decision.\n\nWhere should infrastructure institutions begin: asset data, project dashboards, GIS mapping, or digital supervision?"
+        "en": "Digital tools do not fix weak infrastructure systems. They expose them faster.\n\nAI, BIM, GIS, drones, dashboards, and digital twins can improve planning, supervision, asset management, and transparency. But their value depends on the maturity of the underlying data, institutions, and workflows.\n\nIn infrastructure delivery, digital maturity starts with basic discipline: reliable asset inventories, clean project documentation, georeferenced data, version control, clear reporting lines, and decision-makers who use evidence consistently.\n\nWithout these foundations, technology becomes another layer of complexity.\n\nFor the DRC and similar markets, the opportunity is significant. Digital tools can help map bottlenecks, monitor works, track climate risks, improve maintenance planning, and strengthen donor reporting.\n\nBut the entry point should be practical. Start with the decision the institution needs to make, then build the data system around that decision.\n\nWhere should infrastructure institutions begin: asset data, project dashboards, GIS mapping, or digital supervision?",
+        "fr": "Digital tools do not fix weak infrastructure systems. They expose them faster.\n\nAI, BIM, GIS, drones, dashboards, and digital twins can improve planning, supervision, asset management, and transparency. But their value depends on the maturity of the underlying data, institutions, and workflows.\n\nIn infrastructure delivery, digital maturity starts with basic discipline: reliable asset inventories, clean project documentation, georeferenced data, version control, clear reporting lines, and decision-makers who use evidence consistently.\n\nWithout these foundations, technology becomes another layer of complexity.\n\nFor the DRC and similar markets, the opportunity is significant. Digital tools can help map bottlenecks, monitor works, track climate risks, improve maintenance planning, and strengthen donor reporting.\n\nBut the entry point should be practical. Start with the decision the institution needs to make, then build the data system around that decision.\n\nWhere should infrastructure institutions begin: asset data, project dashboards, GIS mapping, or digital supervision?"
       },
       "metaDescription": {
         "en": "Digital maturity / AI / BIM / GIS infrastructure — OPEN infrastructure perspective.",
@@ -366,8 +366,8 @@
         "fr": "Leadership d'opinion & perspective sectorielle"
       },
       "status": {
-        "en": "Published · LinkedIn · 3mo",
-        "fr": "Publié · LinkedIn · 3mo"
+        "en": "Sector reference",
+        "fr": "Référence sectorielle"
       },
       "mandateType": {
         "en": "Published insight & advisory perspective",
@@ -387,14 +387,14 @@
       },
       "scope": {
         "en": [
-          "🖥️ Digital tools do not fix weak infrastructure systems. They expose them faster.",
+          "Digital tools do not fix weak infrastructure systems. They expose them faster.",
           "AI, BIM, GIS, drones, dashboards, and digital twins can improve planning, supervision, asset management, and transparency. But their value depends on the maturity of the underlying data, institutions, and workflows.",
           "In infrastructure delivery, digital maturity starts with basic discipline: reliable asset inventories, clean project documentation, georeferenced data, version control, clear reporting lines, and decision-makers who use evidence consistently.",
           "Without these foundations, technology becomes another layer of complexity.",
           "For the DRC and similar markets, the opportunity is significant. Digital tools can help map bottlenecks, monitor works, track climate risks, improve maintenance planning, and strengthen donor reporting."
         ],
         "fr": [
-          "🖥️ Digital tools do not fix weak infrastructure systems. They expose them faster.",
+          "Digital tools do not fix weak infrastructure systems. They expose them faster.",
           "AI, BIM, GIS, drones, dashboards, and digital twins can improve planning, supervision, asset management, and transparency. But their value depends on the maturity of the underlying data, institutions, and workflows.",
           "In infrastructure delivery, digital maturity starts with basic discipline: reliable asset inventories, clean project documentation, georeferenced data, version control, clear reporting lines, and decision-makers who use evidence consistently.",
           "Without these foundations, technology becomes another layer of complexity.",
@@ -470,8 +470,8 @@
         "fr": "Leadership d'opinion & perspective sectorielle"
       },
       "status": {
-        "en": "Published · LinkedIn · 3mo",
-        "fr": "Publié · LinkedIn · 3mo"
+        "en": "Sector reference",
+        "fr": "Référence sectorielle"
       },
       "mandateType": {
         "en": "Published insight & advisory perspective",
@@ -554,12 +554,12 @@
         "fr": "Transport & corridors"
       },
       "summary": {
-        "en": "🧠 Infrastructure resilience is not only about climate and engineering standards.",
-        "fr": "🧠 Infrastructure resilience is not only about climate and engineering standards."
+        "en": "Infrastructure resilience is not only about climate and engineering standards.",
+        "fr": "Infrastructure resilience is not only about climate and engineering standards."
       },
       "body": {
-        "en": "🧠 Infrastructure resilience is not only about climate and engineering standards.\n\nIn fragile and conflict-affected contexts, resilience also depends on trust, access, security, and local economic inclusion.\n\nRoads, power systems, water networks, and corridors can either reduce territorial isolation or deepen grievances when communities see assets passing through without local benefit.\n\nThis is especially important in parts of Central and Eastern Africa, where infrastructure sits inside complex political, social, and security realities.\n\nA resilient corridor is not only one that withstands floods or heavy traffic. It is one that keeps functioning because communities, firms, authorities, and users have a shared stake in its continuity.\n\nProject preparation should therefore include social license, maintenance arrangements, local employment logic, grievance systems, and risk monitoring from the start.\n\nPeace-sensitive infrastructure is not soft analysis. It is delivery risk management.\n\nWhat does resilience mean in your infrastructure work?",
-        "fr": "🧠 Infrastructure resilience is not only about climate and engineering standards.\n\nIn fragile and conflict-affected contexts, resilience also depends on trust, access, security, and local economic inclusion.\n\nRoads, power systems, water networks, and corridors can either reduce territorial isolation or deepen grievances when communities see assets passing through without local benefit.\n\nThis is especially important in parts of Central and Eastern Africa, where infrastructure sits inside complex political, social, and security realities.\n\nA resilient corridor is not only one that withstands floods or heavy traffic. It is one that keeps functioning because communities, firms, authorities, and users have a shared stake in its continuity.\n\nProject preparation should therefore include social license, maintenance arrangements, local employment logic, grievance systems, and risk monitoring from the start.\n\nPeace-sensitive infrastructure is not soft analysis. It is delivery risk management.\n\nWhat does resilience mean in your infrastructure work?"
+        "en": "Infrastructure resilience is not only about climate and engineering standards.\n\nIn fragile and conflict-affected contexts, resilience also depends on trust, access, security, and local economic inclusion.\n\nRoads, power systems, water networks, and corridors can either reduce territorial isolation or deepen grievances when communities see assets passing through without local benefit.\n\nThis is especially important in parts of Central and Eastern Africa, where infrastructure sits inside complex political, social, and security realities.\n\nA resilient corridor is not only one that withstands floods or heavy traffic. It is one that keeps functioning because communities, firms, authorities, and users have a shared stake in its continuity.\n\nProject preparation should therefore include social license, maintenance arrangements, local employment logic, grievance systems, and risk monitoring from the start.\n\nPeace-sensitive infrastructure is not soft analysis. It is delivery risk management.\n\nWhat does resilience mean in your infrastructure work?",
+        "fr": "Infrastructure resilience is not only about climate and engineering standards.\n\nIn fragile and conflict-affected contexts, resilience also depends on trust, access, security, and local economic inclusion.\n\nRoads, power systems, water networks, and corridors can either reduce territorial isolation or deepen grievances when communities see assets passing through without local benefit.\n\nThis is especially important in parts of Central and Eastern Africa, where infrastructure sits inside complex political, social, and security realities.\n\nA resilient corridor is not only one that withstands floods or heavy traffic. It is one that keeps functioning because communities, firms, authorities, and users have a shared stake in its continuity.\n\nProject preparation should therefore include social license, maintenance arrangements, local employment logic, grievance systems, and risk monitoring from the start.\n\nPeace-sensitive infrastructure is not soft analysis. It is delivery risk management.\n\nWhat does resilience mean in your infrastructure work?"
       },
       "metaDescription": {
         "en": "Peace, corridors, and infrastructure resilience — OPEN infrastructure perspective.",
@@ -574,8 +574,8 @@
         "fr": "Leadership d'opinion & perspective sectorielle"
       },
       "status": {
-        "en": "Published · LinkedIn · 2mo",
-        "fr": "Publié · LinkedIn · 2mo"
+        "en": "Sector reference",
+        "fr": "Référence sectorielle"
       },
       "mandateType": {
         "en": "Published insight & advisory perspective",
@@ -595,14 +595,14 @@
       },
       "scope": {
         "en": [
-          "🧠 Infrastructure resilience is not only about climate and engineering standards.",
+          "Infrastructure resilience is not only about climate and engineering standards.",
           "In fragile and conflict-affected contexts, resilience also depends on trust, access, security, and local economic inclusion.",
           "Roads, power systems, water networks, and corridors can either reduce territorial isolation or deepen grievances when communities see assets passing through without local benefit.",
           "This is especially important in parts of Central and Eastern Africa, where infrastructure sits inside complex political, social, and security realities.",
           "A resilient corridor is not only one that withstands floods or heavy traffic. It is one that keeps functioning because communities, firms, authorities, and users have a shared stake in its continuity."
         ],
         "fr": [
-          "🧠 Infrastructure resilience is not only about climate and engineering standards.",
+          "Infrastructure resilience is not only about climate and engineering standards.",
           "In fragile and conflict-affected contexts, resilience also depends on trust, access, security, and local economic inclusion.",
           "Roads, power systems, water networks, and corridors can either reduce territorial isolation or deepen grievances when communities see assets passing through without local benefit.",
           "This is especially important in parts of Central and Eastern Africa, where infrastructure sits inside complex political, social, and security realities.",
@@ -658,12 +658,12 @@
         "fr": "Préparation & financement"
       },
       "summary": {
-        "en": "👷 Young African engineers need more than technical exposure.",
-        "fr": "👷 Young African engineers need more than technical exposure."
+        "en": "Young African engineers need more than technical exposure.",
+        "fr": "Young African engineers need more than technical exposure."
       },
       "body": {
-        "en": "👷 Young African engineers need more than technical exposure.\n\nThey need a clearer bridge between engineering knowledge and infrastructure delivery realities.\n\nMany early-career professionals learn design tools, standards, and calculations, but they receive limited exposure to project preparation, procurement, contract administration, donor requirements, stakeholder management, cost control, supervision, and O&M logic.\n\nThis creates a gap between academic competence and delivery readiness.\n\nMentoring should help close that gap. A young engineer who understands how a feasibility study becomes a tender, how risks affect contracts, how delays create claims, and how maintenance determines long-term value becomes more useful to public institutions and private firms.\n\nAfrica’s infrastructure pipeline needs this type of professional maturity.\n\nThe strongest engineers of the next decade may be those who combine technical rigor with institutional understanding and field judgment.\n\nWhat skill should every young infrastructure professional develop earlier?",
-        "fr": "👷 Young African engineers need more than technical exposure.\n\nThey need a clearer bridge between engineering knowledge and infrastructure delivery realities.\n\nMany early-career professionals learn design tools, standards, and calculations, but they receive limited exposure to project preparation, procurement, contract administration, donor requirements, stakeholder management, cost control, supervision, and O&M logic.\n\nThis creates a gap between academic competence and delivery readiness.\n\nMentoring should help close that gap. A young engineer who understands how a feasibility study becomes a tender, how risks affect contracts, how delays create claims, and how maintenance determines long-term value becomes more useful to public institutions and private firms.\n\nAfrica’s infrastructure pipeline needs this type of professional maturity.\n\nThe strongest engineers of the next decade may be those who combine technical rigor with institutional understanding and field judgment.\n\nWhat skill should every young infrastructure professional develop earlier?"
+        "en": "Young African engineers need more than technical exposure.\n\nThey need a clearer bridge between engineering knowledge and infrastructure delivery realities.\n\nMany early-career professionals learn design tools, standards, and calculations, but they receive limited exposure to project preparation, procurement, contract administration, donor requirements, stakeholder management, cost control, supervision, and O&M logic.\n\nThis creates a gap between academic competence and delivery readiness.\n\nMentoring should help close that gap. A young engineer who understands how a feasibility study becomes a tender, how risks affect contracts, how delays create claims, and how maintenance determines long-term value becomes more useful to public institutions and private firms.\n\nAfrica’s infrastructure pipeline needs this type of professional maturity.\n\nThe strongest engineers of the next decade may be those who combine technical rigor with institutional understanding and field judgment.\n\nWhat skill should every young infrastructure professional develop earlier?",
+        "fr": "Young African engineers need more than technical exposure.\n\nThey need a clearer bridge between engineering knowledge and infrastructure delivery realities.\n\nMany early-career professionals learn design tools, standards, and calculations, but they receive limited exposure to project preparation, procurement, contract administration, donor requirements, stakeholder management, cost control, supervision, and O&M logic.\n\nThis creates a gap between academic competence and delivery readiness.\n\nMentoring should help close that gap. A young engineer who understands how a feasibility study becomes a tender, how risks affect contracts, how delays create claims, and how maintenance determines long-term value becomes more useful to public institutions and private firms.\n\nAfrica’s infrastructure pipeline needs this type of professional maturity.\n\nThe strongest engineers of the next decade may be those who combine technical rigor with institutional understanding and field judgment.\n\nWhat skill should every young infrastructure professional develop earlier?"
       },
       "metaDescription": {
         "en": "Mentoring / young African engineers / professional pipeline — OPEN infrastructure perspective.",
@@ -678,8 +678,8 @@
         "fr": "Leadership d'opinion & perspective sectorielle"
       },
       "status": {
-        "en": "Published · LinkedIn · 2mo",
-        "fr": "Publié · LinkedIn · 2mo"
+        "en": "Sector reference",
+        "fr": "Référence sectorielle"
       },
       "mandateType": {
         "en": "Published insight & advisory perspective",
@@ -699,14 +699,14 @@
       },
       "scope": {
         "en": [
-          "👷 Young African engineers need more than technical exposure.",
+          "Young African engineers need more than technical exposure.",
           "They need a clearer bridge between engineering knowledge and infrastructure delivery realities.",
           "Many early-career professionals learn design tools, standards, and calculations, but they receive limited exposure to project preparation, procurement, contract administration, donor requirements, stakeholder management, cost control, supervision, and O&M logic.",
           "This creates a gap between academic competence and delivery readiness.",
           "Mentoring should help close that gap. A young engineer who understands how a feasibility study becomes a tender, how risks affect contracts, how delays create claims, and how maintenance determines long-term value becomes more useful to public institutions and private firms."
         ],
         "fr": [
-          "👷 Young African engineers need more than technical exposure.",
+          "Young African engineers need more than technical exposure.",
           "They need a clearer bridge between engineering knowledge and infrastructure delivery realities.",
           "Many early-career professionals learn design tools, standards, and calculations, but they receive limited exposure to project preparation, procurement, contract administration, donor requirements, stakeholder management, cost control, supervision, and O&M logic.",
           "This creates a gap between academic competence and delivery readiness.",
@@ -762,12 +762,12 @@
         "fr": "Préparation & financement"
       },
       "summary": {
-        "en": "🌍 Global Gateway in the DRC should be judged by delivery readiness, not only by the size of announced commitments.",
-        "fr": "🌍 Global Gateway in the DRC should be judged by delivery readiness, not only by the size of announced commitments."
+        "en": "Global Gateway in the DRC should be judged by delivery readiness, not only by the size of announced commitments.",
+        "fr": "Global Gateway in the DRC should be judged by delivery readiness, not only by the size of announced commitments."
       },
       "body": {
-        "en": "🌍 Global Gateway in the DRC should be judged by delivery readiness, not only by the size of announced commitments.\n\nLarge infrastructure partnerships create attention. But attention becomes value only when projects are prepared, sequenced, procured, supervised, and maintained with discipline.\n\nFor water, energy, transport, and urban infrastructure, the real question is practical: which projects are mature enough to absorb financing and produce measurable service improvements?\n\nA delivery platform needs five elements: a credible project pipeline, preparation funding, decision gates, procurement readiness, and transparent risk tracking. Without these, financing can sit above the system while projects below remain fragile.\n\nThis is where bankability becomes operational. It is not only about investors. It is about whether institutions, utilities, contractors, communities, and financiers can rely on the same facts and responsibilities.\n\nThe DRC opportunity is significant, but the preparation layer needs as much attention as the financing layer.\n\nWhat would make infrastructure partnerships more execution-ready in your context?",
-        "fr": "🌍 Global Gateway in the DRC should be judged by delivery readiness, not only by the size of announced commitments.\n\nLarge infrastructure partnerships create attention. But attention becomes value only when projects are prepared, sequenced, procured, supervised, and maintained with discipline.\n\nFor water, energy, transport, and urban infrastructure, the real question is practical: which projects are mature enough to absorb financing and produce measurable service improvements?\n\nA delivery platform needs five elements: a credible project pipeline, preparation funding, decision gates, procurement readiness, and transparent risk tracking. Without these, financing can sit above the system while projects below remain fragile.\n\nThis is where bankability becomes operational. It is not only about investors. It is about whether institutions, utilities, contractors, communities, and financiers can rely on the same facts and responsibilities.\n\nThe DRC opportunity is significant, but the preparation layer needs as much attention as the financing layer.\n\nWhat would make infrastructure partnerships more execution-ready in your context?"
+        "en": "Global Gateway in the DRC should be judged by delivery readiness, not only by the size of announced commitments.\n\nLarge infrastructure partnerships create attention. But attention becomes value only when projects are prepared, sequenced, procured, supervised, and maintained with discipline.\n\nFor water, energy, transport, and urban infrastructure, the real question is practical: which projects are mature enough to absorb financing and produce measurable service improvements?\n\nA delivery platform needs five elements: a credible project pipeline, preparation funding, decision gates, procurement readiness, and transparent risk tracking. Without these, financing can sit above the system while projects below remain fragile.\n\nThis is where bankability becomes operational. It is not only about investors. It is about whether institutions, utilities, contractors, communities, and financiers can rely on the same facts and responsibilities.\n\nThe DRC opportunity is significant, but the preparation layer needs as much attention as the financing layer.\n\nWhat would make infrastructure partnerships more execution-ready in your context?",
+        "fr": "Global Gateway in the DRC should be judged by delivery readiness, not only by the size of announced commitments.\n\nLarge infrastructure partnerships create attention. But attention becomes value only when projects are prepared, sequenced, procured, supervised, and maintained with discipline.\n\nFor water, energy, transport, and urban infrastructure, the real question is practical: which projects are mature enough to absorb financing and produce measurable service improvements?\n\nA delivery platform needs five elements: a credible project pipeline, preparation funding, decision gates, procurement readiness, and transparent risk tracking. Without these, financing can sit above the system while projects below remain fragile.\n\nThis is where bankability becomes operational. It is not only about investors. It is about whether institutions, utilities, contractors, communities, and financiers can rely on the same facts and responsibilities.\n\nThe DRC opportunity is significant, but the preparation layer needs as much attention as the financing layer.\n\nWhat would make infrastructure partnerships more execution-ready in your context?"
       },
       "metaDescription": {
         "en": "Global Gateway DRC / from commitments to delivery platforms — OPEN infrastructure perspective.",
@@ -782,8 +782,8 @@
         "fr": "Leadership d'opinion & perspective sectorielle"
       },
       "status": {
-        "en": "Published · LinkedIn · 2mo",
-        "fr": "Publié · LinkedIn · 2mo"
+        "en": "Sector reference",
+        "fr": "Référence sectorielle"
       },
       "mandateType": {
         "en": "Published insight & advisory perspective",
@@ -803,14 +803,14 @@
       },
       "scope": {
         "en": [
-          "🌍 Global Gateway in the DRC should be judged by delivery readiness, not only by the size of announced commitments.",
+          "Global Gateway in the DRC should be judged by delivery readiness, not only by the size of announced commitments.",
           "Large infrastructure partnerships create attention. But attention becomes value only when projects are prepared, sequenced, procured, supervised, and maintained with discipline.",
           "For water, energy, transport, and urban infrastructure, the real question is practical: which projects are mature enough to absorb financing and produce measurable service improvements?",
           "A delivery platform needs five elements: a credible project pipeline, preparation funding, decision gates, procurement readiness, and transparent risk tracking. Without these, financing can sit above the system while projects below remain fragile.",
           "This is where bankability becomes operational. It is not only about investors. It is about whether institutions, utilities, contractors, communities, and financiers can rely on the same facts and responsibilities."
         ],
         "fr": [
-          "🌍 Global Gateway in the DRC should be judged by delivery readiness, not only by the size of announced commitments.",
+          "Global Gateway in the DRC should be judged by delivery readiness, not only by the size of announced commitments.",
           "Large infrastructure partnerships create attention. But attention becomes value only when projects are prepared, sequenced, procured, supervised, and maintained with discipline.",
           "For water, energy, transport, and urban infrastructure, the real question is practical: which projects are mature enough to absorb financing and produce measurable service improvements?",
           "A delivery platform needs five elements: a credible project pipeline, preparation funding, decision gates, procurement readiness, and transparent risk tracking. Without these, financing can sit above the system while projects below remain fragile.",
@@ -866,12 +866,12 @@
         "fr": "Eau & assainissement"
       },
       "summary": {
-        "en": "💧 Water security is one of the most practical tests of urban resilience.",
-        "fr": "💧 Water security is one of the most practical tests of urban resilience."
+        "en": "Water security is one of the most practical tests of urban resilience.",
+        "fr": "Water security is one of the most practical tests of urban resilience."
       },
       "body": {
-        "en": "💧 Water security is one of the most practical tests of urban resilience.\n\nIn fast-growing cities, the problem is rarely only physical scarcity. It is often a delivery-system problem: aging networks, weak metering, intermittent supply, insufficient storage, fragile catchment protection, poor drainage, and limited cost recovery.\n\nFor cities like Kinshasa, water resilience should not be treated as a single project. It should be managed as a service chain from source protection to treatment, distribution, household access, drainage, maintenance, and customer accountability.\n\nClimate risk makes this more urgent. Intense rainfall, erosion, flooding, and informal expansion can quickly expose weak planning assumptions.\n\nA finance-ready water project should therefore combine engineering, affordability, institutional capacity, O&M funding, and climate-risk analysis. The strongest projects are those that can show how service reliability improves over time, not only how assets are constructed.\n\nWater infrastructure is ultimately a public confidence system.\n\nWhich part of the urban water chain deserves more investment attention: production, distribution, drainage, metering, or maintenance?",
-        "fr": "💧 Water security is one of the most practical tests of urban resilience.\n\nIn fast-growing cities, the problem is rarely only physical scarcity. It is often a delivery-system problem: aging networks, weak metering, intermittent supply, insufficient storage, fragile catchment protection, poor drainage, and limited cost recovery.\n\nFor cities like Kinshasa, water resilience should not be treated as a single project. It should be managed as a service chain from source protection to treatment, distribution, household access, drainage, maintenance, and customer accountability.\n\nClimate risk makes this more urgent. Intense rainfall, erosion, flooding, and informal expansion can quickly expose weak planning assumptions.\n\nA finance-ready water project should therefore combine engineering, affordability, institutional capacity, O&M funding, and climate-risk analysis. The strongest projects are those that can show how service reliability improves over time, not only how assets are constructed.\n\nWater infrastructure is ultimately a public confidence system.\n\nWhich part of the urban water chain deserves more investment attention: production, distribution, drainage, metering, or maintenance?"
+        "en": "Water security is one of the most practical tests of urban resilience.\n\nIn fast-growing cities, the problem is rarely only physical scarcity. It is often a delivery-system problem: aging networks, weak metering, intermittent supply, insufficient storage, fragile catchment protection, poor drainage, and limited cost recovery.\n\nFor cities like Kinshasa, water resilience should not be treated as a single project. It should be managed as a service chain from source protection to treatment, distribution, household access, drainage, maintenance, and customer accountability.\n\nClimate risk makes this more urgent. Intense rainfall, erosion, flooding, and informal expansion can quickly expose weak planning assumptions.\n\nA finance-ready water project should therefore combine engineering, affordability, institutional capacity, O&M funding, and climate-risk analysis. The strongest projects are those that can show how service reliability improves over time, not only how assets are constructed.\n\nWater infrastructure is ultimately a public confidence system.\n\nWhich part of the urban water chain deserves more investment attention: production, distribution, drainage, metering, or maintenance?",
+        "fr": "Water security is one of the most practical tests of urban resilience.\n\nIn fast-growing cities, the problem is rarely only physical scarcity. It is often a delivery-system problem: aging networks, weak metering, intermittent supply, insufficient storage, fragile catchment protection, poor drainage, and limited cost recovery.\n\nFor cities like Kinshasa, water resilience should not be treated as a single project. It should be managed as a service chain from source protection to treatment, distribution, household access, drainage, maintenance, and customer accountability.\n\nClimate risk makes this more urgent. Intense rainfall, erosion, flooding, and informal expansion can quickly expose weak planning assumptions.\n\nA finance-ready water project should therefore combine engineering, affordability, institutional capacity, O&M funding, and climate-risk analysis. The strongest projects are those that can show how service reliability improves over time, not only how assets are constructed.\n\nWater infrastructure is ultimately a public confidence system.\n\nWhich part of the urban water chain deserves more investment attention: production, distribution, drainage, metering, or maintenance?"
       },
       "metaDescription": {
         "en": "Water security / climate-resilient urban services — OPEN infrastructure perspective.",
@@ -886,8 +886,8 @@
         "fr": "Leadership d'opinion & perspective sectorielle"
       },
       "status": {
-        "en": "Published · LinkedIn · 2mo",
-        "fr": "Publié · LinkedIn · 2mo"
+        "en": "Sector reference",
+        "fr": "Référence sectorielle"
       },
       "mandateType": {
         "en": "Published insight & advisory perspective",
@@ -907,14 +907,14 @@
       },
       "scope": {
         "en": [
-          "💧 Water security is one of the most practical tests of urban resilience.",
+          "Water security is one of the most practical tests of urban resilience.",
           "In fast-growing cities, the problem is rarely only physical scarcity. It is often a delivery-system problem: aging networks, weak metering, intermittent supply, insufficient storage, fragile catchment protection, poor drainage, and limited cost recovery.",
           "For cities like Kinshasa, water resilience should not be treated as a single project. It should be managed as a service chain from source protection to treatment, distribution, household access, drainage, maintenance, and customer accountability.",
           "Climate risk makes this more urgent. Intense rainfall, erosion, flooding, and informal expansion can quickly expose weak planning assumptions.",
           "A finance-ready water project should therefore combine engineering, affordability, institutional capacity, O&M funding, and climate-risk analysis. The strongest projects are those that can show how service reliability improves over time, not only how assets are constructed."
         ],
         "fr": [
-          "💧 Water security is one of the most practical tests of urban resilience.",
+          "Water security is one of the most practical tests of urban resilience.",
           "In fast-growing cities, the problem is rarely only physical scarcity. It is often a delivery-system problem: aging networks, weak metering, intermittent supply, insufficient storage, fragile catchment protection, poor drainage, and limited cost recovery.",
           "For cities like Kinshasa, water resilience should not be treated as a single project. It should be managed as a service chain from source protection to treatment, distribution, household access, drainage, maintenance, and customer accountability.",
           "Climate risk makes this more urgent. Intense rainfall, erosion, flooding, and informal expansion can quickly expose weak planning assumptions.",
@@ -970,12 +970,12 @@
         "fr": "Énergie"
       },
       "summary": {
-        "en": "⚡ Power generation is not bankable in isolation.",
-        "fr": "⚡ Power generation is not bankable in isolation."
+        "en": "Power generation is not bankable in isolation.",
+        "fr": "Power generation is not bankable in isolation."
       },
       "body": {
-        "en": "⚡ Power generation is not bankable in isolation.\n\nLarge energy projects attract attention because generation capacity is visible and politically compelling. But power-market bankability depends on the system around the plant: transmission, offtake, payment discipline, tariff logic, dispatch, regulation, and demand growth.\n\nFor the DRC, this matters deeply. Hydropower potential can support national development, mining competitiveness, regional trade, and industrialization. But potential becomes investable only when evacuation capacity, buyer creditworthiness, contractual arrangements, and environmental and social risks are treated as core design issues.\n\nA generation project without a credible transmission and offtake pathway is not yet a bankable energy system. It is an asset waiting for the rest of the chain to catch up.\n\nThis is why energy preparation should include technical design, market structure, institutional readiness, social license, and phased financing logic from the beginning.\n\nThe strongest energy projects are structured around reliable delivery of power, not only installed megawatts.\n\nWhere do you see the biggest bankability gap in power projects: transmission, offtake, tariffs, regulation, or social risk?",
-        "fr": "⚡ Power generation is not bankable in isolation.\n\nLarge energy projects attract attention because generation capacity is visible and politically compelling. But power-market bankability depends on the system around the plant: transmission, offtake, payment discipline, tariff logic, dispatch, regulation, and demand growth.\n\nFor the DRC, this matters deeply. Hydropower potential can support national development, mining competitiveness, regional trade, and industrialization. But potential becomes investable only when evacuation capacity, buyer creditworthiness, contractual arrangements, and environmental and social risks are treated as core design issues.\n\nA generation project without a credible transmission and offtake pathway is not yet a bankable energy system. It is an asset waiting for the rest of the chain to catch up.\n\nThis is why energy preparation should include technical design, market structure, institutional readiness, social license, and phased financing logic from the beginning.\n\nThe strongest energy projects are structured around reliable delivery of power, not only installed megawatts.\n\nWhere do you see the biggest bankability gap in power projects: transmission, offtake, tariffs, regulation, or social risk?"
+        "en": "Power generation is not bankable in isolation.\n\nLarge energy projects attract attention because generation capacity is visible and politically compelling. But power-market bankability depends on the system around the plant: transmission, offtake, payment discipline, tariff logic, dispatch, regulation, and demand growth.\n\nFor the DRC, this matters deeply. Hydropower potential can support national development, mining competitiveness, regional trade, and industrialization. But potential becomes investable only when evacuation capacity, buyer creditworthiness, contractual arrangements, and environmental and social risks are treated as core design issues.\n\nA generation project without a credible transmission and offtake pathway is not yet a bankable energy system. It is an asset waiting for the rest of the chain to catch up.\n\nThis is why energy preparation should include technical design, market structure, institutional readiness, social license, and phased financing logic from the beginning.\n\nThe strongest energy projects are structured around reliable delivery of power, not only installed megawatts.\n\nWhere do you see the biggest bankability gap in power projects: transmission, offtake, tariffs, regulation, or social risk?",
+        "fr": "Power generation is not bankable in isolation.\n\nLarge energy projects attract attention because generation capacity is visible and politically compelling. But power-market bankability depends on the system around the plant: transmission, offtake, payment discipline, tariff logic, dispatch, regulation, and demand growth.\n\nFor the DRC, this matters deeply. Hydropower potential can support national development, mining competitiveness, regional trade, and industrialization. But potential becomes investable only when evacuation capacity, buyer creditworthiness, contractual arrangements, and environmental and social risks are treated as core design issues.\n\nA generation project without a credible transmission and offtake pathway is not yet a bankable energy system. It is an asset waiting for the rest of the chain to catch up.\n\nThis is why energy preparation should include technical design, market structure, institutional readiness, social license, and phased financing logic from the beginning.\n\nThe strongest energy projects are structured around reliable delivery of power, not only installed megawatts.\n\nWhere do you see the biggest bankability gap in power projects: transmission, offtake, tariffs, regulation, or social risk?"
       },
       "metaDescription": {
         "en": "Energy / Inga / transmission and offtake bankability — OPEN infrastructure perspective.",
@@ -990,8 +990,8 @@
         "fr": "Leadership d'opinion & perspective sectorielle"
       },
       "status": {
-        "en": "Published · LinkedIn · 1mo",
-        "fr": "Publié · LinkedIn · 1mo"
+        "en": "Sector reference",
+        "fr": "Référence sectorielle"
       },
       "mandateType": {
         "en": "Published insight & advisory perspective",
@@ -1011,14 +1011,14 @@
       },
       "scope": {
         "en": [
-          "⚡ Power generation is not bankable in isolation.",
+          "Power generation is not bankable in isolation.",
           "Large energy projects attract attention because generation capacity is visible and politically compelling. But power-market bankability depends on the system around the plant: transmission, offtake, payment discipline, tariff logic, dispatch, regulation, and demand growth.",
           "For the DRC, this matters deeply. Hydropower potential can support national development, mining competitiveness, regional trade, and industrialization. But potential becomes investable only when evacuation capacity, buyer creditworthiness, contractual arrangements, and environmental and social risks are treated as core design issues.",
           "A generation project without a credible transmission and offtake pathway is not yet a bankable energy system. It is an asset waiting for the rest of the chain to catch up.",
           "This is why energy preparation should include technical design, market structure, institutional readiness, social license, and phased financing logic from the beginning."
         ],
         "fr": [
-          "⚡ Power generation is not bankable in isolation.",
+          "Power generation is not bankable in isolation.",
           "Large energy projects attract attention because generation capacity is visible and politically compelling. But power-market bankability depends on the system around the plant: transmission, offtake, payment discipline, tariff logic, dispatch, regulation, and demand growth.",
           "For the DRC, this matters deeply. Hydropower potential can support national development, mining competitiveness, regional trade, and industrialization. But potential becomes investable only when evacuation capacity, buyer creditworthiness, contractual arrangements, and environmental and social risks are treated as core design issues.",
           "A generation project without a credible transmission and offtake pathway is not yet a bankable energy system. It is an asset waiting for the rest of the chain to catch up.",
@@ -1074,12 +1074,12 @@
         "fr": "Préparation & financement"
       },
       "summary": {
-        "en": "🧠 A weak Terms of Reference can damage a project before procurement even begins.",
-        "fr": "🧠 A weak Terms of Reference can damage a project before procurement even begins."
+        "en": "A weak Terms of Reference can damage a project before procurement even begins.",
+        "fr": "A weak Terms of Reference can damage a project before procurement even begins."
       },
       "body": {
-        "en": "🧠 A weak Terms of Reference can damage a project before procurement even begins.\n\nMany infrastructure assignments fail to attract the right firms, the right price, or the right level of accountability because the ToR does not define the problem with enough precision.\n\nA strong ToR is not an administrative document. It is a risk-management instrument.\n\nIt should clarify the objective, scope, deliverables, data requirements, decision points, stakeholder interfaces, reporting discipline, assumptions, exclusions, evaluation criteria, and expected use of the outputs. When these elements are vague, bidders price uncertainty, clients receive inconsistent proposals, and implementation starts with ambiguity.\n\nFor donor-funded infrastructure, procurement readiness should be tested before publication. The question is simple: can a competent firm understand the assignment, price it responsibly, and deliver something decision-ready?\n\nGood procurement starts before the tender notice. It starts with the discipline of translating strategic intent into a clear, executable assignment.\n\nWhat is the most common weakness you see in infrastructure ToRs?",
-        "fr": "🧠 A weak Terms of Reference can damage a project before procurement even begins.\n\nMany infrastructure assignments fail to attract the right firms, the right price, or the right level of accountability because the ToR does not define the problem with enough precision.\n\nA strong ToR is not an administrative document. It is a risk-management instrument.\n\nIt should clarify the objective, scope, deliverables, data requirements, decision points, stakeholder interfaces, reporting discipline, assumptions, exclusions, evaluation criteria, and expected use of the outputs. When these elements are vague, bidders price uncertainty, clients receive inconsistent proposals, and implementation starts with ambiguity.\n\nFor donor-funded infrastructure, procurement readiness should be tested before publication. The question is simple: can a competent firm understand the assignment, price it responsibly, and deliver something decision-ready?\n\nGood procurement starts before the tender notice. It starts with the discipline of translating strategic intent into a clear, executable assignment.\n\nWhat is the most common weakness you see in infrastructure ToRs?"
+        "en": "A weak Terms of Reference can damage a project before procurement even begins.\n\nMany infrastructure assignments fail to attract the right firms, the right price, or the right level of accountability because the ToR does not define the problem with enough precision.\n\nA strong ToR is not an administrative document. It is a risk-management instrument.\n\nIt should clarify the objective, scope, deliverables, data requirements, decision points, stakeholder interfaces, reporting discipline, assumptions, exclusions, evaluation criteria, and expected use of the outputs. When these elements are vague, bidders price uncertainty, clients receive inconsistent proposals, and implementation starts with ambiguity.\n\nFor donor-funded infrastructure, procurement readiness should be tested before publication. The question is simple: can a competent firm understand the assignment, price it responsibly, and deliver something decision-ready?\n\nGood procurement starts before the tender notice. It starts with the discipline of translating strategic intent into a clear, executable assignment.\n\nWhat is the most common weakness you see in infrastructure ToRs?",
+        "fr": "A weak Terms of Reference can damage a project before procurement even begins.\n\nMany infrastructure assignments fail to attract the right firms, the right price, or the right level of accountability because the ToR does not define the problem with enough precision.\n\nA strong ToR is not an administrative document. It is a risk-management instrument.\n\nIt should clarify the objective, scope, deliverables, data requirements, decision points, stakeholder interfaces, reporting discipline, assumptions, exclusions, evaluation criteria, and expected use of the outputs. When these elements are vague, bidders price uncertainty, clients receive inconsistent proposals, and implementation starts with ambiguity.\n\nFor donor-funded infrastructure, procurement readiness should be tested before publication. The question is simple: can a competent firm understand the assignment, price it responsibly, and deliver something decision-ready?\n\nGood procurement starts before the tender notice. It starts with the discipline of translating strategic intent into a clear, executable assignment.\n\nWhat is the most common weakness you see in infrastructure ToRs?"
       },
       "metaDescription": {
         "en": "Procurement readiness / Terms of Reference as risk management — OPEN infrastructure perspective.",
@@ -1094,8 +1094,8 @@
         "fr": "Leadership d'opinion & perspective sectorielle"
       },
       "status": {
-        "en": "Published · LinkedIn · 1mo",
-        "fr": "Publié · LinkedIn · 1mo"
+        "en": "Sector reference",
+        "fr": "Référence sectorielle"
       },
       "mandateType": {
         "en": "Published insight & advisory perspective",
@@ -1115,14 +1115,14 @@
       },
       "scope": {
         "en": [
-          "🧠 A weak Terms of Reference can damage a project before procurement even begins.",
+          "A weak Terms of Reference can damage a project before procurement even begins.",
           "Many infrastructure assignments fail to attract the right firms, the right price, or the right level of accountability because the ToR does not define the problem with enough precision.",
           "A strong ToR is not an administrative document. It is a risk-management instrument.",
           "It should clarify the objective, scope, deliverables, data requirements, decision points, stakeholder interfaces, reporting discipline, assumptions, exclusions, evaluation criteria, and expected use of the outputs. When these elements are vague, bidders price uncertainty, clients receive inconsistent proposals, and implementation starts with ambiguity.",
           "For donor-funded infrastructure, procurement readiness should be tested before publication. The question is simple: can a competent firm understand the assignment, price it responsibly, and deliver something decision-ready?"
         ],
         "fr": [
-          "🧠 A weak Terms of Reference can damage a project before procurement even begins.",
+          "A weak Terms of Reference can damage a project before procurement even begins.",
           "Many infrastructure assignments fail to attract the right firms, the right price, or the right level of accountability because the ToR does not define the problem with enough precision.",
           "A strong ToR is not an administrative document. It is a risk-management instrument.",
           "It should clarify the objective, scope, deliverables, data requirements, decision points, stakeholder interfaces, reporting discipline, assumptions, exclusions, evaluation criteria, and expected use of the outputs. When these elements are vague, bidders price uncertainty, clients receive inconsistent proposals, and implementation starts with ambiguity.",
@@ -1178,12 +1178,12 @@
         "fr": "Préparation & financement"
       },
       "summary": {
-        "en": "🛑 O&M is not a post-construction issue. It is a bankability issue.",
-        "fr": "🛑 O&M is not a post-construction issue. It is a bankability issue."
+        "en": "O&M is not a post-construction issue. It is a bankability issue.",
+        "fr": "O&M is not a post-construction issue. It is a bankability issue."
       },
       "body": {
-        "en": "🛑 O&M is not a post-construction issue. It is a bankability issue.\n\nInfrastructure projects often look attractive at approval stage because the focus is on CAPEX, construction milestones, and ribbon-cutting visibility. But long-term value depends on whether the asset can be operated, maintained, staffed, funded, and monitored after completion.\n\nThis is where many projects become fragile.\n\nA road without maintenance financing deteriorates quickly. A water system without spare parts and metering loses service reliability. A power asset without payment discipline creates financial stress. A drainage investment without cleaning routines fails during the next heavy rainfall.\n\nLifecycle costing should therefore be part of project preparation, not a later correction. The basic question is: who pays, who operates, who maintains, who monitors, and what happens when performance declines?\n\nFor donors, DFIs, governments, and contractors, O&M is not a technical footnote. It is the difference between asset delivery and service delivery.\n\nWhat O&M risk is most underestimated in public infrastructure projects?",
-        "fr": "🛑 O&M is not a post-construction issue. It is a bankability issue.\n\nInfrastructure projects often look attractive at approval stage because the focus is on CAPEX, construction milestones, and ribbon-cutting visibility. But long-term value depends on whether the asset can be operated, maintained, staffed, funded, and monitored after completion.\n\nThis is where many projects become fragile.\n\nA road without maintenance financing deteriorates quickly. A water system without spare parts and metering loses service reliability. A power asset without payment discipline creates financial stress. A drainage investment without cleaning routines fails during the next heavy rainfall.\n\nLifecycle costing should therefore be part of project preparation, not a later correction. The basic question is: who pays, who operates, who maintains, who monitors, and what happens when performance declines?\n\nFor donors, DFIs, governments, and contractors, O&M is not a technical footnote. It is the difference between asset delivery and service delivery.\n\nWhat O&M risk is most underestimated in public infrastructure projects?"
+        "en": "O&M is not a post-construction issue. It is a bankability issue.\n\nInfrastructure projects often look attractive at approval stage because the focus is on CAPEX, construction milestones, and ribbon-cutting visibility. But long-term value depends on whether the asset can be operated, maintained, staffed, funded, and monitored after completion.\n\nThis is where many projects become fragile.\n\nA road without maintenance financing deteriorates quickly. A water system without spare parts and metering loses service reliability. A power asset without payment discipline creates financial stress. A drainage investment without cleaning routines fails during the next heavy rainfall.\n\nLifecycle costing should therefore be part of project preparation, not a later correction. The basic question is: who pays, who operates, who maintains, who monitors, and what happens when performance declines?\n\nFor donors, DFIs, governments, and contractors, O&M is not a technical footnote. It is the difference between asset delivery and service delivery.\n\nWhat O&M risk is most underestimated in public infrastructure projects?",
+        "fr": "O&M is not a post-construction issue. It is a bankability issue.\n\nInfrastructure projects often look attractive at approval stage because the focus is on CAPEX, construction milestones, and ribbon-cutting visibility. But long-term value depends on whether the asset can be operated, maintained, staffed, funded, and monitored after completion.\n\nThis is where many projects become fragile.\n\nA road without maintenance financing deteriorates quickly. A water system without spare parts and metering loses service reliability. A power asset without payment discipline creates financial stress. A drainage investment without cleaning routines fails during the next heavy rainfall.\n\nLifecycle costing should therefore be part of project preparation, not a later correction. The basic question is: who pays, who operates, who maintains, who monitors, and what happens when performance declines?\n\nFor donors, DFIs, governments, and contractors, O&M is not a technical footnote. It is the difference between asset delivery and service delivery.\n\nWhat O&M risk is most underestimated in public infrastructure projects?"
       },
       "metaDescription": {
         "en": "O&M and lifecycle costing as a bankability lever — OPEN infrastructure perspective.",
@@ -1198,8 +1198,8 @@
         "fr": "Leadership d'opinion & perspective sectorielle"
       },
       "status": {
-        "en": "Published · LinkedIn · 1mo",
-        "fr": "Publié · LinkedIn · 1mo"
+        "en": "Sector reference",
+        "fr": "Référence sectorielle"
       },
       "mandateType": {
         "en": "Published insight & advisory perspective",
@@ -1219,14 +1219,14 @@
       },
       "scope": {
         "en": [
-          "🛑 O&M is not a post-construction issue. It is a bankability issue.",
+          "O&M is not a post-construction issue. It is a bankability issue.",
           "Infrastructure projects often look attractive at approval stage because the focus is on CAPEX, construction milestones, and ribbon-cutting visibility. But long-term value depends on whether the asset can be operated, maintained, staffed, funded, and monitored after completion.",
           "This is where many projects become fragile.",
           "A road without maintenance financing deteriorates quickly. A water system without spare parts and metering loses service reliability. A power asset without payment discipline creates financial stress. A drainage investment without cleaning routines fails during the next heavy rainfall.",
           "Lifecycle costing should therefore be part of project preparation, not a later correction. The basic question is: who pays, who operates, who maintains, who monitors, and what happens when performance declines?"
         ],
         "fr": [
-          "🛑 O&M is not a post-construction issue. It is a bankability issue.",
+          "O&M is not a post-construction issue. It is a bankability issue.",
           "Infrastructure projects often look attractive at approval stage because the focus is on CAPEX, construction milestones, and ribbon-cutting visibility. But long-term value depends on whether the asset can be operated, maintained, staffed, funded, and monitored after completion.",
           "This is where many projects become fragile.",
           "A road without maintenance financing deteriorates quickly. A water system without spare parts and metering loses service reliability. A power asset without payment discipline creates financial stress. A drainage investment without cleaning routines fails during the next heavy rainfall.",
@@ -1282,12 +1282,12 @@
         "fr": "Digital & ingénierie"
       },
       "summary": {
-        "en": "🌍 Climate resilience should enter the project file before design decisions are locked.",
-        "fr": "🌍 Climate resilience should enter the project file before design decisions are locked."
+        "en": "Climate resilience should enter the project file before design decisions are locked.",
+        "fr": "Climate resilience should enter the project file before design decisions are locked."
       },
       "body": {
-        "en": "🌍 Climate resilience should enter the project file before design decisions are locked.\n\nToo often, climate language appears late in infrastructure preparation, after the main technical choices have already been made. At that point, resilience becomes an adjustment rather than a design principle.\n\nFor African cities and corridors, this is risky. Flooding, erosion, heat, drought, landslides, and changing rainfall patterns can affect site selection, design standards, construction methods, maintenance needs, and affordability.\n\nA practical approach is to build a climate-risk register early. It does not need to be complicated at the start. It should identify hazards, exposed assets, vulnerable users, probability, impact, mitigation options, residual risk, responsible actors, and monitoring indicators.\n\nThis makes resilience visible to engineers, financiers, procurement teams, and decision-makers before costs are fixed.\n\nThe strongest projects do not simply say they are climate-resilient. They show which risks were tested, what changed in the design, and how performance will be monitored.\n\nWhere should climate-risk analysis sit in the project cycle?",
-        "fr": "🌍 Climate resilience should enter the project file before design decisions are locked.\n\nToo often, climate language appears late in infrastructure preparation, after the main technical choices have already been made. At that point, resilience becomes an adjustment rather than a design principle.\n\nFor African cities and corridors, this is risky. Flooding, erosion, heat, drought, landslides, and changing rainfall patterns can affect site selection, design standards, construction methods, maintenance needs, and affordability.\n\nA practical approach is to build a climate-risk register early. It does not need to be complicated at the start. It should identify hazards, exposed assets, vulnerable users, probability, impact, mitigation options, residual risk, responsible actors, and monitoring indicators.\n\nThis makes resilience visible to engineers, financiers, procurement teams, and decision-makers before costs are fixed.\n\nThe strongest projects do not simply say they are climate-resilient. They show which risks were tested, what changed in the design, and how performance will be monitored.\n\nWhere should climate-risk analysis sit in the project cycle?"
+        "en": "Climate resilience should enter the project file before design decisions are locked.\n\nToo often, climate language appears late in infrastructure preparation, after the main technical choices have already been made. At that point, resilience becomes an adjustment rather than a design principle.\n\nFor African cities and corridors, this is risky. Flooding, erosion, heat, drought, landslides, and changing rainfall patterns can affect site selection, design standards, construction methods, maintenance needs, and affordability.\n\nA practical approach is to build a climate-risk register early. It does not need to be complicated at the start. It should identify hazards, exposed assets, vulnerable users, probability, impact, mitigation options, residual risk, responsible actors, and monitoring indicators.\n\nThis makes resilience visible to engineers, financiers, procurement teams, and decision-makers before costs are fixed.\n\nThe strongest projects do not simply say they are climate-resilient. They show which risks were tested, what changed in the design, and how performance will be monitored.\n\nWhere should climate-risk analysis sit in the project cycle?",
+        "fr": "Climate resilience should enter the project file before design decisions are locked.\n\nToo often, climate language appears late in infrastructure preparation, after the main technical choices have already been made. At that point, resilience becomes an adjustment rather than a design principle.\n\nFor African cities and corridors, this is risky. Flooding, erosion, heat, drought, landslides, and changing rainfall patterns can affect site selection, design standards, construction methods, maintenance needs, and affordability.\n\nA practical approach is to build a climate-risk register early. It does not need to be complicated at the start. It should identify hazards, exposed assets, vulnerable users, probability, impact, mitigation options, residual risk, responsible actors, and monitoring indicators.\n\nThis makes resilience visible to engineers, financiers, procurement teams, and decision-makers before costs are fixed.\n\nThe strongest projects do not simply say they are climate-resilient. They show which risks were tested, what changed in the design, and how performance will be monitored.\n\nWhere should climate-risk analysis sit in the project cycle?"
       },
       "metaDescription": {
         "en": "Climate resilience / risk registers before design finalization — OPEN infrastructure perspective.",
@@ -1302,8 +1302,8 @@
         "fr": "Leadership d'opinion & perspective sectorielle"
       },
       "status": {
-        "en": "Published · LinkedIn · 3w",
-        "fr": "Publié · LinkedIn · 3w"
+        "en": "Sector reference",
+        "fr": "Référence sectorielle"
       },
       "mandateType": {
         "en": "Published insight & advisory perspective",
@@ -1323,14 +1323,14 @@
       },
       "scope": {
         "en": [
-          "🌍 Climate resilience should enter the project file before design decisions are locked.",
+          "Climate resilience should enter the project file before design decisions are locked.",
           "Too often, climate language appears late in infrastructure preparation, after the main technical choices have already been made. At that point, resilience becomes an adjustment rather than a design principle.",
           "For African cities and corridors, this is risky. Flooding, erosion, heat, drought, landslides, and changing rainfall patterns can affect site selection, design standards, construction methods, maintenance needs, and affordability.",
           "A practical approach is to build a climate-risk register early. It does not need to be complicated at the start. It should identify hazards, exposed assets, vulnerable users, probability, impact, mitigation options, residual risk, responsible actors, and monitoring indicators.",
           "This makes resilience visible to engineers, financiers, procurement teams, and decision-makers before costs are fixed."
         ],
         "fr": [
-          "🌍 Climate resilience should enter the project file before design decisions are locked.",
+          "Climate resilience should enter the project file before design decisions are locked.",
           "Too often, climate language appears late in infrastructure preparation, after the main technical choices have already been made. At that point, resilience becomes an adjustment rather than a design principle.",
           "For African cities and corridors, this is risky. Flooding, erosion, heat, drought, landslides, and changing rainfall patterns can affect site selection, design standards, construction methods, maintenance needs, and affordability.",
           "A practical approach is to build a climate-risk register early. It does not need to be complicated at the start. It should identify hazards, exposed assets, vulnerable users, probability, impact, mitigation options, residual risk, responsible actors, and monitoring indicators.",
@@ -1386,12 +1386,12 @@
         "fr": "Préparation & financement"
       },
       "summary": {
-        "en": "🧠 Local participation in infrastructure needs more than goodwill.",
-        "fr": "🧠 Local participation in infrastructure needs more than goodwill."
+        "en": "Local participation in infrastructure needs more than goodwill.",
+        "fr": "Local participation in infrastructure needs more than goodwill."
       },
       "body": {
-        "en": "🧠 Local participation in infrastructure needs more than goodwill.\n\nFor DRC and Central African firms to capture more value from major infrastructure programmes, the conversation must move from preference to capability. Local companies need credible systems for compliance, quality assurance, financial management, HSE, contract administration, reporting, equipment planning, and partnership discipline.\n\nThis is not only a private-sector issue. Project owners and donors also need procurement designs that create realistic pathways for local participation without lowering performance standards.\n\nThe opportunity is to build local capacity around the actual requirements of infrastructure delivery: documentation, controls, field supervision, claims discipline, safety, and measurable outputs.\n\nWhen local firms are prepared properly, they become more than subcontractors. They become part of the delivery ecosystem.\n\nThe goal should not be symbolic inclusion. It should be bankable participation, where local capability strengthens project execution and leaves institutional value behind.\n\nWhat capability should local infrastructure firms prioritize to become stronger partners on donor-funded projects?",
-        "fr": "🧠 Local participation in infrastructure needs more than goodwill.\n\nFor DRC and Central African firms to capture more value from major infrastructure programmes, the conversation must move from preference to capability. Local companies need credible systems for compliance, quality assurance, financial management, HSE, contract administration, reporting, equipment planning, and partnership discipline.\n\nThis is not only a private-sector issue. Project owners and donors also need procurement designs that create realistic pathways for local participation without lowering performance standards.\n\nThe opportunity is to build local capacity around the actual requirements of infrastructure delivery: documentation, controls, field supervision, claims discipline, safety, and measurable outputs.\n\nWhen local firms are prepared properly, they become more than subcontractors. They become part of the delivery ecosystem.\n\nThe goal should not be symbolic inclusion. It should be bankable participation, where local capability strengthens project execution and leaves institutional value behind.\n\nWhat capability should local infrastructure firms prioritize to become stronger partners on donor-funded projects?"
+        "en": "Local participation in infrastructure needs more than goodwill.\n\nFor DRC and Central African firms to capture more value from major infrastructure programmes, the conversation must move from preference to capability. Local companies need credible systems for compliance, quality assurance, financial management, HSE, contract administration, reporting, equipment planning, and partnership discipline.\n\nThis is not only a private-sector issue. Project owners and donors also need procurement designs that create realistic pathways for local participation without lowering performance standards.\n\nThe opportunity is to build local capacity around the actual requirements of infrastructure delivery: documentation, controls, field supervision, claims discipline, safety, and measurable outputs.\n\nWhen local firms are prepared properly, they become more than subcontractors. They become part of the delivery ecosystem.\n\nThe goal should not be symbolic inclusion. It should be bankable participation, where local capability strengthens project execution and leaves institutional value behind.\n\nWhat capability should local infrastructure firms prioritize to become stronger partners on donor-funded projects?",
+        "fr": "Local participation in infrastructure needs more than goodwill.\n\nFor DRC and Central African firms to capture more value from major infrastructure programmes, the conversation must move from preference to capability. Local companies need credible systems for compliance, quality assurance, financial management, HSE, contract administration, reporting, equipment planning, and partnership discipline.\n\nThis is not only a private-sector issue. Project owners and donors also need procurement designs that create realistic pathways for local participation without lowering performance standards.\n\nThe opportunity is to build local capacity around the actual requirements of infrastructure delivery: documentation, controls, field supervision, claims discipline, safety, and measurable outputs.\n\nWhen local firms are prepared properly, they become more than subcontractors. They become part of the delivery ecosystem.\n\nThe goal should not be symbolic inclusion. It should be bankable participation, where local capability strengthens project execution and leaves institutional value behind.\n\nWhat capability should local infrastructure firms prioritize to become stronger partners on donor-funded projects?"
       },
       "metaDescription": {
         "en": "Local private-sector participation / compliance and delivery capacity — OPEN infrastructure perspective.",
@@ -1406,8 +1406,8 @@
         "fr": "Leadership d'opinion & perspective sectorielle"
       },
       "status": {
-        "en": "Published · LinkedIn · 1w",
-        "fr": "Publié · LinkedIn · 1w"
+        "en": "Sector reference",
+        "fr": "Référence sectorielle"
       },
       "mandateType": {
         "en": "Published insight & advisory perspective",
@@ -1427,14 +1427,14 @@
       },
       "scope": {
         "en": [
-          "🧠 Local participation in infrastructure needs more than goodwill.",
+          "Local participation in infrastructure needs more than goodwill.",
           "For DRC and Central African firms to capture more value from major infrastructure programmes, the conversation must move from preference to capability. Local companies need credible systems for compliance, quality assurance, financial management, HSE, contract administration, reporting, equipment planning, and partnership discipline.",
           "This is not only a private-sector issue. Project owners and donors also need procurement designs that create realistic pathways for local participation without lowering performance standards.",
           "The opportunity is to build local capacity around the actual requirements of infrastructure delivery: documentation, controls, field supervision, claims discipline, safety, and measurable outputs.",
           "When local firms are prepared properly, they become more than subcontractors. They become part of the delivery ecosystem."
         ],
         "fr": [
-          "🧠 Local participation in infrastructure needs more than goodwill.",
+          "Local participation in infrastructure needs more than goodwill.",
           "For DRC and Central African firms to capture more value from major infrastructure programmes, the conversation must move from preference to capability. Local companies need credible systems for compliance, quality assurance, financial management, HSE, contract administration, reporting, equipment planning, and partnership discipline.",
           "This is not only a private-sector issue. Project owners and donors also need procurement designs that create realistic pathways for local participation without lowering performance standards.",
           "The opportunity is to build local capacity around the actual requirements of infrastructure delivery: documentation, controls, field supervision, claims discipline, safety, and measurable outputs.",
@@ -1490,12 +1490,12 @@
         "fr": "Préparation & financement"
       },
       "summary": {
-        "en": "🧠 A strong PMU is built around routines, not only organograms.",
-        "fr": "🧠 A strong PMU is built around routines, not only organograms."
+        "en": "A strong PMU is built around routines, not only organograms.",
+        "fr": "A strong PMU is built around routines, not only organograms."
       },
       "body": {
-        "en": "🧠 A strong PMU is built around routines, not only organograms.\n\nIn donor-funded infrastructure, many delivery problems are visible long before they become crises. The issue is that the project system does not always capture, escalate, and resolve them early enough.\n\nA donor-grade PMU needs practical management discipline: weekly action tracking, risk registers, procurement dashboards, contract milestones, safeguards follow-up, decision logs, payment monitoring, and clear escalation rules.\n\nThis does not require unnecessary bureaucracy. It requires a rhythm that turns information into decisions.\n\nThe most useful dashboard is not the one with the most indicators. It is the one that helps leadership see what is stuck, who owns the next action, what decision is needed, and what risk is increasing.\n\nFor infrastructure projects in complex environments, execution quality depends heavily on these management routines.\n\nGood governance becomes visible when meetings produce decisions, decisions create actions, and actions are tracked until closure.\n\nWhat PMU routine has the biggest impact on delivery discipline?",
-        "fr": "🧠 A strong PMU is built around routines, not only organograms.\n\nIn donor-funded infrastructure, many delivery problems are visible long before they become crises. The issue is that the project system does not always capture, escalate, and resolve them early enough.\n\nA donor-grade PMU needs practical management discipline: weekly action tracking, risk registers, procurement dashboards, contract milestones, safeguards follow-up, decision logs, payment monitoring, and clear escalation rules.\n\nThis does not require unnecessary bureaucracy. It requires a rhythm that turns information into decisions.\n\nThe most useful dashboard is not the one with the most indicators. It is the one that helps leadership see what is stuck, who owns the next action, what decision is needed, and what risk is increasing.\n\nFor infrastructure projects in complex environments, execution quality depends heavily on these management routines.\n\nGood governance becomes visible when meetings produce decisions, decisions create actions, and actions are tracked until closure.\n\nWhat PMU routine has the biggest impact on delivery discipline?"
+        "en": "A strong PMU is built around routines, not only organograms.\n\nIn donor-funded infrastructure, many delivery problems are visible long before they become crises. The issue is that the project system does not always capture, escalate, and resolve them early enough.\n\nA donor-grade PMU needs practical management discipline: weekly action tracking, risk registers, procurement dashboards, contract milestones, safeguards follow-up, decision logs, payment monitoring, and clear escalation rules.\n\nThis does not require unnecessary bureaucracy. It requires a rhythm that turns information into decisions.\n\nThe most useful dashboard is not the one with the most indicators. It is the one that helps leadership see what is stuck, who owns the next action, what decision is needed, and what risk is increasing.\n\nFor infrastructure projects in complex environments, execution quality depends heavily on these management routines.\n\nGood governance becomes visible when meetings produce decisions, decisions create actions, and actions are tracked until closure.\n\nWhat PMU routine has the biggest impact on delivery discipline?",
+        "fr": "A strong PMU is built around routines, not only organograms.\n\nIn donor-funded infrastructure, many delivery problems are visible long before they become crises. The issue is that the project system does not always capture, escalate, and resolve them early enough.\n\nA donor-grade PMU needs practical management discipline: weekly action tracking, risk registers, procurement dashboards, contract milestones, safeguards follow-up, decision logs, payment monitoring, and clear escalation rules.\n\nThis does not require unnecessary bureaucracy. It requires a rhythm that turns information into decisions.\n\nThe most useful dashboard is not the one with the most indicators. It is the one that helps leadership see what is stuck, who owns the next action, what decision is needed, and what risk is increasing.\n\nFor infrastructure projects in complex environments, execution quality depends heavily on these management routines.\n\nGood governance becomes visible when meetings produce decisions, decisions create actions, and actions are tracked until closure.\n\nWhat PMU routine has the biggest impact on delivery discipline?"
       },
       "metaDescription": {
         "en": "Donor-grade PMU routines / dashboards and decision gates — OPEN infrastructure perspective.",
@@ -1510,8 +1510,8 @@
         "fr": "Leadership d'opinion & perspective sectorielle"
       },
       "status": {
-        "en": "Published · LinkedIn · 1w",
-        "fr": "Publié · LinkedIn · 1w"
+        "en": "Sector reference",
+        "fr": "Référence sectorielle"
       },
       "mandateType": {
         "en": "Published insight & advisory perspective",
@@ -1531,14 +1531,14 @@
       },
       "scope": {
         "en": [
-          "🧠 A strong PMU is built around routines, not only organograms.",
+          "A strong PMU is built around routines, not only organograms.",
           "In donor-funded infrastructure, many delivery problems are visible long before they become crises. The issue is that the project system does not always capture, escalate, and resolve them early enough.",
           "A donor-grade PMU needs practical management discipline: weekly action tracking, risk registers, procurement dashboards, contract milestones, safeguards follow-up, decision logs, payment monitoring, and clear escalation rules.",
           "This does not require unnecessary bureaucracy. It requires a rhythm that turns information into decisions.",
           "The most useful dashboard is not the one with the most indicators. It is the one that helps leadership see what is stuck, who owns the next action, what decision is needed, and what risk is increasing."
         ],
         "fr": [
-          "🧠 A strong PMU is built around routines, not only organograms.",
+          "A strong PMU is built around routines, not only organograms.",
           "In donor-funded infrastructure, many delivery problems are visible long before they become crises. The issue is that the project system does not always capture, escalate, and resolve them early enough.",
           "A donor-grade PMU needs practical management discipline: weekly action tracking, risk registers, procurement dashboards, contract milestones, safeguards follow-up, decision logs, payment monitoring, and clear escalation rules.",
           "This does not require unnecessary bureaucracy. It requires a rhythm that turns information into decisions.",
