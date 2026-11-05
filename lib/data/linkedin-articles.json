@@ -1,0 +1,87 @@
+{
+  "title": "Articles / LinkedIn posts",
+  "sourceFile": "docs/Private Email Attachments/Articles and LinkedIn.xlsx",
+  "columns": ["post", "topic", "url"],
+  "items": [
+    {
+      "post": 1,
+      "topic": "FAIC 2026 / FIDIC engineering leadership",
+      "url": "https://www.linkedin.com/feed/update/urn:li:share:7482893510317371393/"
+    },
+    {
+      "post": 2,
+      "topic": "DRC bankability / finance-ready infrastructure",
+      "url": "https://www.linkedin.com/posts/dean-eric-mulimbi_bankability-infrastructurefinance-drc-share-7483875980193849344-0cQW/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFkdedMB27KVEbh_AJCcw5qR7IzYF5tKwZA"
+    },
+    {
+      "post": 3,
+      "topic": "Regional corridors / Lobito / trade infrastructure",
+      "url": "https://www.linkedin.com/posts/dean-eric-mulimbi_corridors-regionalintegration-infrastructure-share-7487845519965356032-xnw2/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFkdedMB27KVEbh_AJCcw5qR7IzYF5tKwZA"
+    },
+    {
+      "post": 4,
+      "topic": "FIDIC / contract confidence / risk allocation",
+      "url": null
+    },
+    {
+      "post": 5,
+      "topic": "Digital maturity / AI / BIM / GIS infrastructure",
+      "url": "https://www.linkedin.com/posts/dean-eric-mulimbi_digitalinfrastructure-infrastructure-engineering-activity-7490376727597219840-TqIn?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFkdedMB27KVEbh_AJCcw5qR7IzYF5tKwZA"
+    },
+    {
+      "post": 6,
+      "topic": "Kinshasa / DRC urban infrastructure delivery",
+      "url": "https://www.linkedin.com/posts/dean-eric-mulimbi_kinshasa-drc-urbaninfrastructure-activity-7491166373046337536-g357?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFkdedMB27KVEbh_AJCcw5qR7IzYF5tKwZA"
+    },
+    {
+      "post": 7,
+      "topic": "Peace, corridors, and infrastructure resilience",
+      "url": "https://www.linkedin.com/posts/dean-eric-mulimbi_infrastructure-resilience-corridors-activity-7492935903737188352-Ipe_/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFkdedMB27KVEbh_AJCcw5qR7IzYF5tKwZA"
+    },
+    {
+      "post": 8,
+      "topic": "Mentoring / young African engineers / professional pipeline",
+      "url": "https://www.linkedin.com/posts/dean-eric-mulimbi_youngprofessionals-engineeringleadership-share-7495998525244309504-Otxt/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFkdedMB27KVEbh_AJCcw5qR7IzYF5tKwZA"
+    },
+    {
+      "post": 9,
+      "topic": "Global Gateway DRC / from commitments to delivery platforms",
+      "url": "https://lnkd.in/p/duXPm52C"
+    },
+    {
+      "post": 10,
+      "topic": "Water security / climate-resilient urban services",
+      "url": "https://lnkd.in/p/dkedH5u6"
+    },
+    {
+      "post": 11,
+      "topic": "Energy / Inga / transmission and offtake bankability",
+      "url": "https://www.linkedin.com/posts/dean-eric-mulimbi_energy-hydropower-inga-activity-7504166201275604992-mvBF?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFkdedMB27KVEbh_AJCcw5qR7IzYF5tKwZA"
+    },
+    {
+      "post": 12,
+      "topic": "Procurement readiness / Terms of Reference as risk management",
+      "url": "https://lnkd.in/p/dWPzk5p7"
+    },
+    {
+      "post": 13,
+      "topic": "O&M and lifecycle costing as a bankability lever",
+      "url": "https://lnkd.in/p/dRV63xBd"
+    },
+    {
+      "post": 14,
+      "topic": "Climate resilience / risk registers before design finalization",
+      "url": "https://lnkd.in/p/dCTcnANQ"
+    },
+    {
+      "post": 15,
+      "topic": "Local private-sector participation / compliance and delivery capacity",
+      "url": "https://lnkd.in/p/dpnBycDi"
+    },
+    {
+      "post": 16,
+      "topic": "Donor-grade PMU routines / dashboards and decision gates",
+      "url": "https://lnkd.in/p/dm6Ts2rV"
+    }
+  ]
+}
