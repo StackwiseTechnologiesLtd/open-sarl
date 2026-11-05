@@ -22,3 +22,31 @@ export function linkedInArticlesWithUrl() {
 export function linkedInArticlesMissingUrl() {
   return linkedInArticles.items.filter((item) => !item.url);
 }
+
+export type LinkedInScrapedImage = {
+  originalUrl: string;
+  localPath: string | null;
+  error?: string;
+};
+
+/** Shape of `lib/data/linkedin-articles-enriched.json` after `npm run linkedin:scrape`. */
+export type LinkedInEnrichedItem = LinkedInArticleItem & {
+  resolvedUrl: string | null;
+  author: string | null;
+  publishedAt: string | null;
+  text: string | null;
+  hashtags: string[];
+  images: LinkedInScrapedImage[];
+  pageTitle: string | null;
+  error: string | null;
+  scrapedAt: string;
+};
+
+export type LinkedInEnrichedCatalog = {
+  title: string;
+  sourceFile: string;
+  scrapedAt: string;
+  authState: string | null;
+  mediaDirectory: string;
+  items: LinkedInEnrichedItem[];
+};

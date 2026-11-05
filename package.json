@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "linkedin:login": "node scripts/linkedin-scrape-playwright.mjs --login",
+    "linkedin:scrape": "node scripts/linkedin-scrape-playwright.mjs"
   },
   "dependencies": {
     "html2canvas": "^1.4.1",
@@ -27,6 +29,7 @@
     "postcss": "^8.5.28",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3",
+    "playwright": "^1.51.0",
     "vitest": "^5.0.2"
   }
 }

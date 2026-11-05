@@ -5,3 +5,6 @@ out
 *.log
 .DS_Store
 tsconfig.tsbuildinfo
+.linkedin-auth/
+docs/media/linkedin/
+lib/data/linkedin-articles-enriched.json
