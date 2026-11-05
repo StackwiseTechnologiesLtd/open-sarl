@@ -74,7 +74,7 @@ export function ProjectDetailView({
                       <span className="project-fact-label">{shared.projectRole}</span>
                       <p className="project-fact-value">{project.role}</p>
                     </div>
-                    <div className="project-fact project-fact--wide">
+                    <div className="project-fact">
                       <span className="project-fact-label">{shared.projectClient}</span>
                       <p className="project-fact-value">{project.clientType}</p>
                     </div>
