@@ -6,7 +6,6 @@ export function ProjectCard({
   href,
   title,
   summary,
-  status,
   imageSrc,
   imageAlt,
   ctaLabel,
@@ -14,7 +13,6 @@ export function ProjectCard({
   href: string;
   title: string;
   summary: string;
-  status: string;
   imageSrc: string;
   imageAlt: string;
   ctaLabel: string;
@@ -30,7 +28,6 @@ export function ProjectCard({
           quality={85}
           className="project-card-image"
         />
-        <span className="project-card-status">{status}</span>
       </div>
       <div className="project-card-body">
         <h3 className="project-card-title">{title}</h3>

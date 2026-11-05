@@ -34,7 +34,6 @@ export function PortfolioSection({ locale, dict }: { locale: Locale; dict: Dicti
                 href={projectPath(locale, pole, project.slug)}
                 title={project.title}
                 summary={project.summary}
-                status={project.status}
                 imageSrc={getProjectImage(project.slug)}
                 imageAlt={project.title}
                 ctaLabel={shared.viewProject}
