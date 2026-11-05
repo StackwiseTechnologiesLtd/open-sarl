@@ -464,14 +464,14 @@ section[id] {
   display: block;
   flex-shrink: 0;
   align-self: center;
-  width: 6.75rem;
+  width: 5.625rem;
   height: 2.625rem;
   overflow: visible;
 }
 
 @media (min-width: 640px) {
   .header-logo-slot {
-    width: 7.75rem;
+    width: 6.5rem;
     height: 3rem;
   }
 }
@@ -487,15 +487,15 @@ section[id] {
 .header-logo-full {
   display: block;
   width: auto;
-  height: calc(2.625rem * 1.5);
-  max-width: min(17.25rem, 58vw);
+  height: calc(2.625rem * 1.25);
+  max-width: min(14.375rem, 52vw);
   transition: filter 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (min-width: 640px) {
   .header-logo-full {
-    height: calc(3rem * 1.5);
-    max-width: 19.5rem;
+    height: calc(3rem * 1.25);
+    max-width: 16.25rem;
   }
 }
 
@@ -1574,15 +1574,15 @@ section[id] {
 .footer-premium-logo {
   display: block;
   width: auto;
-  height: 2.75rem;
-  max-width: min(14rem, 70vw);
+  height: calc(2.75rem * 1.5);
+  max-width: min(21rem, 70vw);
   margin-bottom: 1.25rem;
 }
 
 @media (min-width: 640px) {
   .footer-premium-logo {
-    height: 3.25rem;
-    max-width: 16rem;
+    height: calc(3.25rem * 1.5);
+    max-width: 24rem;
     margin-bottom: 1.5rem;
   }
 }
