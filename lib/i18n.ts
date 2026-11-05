@@ -210,6 +210,7 @@ const dictionaries = {
         approachTitle: "Approche OPEN",
         scopeTitle: "Périmètre d'intervention",
         outcomesTitle: "Résultats et effets recherchés",
+        projectSnapshotTitle: "Informations clés du mandat",
         mandateType: "Type de mandat",
       },
       advisory: {
@@ -1281,6 +1282,7 @@ const dictionaries = {
         approachTitle: "OPEN approach",
         scopeTitle: "Scope of work",
         outcomesTitle: "Results and intended effects",
+        projectSnapshotTitle: "Key mandate information",
         mandateType: "Mandate type",
       },
       advisory: {

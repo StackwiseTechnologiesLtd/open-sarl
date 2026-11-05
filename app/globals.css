@@ -1082,42 +1082,6 @@ section[id] {
   }
 }
 
-.project-facts--in-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
-  margin: 1.25rem 0 0;
-  padding: 0;
-  border: 0;
-}
-
-.project-facts--in-panel > .project-fact {
-  margin: 0;
-  padding: 0.875rem 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid
-    color-mix(in srgb, var(--color-outline-variant) 38%, transparent);
-  background: var(--color-surface-container-low);
-}
-
-.project-facts--in-panel .project-fact-label {
-  display: block;
-  margin: 0;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-on-surface-variant);
-}
-
-.project-facts--in-panel .project-fact-value {
-  margin: 0.4rem 0 0;
-  font-size: 0.9375rem;
-  line-height: 1.45;
-  color: var(--color-on-surface);
-  overflow-wrap: anywhere;
-}
-
 .project-more-sidebar {
   border-radius: 0.75rem;
   border: 1px solid

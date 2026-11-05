@@ -57,28 +57,30 @@ export function ProjectDetailView({
                 <article className="project-detail-panel">
                   <h2 className="project-detail-panel-title">{shared.contextTitle}</h2>
                   <p className="project-detail-panel-lead">{project.body}</p>
-                  <div className="project-facts project-facts--in-panel">
-                    <div className="project-fact">
-                      <span className="project-fact-label">{shared.mandateType}</span>
-                      <p className="project-fact-value">{project.mandateType}</p>
-                    </div>
-                    <div className="project-fact">
-                      <span className="project-fact-label">{shared.projectSector}</span>
-                      <p className="project-fact-value">{project.sector}</p>
-                    </div>
-                    <div className="project-fact">
-                      <span className="project-fact-label">{shared.projectLocation}</span>
-                      <p className="project-fact-value">{project.location}</p>
-                    </div>
-                    <div className="project-fact">
-                      <span className="project-fact-label">{shared.projectRole}</span>
-                      <p className="project-fact-value">{project.role}</p>
-                    </div>
-                    <div className="project-fact">
-                      <span className="project-fact-label">{shared.projectClient}</span>
-                      <p className="project-fact-value">{project.clientType}</p>
-                    </div>
-                  </div>
+                </article>
+              </Reveal>
+
+              <Reveal delay={0.02}>
+                <article className="project-detail-panel">
+                  <h2 className="project-detail-panel-title">{shared.projectSnapshotTitle}</h2>
+                  <ul className="project-outcomes">
+                    {(
+                      [
+                        [shared.mandateType, project.mandateType],
+                        [shared.projectSector, project.sector],
+                        [shared.projectLocation, project.location],
+                        [shared.projectRole, project.role],
+                        [shared.projectClient, project.clientType],
+                      ] as const
+                    ).map(([label, value]) => (
+                      <li key={label}>
+                        <span>
+                          <span className="font-medium text-on-surface">{label}</span>
+                          <span className="mt-1 block text-on-surface-variant">{value}</span>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </article>
               </Reveal>
 
