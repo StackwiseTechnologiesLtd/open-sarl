@@ -1,12 +1,12 @@
 import type { IconName } from "@/components/icon";
-import { contactEmail } from "@/lib/site";
+import { contactEmail, officeAddress, officeAddressLines } from "@/lib/site";
 
 export { contactEmail } from "@/lib/site";
 
 export const locales = ["fr", "en"] as const;
 export type Locale = (typeof locales)[number];
 
-export const offices = ["Kinshasa, République démocratique du Congo"] as const;
+export const offices = [officeAddress] as const;
 
 export function isLocale(value: string): value is Locale {
   return value === "fr" || value === "en";
@@ -852,7 +852,7 @@ const dictionaries = {
       roleBody:
         "Deux pôles complémentaires — conseil amont (préparation, faisabilité, structuration, appui institutionnel) et ingénierie de delivery (études, supervision, coordination) — au sein d'une même équipe, avec une charte documentaire et des livrables alignés sur les standards des bailleurs.",
       officeTitle: "Siège",
-      officeBody: "Kinshasa, République démocratique du Congo.",
+      officeBody: officeAddress,
       webLabel: "Site",
       contactCta: "Prendre contact",
       back: "Retour à l'accueil",
@@ -972,14 +972,14 @@ const dictionaries = {
       toLabel: "À.",
       toName: "M. / Mme [Nom du destinataire]",
       toCompany: "Ministère / agence / bailleur",
-      toAddress: "Adresse postale\nKinshasa, République démocratique du Congo",
+      toAddress: `Adresse postale\n${officeAddress}`,
       classicVariant: {
         coverKicker: "Variante épurée · comparaison",
         coverTitle: "En-tête minimal",
         coverSubtitle: "Filigrane · pied de page contact",
         coverLead:
           "Mise en page sobre : logo en tête, marque en filigrane à droite, coordonnées en bas de page — sans bandeau géométrique.",
-        footerAddressLines: ["Kinshasa", "République démocratique du Congo"],
+        footerAddressLines: [...officeAddressLines],
       },
       kinds: {
         letterhead: {
@@ -1837,7 +1837,7 @@ const dictionaries = {
       roleBody:
         "Two complementary practices — upstream advisory (preparation, feasibility, structuring, institutional support) and delivery engineering (design support, supervision, coordination) — within one team, with document standards and deliverables aligned to donor requirements.",
       officeTitle: "Office",
-      officeBody: "Kinshasa, Democratic Republic of the Congo.",
+      officeBody: officeAddress,
       webLabel: "Website",
       contactCta: "Get in touch",
       back: "Back to home",
@@ -1957,14 +1957,14 @@ const dictionaries = {
       toLabel: "TO.",
       toName: "Mr / Ms [Recipient name]",
       toCompany: "Ministry / agency / development partner",
-      toAddress: "Postal address\nKinshasa, Democratic Republic of the Congo",
+      toAddress: `Postal address\n${officeAddress}`,
       classicVariant: {
         coverKicker: "Minimal variant · comparison",
         coverTitle: "Minimal letterhead",
         coverSubtitle: "Watermark · contact footer",
         coverLead:
           "Quiet layout: header logo, right-side watermark mark, contact lines at the foot — no geometric banner.",
-        footerAddressLines: ["Kinshasa", "Democratic Republic of the Congo"],
+        footerAddressLines: [...officeAddressLines],
       },
       kinds: {
         letterhead: {

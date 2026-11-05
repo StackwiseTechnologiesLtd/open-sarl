@@ -90,7 +90,7 @@ The website presents the firm. The firm is the advisory practice: short missions
 
 ### Who is the company?
 
-**OPEN SARL.** Office: Kinshasa, Democratic Republic of the Congo. Publication director: the management of OPEN SARL. Contact: [contact@open-consulting.fr](mailto:contact@open-consulting.fr).
+**OPEN SARL.** Office: 2Bis, Av. Lisasi 2, Ngaliema, Kinshasa, DRC. Publication director: the management of OPEN SARL. Contact: [contact@opensarl.com](mailto:contact@opensarl.com).
 
 ### Is there one OPEN that does everything everywhere?
 
@@ -374,7 +374,7 @@ The privacy page states that OPEN **does not place advertising trackers** on thi
 
 ### Where is the office?
 
-**Kinshasa, Democratic Republic of the Congo.** That is the office the legal notice publishes. Do not arrive at a coworking space named in an old article and expect a reception desk.
+**2Bis, Av. Lisasi 2, Ngaliema, Kinshasa, DRC.** That is the office the legal notice publishes. Do not arrive at a coworking space named in an old article and expect a reception desk.
 
 ### Which countries?
 

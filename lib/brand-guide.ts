@@ -1,5 +1,5 @@
 import type { Locale } from "@/lib/i18n";
-import { contactEmail, siteHost, siteUrl } from "@/lib/site";
+import { contactEmail, officeAddress, siteHost, siteUrl } from "@/lib/site";
 
 export const brandSectionIds = [
   "introduction",
@@ -85,7 +85,7 @@ export const cardIdentity = {
   name: "Ir DEAN ERIC MULIMBI",
   title: "Dir. Gérant / CEO",
   email: "deancin@gmail.com",
-  address: "227, Avenue du Lac, Katindo, Goma",
+  address: officeAddress,
   phones: ["+243 994 261 675", "+243 814 279 213"],
 } as const;
 
@@ -241,11 +241,11 @@ const fr = {
   envelopeMetaPaperPlain: "Paysage · papier · sans fenêtre",
   letterTitle: "Lettre officielle",
   letterBody:
-    "La lettre reprend la couverture en plus serré : coin marine, adresse du site en haut à droite, logo, puis le texte. Les intertitres sont en capitales, marine, sans puce décorative. Le pied est un bandeau marine pleine largeur : les deux lignes mobiles, l’adresse à Goma et l’e-mail du gérant.",
+    "La lettre reprend la couverture en plus serré : coin marine, adresse du site en haut à droite, logo, puis le texte. Les intertitres sont en capitales, marine, sans puce décorative. Le pied est un bandeau marine pleine largeur : les deux lignes mobiles, l’adresse à Kinshasa et l’e-mail du gérant.",
   letterMeta: "A4 · 210 × 297 mm",
   letterDate: "28 août 2024",
   letterToLabel: "À.",
-  letterTo: ["Point focal / décideur", "Institution cliente ou partenaire", "Adresse postale", "Kinshasa, République démocratique du Congo"],
+  letterTo: ["Point focal / décideur", "Institution cliente ou partenaire", "Adresse postale", officeAddress],
   letterSubject: "Objet : Proposition d’accompagnement — [intitulé du programme]",
   letterIntro:
     "OPEN SARL propose un appui intégré combinant conseil en amont (préparation, faisabilité, structuration) et ingénierie de delivery, aligné sur les standards des bailleurs et les procédures nationales.",
@@ -279,7 +279,7 @@ const fr = {
       body: "Durée indicative : [X] mois. Équipe : directeur de mission, experts sectoriels, ingénieurs et appui administratif OPEN Kinshasa. Honoraires, déplacements et taxes : selon devis détaillé annexé. Validité de l’offre : 60 jours à compter de la date du présent document.",
     },
   ],
-  place: "Kinshasa, République démocratique du Congo",
+  place: officeAddress,
   billingTitle: "Facture et reçu",
   billingBody:
     "Même en-tête, même pied, même filigrane que la lettre. La facture aligne les lignes sur une grille. Le reçu reprend le même numéro et le même montant, pour qu’on voie qu’ils forment une paire. Les chiffres ci-dessous sont un spécimen de mise en page, pas une offre.",
@@ -291,7 +291,7 @@ const fr = {
   invoiceDueLabel: "Échéance",
   invoiceDue: "27 septembre 2024",
   invoiceClientLabel: "Client",
-  invoiceClient: ["Institution cliente ou partenaire", "Kinshasa, République démocratique du Congo"],
+  invoiceClient: ["Institution cliente ou partenaire", officeAddress],
   invoiceCols: ["Désignation", "Qté", "Unité", "Montant"],
   invoiceTotalLabel: "Total",
   invoiceNote:
@@ -308,7 +308,7 @@ const fr = {
   receiptPlace: "Kinshasa, le 28 août 2024",
   cardsTitle: "Cartes de visite",
   cardsBody:
-    "Format 85 × 55 mm. Le recto papier porte le QR du site, le logo, et les coordonnées du gérant telles qu’imprimées : Goma, les deux lignes mobiles, l’adresse personnelle. Le verso marine est le verrouillage blanc, seul. La carte marine reprend le recto quand le fond doit être sombre.",
+    "Format 85 × 55 mm. Le recto papier porte le QR du site, le logo, et les coordonnées du gérant telles qu’imprimées : Kinshasa, les deux lignes mobiles, l’adresse du siège. Le verso marine est le verrouillage blanc, seul. La carte marine reprend le recto quand le fond doit être sombre.",
   cardsRule:
     "Les coordonnées imprimées sur la carte, les lettres et les enveloppes sont les mêmes. Lettres et factures : une rangée dans le bandeau marine. Enveloppes : la même rangée, directement sur le fond, sans bandeau.",
   cardPaperIcons: "Recto papier · icônes",
@@ -467,11 +467,11 @@ const en = {
   envelopeMetaPaperPlain: "Landscape · paper · no window",
   letterTitle: "Official letter",
   letterBody:
-    "The letter is the cover, tightened: a navy corner, the site address at the top right, the logo, then the text. Section labels are capitals, in navy, without decorative bullets. The footer is a full-width navy band: both mobile lines, the Goma address, and the managing director’s email.",
+    "The letter is the cover, tightened: a navy corner, the site address at the top right, the logo, then the text. Section labels are capitals, in navy, without decorative bullets. The footer is a full-width navy band: both mobile lines, the Kinshasa office address, and the managing director’s email.",
   letterMeta: "A4 · 210 × 297 mm",
   letterDate: "28 August 2024",
   letterToLabel: "To.",
-  letterTo: ["Focal point / decision-maker", "Client institution or partner", "Postal address", "Kinshasa, Democratic Republic of the Congo"],
+  letterTo: ["Focal point / decision-maker", "Client institution or partner", "Postal address", officeAddress],
   letterSubject: "Re: Proposal for technical assistance — [programme title]",
   letterIntro:
     "OPEN SARL proposes integrated support combining upstream advisory (preparation, feasibility, structuring) and delivery engineering, aligned with donor standards and national procedures.",
@@ -505,7 +505,7 @@ const en = {
       body: "Indicative duration: [X] months. Team: mission director, sector experts, engineers, and OPEN Kinshasa administrative support. Fees, travel, and taxes: as per the detailed quote attached. Offer valid for 60 days from the date of this document.",
     },
   ],
-  place: "Kinshasa, Democratic Republic of the Congo",
+  place: officeAddress,
   billingTitle: "Invoice and receipt",
   billingBody:
     "Same header, same footer, same watermark as the letter. The invoice aligns rows on a grid. The receipt repeats the same number and the same amount, so the pair is obvious. The figures below are a layout specimen, not an offer.",
@@ -517,7 +517,7 @@ const en = {
   invoiceDueLabel: "Due",
   invoiceDue: "27 September 2024",
   invoiceClientLabel: "Client",
-  invoiceClient: ["Client institution or partner", "Kinshasa, Democratic Republic of the Congo"],
+  invoiceClient: ["Client institution or partner", officeAddress],
   invoiceCols: ["Description", "Qty", "Unit", "Amount"],
   invoiceTotalLabel: "Total",
   invoiceNote:
@@ -534,7 +534,7 @@ const en = {
   receiptPlace: "Kinshasa, 28 August 2024",
   cardsTitle: "Business cards",
   cardsBody:
-    "85 × 55 mm. The paper front carries the site QR, the logo, and the managing director’s details as printed: Goma, both mobile lines, the personal address. The navy back is the white lockup, alone. The navy front repeats the contact side when the field must be dark.",
+    "85 × 55 mm. The paper front carries the site QR, the logo, and the managing director’s details as printed: Kinshasa office, both mobile lines, and the registered address. The navy back is the white lockup, alone. The navy front repeats the contact side when the field must be dark.",
   cardsRule:
     "The printed details on the card, letters, and envelopes match. Letters and invoices: one row in the navy band. Envelopes: the same row on the field, with no band.",
   cardPaperIcons: "Paper front · icons",

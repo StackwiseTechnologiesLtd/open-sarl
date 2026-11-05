@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/container";
-import { contactEmail, getDictionary, isLocale, mailHref, offices } from "@/lib/i18n";
+import { contactEmail, getDictionary, isLocale, mailHref } from "@/lib/i18n";
 import { siteHost, siteUrl } from "@/lib/site";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -27,11 +27,7 @@ export default async function AboutPage({ params }: Props) {
           <h2 className="font-headline-md text-2xl font-semibold">{copy.roleTitle}</h2>
           <p className="text-on-surface-variant">{copy.roleBody}</p>
           <h2 className="font-headline-md text-2xl font-semibold">{copy.officeTitle}</h2>
-          <p className="text-on-surface-variant">
-            {copy.officeBody}
-            <br />
-            {offices[0]}
-          </p>
+          <p className="text-on-surface-variant">{copy.officeBody}</p>
           <p className="text-on-surface-variant">
             {copy.webLabel}:{" "}
             <a className="text-primary hover:underline" href={siteUrl}>
