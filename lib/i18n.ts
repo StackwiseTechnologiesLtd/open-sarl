@@ -778,7 +778,7 @@ const dictionaries = {
       ],
     },
     sectors: {
-      title: "Secteurs prioritaires",
+      title: "Secteurs clés",
       items: [
         {
           title: "Transport & logistique",
@@ -1842,7 +1842,7 @@ const dictionaries = {
       ],
     },
     sectors: {
-      title: "Primary sectors",
+      title: "Core sectors",
       items: [
         {
           title: "Transport & logistics",

@@ -57,28 +57,28 @@ export function ProjectDetailView({
                 <article className="project-detail-panel">
                   <h2 className="project-detail-panel-title">{shared.contextTitle}</h2>
                   <p className="project-detail-panel-lead">{project.body}</p>
-                  <dl className="project-facts project-facts--in-panel">
-                    <div>
-                      <dt>{shared.mandateType}</dt>
-                      <dd>{project.mandateType}</dd>
+                  <div className="project-facts project-facts--in-panel">
+                    <div className="project-fact">
+                      <span className="project-fact-label">{shared.mandateType}</span>
+                      <p className="project-fact-value">{project.mandateType}</p>
                     </div>
-                    <div>
-                      <dt>{shared.projectSector}</dt>
-                      <dd>{project.sector}</dd>
+                    <div className="project-fact">
+                      <span className="project-fact-label">{shared.projectSector}</span>
+                      <p className="project-fact-value">{project.sector}</p>
                     </div>
-                    <div>
-                      <dt>{shared.projectLocation}</dt>
-                      <dd>{project.location}</dd>
+                    <div className="project-fact">
+                      <span className="project-fact-label">{shared.projectLocation}</span>
+                      <p className="project-fact-value">{project.location}</p>
                     </div>
-                    <div>
-                      <dt>{shared.projectClient}</dt>
-                      <dd>{project.clientType}</dd>
+                    <div className="project-fact">
+                      <span className="project-fact-label">{shared.projectRole}</span>
+                      <p className="project-fact-value">{project.role}</p>
                     </div>
-                    <div>
-                      <dt>{shared.projectRole}</dt>
-                      <dd>{project.role}</dd>
+                    <div className="project-fact project-fact--wide">
+                      <span className="project-fact-label">{shared.projectClient}</span>
+                      <p className="project-fact-value">{project.clientType}</p>
                     </div>
-                  </dl>
+                  </div>
                 </article>
               </Reveal>
 
