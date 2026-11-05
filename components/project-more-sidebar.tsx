@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getProjectImage } from "@/lib/project-images";
+import { poleProjects } from "@/lib/projects";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import { projectPath, type PoleSlug } from "@/lib/poles";
 
@@ -16,7 +17,9 @@ export function ProjectMoreSidebar({
   currentSlug: string;
 }) {
   const label = dict.polePages.shared.moreProjects;
-  const items = dict.polePages[pole].projects.filter((item) => item.slug !== currentSlug);
+  const items = poleProjects(locale, pole)
+    .map((entry) => entry.project)
+    .filter((item) => item.slug !== currentSlug);
 
   if (items.length === 0) return null;
 

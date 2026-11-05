@@ -7,6 +7,7 @@ import { Reveal } from "@/components/reveal";
 import { getPoleHeroImage, getProjectImage } from "@/lib/project-images";
 import { mailHref, type Dictionary, type Locale } from "@/lib/i18n";
 import { polePath, projectPath, type PoleSlug } from "@/lib/poles";
+import { poleProjects } from "@/lib/projects";
 
 const otherPole: Record<PoleSlug, PoleSlug> = {
   advisory: "engineering",
@@ -28,6 +29,8 @@ export function PoleDetailView({
   const other = otherPole[pole];
   const otherContent = dict.polePages[other];
   const polesLabel = dict.nav.find((item) => item.href === "#poles")?.label ?? "Pôles";
+
+  const poleProjectList = poleProjects(locale, pole);
 
   return (
     <main className="page-main page-main--cinema pb-section-gap">
@@ -81,7 +84,7 @@ export function PoleDetailView({
             <p className="mb-8 max-w-prose text-sm text-on-surface-variant sm:mb-10 sm:text-body-md">{shared.projectsIntro}</p>
           </Reveal>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-gutter lg:grid-cols-3">
-            {content.projects.map((project, index) => (
+            {poleProjectList.map(({ project }, index) => (
               <Reveal key={project.slug} delay={index * 0.04} className="h-full">
                 <ProjectCard
                   href={projectPath(locale, pole, project.slug)}

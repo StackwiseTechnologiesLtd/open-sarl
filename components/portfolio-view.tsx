@@ -10,7 +10,7 @@ import { projectPath } from "@/lib/poles";
 export function PortfolioView({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const portfolio = dict.portfolio;
   const shared = dict.polePages.shared;
-  const listings = getAllProjects(dict);
+  const listings = getAllProjects(locale);
 
   return (
     <main className="page-main pb-section-gap">

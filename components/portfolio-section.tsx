@@ -12,7 +12,7 @@ import { projectPath } from "@/lib/poles";
 export function PortfolioSection({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const portfolio = dict.portfolio;
   const shared = dict.polePages.shared;
-  const featured = getFeaturedProjects(dict);
+  const featured = getFeaturedProjects(locale);
   const portfolioHref = `/${locale}/portfolio`;
 
   return (

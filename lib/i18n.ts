@@ -192,7 +192,7 @@ const dictionaries = {
         capabilitiesTitle: "Champs d'intervention",
         projectsTitle: "Projets et références",
         projectsIntro:
-          "Sélection représentative de mandats rattachés à ce pôle — détail enrichi au fur et à mesure des validations.",
+          "Publications LinkedIn et notes de terrain — thèmes de préparation, financement et exécution des infrastructures en RDC.",
         projectRole: "Rôle d'OPEN",
         projectSector: "Secteur",
         projectLocation: "Localisation",
@@ -202,6 +202,7 @@ const dictionaries = {
         otherPole: "Voir l'autre pôle",
         contactCta: "Discuter d'un mandat",
         viewProject: "Voir le projet",
+        viewOnLinkedIn: "Voir sur LinkedIn",
         backToPole: "Retour au pôle",
         moreProjects: "Autres projets",
         contextTitle: "Contexte du mandat",
@@ -228,73 +229,7 @@ const dictionaries = {
           "Appui institutionnel, gouvernance et passation",
           "Programmes financés par les bailleurs (UE, BM, BAD, bilatéraux)",
         ],
-        projects: [
-          {
-            slug: "urban-water-eastern-drc",
-            title: "Approvisionnement en eau urbaine",
-            sector: "Eau & infrastructures urbaines",
-            location: "Est de la RDC",
-            clientType: "Autorité publique / programme",
-            role: "Préparation de projet et appui à la mise en œuvre",
-            summary: "Structuration du programme, préparation des investissements et appui décisionnel pour des services essentiels.",
-            status: "Référence représentative",
-          },
-          {
-            slug: "inga-iii-umons-analysis",
-            title: "Inga III — analyse critique intégrée",
-            sector: "Énergie / hydroélectricité",
-            location: "RDC",
-            clientType: "Université de Mons",
-            role: "Appui à l'analyse critique du méga-projet Inga III",
-            summary:
-              "Rapport d'analyse intégrée en cours de finalisation — articulation entre enjeux techniques, institutionnels, financeurs et réalités du terrain.",
-            status: "En cours · depuis mars 2026",
-          },
-          {
-            slug: "solar-bess-katanga-thrive",
-            title: "Solaire & BESS — Katanga",
-            sector: "Énergie (solaire & stockage)",
-            location: "Katanga, RDC",
-            clientType:
-              "Thrive Renewables (PTY) Ltd / Ministère des Ressources Hydrauliques et de l'Électricité",
-            role: "Préparation de projet et interface public–investisseur privé",
-            summary:
-              "Préparation d'un projet solaire avec stockage ; protocole d'accord (MoU) et mission de confirmation des sites octroyés en région minière.",
-            status: "En cours · depuis juin 2026",
-          },
-          {
-            slug: "hydro-agro-recs-climate-finance",
-            title: "Hydro-agro-industriel & finance climat",
-            sector: "Énergie & développement durable",
-            location: "RDC",
-            clientType:
-              "RECS Innovation Ltd (Corée) / Ministère du développement durable / ONUDI",
-            role: "Préparation de projet pour financement additionnel (fonds climat)",
-            summary:
-              "Structuration d'un projet hydroélectrique et agro-industriel reliant bailleurs internationaux, investisseurs privés et institutions publiques.",
-            status: "En cours · depuis septembre 2026",
-          },
-          {
-            slug: "strategic-corridors",
-            title: "Corridors stratégiques",
-            sector: "Transport & logistique",
-            location: "RDC & Afrique centrale",
-            clientType: "Autorités corridor / bailleurs",
-            role: "Planification, cartographie des parties prenantes et investment readiness",
-            summary: "Priorisation des investissements et préparation de dossiers pour connectivité régionale.",
-            status: "Référence représentative",
-          },
-          {
-            slug: "donor-programmes-drc",
-            title: "Programmes d'infrastructure financés par les bailleurs",
-            sector: "Multi-secteurs",
-            location: "RDC",
-            clientType: "UGP / PIU / bailleurs",
-            role: "Appui à l'exécution et support décisionnel",
-            summary: "Alignement sur les exigences de financement international et reporting de programme.",
-            status: "Référence représentative",
-          },
-        ],
+        projects: [],
       },
       engineering: {
         metaTitle: "Engineering & Delivery",
@@ -311,292 +246,18 @@ const dictionaries = {
           "Assistance à la réalisation et appui chantier",
           "Livrables d'exécution et reporting de supervision",
         ],
-        projects: [
-          {
-            slug: "urban-networks-supervision",
-            title: "Réseaux urbains — supervision",
-            sector: "Eau & infrastructures urbaines",
-            location: "RDC",
-            clientType: "Maître d'ouvrage / UGP",
-            role: "Supervision technique et contrôle d'exécution",
-            summary: "Suivi de mise en œuvre, contrôle des livrables entreprise et reporting pour le maître d'ouvrage.",
-            status: "Référence représentative",
-          },
-          {
-            slug: "water-sanitation-engineering",
-            title: "Infrastructures hydrauliques — ingénierie",
-            sector: "Eau & assainissement",
-            location: "RDC",
-            clientType: "Autorité publique",
-            role: "Études de conception et ingénierie",
-            summary: "Conception technique, dossiers d'exécution et appui à la passation des travaux.",
-            status: "Référence représentative",
-          },
-          {
-            slug: "energy-substation-design",
-            title: "Postes et réseaux — études associées",
-            sector: "Énergie",
-            location: "RDC",
-            clientType: "Utility / partenaire technique",
-            role: "Études d'ingénierie et appui à la réalisation",
-            summary: "Ingénierie ciblée et assistance à la mise en service dans le respect des standards.",
-            status: "Référence représentative",
-          },
-        ],
+        projects: [],
       },
     },
-    projectDetails: {
-      "urban-water-eastern-drc": {
-        metaDescription:
-          "Préparation et appui à la mise en œuvre d'un programme d'approvisionnement en eau urbaine — Est de la RDC.",
-        body: "Programme visant l'extension des services d'eau en milieu urbain dans un contexte de demande croissante et de contraintes institutionnelles. OPEN intervient en amont des décisions d'investissement pour structurer des composantes finançables et exécutables.",
-        mandateType: "Préparation de programme et appui à la mise en œuvre",
-        challenge:
-          "Prioriser des investissements hydrauliques crédibles pour les autorités et les financeurs, avec une visibilité claire sur les options, les coûts, les risques et la séquence de mise en œuvre.",
-        approach:
-          "Diagnostic rapide, analyse d'options, structuration en tranches et production de livrables orientés comités de pilotage — en combinant réalisme local et standards internationaux.",
-        scope: [
-          "Diagnostic sectoriel et analyse des besoins",
-          "Structuration du programme et priorisation des composantes",
-          "Préparation de notes de décision et dossiers bailleurs",
-          "Appui à la gouvernance de programme et au reporting",
-        ],
-        deliverables: [
-          "Notes de priorisation et matrices d'investissement",
-          "Diagnostics de maturité et registres de risques",
-          "Briefings pour comités de pilotage et autorités",
-          "Feuilles de route de préparation et de mise en œuvre",
-        ],
-        outcomes: [
-          "Pipeline d'investissements structuré et défendable",
-          "Décisions éclairées sur le phasage et le modèle de délivrance",
-          "Meilleure readiness vis-à-vis des financeurs",
-        ],
-      },
-      "inga-iii-umons-analysis": {
-        metaDescription:
-          "Appui à l'analyse critique du méga-projet Inga III en RDC — Université de Mons, rapport intégré en cours.",
-        body: "Mandat d'appui à une analyse critique du projet Inga III, en articulant dimensions techniques, environnementales, institutionnelles et financières pour éclairer les décisions des parties prenantes nationales et internationales.",
-        mandateType: "Analyse critique intégrée et appui décisionnel",
-        challenge:
-          "Produire une lecture indépendante et structurée d'un méga-projet où s'entrecroisent enjeux de souveraineté énergétique, financement international, impacts sociaux-environnementaux et faisabilité de mise en œuvre.",
-        approach:
-          "Revue documentaire, consolidation des hypothèses de projet, confrontation aux standards internationaux et aux contraintes de terrain — livrables orientés comités académiques et décideurs.",
-        scope: [
-          "Analyse critique des composantes techniques et institutionnelles",
-          "Revues des scénarios de financement et d'allocation des risques",
-          "Articulation avec les réalités sectorielles en RDC",
-          "Rédaction du rapport d'analyse intégrée",
-        ],
-        deliverables: [
-          "Rapport d'analyse intégrée (finalisation en cours)",
-          "Synthèses thématiques pour parties prenantes",
-          "Registre de questions ouvertes et recommandations",
-        ],
-        outcomes: [
-          "Base commune pour débats éclairés sur Inga III",
-          "Lien explicite entre exigences bailleurs et contraintes locales",
-          "Recommandations actionnables pour la suite du cycle de décision",
-        ],
-      },
-      "solar-bess-katanga-thrive": {
-        metaDescription:
-          "Préparation d'un projet solaire & BESS au Katanga — Thrive Renewables et Ministère des Ressources Hydrauliques et de l'Électricité.",
-        body: "Accompagnement à la structuration d'un projet solaire avec stockage (BESS) en région minière du Katanga, en interface entre investisseur privé international et tutelle hydraulique et électrique congolaise.",
-        mandateType: "Préparation de projet et structuration public–privé",
-        challenge:
-          "Aligner calendrier investisseur, octroi de sites, exigences réglementaires et readiness technique avant engagement des études détaillées et des financements.",
-        approach:
-          "Préparation du dossier de projet, appui au protocole d'accord (MoU) et organisation de la mission de confirmation des sites octroyés.",
-        scope: [
-          "Structuration du concept solaire & BESS et du calendrier de mise en œuvre",
-          "Appui à la négociation et formalisation du MoU",
-          "Préparation de la mission de confirmation des sites (Katanga)",
-          "Interface avec le ministère de tutelle et l'investisseur",
-        ],
-        deliverables: [
-          "Dossier de préparation de projet et notes de cadrage",
-          "Support au MoU ministère–investisseur",
-          "Rapport de mission de confirmation des sites",
-          "Feuille de route vers études et financement",
-        ],
-        outcomes: [
-          "Cadre contractuel initial entre tutelle et investisseur",
-          "Sites confirmés et contraintes terrain documentées",
-          "Pipeline crédible vers études et closing financier",
-        ],
-      },
-      "hydro-agro-recs-climate-finance": {
-        metaDescription:
-          "Projet hydro-agro-industriel en RDC — RECS Innovation, ministère du développement durable et ONUDI, financement climat.",
-        body: "Préparation d'un projet combinant production hydroélectrique et composante agro-industrielle, structuré pour mobiliser un financement additionnel via les fonds climat, avec parties prenantes coréennes, congolaises et multilatérales.",
-        mandateType: "Préparation de projet et structuration finance climat",
-        challenge:
-          "Packager un projet multi-composantes acceptable pour institutions publiques, ONUDI et mécanismes de finance climat, tout en sécurisant la faisabilité agro-industrielle et énergétique.",
-        approach:
-          "Diagnostic intégré, alignement sur critères fonds climat, coordination des interfaces RECS / ministère / ONUDI et production de livrables de préparation progressive.",
-        scope: [
-          "Structuration technique et institutionnelle du projet intégré",
-          "Alignement sur exigences fonds climat et partenaires multilatéraux",
-          "Appui au dialogue RECS Innovation Ltd / tutelle / ONUDI",
-          "Préparation des dossiers de financement additionnel",
-        ],
-        deliverables: [
-          "Notes de structuration et matrice des parties prenantes",
-          "Dossiers de préparation pour financement climat",
-          "Scénarios de phasage et registres de risques",
-          "Briefings pour comités de pilotage",
-        ],
-        outcomes: [
-          "Projet lisible pour investisseurs privés et bailleurs climat",
-          "Interfaces institutionnelles clarifiées",
-          "Chemin documenté vers mobilisation de financement additionnel",
-        ],
-      },
-      "strategic-corridors": {
-        metaDescription:
-          "Planification et investment readiness pour corridors de transport en RDC et Afrique centrale.",
-        body: "Travaux de planification et de préparation pour corridors où enjeux de connectivité, parties prenantes multiples et priorisation d'investissements doivent être traités de manière coordonnée.",
-        mandateType: "Planification corridor et investment readiness",
-        challenge:
-          "Transformer une ambition de corridor en pipeline d'investissements priorisés, acceptable par les États, les collectivités et les partenaires au développement.",
-        approach:
-          "Cartographie des contraintes, consultation structurée des parties prenantes et packaging d'investissements en composantes bankables.",
-        scope: [
-          "Analyse corridor et cartographie des enjeux",
-          "Consultation et alignement des parties prenantes",
-          "Priorisation d'investissements et scénarios de phasage",
-          "Préparation de dossiers pour mobilisation de financements",
-        ],
-        deliverables: [
-          "Cartographies et notes corridor",
-          "Matrices de priorisation d'investissements",
-          "Dossiers conceptuels et notes bailleurs",
-          "Plans de mobilisation des parties prenantes",
-        ],
-        outcomes: [
-          "Vision corridor traduite en séquence d'investissements",
-          "Meilleure lisibilité pour décideurs nationaux et régionaux",
-          "Base commune pour dialogues avec financeurs",
-        ],
-      },
-      "donor-programmes-drc": {
-        metaDescription:
-          "Appui à l'exécution et au reporting pour programmes d'infrastructure financés par les bailleurs en RDC.",
-        body: "Appui à des UGP/PIU et autorités de tutelle pour piloter des programmes multi-projets conformes aux exigences de gestion et de reporting des financements internationaux.",
-        mandateType: "Appui programme et support décisionnel",
-        challenge:
-          "Maintenir cadence de décision, qualité de reporting et conformité aux standards bailleurs dans un contexte institutionnel sous pression.",
-        approach:
-          "Renforcement des routines de pilotage, production de livrables standardisés et appui indépendant aux comités de direction.",
-        scope: [
-          "Appui au pilotage et à la planification de programme",
-          "Reporting périodique et tableaux de bord",
-          "Préparation de sessions de décision",
-          "Conformité procédures et exigences bailleurs",
-        ],
-        deliverables: [
-          "Tableaux de bord et rapports de programme",
-          "Notes de décision et briefings de comités",
-          "Checklists de conformité et plans d'action",
-          "Appui à la gestion des risques de programme",
-        ],
-        outcomes: [
-          "Reporting plus prévisible pour les financeurs",
-          "Décisions de programme documentées et traçables",
-          "Capacité de pilotage renforcée au sein de l'UGP/PIU",
-        ],
-      },
-      "urban-networks-supervision": {
-        metaDescription:
-          "Supervision technique de réseaux urbains et contrôle d'exécution en RDC.",
-        body: "Supervision de travaux et de livrables d'entreprise pour des réseaux urbains, avec reporting régulier au maître d'ouvrage et contrôle de la qualité d'exécution.",
-        mandateType: "Supervision technique et contrôle d'exécution",
-        challenge:
-          "Garantir que les ouvrages livrés correspondent aux dossiers approuvés, aux standards techniques et aux attentes du maître d'ouvrage sur le terrain.",
-        approach:
-          "Présence de supervision structurée, revue systématique des livrables entreprise et registre ouvert des non-conformités et réserves.",
-        scope: [
-          "Supervision des travaux et contrôle qualité",
-          "Revue des dossiers d'exécution et variants",
-          "Interface maître d'ouvrage / entreprises",
-          "Reporting périodique et levée des réserves",
-        ],
-        deliverables: [
-          "Rapports de supervision et visites de chantier",
-          "Revue technique des soumissions et variants",
-          "Registres de réserves et plans de levée",
-          "Comptes rendus pour comités de pilotage travaux",
-        ],
-        outcomes: [
-          "Meilleure visibilité sur l'avancement réel des travaux",
-          "Réduction des écarts non documentés entre conception et exécution",
-          "Décisions de réception basées sur des faits vérifiés",
-        ],
-      },
-      "water-sanitation-engineering": {
-        metaDescription:
-          "Études de conception et ingénierie pour infrastructures hydrauliques en RDC.",
-        body: "Ingénierie de conception pour infrastructures hydrauliques, incluant dossiers techniques et appui à la passation, dans le respect des normes et des contraintes de réalisation locale.",
-        mandateType: "Études de conception et ingénierie",
-        challenge:
-          "Produire des dossiers exécutables et passation-ready malgré contraintes de données, délais et capacités locales de mise en œuvre.",
-        approach:
-          "Conception par étapes, validation technique progressive et coordination avec les exigences environnementales et sociales lorsque requis.",
-        scope: [
-          "Études de faisabilité et de conception détaillée",
-          "Plans, notes de calcul et spécifications",
-          "Estimation des coûts et phasage des travaux",
-          "Appui technique à la passation",
-        ],
-        deliverables: [
-          "Dossiers de conception et plans",
-          "Notes de calcul et rapports techniques",
-          "Dossiers d'appel d'offres / consultation entreprises",
-          "Appui à l'analyse des offres",
-        ],
-        outcomes: [
-          "Dossiers techniques exploitables par le maître d'ouvrage",
-          "Passation préparée avec critères clairs",
-          "Risques techniques identifiés en amont des travaux",
-        ],
-      },
-      "energy-substation-design": {
-        metaDescription:
-          "Études d'ingénierie pour postes et réseaux électriques en RDC.",
-        body: "Études ciblées pour postes et composantes de réseau, avec coordination des interfaces et appui à la mise en service selon standards reconnus.",
-        mandateType: "Ingénierie ciblée et appui à la réalisation",
-        challenge:
-          "Sécuriser la faisabilité technique et la compatibilité des interfaces dans un environnement où les contraintes réseau et opérationnelles évoluent rapidement.",
-        approach:
-          "Ingénierie par composante, revue indépendante des hypothèses et accompagnement des étapes clés jusqu'à la mise en service.",
-        scope: [
-          "Études de dimensionnement et de layout",
-          "Spécifications équipements et interfaces",
-          "Appui aux essais et mise en service",
-          "Coordination avec exploitant et partenaires",
-        ],
-        deliverables: [
-          "Études techniques et notes de calcul",
-          "Spécifications et dossiers d'exécution",
-          "Plans de tests et procédures de réception",
-          "Rapports de suivi de mise en service",
-        ],
-        outcomes: [
-          "Composantes réseau dimensionnées sur bases explicites",
-          "Interfaces techniques clarifiées entre acteurs",
-          "Réception et mise en service mieux préparées",
-        ],
-      },
-    },
+    projectDetails: {},
     portfolio: {
       title: "Portfolio",
       intro:
-        "Expériences, projets et références — enrichis progressivement au fur et à mesure de leur validation.",
+        "Publications LinkedIn et perspectives sectorielles — préparation, financement et exécution en RDC.",
       viewAllCta: "Voir toutes les références",
       pageTitle: "Portfolio & références",
       pageIntro:
-        "Sélection de mandats rattachés aux deux pôles OPEN — dont des références récentes en énergie — cliquez sur une fiche pour le détail (contexte, périmètre, livrables).",
+        "Références issues des publications LinkedIn d'OPEN — texte, visuels et liens source.",
       categories: [
         "Water & Urban Infrastructure",
         "Energy & Power Systems",
@@ -1264,7 +925,7 @@ const dictionaries = {
         capabilitiesTitle: "Scope of services",
         projectsTitle: "Projects and references",
         projectsIntro:
-          "Representative selection of mandates under this practice — details added as references are validated.",
+          "LinkedIn publications and field notes — project preparation, finance, and delivery themes across the DRC.",
         projectRole: "OPEN role",
         projectSector: "Sector",
         projectLocation: "Location",
@@ -1274,6 +935,7 @@ const dictionaries = {
         otherPole: "View the other practice",
         contactCta: "Discuss a mandate",
         viewProject: "View project",
+        viewOnLinkedIn: "View on LinkedIn",
         backToPole: "Back to practice",
         moreProjects: "More projects",
         contextTitle: "Mandate context",
@@ -1300,73 +962,7 @@ const dictionaries = {
           "Institutional support, governance, and procurement readiness",
           "Donor-funded programmes (EU, World Bank, AfDB, bilaterals)",
         ],
-        projects: [
-          {
-            slug: "urban-water-eastern-drc",
-            title: "Urban water supply",
-            sector: "Water & urban infrastructure",
-            location: "Eastern DRC",
-            clientType: "Public authority / programme",
-            role: "Project preparation and implementation support",
-            summary: "Programme structuring, investment preparation, and decision support for essential services.",
-            status: "Representative reference",
-          },
-          {
-            slug: "inga-iii-umons-analysis",
-            title: "Inga III — integrated critical analysis",
-            sector: "Energy / hydropower",
-            location: "DRC",
-            clientType: "University of Mons",
-            role: "Support to critical analysis of the Inga III mega-project",
-            summary:
-              "Integrated analysis report nearing completion — linking technical, institutional, financier, and on-the-ground realities.",
-            status: "In progress · since March 2026",
-          },
-          {
-            slug: "solar-bess-katanga-thrive",
-            title: "Solar & BESS — Katanga",
-            sector: "Energy (solar & storage)",
-            location: "Katanga, DRC",
-            clientType:
-              "Thrive Renewables (PTY) Ltd / Ministry of Hydraulic Resources and Electricity",
-            role: "Project preparation and public–private interface",
-            summary:
-              "Solar-plus-storage project preparation; memorandum of understanding (MoU) and site confirmation mission in the mining region.",
-            status: "In progress · since June 2026",
-          },
-          {
-            slug: "hydro-agro-recs-climate-finance",
-            title: "Hydro-agro-industrial & climate finance",
-            sector: "Energy & sustainable development",
-            location: "DRC",
-            clientType:
-              "RECS Innovation Ltd (Korea) / Ministry of Sustainable Development / UNIDO",
-            role: "Project preparation for additional climate-fund financing",
-            summary:
-              "Packaging a hydropower and agro-industrial project bridging international donors, private investors, and public institutions.",
-            status: "In progress · since September 2026",
-          },
-          {
-            slug: "strategic-corridors",
-            title: "Strategic corridors",
-            sector: "Transport & logistics",
-            location: "DRC & Central Africa",
-            clientType: "Corridor authorities / donors",
-            role: "Planning, stakeholder mapping, and investment readiness",
-            summary: "Investment prioritisation and dossier preparation for regional connectivity.",
-            status: "Representative reference",
-          },
-          {
-            slug: "donor-programmes-drc",
-            title: "Donor-funded infrastructure programmes",
-            sector: "Multi-sector",
-            location: "DRC",
-            clientType: "PIU / UGP / donors",
-            role: "Implementation support and decision backing",
-            summary: "Alignment with international financing requirements and programme reporting.",
-            status: "Representative reference",
-          },
-        ],
+        projects: [],
       },
       engineering: {
         metaTitle: "Engineering & Delivery",
@@ -1383,285 +979,16 @@ const dictionaries = {
           "Implementation assistance and site support",
           "Delivery reporting and supervision outputs",
         ],
-        projects: [
-          {
-            slug: "urban-networks-supervision",
-            title: "Urban networks — supervision",
-            sector: "Water & urban infrastructure",
-            location: "DRC",
-            clientType: "Project owner / PIU",
-            role: "Technical supervision and delivery control",
-            summary: "Implementation monitoring, contractor deliverable review, and owner reporting.",
-            status: "Representative reference",
-          },
-          {
-            slug: "water-sanitation-engineering",
-            title: "Water infrastructure — engineering",
-            sector: "Water & sanitation",
-            location: "DRC",
-            clientType: "Public authority",
-            role: "Design studies and engineering",
-            summary: "Technical design, execution dossiers, and procurement support.",
-            status: "Representative reference",
-          },
-          {
-            slug: "energy-substation-design",
-            title: "Substations & networks — associated studies",
-            sector: "Energy",
-            location: "DRC",
-            clientType: "Utility / technical partner",
-            role: "Engineering studies and delivery support",
-            summary: "Targeted engineering and commissioning support to international standards.",
-            status: "Representative reference",
-          },
-        ],
+        projects: [],
       },
     },
-    projectDetails: {
-      "urban-water-eastern-drc": {
-        metaDescription: "Project preparation and implementation support for urban water supply — Eastern DRC.",
-        body: "Programme to extend urban water services amid rising demand and institutional constraints. OPEN supports upstream investment decisions with financeable, implementable components.",
-        mandateType: "Programme preparation and implementation support",
-        challenge:
-          "Prioritise credible hydraulic investments for authorities and financiers with clear visibility on options, costs, risks, and implementation sequencing.",
-        approach:
-          "Rapid diagnostic, options analysis, tranche structuring, and steering-committee-ready outputs — combining local delivery realism and international standards.",
-        scope: [
-          "Sector diagnostic and needs analysis",
-          "Programme structuring and component prioritisation",
-          "Decision notes and donor-facing dossiers",
-          "Programme governance and reporting support",
-        ],
-        deliverables: [
-          "Prioritisation notes and investment matrices",
-          "Maturity diagnostics and risk registers",
-          "Briefings for steering committees and authorities",
-          "Preparation and implementation roadmaps",
-        ],
-        outcomes: [
-          "Structured, defensible investment pipeline",
-          "Clear decisions on phasing and delivery model",
-          "Stronger readiness for financier discussions",
-        ],
-      },
-      "inga-iii-umons-analysis": {
-        metaDescription:
-          "Support to critical analysis of the Inga III mega-project in the DRC — University of Mons, integrated report in progress.",
-        body: "Advisory support to a critical review of Inga III, connecting technical, environmental, institutional, and financial dimensions to inform national and international stakeholders.",
-        mandateType: "Integrated critical analysis and decision support",
-        challenge:
-          "Deliver an independent, structured reading of a mega-project where energy sovereignty, international finance, socio-environmental impacts, and deliverability intersect.",
-        approach:
-          "Document review, consolidation of project assumptions, benchmarking against international standards and field constraints — outputs tailored for academic and policy audiences.",
-        scope: [
-          "Critical review of technical and institutional components",
-          "Review of financing scenarios and risk allocation",
-          "Alignment with sector realities in the DRC",
-          "Drafting of the integrated analysis report",
-        ],
-        deliverables: [
-          "Integrated analysis report (finalisation in progress)",
-          "Thematic briefs for stakeholders",
-          "Open issues register and recommendations",
-        ],
-        outcomes: [
-          "Shared basis for informed debate on Inga III",
-          "Explicit link between donor requirements and local constraints",
-          "Actionable recommendations for the next decision cycle",
-        ],
-      },
-      "solar-bess-katanga-thrive": {
-        metaDescription:
-          "Solar & BESS project preparation in Katanga — Thrive Renewables and Ministry of Hydraulic Resources and Electricity.",
-        body: "Structuring support for a solar-plus-BESS project in the Katanga mining region, interfacing an international private investor with Congolese hydraulic and electricity oversight.",
-        mandateType: "Project preparation and public–private structuring",
-        challenge:
-          "Align investor timelines, site allocation, regulatory requirements, and technical readiness before detailed studies and financial close.",
-        approach:
-          "Project dossier preparation, MoU support, and organisation of the allocated-site confirmation mission.",
-        scope: [
-          "Solar & BESS concept and implementation timeline structuring",
-          "Support to MoU negotiation and signing",
-          "Preparation of the Katanga site confirmation mission",
-          "Interface between line ministry and investor",
-        ],
-        deliverables: [
-          "Project preparation dossier and framing notes",
-          "MoU support between ministry and investor",
-          "Site confirmation mission report",
-          "Roadmap toward studies and financing",
-        ],
-        outcomes: [
-          "Initial contractual framework between oversight and investor",
-          "Confirmed sites with documented field constraints",
-          "Credible pipeline toward studies and financial close",
-        ],
-      },
-      "hydro-agro-recs-climate-finance": {
-        metaDescription:
-          "Hydro-agro-industrial project in the DRC — RECS Innovation, sustainable development ministry, and UNIDO, climate finance.",
-        body: "Preparation of a project combining hydropower and agro-industrial components, structured to mobilise additional climate-fund financing with Korean, Congolese, and multilateral stakeholders.",
-        mandateType: "Project preparation and climate-finance structuring",
-        challenge:
-          "Package a multi-component project acceptable to public institutions, UNIDO, and climate finance mechanisms while securing agro-industrial and energy deliverability.",
-        approach:
-          "Integrated diagnostic, alignment with climate-fund criteria, coordination of RECS / ministry / UNIDO interfaces, and progressive preparation deliverables.",
-        scope: [
-          "Technical and institutional structuring of the integrated project",
-          "Alignment with climate-fund and multilateral requirements",
-          "Support to RECS Innovation Ltd / line ministry / UNIDO dialogue",
-          "Preparation of additional financing dossiers",
-        ],
-        deliverables: [
-          "Structuring notes and stakeholder matrix",
-          "Climate-finance preparation dossiers",
-          "Phasing scenarios and risk registers",
-          "Steering committee briefings",
-        ],
-        outcomes: [
-          "Project narrative legible to private investors and climate financiers",
-          "Clearer institutional interfaces",
-          "Documented path to additional financing mobilisation",
-        ],
-      },
-      "strategic-corridors": {
-        metaDescription: "Planning and investment readiness for strategic transport corridors in the DRC and Central Africa.",
-        body: "Planning and preparation for corridors where connectivity, multiple stakeholders, and investment prioritisation must be handled in a coordinated way.",
-        mandateType: "Corridor planning and investment readiness",
-        challenge:
-          "Turn corridor ambition into a prioritised investment pipeline acceptable to states, local authorities, and development partners.",
-        approach:
-          "Constraint mapping, structured stakeholder engagement, and packaging of bankable investment components.",
-        scope: [
-          "Corridor analysis and issue mapping",
-          "Stakeholder consultation and alignment",
-          "Investment prioritisation and phasing scenarios",
-          "Financing mobilisation dossiers",
-        ],
-        deliverables: [
-          "Corridor maps and briefing notes",
-          "Investment prioritisation matrices",
-          "Concept notes and donor dossiers",
-          "Stakeholder mobilisation plans",
-        ],
-        outcomes: [
-          "Corridor vision translated into investment sequence",
-          "Clearer narrative for national and regional decision-makers",
-          "Shared basis for financier discussions",
-        ],
-      },
-      "donor-programmes-drc": {
-        metaDescription: "Implementation and reporting support for donor-funded infrastructure programmes in the DRC.",
-        body: "Support to PIUs and line ministries to manage multi-project programmes in line with international management and reporting requirements.",
-        mandateType: "Programme support and decision backing",
-        challenge:
-          "Maintain decision cadence, reporting quality, and donor compliance under institutional pressure.",
-        approach:
-          "Strengthen management routines, standardise outputs, and provide independent support to steering bodies.",
-        scope: [
-          "Programme planning and management support",
-          "Periodic reporting and dashboards",
-          "Decision session preparation",
-          "Donor procedure and compliance support",
-        ],
-        deliverables: [
-          "Dashboards and programme reports",
-          "Decision notes and committee briefings",
-          "Compliance checklists and action plans",
-          "Programme risk management support",
-        ],
-        outcomes: [
-          "More predictable reporting for financiers",
-          "Documented, traceable programme decisions",
-          "Stronger management capacity within the PIU",
-        ],
-      },
-      "urban-networks-supervision": {
-        metaDescription: "Technical supervision of urban networks and delivery control in the DRC.",
-        body: "Supervision of works and contractor outputs for urban networks, with regular owner reporting and execution quality control.",
-        mandateType: "Technical supervision and delivery control",
-        challenge:
-          "Ensure built assets match approved designs, technical standards, and owner expectations on the ground.",
-        approach:
-          "Structured site supervision, systematic contractor deliverable review, and open registers for non-conformities and reservations.",
-        scope: [
-          "Works supervision and quality control",
-          "Review of execution dossiers and variations",
-          "Owner / contractor interface",
-          "Periodic reporting and clearance of reservations",
-        ],
-        deliverables: [
-          "Supervision reports and site visit records",
-          "Technical review of submissions and variations",
-          "Reservation logs and clearance plans",
-          "Briefings for works steering committees",
-        ],
-        outcomes: [
-          "Better visibility on real progress",
-          "Fewer undocumented gaps between design and build",
-          "Reception decisions based on verified facts",
-        ],
-      },
-      "water-sanitation-engineering": {
-        metaDescription: "Design studies and engineering for water infrastructure in the DRC.",
-        body: "Design engineering for water assets, including technical dossiers and procurement support, aligned with standards and local delivery constraints.",
-        mandateType: "Design studies and engineering",
-        challenge:
-          "Produce executable, procurement-ready dossiers despite data, timeline, and local capacity constraints.",
-        approach:
-          "Stage-gated design, progressive technical validation, and coordination with environmental and social requirements where applicable.",
-        scope: [
-          "Feasibility and detailed design studies",
-          "Drawings, calculation notes, and specifications",
-          "Cost estimates and works phasing",
-          "Procurement technical support",
-        ],
-        deliverables: [
-          "Design dossiers and drawings",
-          "Calculation notes and technical reports",
-          "Tender / contractor consultation packages",
-          "Bid evaluation support",
-        ],
-        outcomes: [
-          "Technical dossiers usable by the project owner",
-          "Procurement prepared with clear criteria",
-          "Technical risks identified before works start",
-        ],
-      },
-      "energy-substation-design": {
-        metaDescription: "Engineering studies for substations and power networks in the DRC.",
-        body: "Targeted studies for substations and network components, with interface coordination and commissioning support to recognised standards.",
-        mandateType: "Targeted engineering and delivery support",
-        challenge:
-          "Secure technical feasibility and interface compatibility in a fast-moving network and operational environment.",
-        approach:
-          "Component-level engineering, independent review of assumptions, and support through key milestones to commissioning.",
-        scope: [
-          "Sizing and layout studies",
-          "Equipment specifications and interfaces",
-          "Testing and commissioning support",
-          "Coordination with operator and partners",
-        ],
-        deliverables: [
-          "Technical studies and calculation notes",
-          "Specifications and execution dossiers",
-          "Test plans and acceptance procedures",
-          "Commissioning follow-up reports",
-        ],
-        outcomes: [
-          "Network components sized on explicit bases",
-          "Technical interfaces clarified between parties",
-          "Better prepared acceptance and commissioning",
-        ],
-      },
-    },
+    projectDetails: {},
     portfolio: {
       title: "Portfolio",
-      intro: "Experience, projects, and references — expanded progressively as they are validated.",
+      intro: "LinkedIn publications and sector perspectives — preparation, finance, and delivery in the DRC.",
       viewAllCta: "View all projects",
       pageTitle: "Portfolio & references",
-      pageIntro:
-        "A selection of mandates across both OPEN practices — including recent energy-sector references — open a card for context, scope, and deliverables.",
+      pageIntro: "References drawn from OPEN LinkedIn publications — text, visuals, and source links.",
       categories: [
         "Water & Urban Infrastructure",
         "Energy & Power Systems",

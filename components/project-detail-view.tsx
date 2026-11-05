@@ -41,6 +41,11 @@ export function ProjectDetailView({
         ]}
         actions={
           <>
+            {project.linkedinUrl ? (
+              <PillLink href={project.linkedinUrl} target="_blank" rel="noopener noreferrer">
+                {shared.viewOnLinkedIn}
+              </PillLink>
+            ) : null}
             <PillLink href={mailHref(locale, "project")}>{shared.contactCta}</PillLink>
             <ButtonLink href={polePath(locale, pole)} variant="outline-light">
               {shared.backToPole}
@@ -121,20 +126,28 @@ export function ProjectDetailView({
                 </article>
               </Reveal>
 
-              <Reveal delay={0.1}>
-                <article className="project-detail-panel">
-                  <h2 className="project-detail-panel-title">{shared.outcomesTitle}</h2>
-                  <ul className="project-outcomes">
-                    {project.outcomes.map((item) => (
-                      <li key={item}>
-                        <Icon name="check_circle" className="h-5 w-5 shrink-0 text-primary" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="mt-6 text-sm text-on-surface-variant">{project.status}</p>
-                </article>
-              </Reveal>
+              {project.outcomes.length > 0 ? (
+                <Reveal delay={0.1}>
+                  <article className="project-detail-panel">
+                    <h2 className="project-detail-panel-title">{shared.outcomesTitle}</h2>
+                    <ul className="project-outcomes">
+                      {project.outcomes.map((item) => (
+                        <li key={item}>
+                          <Icon name="check_circle" className="h-5 w-5 shrink-0 text-primary" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="mt-6 text-sm text-on-surface-variant">{project.status}</p>
+                  </article>
+                </Reveal>
+              ) : (
+                <Reveal delay={0.1}>
+                  <article className="project-detail-panel">
+                    <p className="text-sm text-on-surface-variant">{project.status}</p>
+                  </article>
+                </Reveal>
+              )}
             </div>
 
             <ProjectMoreSidebar locale={locale} pole={pole} dict={dict} currentSlug={project.slug} />

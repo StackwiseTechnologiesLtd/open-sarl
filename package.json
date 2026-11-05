@@ -9,7 +9,9 @@
     "lint": "eslint .",
     "test": "vitest run",
     "linkedin:login": "node scripts/linkedin-scrape-playwright.mjs --login",
-    "linkedin:scrape": "node scripts/linkedin-scrape-playwright.mjs"
+    "linkedin:scrape": "node scripts/linkedin-scrape-playwright.mjs",
+    "projects:build": "node scripts/build-project-references.mjs",
+    "linkedin:sync": "npm run linkedin:scrape && npm run projects:build"
   },
   "dependencies": {
     "html2canvas": "^1.4.1",
